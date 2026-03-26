@@ -47,6 +47,7 @@ outputs/
 results/
 embd_*/
 mexa_*/
+dashboard/public/data/
 
 # IDEs
 .vscode/
