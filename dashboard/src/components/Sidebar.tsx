@@ -1,16 +1,29 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const NAV_ITEMS = [
+interface NavItem {
+  icon: string;
+  label: string;
+  key: string;
+  path: string;
+}
+
+const NAV_ITEMS: NavItem[] = [
   { icon: 'dashboard', label: 'Overview', key: 'overview', path: '/' },
   { icon: 'menu_book', label: 'MEXA Findings', key: 'findings', path: '/findings' },
+  { icon: 'science', label: 'My Findings', key: 'my-findings', path: '/my-findings' },
   { icon: 'layers', label: 'Projection', key: 'projection', path: '/projection' },
   { icon: 'grid_view', label: 'Alignment', key: 'alignment', path: '/alignment' },
   { icon: 'analytics', label: 'Distribution', key: 'distribution', path: '/distribution' },
   { icon: 'compare_arrows', label: 'Comparison', key: 'comparison', path: '/comparison' },
 ];
 
-const FOOTER_LINKS = [
+interface FooterLink {
+  icon: string;
+  label: string;
+}
+
+const FOOTER_LINKS: FooterLink[] = [
   { icon: 'history', label: 'Archive' },
   { icon: 'help_outline', label: 'Support' },
 ];
@@ -26,7 +39,7 @@ export default function Sidebar() {
         <div>
           <h1 className="font-headline font-bold text-primary leading-tight">Thesis</h1>
           <p className="text-[10px] uppercase tracking-widest text-on-secondary-container opacity-70">
-            LLM Evaluation Lab
+            LLM Cross-lingual Evaluation
           </p>
         </div>
       </div>

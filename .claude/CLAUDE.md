@@ -1,57 +1,83 @@
-# Querai — Financial AI Platform
+# MEXA — Multilingual Evaluation via Cross-Lingual Alignment
 
-## Project Overview
-A React + TypeScript fintech application (Vite-powered) for enterprise financial intelligence. Brand name: **Querai** 
+## Thesis Context
+This repository is part of a **Bachelor's thesis** on evaluating the multilingual capabilities of English-centric Large Language Models. It implements and extends the MEXA metric introduced in the ACL 2025 Findings paper ([arXiv 2410.05873](http://arxiv.org/abs/2410.05873)).
+
+**Core idea:** English-centric LLMs semantically use English as a pivot language in their intermediate layers. MEXA measures the alignment between non-English languages and English using parallel sentences, estimating how well language understanding transfers from English to other languages.
 
 ## Tech Stack
-- **Framework:** React 19 + TypeScript
-- **Build:** Vite
-- **Routing:** React Router v7 (`react-router-dom`)
-- **Styling:** Tailwind CSS v4 — utility-first with custom design tokens in `src/index.css`
-- **UI Libraries:** MUI (selective use), Recharts (data viz), dnd-kit (drag & drop)
-- **Fonts:** Manrope (headings via `font-heading`), Inter (body via `font-sans`)
-- **Icons:** Material Symbols Outlined (via `.icon` class)
 
-## Architecture
+### ML Pipeline (Python)
+- **Deep Learning:** PyTorch
+- **Model Loading:** Hugging Face Transformers (`AutoTokenizer`, `AutoModelForCausalLM`)
+- **Numerical Computing:** NumPy, SciPy
+- **Data Processing:** Pandas, JSON, Pickle
+- **Supported Models:** Llama 3.1 (8B, 70B), Gemma, Mistral, OLMo, and any HF-compatible causal LM
+
+### Dashboard (React + TypeScript)
+- **Framework:** React 18 + TypeScript
+- **Build:** Vite 5
+- **Routing:** React Router DOM v7
+- **Styling:** Tailwind CSS v4
+- **Data Visualization:** Recharts
+- **Icons:** Lucide React
+- **Animation:** Framer Motion
+- **Drag & Drop:** @dnd-kit
+
+## Repository Structure
 ```
-src/
-├── components/
-│   ├── charts/    # LineChart, BarChart, DonutChart, DataTable, KPICard, CategoryBarList
-│   ├── form/      # Input, Checkbox, Radio, Select, DatePicker, Toggle
-│   └── ui/        # Button, Card, Skeleton, Modal, Alert, Chip, Tabs, Accordion, etc.
-├── layouts/       # AppLayout, Navbar, Sidebar, PageContainer
-├── pages/         # Home (design showcase), Chat, Login, Settings, Selection, Usecase
-├── mocks/         # Mock data (sidebarMock)
-├── hooks/
-├── services/
-└── utils/
+MEXA-fork/
+├── embed_extractor.py          # Extract layer-wise embeddings from LLMs
+├── compute_mexa.py             # Compute MEXA alignment scores (cosine similarity)
+├── 2025.findings-acl.1385.pdf  # Published ACL paper
+│
+├── dashboard/                  # Interactive visualization dashboard
+│   ├── src/
+│   │   ├── App.jsx             # Main app + routing
+│   │   ├── pages/              # Overview, MexaFindings
+│   │   ├── components/         # Sidebar, ModelComparison, ScoreRanking, Heatmap
+│   │   ├── charts/             # BarChart, LineChart, DonutChart, CorrelationMatrix, LayerwiseHeatmap, DataTable, ...
+│   │   ├── form/               # Input, Select, Checkbox, LayerSlider, DatePicker
+│   │   ├── ui/                 # Button, Card, Modal, Accordion, Skeleton, Tabs, ...
+│   │   └── utils/              # Utility functions
+│   └── public/data/            # Pre-computed CSV scores + language metadata JSON
+│
+└── llama3.1_experiment/        # Experiment scripts
+    ├── run_local_mac.sh        # Local execution
+    ├── run_coma_cluster.slurm  # HPC/SLURM cluster job submission
+    └── format_results.py       # Format JSON scores into CSV for dashboard
 ```
 
-## Design System: "Sovereign Curator"
-Full documentation in `.claude/skills/DESIGN.md`. Key rules:
+## ML Pipeline
+1. **Extract embeddings** — `embed_extractor.py` pulls layer-wise embeddings from LLMs (weighted average or last-token methods)
+2. **Compute alignment** — `compute_mexa.py` calculates cosine similarity matrices between language embeddings across all layers
+3. **MEXA metric** — Measures diagonal dominance to quantify cross-lingual alignment
+4. **Aggregate** — Max-pool scores across layers
+5. **Visualize** — Format results into CSV/JSON and display in the dashboard
 
-- **No-Line Rule:** Never use 1px solid borders. Define boundaries via background color shifts only.
-- **Ghost Border:** If a border is unavoidable, use `outline-variant` at 15% opacity.
-- **Surface Hierarchy:** `surface` → `surface-container-low` → `surface-container-lowest` (cards).
-- **Glassmorphism:** Floating elements use `bg-white/10 backdrop-blur-xl border-white/30`.
-- **Shadows:** Use `shadow-ambient` (0 10px 30px -5px rgba(25,28,29,0.05)).
-- **Border Radius:** `rounded-lg` (16px) for containers, `rounded-xl` (24px) for special elements.
-
-## Key Conventions
-- Components use TypeScript interfaces extending native HTML attributes where applicable.
-- build and use resuable components  when needed . 
-- Pages wrapped in `<AppLayout>` get Navbar + Sidebar automatically. Login is standalone (no layout).
-- Mock auth credentials: `wassim@querai.com` / `querai123` (in `src/pages/Login/useLogin.ts`).
-- Reusable loading states via `<Skeleton>` and `<SkeletonCard>` components.
+## Datasets
+- **FLORES-200** — 100 sentences from devtest (high-resource parallel corpus)
+- **Bible corpus** — 103 sentences across 1,401 languages (massive low-resource coverage)
 
 ## Commands
-- `npm run dev` — Start dev server
-- `npm run build` — Type-check + production build
-- `npm run lint` — ESLint
 
-## Style Guidelines
-- Prefer editing existing components over creating new files.
-- Follow the design token system in `src/index.css` (`@theme` block) for all colors, radii, shadows.
-- Use `font-heading` for headlines (Manrope), `font-sans` for body (Inter).
-- Icons: `<span className="icon">icon_name</span>` using Material Symbols names.
-- Animations: define keyframes in `src/index.css`, apply via utility classes.
+### Dashboard
+```bash
+cd dashboard
+npm run dev       # Start dev server
+npm run build     # Production build
+npm run lint      # ESLint
+```
+
+### ML Scripts
+```bash
+python embed_extractor.py --model <model_name> --dataset <dataset> --output <path>
+python compute_mexa.py --embeddings <path> --output <path>
+```
+
+## Style Guidelines (Dashboard)
+- Components use TypeScript (`.tsx`) with interfaces extending native HTML attributes
+- Tailwind CSS for all styling — follow design tokens in `src/index.css`
+- Recharts for all data visualizations
+- Lucide React for icons
+- Prefer editing existing components over creating new files
