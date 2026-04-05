@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import Overview from './pages/Overview';
 import MexaFindings from './pages/MexaFindings';
 import MyFindings from './pages/MyFindings';
+import MistralFindings from './pages/MistralFindings';
 
 // Restyled Analysis Components
 import ModelComparison from './components/ModelComparison';
@@ -169,6 +170,7 @@ function App() {
                 <Route path="/" element={<Overview />} />
                 <Route path="/findings" element={<MexaFindings />} />
                 <Route path="/my-findings" element={<MyFindings />} />
+                <Route path="/mistral-findings" element={<MistralFindings />} />
 
                 <Route 
                   path="/alignment" 

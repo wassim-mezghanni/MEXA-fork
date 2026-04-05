@@ -11,7 +11,8 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { icon: 'dashboard', label: 'Overview', key: 'overview', path: '/' },
   { icon: 'menu_book', label: 'MEXA Findings', key: 'findings', path: '/findings' },
-  { icon: 'science', label: 'My Findings', key: 'my-findings', path: '/my-findings' },
+  { icon: 'science', label: 'Llama 3.1 8B', key: 'my-findings', path: '/my-findings' },
+  { icon: 'science', label: 'Mistral 7B v0.3', key: 'mistral-findings', path: '/mistral-findings' },
   { icon: 'layers', label: 'Projection', key: 'projection', path: '/projection' },
   { icon: 'grid_view', label: 'Alignment', key: 'alignment', path: '/alignment' },
   { icon: 'analytics', label: 'Distribution', key: 'distribution', path: '/distribution' },
