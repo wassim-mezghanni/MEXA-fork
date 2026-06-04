@@ -1,0 +1,58 @@
+Ensuring required pip packages are installed...
+============================================
+  MEXA — Apertus 8B on FLORES-200
+  Model:   swiss-ai/Apertus-8B-2509
+  Dataset: FLORES-200 (100 sentences)
+  Pooling: max + mean
+============================================
+1. Extracting Embeddings...
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  FLORES — Apertus 8B Results
+  Languages evaluated: 204
+  µ_Max  = 0.3297
+  µ_Mean = 0.1309
+==================================================
+
+Formatted results successfully saved to ../dashboard/public/data/apertus-8b-flores-results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 204 languages, 33 layers
+Computing projections (2D + 3D)...
+  Layer 0/32 done (PCA 2D: 28.8%, 3D: 35.1%)
+  Layer 1/32 done (PCA 2D: 43.9%, 3D: 54.3%)
+  Layer 2/32 done (PCA 2D: 67.0%, 3D: 71.1%)
+  Layer 3/32 done (PCA 2D: 100.0%, 3D: 100.0%)
+  Layer 4/32 done (PCA 2D: 100.0%, 3D: 100.0%)
+  Layer 5/32 done (PCA 2D: 100.0%, 3D: 100.0%)
+  Layer 6/32 done (PCA 2D: 100.0%, 3D: 100.0%)
+  Layer 7/32 done (PCA 2D: 99.8%, 3D: 99.9%)
+  Layer 8/32 done (PCA 2D: 99.7%, 3D: 99.8%)
+  Layer 9/32 done (PCA 2D: 99.6%, 3D: 99.7%)
+  Layer 10/32 done (PCA 2D: 99.6%, 3D: 99.7%)
+  Layer 11/32 done (PCA 2D: 99.4%, 3D: 99.5%)
+  Layer 12/32 done (PCA 2D: 99.2%, 3D: 99.3%)
+  Layer 13/32 done (PCA 2D: 98.7%, 3D: 98.9%)
+  Layer 14/32 done (PCA 2D: 97.8%, 3D: 98.2%)
+  Layer 15/32 done (PCA 2D: 96.7%, 3D: 97.5%)
+  Layer 16/32 done (PCA 2D: 92.9%, 3D: 94.2%)
+  Layer 17/32 done (PCA 2D: 88.5%, 3D: 90.5%)
+  Layer 18/32 done (PCA 2D: 70.8%, 3D: 73.9%)
+  Layer 19/32 done (PCA 2D: 61.8%, 3D: 65.6%)
+  Layer 20/32 done (PCA 2D: 55.6%, 3D: 59.8%)
+  Layer 21/32 done (PCA 2D: 46.8%, 3D: 52.6%)
+  Layer 22/32 done (PCA 2D: 37.3%, 3D: 43.9%)
+  Layer 23/32 done (PCA 2D: 32.8%, 3D: 40.8%)
+  Layer 24/32 done (PCA 2D: 21.9%, 3D: 29.5%)
+  Layer 25/32 done (PCA 2D: 21.1%, 3D: 27.6%)
+  Layer 26/32 done (PCA 2D: 20.4%, 3D: 25.6%)
+  Layer 27/32 done (PCA 2D: 20.1%, 3D: 24.5%)
+  Layer 28/32 done (PCA 2D: 17.3%, 3D: 21.5%)
+  Layer 29/32 done (PCA 2D: 17.6%, 3D: 21.8%)
+  Layer 30/32 done (PCA 2D: 18.4%, 3D: 22.5%)
+  Layer 31/32 done (PCA 2D: 20.4%, 3D: 24.9%)
+  Layer 32/32 done (PCA 2D: 75.1%, 3D: 81.1%)
+Saved projections to ../dashboard/public/data/projections-apertus-8b-flores.json
+Job Finished Successfully!

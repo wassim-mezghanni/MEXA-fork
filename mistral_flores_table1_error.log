@@ -1,0 +1,139 @@
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/transformers/models/auto/auto_factory.py:492: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:12<00:24, 12.30s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:24<00:12, 12.08s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:34<00:00, 11.40s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:34<00:00, 11.61s/it]
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/transformers/models/auto/tokenization_auto.py:1041: FutureWarning: The `use_auth_token` argument is deprecated and will be removed in v5 of Transformers. Please use `token` instead.
+  warnings.warn(
+  0%|          | 0/110 [00:00<?, ?it/s]  1%|          | 1/110 [00:46<1:23:34, 46.00s/it]  2%|▏         | 2/110 [01:34<1:25:10, 47.32s/it]  3%|▎         | 3/110 [02:51<1:48:28, 60.83s/it]  4%|▎         | 4/110 [03:39<1:39:05, 56.09s/it]  5%|▍         | 5/110 [04:27<1:32:27, 52.84s/it]  5%|▌         | 6/110 [05:15<1:28:46, 51.22s/it]  6%|▋         | 7/110 [05:59<1:24:07, 49.01s/it]  7%|▋         | 8/110 [06:43<1:20:23, 47.29s/it]  8%|▊         | 9/110 [07:30<1:19:52, 47.45s/it]  9%|▉         | 10/110 [08:17<1:18:41, 47.21s/it] 10%|█         | 11/110 [09:10<1:20:37, 48.87s/it] 11%|█         | 12/110 [10:21<1:30:46, 55.58s/it] 12%|█▏        | 13/110 [12:37<2:09:12, 79.93s/it] 13%|█▎        | 14/110 [13:26<1:52:51, 70.54s/it] 14%|█▎        | 15/110 [14:20<1:44:12, 65.82s/it] 15%|█▍        | 16/110 [15:01<1:31:11, 58.21s/it] 15%|█▌        | 17/110 [15:54<1:27:56, 56.74s/it] 16%|█▋        | 18/110 [16:54<1:28:15, 57.56s/it] 17%|█▋        | 19/110 [17:37<1:20:58, 53.39s/it] 18%|█▊        | 20/110 [18:22<1:16:12, 50.80s/it] 19%|█▉        | 21/110 [19:39<1:26:44, 58.48s/it] 20%|██        | 22/110 [20:24<1:20:05, 54.61s/it] 21%|██        | 23/110 [21:12<1:16:03, 52.45s/it] 22%|██▏       | 24/110 [22:01<1:13:53, 51.56s/it] 23%|██▎       | 25/110 [22:45<1:09:54, 49.34s/it] 24%|██▎       | 26/110 [23:27<1:05:58, 47.13s/it] 25%|██▍       | 27/110 [24:15<1:05:21, 47.25s/it] 25%|██▌       | 28/110 [25:02<1:04:34, 47.25s/it] 26%|██▋       | 29/110 [25:48<1:03:30, 47.04s/it] 27%|██▋       | 30/110 [26:40<1:04:23, 48.30s/it] 28%|██▊       | 31/110 [27:49<1:11:56, 54.64s/it] 29%|██▉       | 32/110 [30:09<1:44:19, 80.25s/it] 30%|███       | 33/110 [30:51<1:28:03, 68.62s/it] 31%|███       | 34/110 [31:51<1:23:54, 66.25s/it] 32%|███▏      | 35/110 [32:33<1:13:28, 58.78s/it] 33%|███▎      | 36/110 [33:09<1:04:15, 52.10s/it] 34%|███▎      | 37/110 [33:53<1:00:17, 49.56s/it] 35%|███▍      | 38/110 [35:33<1:17:40, 64.72s/it] 35%|███▌      | 39/110 [36:35<1:15:35, 63.88s/it] 36%|███▋      | 40/110 [37:16<1:06:30, 57.01s/it] 37%|███▋      | 41/110 [38:12<1:05:18, 56.79s/it] 38%|███▊      | 42/110 [39:25<1:09:54, 61.68s/it] 39%|███▉      | 43/110 [40:07<1:02:06, 55.62s/it] 40%|████      | 44/110 [41:34<1:11:29, 64.99s/it] 41%|████      | 45/110 [42:18<1:03:37, 58.73s/it] 42%|████▏     | 46/110 [44:54<1:33:45, 87.89s/it] 43%|████▎     | 47/110 [45:42<1:19:45, 75.96s/it] 44%|████▎     | 48/110 [46:26<1:08:43, 66.51s/it] 45%|████▍     | 49/110 [48:18<1:21:30, 80.17s/it] 45%|████▌     | 50/110 [49:08<1:11:07, 71.12s/it] 46%|████▋     | 51/110 [50:29<1:12:49, 74.07s/it] 47%|████▋     | 52/110 [51:16<1:03:39, 65.86s/it] 48%|████▊     | 53/110 [52:01<56:43, 59.71s/it]   49%|████▉     | 54/110 [52:45<51:07, 54.78s/it] 50%|█████     | 55/110 [53:25<46:23, 50.60s/it] 51%|█████     | 56/110 [54:13<44:42, 49.68s/it] 52%|█████▏    | 57/110 [54:53<41:27, 46.93s/it] 53%|█████▎    | 58/110 [56:19<50:38, 58.43s/it] 54%|█████▎    | 59/110 [57:20<50:29, 59.40s/it] 55%|█████▍    | 60/110 [58:04<45:39, 54.79s/it] 55%|█████▌    | 61/110 [58:53<43:07, 52.81s/it] 56%|█████▋    | 62/110 [59:35<39:41, 49.62s/it] 57%|█████▋    | 63/110 [1:00:29<39:51, 50.89s/it] 58%|█████▊    | 64/110 [1:02:10<50:33, 65.95s/it] 59%|█████▉    | 65/110 [1:02:54<44:35, 59.45s/it] 60%|██████    | 66/110 [1:04:50<56:06, 76.50s/it] 61%|██████    | 67/110 [1:05:31<47:12, 65.86s/it] 62%|██████▏   | 68/110 [1:07:03<51:31, 73.61s/it] 63%|██████▎   | 69/110 [1:08:10<48:57, 71.64s/it] 64%|██████▎   | 70/110 [1:08:57<42:55, 64.38s/it] 65%|██████▍   | 71/110 [1:10:18<44:55, 69.12s/it] 65%|██████▌   | 72/110 [1:11:05<39:36, 62.55s/it] 66%|██████▋   | 73/110 [1:11:46<34:33, 56.05s/it] 67%|██████▋   | 74/110 [1:12:30<31:31, 52.54s/it] 68%|██████▊   | 75/110 [1:13:18<29:55, 51.29s/it] 69%|██████▉   | 76/110 [1:14:05<28:18, 49.95s/it] 70%|███████   | 77/110 [1:14:51<26:42, 48.55s/it] 71%|███████   | 78/110 [1:16:34<34:37, 64.92s/it] 72%|███████▏  | 79/110 [1:17:23<31:06, 60.21s/it] 73%|███████▎  | 80/110 [1:18:08<27:49, 55.66s/it] 74%|███████▎  | 81/110 [1:19:09<27:40, 57.26s/it] 75%|███████▍  | 82/110 [1:20:04<26:28, 56.73s/it] 75%|███████▌  | 83/110 [1:20:52<24:19, 54.04s/it] 76%|███████▋  | 84/110 [1:21:37<22:10, 51.19s/it] 77%|███████▋  | 85/110 [1:22:23<20:42, 49.71s/it] 78%|███████▊  | 86/110 [1:23:09<19:25, 48.54s/it] 79%|███████▉  | 87/110 [1:23:49<17:41, 46.16s/it] 80%|████████  | 88/110 [1:24:39<17:21, 47.32s/it] 81%|████████  | 89/110 [1:25:21<15:55, 45.49s/it] 82%|████████▏ | 90/110 [1:26:10<15:31, 46.59s/it] 83%|████████▎ | 91/110 [1:27:24<17:21, 54.81s/it] 84%|████████▎ | 92/110 [1:28:10<15:39, 52.18s/it] 85%|████████▍ | 93/110 [1:29:39<17:56, 63.32s/it] 85%|████████▌ | 94/110 [1:30:22<15:15, 57.20s/it] 86%|████████▋ | 95/110 [1:31:03<13:05, 52.36s/it] 87%|████████▋ | 96/110 [1:31:48<11:40, 50.02s/it] 88%|████████▊ | 97/110 [1:32:31<10:23, 47.96s/it] 89%|████████▉ | 98/110 [1:33:16<09:25, 47.10s/it] 90%|█████████ | 99/110 [1:34:49<11:09, 60.84s/it] 91%|█████████ | 100/110 [1:37:07<13:59, 83.93s/it] 92%|█████████▏| 101/110 [1:38:17<11:58, 79.79s/it] 93%|█████████▎| 102/110 [1:39:02<09:16, 69.56s/it] 94%|█████████▎| 103/110 [1:39:44<07:07, 61.14s/it] 95%|█████████▍| 104/110 [1:40:45<06:06, 61.03s/it] 95%|█████████▌| 105/110 [1:41:26<04:34, 54.96s/it] 96%|█████████▋| 106/110 [1:42:36<03:58, 59.61s/it] 97%|█████████▋| 107/110 [1:43:20<02:44, 54.84s/it] 98%|█████████▊| 108/110 [1:44:10<01:47, 53.51s/it] 99%|█████████▉| 109/110 [1:45:47<01:06, 66.42s/it]100%|██████████| 110/110 [1:46:34<00:00, 60.70s/it]100%|██████████| 110/110 [1:46:34<00:00, 58.13s/it]
+  0%|          | 0/110 [00:00<?, ?it/s]  1%|          | 1/110 [03:12<5:49:26, 192.35s/it]  2%|▏         | 2/110 [06:23<5:44:51, 191.59s/it]  3%|▎         | 3/110 [09:40<5:46:30, 194.31s/it]  4%|▎         | 4/110 [12:58<5:45:33, 195.60s/it]  5%|▍         | 5/110 [16:13<5:41:57, 195.41s/it]  5%|▌         | 6/110 [19:25<5:36:38, 194.22s/it]  6%|▋         | 7/110 [22:38<5:32:34, 193.73s/it]  7%|▋         | 8/110 [25:51<5:29:01, 193.54s/it]  8%|▊         | 9/110 [29:12<5:29:32, 195.76s/it]  9%|▉         | 10/110 [32:29<5:27:14, 196.35s/it] 10%|█         | 11/110 [35:48<5:25:05, 197.02s/it] 11%|█         | 12/110 [39:00<5:19:38, 195.70s/it] 12%|█▏        | 13/110 [42:13<5:14:38, 194.63s/it] 13%|█▎        | 14/110 [45:30<5:12:54, 195.57s/it] 14%|█▎        | 15/110 [48:42<5:07:55, 194.48s/it] 15%|█▍        | 16/110 [51:54<5:03:31, 193.74s/it] 15%|█▌        | 17/110 [55:06<4:59:20, 193.12s/it] 16%|█▋        | 18/110 [58:18<4:55:48, 192.92s/it] 17%|█▋        | 19/110 [1:01:31<4:52:16, 192.71s/it] 18%|█▊        | 20/110 [1:04:48<4:51:11, 194.13s/it] 19%|█▉        | 21/110 [1:08:06<4:49:48, 195.38s/it] 20%|██        | 22/110 [1:11:20<4:45:42, 194.80s/it] 21%|██        | 23/110 [1:14:36<4:43:07, 195.26s/it] 22%|██▏       | 24/110 [1:17:53<4:40:43, 195.86s/it] 23%|██▎       | 25/110 [1:21:12<4:38:41, 196.72s/it] 24%|██▎       | 26/110 [1:24:32<4:36:37, 197.59s/it] 25%|██▍       | 27/110 [1:27:43<4:30:48, 195.76s/it] 25%|██▌       | 28/110 [1:30:57<4:26:31, 195.02s/it] 26%|██▋       | 29/110 [1:34:10<4:22:32, 194.48s/it] 27%|██▋       | 30/110 [1:37:24<4:19:03, 194.29s/it] 28%|██▊       | 31/110 [1:40:36<4:15:14, 193.85s/it] 29%|██▉       | 32/110 [1:43:49<4:11:33, 193.51s/it] 30%|███       | 33/110 [1:47:08<4:10:22, 195.09s/it] 31%|███       | 34/110 [1:50:28<4:08:51, 196.46s/it] 32%|███▏      | 35/110 [1:53:42<4:04:44, 195.79s/it] 33%|███▎      | 36/110 [1:57:00<4:02:31, 196.65s/it] 34%|███▎      | 37/110 [2:00:13<3:57:52, 195.51s/it] 35%|███▍      | 38/110 [2:03:25<3:53:09, 194.30s/it] 35%|███▌      | 39/110 [2:06:44<3:51:41, 195.80s/it] 36%|███▋      | 40/110 [2:09:58<3:47:36, 195.10s/it] 37%|███▋      | 41/110 [2:13:17<3:45:50, 196.39s/it] 38%|███▊      | 42/110 [2:16:31<3:41:52, 195.77s/it] 39%|███▉      | 43/110 [2:19:45<3:37:46, 195.02s/it] 40%|████      | 44/110 [2:22:57<3:33:50, 194.40s/it] 41%|████      | 45/110 [2:26:10<3:29:52, 193.73s/it] 42%|████▏     | 46/110 [2:29:22<3:26:18, 193.41s/it] 43%|████▎     | 47/110 [2:32:35<3:22:53, 193.24s/it] 44%|████▎     | 48/110 [2:35:49<3:19:49, 193.39s/it] 45%|████▍     | 49/110 [2:39:02<3:16:29, 193.27s/it] 45%|████▌     | 50/110 [2:42:14<3:13:01, 193.02s/it] 46%|████▋     | 51/110 [2:45:28<3:10:06, 193.33s/it] 47%|████▋     | 52/110 [2:48:42<3:06:59, 193.44s/it] 48%|████▊     | 53/110 [2:51:54<3:03:18, 192.96s/it] 49%|████▉     | 54/110 [2:55:11<3:01:14, 194.18s/it] 50%|█████     | 55/110 [2:58:27<2:58:38, 194.88s/it] 51%|█████     | 56/110 [3:01:44<2:55:54, 195.44s/it] 52%|█████▏    | 57/110 [3:04:55<2:51:16, 193.90s/it] 53%|█████▎    | 58/110 [3:08:13<2:49:10, 195.20s/it] 54%|█████▎    | 59/110 [3:11:24<2:44:47, 193.88s/it] 55%|█████▍    | 60/110 [3:14:40<2:42:17, 194.75s/it] 55%|█████▌    | 61/110 [3:17:53<2:38:33, 194.14s/it] 56%|█████▋    | 62/110 [3:21:05<2:34:43, 193.42s/it] 57%|█████▋    | 63/110 [3:24:22<2:32:29, 194.68s/it] 58%|█████▊    | 64/110 [3:27:41<2:30:07, 195.81s/it] 59%|█████▉    | 65/110 [3:30:57<2:26:59, 195.98s/it] 60%|██████    | 66/110 [3:34:16<2:24:15, 196.72s/it] 61%|██████    | 67/110 [3:37:28<2:19:56, 195.27s/it] 62%|██████▏   | 68/110 [3:40:44<2:16:55, 195.60s/it] 63%|██████▎   | 69/110 [3:43:55<2:12:44, 194.26s/it] 64%|██████▎   | 70/110 [3:47:07<2:09:00, 193.50s/it] 65%|██████▍   | 71/110 [3:50:17<2:05:05, 192.44s/it] 65%|██████▌   | 72/110 [3:53:34<2:02:45, 193.83s/it] 66%|██████▋   | 73/110 [3:56:45<1:59:04, 193.09s/it] 67%|██████▋   | 74/110 [4:00:04<1:56:47, 194.66s/it] 68%|██████▊   | 75/110 [4:03:15<1:53:04, 193.84s/it] 69%|██████▉   | 76/110 [4:06:27<1:49:29, 193.22s/it] 70%|███████   | 77/110 [4:09:40<1:46:08, 192.98s/it] 71%|███████   | 78/110 [4:12:58<1:43:46, 194.56s/it] 72%|███████▏  | 79/110 [4:16:15<1:40:51, 195.22s/it] 73%|███████▎  | 80/110 [4:19:27<1:37:13, 194.45s/it] 74%|███████▎  | 81/110 [4:22:39<1:33:37, 193.72s/it] 75%|███████▍  | 82/110 [4:25:53<1:30:20, 193.58s/it] 75%|███████▌  | 83/110 [4:29:05<1:26:58, 193.27s/it] 76%|███████▋  | 84/110 [4:32:18<1:23:40, 193.09s/it] 77%|███████▋  | 85/110 [4:35:36<1:21:07, 194.71s/it] 78%|███████▊  | 86/110 [4:38:49<1:17:35, 193.99s/it] 79%|███████▉  | 87/110 [4:42:06<1:14:48, 195.17s/it] 80%|████████  | 88/110 [4:45:24<1:11:52, 196.01s/it] 81%|████████  | 89/110 [4:48:36<1:08:05, 194.55s/it] 82%|████████▏ | 90/110 [4:51:53<1:05:06, 195.32s/it] 83%|████████▎ | 91/110 [4:55:05<1:01:34, 194.46s/it] 84%|████████▎ | 92/110 [4:58:18<58:09, 193.85s/it]   85%|████████▍ | 93/110 [5:01:35<55:12, 194.83s/it] 85%|████████▌ | 94/110 [5:04:48<51:47, 194.22s/it] 86%|████████▋ | 95/110 [5:08:06<48:51, 195.43s/it] 87%|████████▋ | 96/110 [5:11:24<45:48, 196.30s/it] 88%|████████▊ | 97/110 [5:14:36<42:12, 194.83s/it] 89%|████████▉ | 98/110 [5:17:53<39:06, 195.50s/it] 90%|█████████ | 99/110 [5:21:10<35:57, 196.13s/it] 91%|█████████ | 100/110 [5:24:27<32:44, 196.48s/it] 92%|█████████▏| 101/110 [5:27:46<29:33, 197.01s/it] 93%|█████████▎| 102/110 [5:30:57<26:02, 195.29s/it] 94%|█████████▎| 103/110 [5:34:09<22:40, 194.37s/it] 95%|█████████▍| 104/110 [5:37:21<19:22, 193.69s/it] 95%|█████████▌| 105/110 [5:40:38<16:12, 194.54s/it] 96%|█████████▋| 106/110 [5:44:24<13:35, 203.94s/it] 97%|█████████▋| 107/110 [5:47:57<10:20, 206.86s/it] 98%|█████████▊| 108/110 [5:51:47<07:07, 213.71s/it] 99%|█████████▉| 109/110 [5:55:12<03:31, 211.13s/it]100%|██████████| 110/110 [5:58:44<00:00, 211.22s/it]100%|██████████| 110/110 [5:58:44<00:00, 195.67s/it]
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(
+/storage/home/wassim/mexa_env/lib64/python3.9/site-packages/sklearn/manifold/_t_sne.py:1164: FutureWarning: 'n_iter' was renamed to 'max_iter' in version 1.5 and will be removed in 1.7.
+  warnings.warn(

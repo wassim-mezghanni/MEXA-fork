@@ -1,13 +1,6 @@
 import { useState, useEffect } from 'react';
-import { LayerwiseHeatmap } from '../charts/LayerwiseHeatmap';
-import { FeatureRadar } from '../charts/FeatureRadar';
-import { LatentSpaceProjection } from '../charts/LatentSpaceProjection';
-import { ScoreDistribution } from '../charts/ScoreDistribution';
-import { AttentionFlowExplorer } from '../charts/AttentionFlowExplorer';
-import { CorrelationMatrix } from '../charts/CorrelationMatrix';
-import { LanguageCard } from '../ui/LanguageCard';
-import { LayerSlider } from '../form/LayerSlider';
 import { ExperimentTimeline } from '../ui/ExperimentTimeline';
+import { ScoreVsSizeChart, type SizeChartRow } from '../charts/ScoreVsSizeChart';
 
 /* ── Data helpers ── */
 function parseCSV(text) {
@@ -26,94 +19,201 @@ function parseCSV(text) {
   return { models, data };
 }
 
-/* ── Mock data for visualizations ── */
-const HEATMAP_ROWS = [
+/* ── MEXA Score Comparison Table ──
+   Edit MEXA_SCORES below to add results as experiments complete.
+   Use `null` for entries you don't have yet — they render as "—". */
+type Score = number | null;
+type Variant = 'flores-table1' | 'flores-table1-2000' | 'bible-table1' | 'flores-full' | 'bible-full';
+type ModelRow = {
+  model: string;
+  note?: string;
+  scores: Record<Variant, { max: Score; mean: Score }>;
+};
+
+const VARIANT_COLUMNS: { key: Variant; label: string; subtitle: string }[] = [
+  { key: 'flores-table1', label: 'FLORES Table 1', subtitle: '116 langs · 100 sents' },
+  { key: 'flores-table1-2000', label: 'FLORES Table 1', subtitle: '116 langs · 2000 sents' },
+  { key: 'bible-table1', label: 'Bible Table 1', subtitle: '101 langs · sPBC' },
+  { key: 'flores-full', label: 'FLORES Full', subtitle: '204 langs · 2000 sents' },
+  { key: 'bible-full', label: 'Bible Full', subtitle: 'sPBC · all langs' },
+];
+
+const blank = (): Record<Variant, { max: Score; mean: Score }> => ({
+  'flores-table1': { max: null, mean: null },
+  'flores-table1-2000': { max: null, mean: null },
+  'bible-table1': { max: null, mean: null },
+  'flores-full': { max: null, mean: null },
+  'bible-full': { max: null, mean: null },
+});
+
+const MEXA_SCORES: ModelRow[] = [
   {
-    label: 'English → Hindi',
-    color: '0, 70, 85',
-    opacities: [10,20,30,40,60,80,100,90,70,50,30,20,40,60,80,100,90,70,50,30,20,10,5,10,20,40,60,80,100,90,70,50],
+    model: 'Paper · Llama 3.1 8B',
+    note: 'reference (Kargaran et al., 2025)',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.6538, mean: 0.3963 },
+      'bible-table1': { max: 0.4212, mean: 0.2103 },
+    },
   },
   {
-    label: 'English → French',
-    color: '0, 71, 73',
-    opacities: [5,10,15,20,25,30,40,50,60,70,80,90,100,90,80,70,60,50,40,30,20,15,10,5,5,10,15,20,25,30,40,50],
+    model: 'Paper · Mistral 7B v0.3',
+    note: 'reference (Kargaran et al., 2025)',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.4716, mean: 0.2642 },
+      'bible-table1': { max: 0.2606, mean: 0.1198 },
+    },
+  },
+  {
+    model: 'Llama 3.1 8B',
+    scores: {
+      'flores-table1': { max: 0.6735, mean: 0.4196 },
+      'flores-table1-2000': { max: 0.6065, mean: 0.3370 },
+      'bible-table1': { max: 0.4180, mean: 0.2076 },
+      'flores-full': { max: 0.5611, mean: 0.3235 },
+      'bible-full': { max: 0.0781, mean: 0.0320 },
+    },
+  },
+  {
+    model: 'Mistral 7B v0.3',
+    scores: {
+      'flores-table1': { max: 0.4980, mean: 0.2878 },
+      'flores-table1-2000': { max: 0.4066, mean: 0.2127 },
+      'bible-table1': { max: 0.2571, mean: 0.1179 },
+      'flores-full': { max: 0.4102, mean: 0.2232 },
+      'bible-full': { max: 0.0465, mean: 0.0181 },
+    },
+  },
+  {
+    model: 'Qwen3 8B Base',
+    scores: {
+      'flores-table1': { max: 0.5759, mean: 0.3211 },
+      'flores-table1-2000': { max: 0.4838, mean: 0.2416 },
+      'bible-table1': { max: 0.2970, mean: 0.1350 },
+      'flores-full': { max: 0.4723, mean: 0.2509 },
+      'bible-full': { max: 0.0499, mean: 0.0186 },
+    },
+  },
+  {
+    model: 'Qwen3.5 9B Base',
+    scores: {
+      'flores-table1': { max: 0.7814, mean: 0.5557 },
+      'flores-table1-2000': { max: 0.7193, mean: 0.4748 },
+      'bible-table1': { max: 0.4821, mean: 0.2624 },
+      'flores-full': { max: 0.5901, mean: 0.3727 },
+      'bible-full': { max: 0.0845, mean: 0.0382 },
+    },
+  },
+  {
+    model: 'Apertus 8B',
+    scores: {
+      'flores-table1': { max: 0.3873, mean: 0.1637 },
+      'flores-table1-2000': { max: 0.2827, mean: 0.1176 },
+      'bible-table1': { max: 0.4299, mean: 0.1896 },
+      'flores-full': { max: 0.3264, mean: 0.1267 },
+      'bible-full': { max: 0.0667, mean: 0.0237 },
+    },
   },
 ];
 
-const HEATMAP_LEGEND = [
-  { color: 'bg-primary', label: 'High Semantic Alignment' },
-  { color: 'bg-primary/20', label: 'Representational Drift' },
-];
-
-const RADAR_DATASETS = [
-  { label: 'Llama 3.1 (Global)', values: [0.78, 0.67, 0.78, 0.67], fill: 'rgba(0,70,85,0.15)', stroke: '#004655' },
-  { label: 'Hindi Finetune', values: [0.56, 0.44, 0.56, 0.44], fill: 'rgba(0,71,73,0.3)', stroke: '#004749', strokeWidth: 1.5 },
-];
-
-const RADAR_SCORES = [
-  { label: 'Llama 3.1 (Global)', value: '0.892', colorClass: 'text-primary' },
-  { label: 'Hindi Finetune', value: '0.741', colorClass: 'text-tertiary' },
-];
-
-const DISTRIBUTION_CURVES = [
+const QWEN3_SCORES: ModelRow[] = [
   {
-    path: 'M 0 90 Q 100 90, 150 50 T 200 10 T 250 50 T 400 90',
-    fillPath: 'M 0 90 Q 100 90, 150 50 T 200 10 T 250 50 T 400 90 L 400 90 L 0 90 Z',
-    stroke: '#004655',
-    fill: 'rgba(0, 70, 85, 0.05)',
+    model: 'Qwen3 8B Base',
+    scores: {
+      'flores-table1': { max: 0.5759, mean: 0.3211 },
+      'flores-table1-2000': { max: 0.4838, mean: 0.2416 },
+      'bible-table1': { max: 0.2970, mean: 0.1350 },
+      'flores-full': { max: 0.4723, mean: 0.2509 },
+      'bible-full': { max: 0.0499, mean: 0.0186 },
+    },
   },
   {
-    path: 'M 0 90 Q 50 90, 100 80 T 200 40 T 300 80 T 400 90',
-    stroke: '#004749',
-    strokeDasharray: '4 2',
+    model: 'Qwen3.5 9B Base',
+    scores: {
+      'flores-table1': { max: 0.7814, mean: 0.5557 },
+      'flores-table1-2000': { max: 0.7193, mean: 0.4748 },
+      'bible-table1': { max: 0.4821, mean: 0.2624 },
+      'flores-full': { max: 0.5901, mean: 0.3727 },
+      'bible-full': { max: 0.0845, mean: 0.0382 },
+    },
+  },
+  {
+    model: 'Qwen3 4B',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.4433, mean: 0.2327 },
+      'flores-table1-2000': { max: 0.3506, mean: 0.1658 },
+      'bible-table1': { max: 0.1981, mean: 0.0918 },
+      'flores-full': { max: 0.2633, mean: 0.1200 },
+      'bible-full': { max: 0.0315, mean: 0.0120 },
+    },
+  },
+  {
+    model: 'Qwen3 1.7B',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.4946, mean: 0.2158 },
+      'flores-table1-2000': { max: 0.4136, mean: 0.1531 },
+      'bible-table1': { max: 0.1541, mean: 0.0612 },
+      'flores-full': { max: 0.3042, mean: 0.1106 },
+      'bible-full': { max: 0.0221, mean: 0.0072 },
+    },
+  },
+  {
+    model: 'Qwen3 0.6B',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.3518, mean: 0.1504 },
+      'flores-table1-2000': { max: 0.2600, mean: 0.0936 },
+      'bible-table1': { max: 0.1340, mean: 0.0466 },
+      'flores-full': { max: 0.1815, mean: 0.0639 },
+      'bible-full': { max: 0.0235, mean: 0.0067 },
+    },
+  }
+];
+
+const ENCODER_SCORES: ModelRow[] = [
+  {
+    model: 'XLM-RoBERTa large',
+    note: 'masked-LM encoder · 550M',
+    scores: {
+      ...blank(),
+      'flores-table1-2000': { max: 0.5877, mean: 0.3534 },
+      'bible-table1': { max: 0.4084, mean: 0.1922 },
+    },
+  },
+  {
+    model: 'LaBSE',
+    note: 'dual-encoder (sentence-transformers) · 471M',
+    scores: {
+      ...blank(),
+      'flores-table1-2000': { max: 0.9141, mean: 0.6683 },
+      'bible-table1': { max: 0.8392, mean: 0.5088 },
+    },
   },
 ];
 
-const DISTRIBUTION_STATS = [
-  { label: 'Standard Dev', value: '0.024', borderColor: 'border-primary', textColor: 'text-primary' },
-  { label: 'Kurtosis Index', value: '1.842', borderColor: 'border-tertiary', textColor: 'text-tertiary' },
-];
+const fmt = (v: Score) => (v === null || v === undefined ? '—' : v.toFixed(4));
 
-const SOURCE_TOKENS = ['The', 'architectural', 'integrity', 'of', 'the', 'system', 'remains', 'stable.'];
-const TARGET_TOKENS = ['सिस्टम', 'की', 'वास्तुकला', 'अखंडता', 'स्थिर', 'बनी', 'हुई', 'है।'];
+/* Parse the parameter count (in billions) from a model name, e.g.
+   "Qwen3.5 9B Base" → 9, "Qwen3 1.7B" → 1.7, "Mistral 7B v0.3" → 7. */
+const parseSizeB = (model: string): number => {
+  const m = model.match(/(\d+(?:\.\d+)?)\s*B\b/i);
+  return m ? parseFloat(m[1]) : NaN;
+};
 
-/* ── Correlation Matrix mock ── */
-const CORR_LABELS = ['Llama 3.1', 'Mistral 7B', 'Gemma 2B', 'Phi-3', 'XGLM 4.5B'];
-const CORR_MATRIX = [
-  [1.000, 0.874, 0.621, 0.743, 0.582],
-  [0.874, 1.000, 0.698, 0.812, 0.649],
-  [0.621, 0.698, 1.000, 0.534, 0.891],
-  [0.743, 0.812, 0.534, 1.000, 0.467],
-  [0.582, 0.649, 0.891, 0.467, 1.000],
-];
+/* Attach a numeric size to each row for the size-vs-score charts, dropping any
+   row whose size can't be parsed. */
+const toSizeRows = (rows: ModelRow[]): SizeChartRow[] =>
+  rows
+    .map((r) => ({ model: r.model, sizeB: parseSizeB(r.model), scores: r.scores }))
+    .filter((r) => !Number.isNaN(r.sizeB));
 
-/* ── Language Card examples ── */
-const SAMPLE_LANGUAGES = [
-  {
-    code: 'hin_Deva', name: 'Hindi', family: 'Indo-European', script: 'Devanagari',
-    resourceLevel: 'high',
-    scores: [{ model: 'Llama 3.1', score: 0.82 }, { model: 'Mistral 7B', score: 0.76 }, { model: 'Gemma 2B', score: 0.61 }],
-    avgScore: 0.730,
-  },
-  {
-    code: 'yor_Latn', name: 'Yoruba', family: 'Niger-Congo', script: 'Latin',
-    resourceLevel: 'low',
-    scores: [{ model: 'Llama 3.1', score: 0.41 }, { model: 'Mistral 7B', score: 0.33 }, { model: 'Gemma 2B', score: 0.28 }],
-    avgScore: 0.340,
-  },
-  {
-    code: 'fra_Latn', name: 'French', family: 'Indo-European', script: 'Latin',
-    resourceLevel: 'high',
-    scores: [{ model: 'Llama 3.1', score: 0.91 }, { model: 'Mistral 7B', score: 0.88 }, { model: 'Gemma 2B', score: 0.79 }],
-    avgScore: 0.860,
-  },
-  {
-    code: 'tha_Thai', name: 'Thai', family: 'Kra-Dai', script: 'Thai',
-    resourceLevel: 'medium',
-    scores: [{ model: 'Llama 3.1', score: 0.68 }, { model: 'Mistral 7B', score: 0.59 }, { model: 'Gemma 2B', score: 0.52 }],
-    avgScore: 0.597,
-  },
-];
+// Exclude the paper-reference rows from the all-models chart (their sizes
+// duplicate our own runs and would stack on the same X positions).
+const ALL_MODEL_SIZE_ROWS = toSizeRows(MEXA_SCORES.filter((r) => !r.model.startsWith('Paper ·')));
+const QWEN3_SIZE_ROWS = toSizeRows(QWEN3_SCORES);
 
 /* ── Experiment timeline mock ── */
 const EXPERIMENT_ENTRIES = [
@@ -127,7 +227,6 @@ const EXPERIMENT_ENTRIES = [
 ];
 
 export default function Overview() {
-  const [layerValue, setLayerValue] = useState([8, 24]);
   const [, setLanguageNames] = useState({});
   const [, setAllData] = useState({});
   const [, setLoading] = useState(true);
@@ -142,7 +241,7 @@ export default function Overview() {
           fetch('/data/flores-mean-arc.csv').then((r) => r.text()),
           fetch('/data/bible-max-belebele.csv').then((r) => r.text()),
           fetch('/data/bible-mean-arc.csv').then((r) => r.text()),
-          fetch('/data/llama3-1-8b-results.csv')
+          fetch('/data/flores_llama3.1_8b_results.csv')
             .then((r) => r.text())
             .catch(() => ''),
         ]);
@@ -180,115 +279,341 @@ export default function Overview() {
 
   return (
     <div className="p-12 space-y-12">
-      {/* Page Header */}
-      <div className="max-w-4xl">
-        <h2 className="text-4xl font-headline font-extrabold text-primary tracking-tight mb-4">
-          Llama 3.1 Cross-Lingual Evaluation
-        </h2>
-        <p className="text-on-surface-variant font-body leading-relaxed max-w-2xl italic">
-          A comprehensive suite for assessing the semantic alignment and representational drift
-          of high-resource vs. low-resource languages across model depth.
-        </p>
+
+
+      {/* MEXA Score Comparison Table */}
+      <section className="bg-surface-container-low rounded-xl p-8">
+        <div className="mb-6 max-w-5xl">
+          <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider mb-3">
+            MEXA Score Comparison · Models × Dataset Variants
+          </h3>
+          <p className="text-xs text-on-surface-variant font-body leading-relaxed">
+            The original MEXA paper (<em>Kargaran et al., ACL 2025 Findings</em>) reports its
+            headline numbers in <strong>Table 1</strong> on the subsets of languages overlapping
+            with the Belebele benchmark: <strong>116 languages from FLORES-200</strong> (full
+            devtest, 2000 parallel sentences) and <strong>101 languages from the Bible / sPBC
+            corpus</strong> (~103 parallel verses). The embedding setting is identical across
+            both: layer-wise <strong>weighted-token average</strong> sentence embeddings, English
+            as the pivot, alignment computed via cosine-similarity matrices, and final scores
+            aggregated by <strong>max-pool</strong> (µ_Max) and <strong>mean-pool</strong>
+            (µ_Mean) across all hidden layers. The table below tracks our own runs across these
+            and the full-coverage variants — values are filled in as experiments complete
+            (entries marked <code className="text-on-surface">—</code> are still pending).
+          </p>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b border-outline-variant/30">
+                <th
+                  rowSpan={2}
+                  className="text-left text-[10px] font-bold uppercase tracking-widest text-on-surface-variant px-4 py-3 align-bottom"
+                >
+                  Model
+                </th>
+                {VARIANT_COLUMNS.map((v) => (
+                  <th
+                    key={v.key}
+                    colSpan={2}
+                    className="text-center text-[10px] font-bold uppercase tracking-widest text-primary px-4 pt-3 pb-1 border-l border-outline-variant/20"
+                  >
+                    <div>{v.label}</div>
+                    <div className="text-[9px] font-medium normal-case tracking-normal text-on-surface-variant/70 mt-0.5">
+                      {v.subtitle}
+                    </div>
+                  </th>
+                ))}
+              </tr>
+              <tr className="border-b border-outline-variant/30">
+                {VARIANT_COLUMNS.flatMap((v) => [
+                  <th
+                    key={`${v.key}-max`}
+                    className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2 border-l border-outline-variant/20"
+                  >
+                    µ_Max
+                  </th>,
+                  <th
+                    key={`${v.key}-mean`}
+                    className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2"
+                  >
+                    µ_Mean
+                  </th>,
+                ])}
+              </tr>
+            </thead>
+            <tbody>
+              {MEXA_SCORES.map((row, idx) => {
+                const isReference = row.model.startsWith('Paper');
+                return (
+                  <tr
+                    key={row.model}
+                    className={`border-b border-outline-variant/10 hover:bg-surface-container-lowest transition-colors ${
+                      isReference ? 'bg-surface-container-lowest/60' : ''
+                    } ${idx === MEXA_SCORES.length - 1 ? 'border-b-0' : ''}`}
+                  >
+                    <td className="px-4 py-3">
+                      <div className={`font-headline font-semibold ${isReference ? 'text-tertiary' : 'text-on-surface'}`}>
+                        {row.model}
+                      </div>
+                      {row.note && (
+                        <div className="text-[10px] font-body text-on-surface-variant/70 italic mt-0.5">
+                          {row.note}
+                        </div>
+                      )}
+                    </td>
+                    {VARIANT_COLUMNS.flatMap((v) => {
+                      const cell = row.scores[v.key];
+                      return [
+                        <td
+                          key={`${row.model}-${v.key}-max`}
+                          className={`text-right font-mono tabular-nums px-3 py-3 border-l border-outline-variant/20 ${
+                            cell.max === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          }`}
+                        >
+                          {fmt(cell.max)}
+                        </td>,
+                        <td
+                          key={`${row.model}-${v.key}-mean`}
+                          className={`text-right font-mono tabular-nums px-3 py-3 ${
+                            cell.mean === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          }`}
+                        >
+                          {fmt(cell.mean)}
+                        </td>,
+                      ];
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Qwen 3 Models Comparison Table */}
+      <section className="bg-surface-container-low rounded-xl p-8">
+        <div className="mb-6 max-w-5xl">
+          <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider mb-3">
+            Qwen 3 Scaling Comparison
+          </h3>
+          <p className="text-xs text-on-surface-variant font-body leading-relaxed">
+            Comparing the different model sizes of the Qwen 3 family across our key datasets.
+          </p>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b border-outline-variant/30">
+                <th
+                  rowSpan={2}
+                  className="text-left text-[10px] font-bold uppercase tracking-widest text-on-surface-variant px-4 py-3 align-bottom"
+                >
+                  Model
+                </th>
+                {VARIANT_COLUMNS.map((v) => (
+                  <th
+                    key={v.key}
+                    colSpan={2}
+                    className="text-center text-[10px] font-bold uppercase tracking-widest text-primary px-4 pt-3 pb-1 border-l border-outline-variant/20"
+                  >
+                    <div>{v.label}</div>
+                    <div className="text-[9px] font-medium normal-case tracking-normal text-on-surface-variant/70 mt-0.5">
+                      {v.subtitle}
+                    </div>
+                  </th>
+                ))}
+              </tr>
+              <tr className="border-b border-outline-variant/30">
+                {VARIANT_COLUMNS.flatMap((v) => [
+                  <th
+                    key={`${v.key}-max`}
+                    className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2 border-l border-outline-variant/20"
+                  >
+                    µ_Max
+                  </th>,
+                  <th
+                    key={`${v.key}-mean`}
+                    className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2"
+                  >
+                    µ_Mean
+                  </th>,
+                ])}
+              </tr>
+            </thead>
+            <tbody>
+              {QWEN3_SCORES.map((row, idx) => {
+                return (
+                  <tr
+                    key={row.model}
+                    className={`border-b border-outline-variant/10 hover:bg-surface-container-lowest transition-colors ${
+                      idx === QWEN3_SCORES.length - 1 ? 'border-b-0' : ''
+                    }`}
+                  >
+                    <td className="px-4 py-3">
+                      <div className="font-headline font-semibold text-on-surface">
+                        {row.model}
+                      </div>
+                      {row.note && (
+                        <div className="text-[10px] font-body text-on-surface-variant/70 italic mt-0.5">
+                          {row.note}
+                        </div>
+                      )}
+                    </td>
+                    {VARIANT_COLUMNS.flatMap((v) => {
+                      const cell = row.scores[v.key];
+                      return [
+                        <td
+                          key={`${row.model}-${v.key}-max`}
+                          className={`text-right font-mono tabular-nums px-3 py-3 border-l border-outline-variant/20 ${
+                            cell.max === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          }`}
+                        >
+                          {fmt(cell.max)}
+                        </td>,
+                        <td
+                          key={`${row.model}-${v.key}-mean`}
+                          className={`text-right font-mono tabular-nums px-3 py-3 ${
+                            cell.mean === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          }`}
+                        >
+                          {fmt(cell.mean)}
+                        </td>,
+                      ];
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Encoder Models Comparison Table (XLM-RoBERTa large, LaBSE) */}
+      <section className="bg-surface-container-low rounded-xl p-8">
+        <div className="mb-6 max-w-5xl">
+          <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider mb-3">
+            Multilingual Encoder Baselines
+          </h3>
+          <p className="text-xs text-on-surface-variant font-body leading-relaxed">
+            Dedicated multilingual encoders evaluated with the same MEXA pipeline. Unlike the
+            English-centric causal LMs above, these are bidirectional encoders — XLM-RoBERTa
+            (masked-LM) and LaBSE (a sentence-transformer trained for cross-lingual alignment).
+          </p>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b border-outline-variant/30">
+                <th
+                  rowSpan={2}
+                  className="text-left text-[10px] font-bold uppercase tracking-widest text-on-surface-variant px-4 py-3 align-bottom"
+                >
+                  Model
+                </th>
+                {VARIANT_COLUMNS.map((v) => (
+                  <th
+                    key={v.key}
+                    colSpan={2}
+                    className="text-center text-[10px] font-bold uppercase tracking-widest text-primary px-4 pt-3 pb-1 border-l border-outline-variant/20"
+                  >
+                    <div>{v.label}</div>
+                    <div className="text-[9px] font-medium normal-case tracking-normal text-on-surface-variant/70 mt-0.5">
+                      {v.subtitle}
+                    </div>
+                  </th>
+                ))}
+              </tr>
+              <tr className="border-b border-outline-variant/30">
+                {VARIANT_COLUMNS.flatMap((v) => [
+                  <th
+                    key={`${v.key}-max`}
+                    className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2 border-l border-outline-variant/20"
+                  >
+                    µ_Max
+                  </th>,
+                  <th
+                    key={`${v.key}-mean`}
+                    className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2"
+                  >
+                    µ_Mean
+                  </th>,
+                ])}
+              </tr>
+            </thead>
+            <tbody>
+              {ENCODER_SCORES.map((row, idx) => {
+                return (
+                  <tr
+                    key={row.model}
+                    className={`border-b border-outline-variant/10 hover:bg-surface-container-lowest transition-colors ${
+                      idx === ENCODER_SCORES.length - 1 ? 'border-b-0' : ''
+                    }`}
+                  >
+                    <td className="px-4 py-3">
+                      <div className="font-headline font-semibold text-on-surface">
+                        {row.model}
+                      </div>
+                      {row.note && (
+                        <div className="text-[10px] font-body text-on-surface-variant/70 italic mt-0.5">
+                          {row.note}
+                        </div>
+                      )}
+                    </td>
+                    {VARIANT_COLUMNS.flatMap((v) => {
+                      const cell = row.scores[v.key];
+                      return [
+                        <td
+                          key={`${row.model}-${v.key}-max`}
+                          className={`text-right font-mono tabular-nums px-3 py-3 border-l border-outline-variant/20 ${
+                            cell.max === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          }`}
+                        >
+                          {fmt(cell.max)}
+                        </td>,
+                        <td
+                          key={`${row.model}-${v.key}-mean`}
+                          className={`text-right font-mono tabular-nums px-3 py-3 ${
+                            cell.mean === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          }`}
+                        >
+                          {fmt(cell.mean)}
+                        </td>,
+                      ];
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* MEXA score vs model size — scaling charts */}
+      <div className="grid grid-cols-12 gap-8">
+        <ScoreVsSizeChart
+          title="MEXA Score vs Model Size — All Models"
+          subtitle="Each point is a model; pick an experiment to compare µ_Max and µ_Mean across parameter counts."
+          rows={ALL_MODEL_SIZE_ROWS}
+          variants={VARIANT_COLUMNS}
+          defaultVariantKey="flores-table1-2000"
+          className="col-span-12 lg:col-span-6"
+        />
+        <ScoreVsSizeChart
+          title="MEXA Score vs Model Size — Qwen3 Scaling"
+          subtitle="Qwen3 family (0.6B → 9B). The trend line shows how alignment scales with size within one model family."
+          rows={QWEN3_SIZE_ROWS}
+          variants={VARIANT_COLUMNS}
+          defaultVariantKey="flores-table1-2000"
+          showTrendLine
+          className="col-span-12 lg:col-span-6"
+        />
       </div>
 
-      {/* Bento Grid */}
+      {/* Experiment Timeline */}
       <div className="grid grid-cols-12 gap-8">
-        <LayerwiseHeatmap
-          title="Fig 01. Layer-wise Delta Heatmap"
-          subtitle="Cosine Similarity Shift [Δ] per Layer (1-32) Across Parallel Corpuses"
-          rows={HEATMAP_ROWS}
-          legend={HEATMAP_LEGEND}
-          className="col-span-12 lg:col-span-8"
-        />
-
-        <FeatureRadar
-          title="Fig 02. Feature Radar"
-          datasets={RADAR_DATASETS}
-          scores={RADAR_SCORES}
-          className="col-span-12 lg:col-span-4"
-        />
-
-        <LatentSpaceProjection
-          title="Fig 03. Latent Space Alignment"
-          subtitle="t-SNE Projection: English [En] vs Hindi [Hi] across 1536d space"
-          className="col-span-12 lg:col-span-7"
-        />
-
-        <ScoreDistribution
-          title="Fig 04. Score Distributions"
-          curves={DISTRIBUTION_CURVES}
-          stats={DISTRIBUTION_STATS}
-          className="col-span-12 lg:col-span-5"
-        />
-
-        <AttentionFlowExplorer
-          title="Fig 05. Attention Flow Explorer"
-          subtitle="Visualizing token-level cross-lingual mapping across Attention Heads"
-          sourceTokens={SOURCE_TOKENS}
-          targetTokens={TARGET_TOKENS}
-          highlightSource={[2]}
-          highlightTarget={[2]}
-          className="col-span-12"
-        />
-
-        {/* ── Fig 06: Correlation Matrix ── */}
-        <CorrelationMatrix
-          title="Fig 06. Cross-Model Correlation"
-          subtitle="Pairwise Pearson correlation of per-language scores across models"
-          labels={CORR_LABELS}
-          matrix={CORR_MATRIX}
-          className="col-span-12 lg:col-span-7"
-        />
-
-        {/* ── Layer Slider (shared control) ── */}
-        <div className="col-span-12 lg:col-span-5 bg-surface-container-low p-8 rounded-xl flex flex-col justify-between">
-          <div>
-            <h3 className="text-lg font-headline font-bold text-primary mb-1 uppercase tracking-wider">
-              Layer Range Selector
-            </h3>
-            <p className="text-xs text-on-surface-variant font-label mb-8">
-              Select a layer range to filter Heatmap, Projection, and Attention views
-            </p>
-          </div>
-          <LayerSlider
-            label="Model Layers"
-            min={1}
-            max={32}
-            value={layerValue}
-            onChange={setLayerValue}
-            range
-            tickInterval={4}
-          />
-          <div className="mt-8 grid grid-cols-3 gap-3">
-            {[
-              { label: 'Input', range: [1, 8] },
-              { label: 'Mid-Model', range: [9, 24] },
-              { label: 'Logit Head', range: [25, 32] },
-            ].map((preset) => (
-              <button
-                key={preset.label}
-                onClick={() => setLayerValue(preset.range)}
-                className="text-[10px] font-bold uppercase tracking-widest py-2 rounded bg-surface-container-lowest text-on-surface-variant hover:bg-white hover:text-primary transition-colors"
-              >
-                {preset.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* ── Language Cards row ── */}
-        <div className="col-span-12">
-          <h3 className="text-lg font-headline font-bold text-primary mb-6 uppercase tracking-wider">
-            Fig 07. Language Profiles
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {SAMPLE_LANGUAGES.map((lang) => (
-              <LanguageCard key={lang.code} {...lang} />
-            ))}
-          </div>
-        </div>
-
-        {/* ── Experiment Timeline ── */}
         <ExperimentTimeline
           title="Experiment Log"
           entries={EXPERIMENT_ENTRIES}

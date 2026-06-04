@@ -1,0 +1,23 @@
+Ensuring required pip packages are installed...
+============================================
+  MEXA Table 1 (Bible) — Qwen3.5 9B Base
+  Languages: 101 (Belebele overlap)
+  Model:     Qwen/Qwen3.5-9B-Base
+============================================
+1. Extracting Embeddings...
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — Qwen/Qwen3.5-9B-Base
+  Languages evaluated: 101
+  µ_Max  = 0.4821
+  µ_Mean = 0.2624
+==================================================
+
+Saved to ../../dashboard/public/data/bible_table1_qwen3.5_9b_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 101 languages, 33 layers
+Computing projections (2D + 3D)...
+Job Finished Successfully!

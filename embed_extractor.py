@@ -1,9 +1,20 @@
 import argparse
 import os
 import torch
+# Monkeypatch to avoid ImportError: cannot import name 'AuxRequest' from 'torch.nn.attention.flex_attention'
+try:
+    import torch.nn.attention.flex_attention
+    if not hasattr(torch.nn.attention.flex_attention, 'AuxRequest'):
+        torch.nn.attention.flex_attention.AuxRequest = object
+except ImportError:
+    pass
+
+# Preemptively initialize CUDA to prevent context corruption during model loading
+if torch.cuda.is_available():
+    torch.cuda.init()
 import json
 import pickle
-from transformers import AutoTokenizer, AutoModelForCausalLM
+from transformers import AutoTokenizer, AutoModelForCausalLM, AutoModel
 from tqdm import tqdm
 
 # Function to handle weighted embeddings
@@ -28,7 +39,7 @@ def lasttoken_embeddings(layer, attention_mask, device='cuda'):
 
 # Function to extract embeddings
 def get_embedding_layers(text, model, tokenizer, device='cuda'):
-    tokens = tokenizer(text, return_tensors='pt', padding=True).to(device)
+    tokens = tokenizer(text, return_tensors='pt', padding=True, truncation=True).to(device)
     attention_mask = tokens.attention_mask.to(device)
 
     sentence_embeddings_weighted = []
@@ -46,6 +57,14 @@ def get_embedding_layers(text, model, tokenizer, device='cuda'):
 
     return sentence_embeddings_weighted, sentence_embeddings_last_token
 
+def get_device(gpus_arg):
+    """Determine the device to use. If gpus_arg is 'cpu' or CUDA is unavailable, use CPU."""
+    if gpus_arg == 'cpu' or not torch.cuda.is_available():
+        print(f"Using device: cpu")
+        return 'cpu'
+    print(f"Using device: cuda")
+    return 'cuda'
+
 # Main function
 def main():
     parser = argparse.ArgumentParser(description="Extract embeddings from a model")
@@ -59,21 +78,40 @@ def main():
     parser.add_argument('--token', type=str, default=None, help='Hugging Face token (optional).')
     parser.add_argument('--cache_dir', type=str, default='./cache', help='Directory for caching the model (optional).')
     parser.add_argument('--file_ext', type=str, default='.txt', help='File extension for input files (optional, default: .txt).')
+    parser.add_argument('--lang_list', type=str, default=None, help='Path to a JSON file containing a list of language codes to process.')
+    parser.add_argument('--model_type', type=str, choices=['causal', 'encoder'], default='causal',
+                        help='Architecture family of the model. Use "causal" for decoder-only LMs '
+                             '(Llama, Qwen, Mistral, Apertus) loaded via AutoModelForCausalLM, and '
+                             '"encoder" for bidirectional encoders (XLM-RoBERTa, LaBSE) loaded via AutoModel.')
 
     # Parse the arguments
     args = parser.parse_args()
 
-    # Set GPU environment
-    os.environ['CUDA_VISIBLE_DEVICES'] = args.gpus
+    # Load language list if provided
+    lang_filter = None
+    if args.lang_list:
+        with open(args.lang_list, 'r') as f:
+            lang_filter = set(json.load(f))
+
+    # Determine device
+    device = get_device(args.gpus)
 
     # Define model name and token
     model_name = args.model_name
     token = args.token  # Optional token
 
     # Load the model and tokenizer
-    model = AutoModelForCausalLM.from_pretrained(model_name, device_map='auto', cache_dir=args.cache_dir, use_auth_token=token)
-    tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=token)
-    tokenizer.pad_token = tokenizer.eos_token
+    device_map = 'auto' if device == 'cuda' else 'cpu'
+    if args.model_type == 'encoder':
+        # Bidirectional encoders (XLM-RoBERTa, LaBSE) expose hidden states via AutoModel.
+        model = AutoModel.from_pretrained(model_name, device_map=device_map, cache_dir=args.cache_dir, token=token, trust_remote_code=True)
+    else:
+        model = AutoModelForCausalLM.from_pretrained(model_name, device_map=device_map, cache_dir=args.cache_dir, token=token, trust_remote_code=True)
+    model.eval()
+    tokenizer = AutoTokenizer.from_pretrained(model_name, token=token, trust_remote_code=True)
+    # Encoders already define a dedicated pad token; only causal LMs need the eos fallback.
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
 
     # Directory and number of sentences
     directory = args.data_path
@@ -86,6 +124,11 @@ def main():
     for filename in os.listdir(directory):
         if filename.endswith(args.file_ext):
             language = filename.split('.')[0]
+            
+            # Filter by language list if provided
+            if lang_filter and language not in lang_filter:
+                continue
+
             filepath = os.path.join(directory, filename)
             
             sentences = []
@@ -101,12 +144,15 @@ def main():
     # Prepare to save embeddings
     embeddings_dict = {}
 
-    # Extract embeddings
+    # Extract embeddings (skip already-processed languages for resume support)
     for language, texts in tqdm(result_dict.items()):
+        save_filepath = os.path.join(args.save_path, f"{language}.pkl")
+        if os.path.exists(save_filepath):
+            continue  # Already computed, skip
         embeddings_dict = {}
 
         for text in texts:
-            embds_weighted, embds_last_token = get_embedding_layers(text['text'], model, tokenizer)
+            embds_weighted, embds_last_token = get_embedding_layers(text['text'], model, tokenizer, device)
 
             for layer in range(len(embds_weighted)):
                 if layer not in embeddings_dict:

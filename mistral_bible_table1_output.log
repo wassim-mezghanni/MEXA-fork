@@ -1,0 +1,18 @@
+Ensuring required pip packages are installed...
+============================================
+  MEXA Table 1 — Mistral 7B v0.3 on Bible
+  Languages: 101 (Belebele overlap)
+  Model:     mistralai/Mistral-7B-v0.3
+============================================
+1. Extracting Embeddings...
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  Bible Table 1 — Mistral 7B v0.3 Results
+  Languages: 101
+  µ_Max  = 0.2644
+  µ_Mean = 0.1266
+==================================================
+
+Job Finished Successfully!

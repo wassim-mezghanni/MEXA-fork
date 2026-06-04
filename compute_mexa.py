@@ -15,47 +15,39 @@ def cosine_similarity(array1, array2):
 
 def mexa(matrix):
     n = len(matrix)  # size of the square matrix
-    count = 0
-    
-    for i in range(n):
-        # Get the diagonal element
-        diag_element = matrix[i][i]
-        
-        # Get the row and column
-        row = matrix[i]
-        column = matrix[:,i]
-        
-        # Check if the diagonal element is strictly greater than all other elements in its row (excluding itself)
-        if diag_element > max(np.delete(row, i)):
-            # Check if the diagonal element is strictly greater than all other elements in its column (excluding itself)
-            if diag_element > max(np.delete(column, i)):
-                count += 1
-
-    # Normalized count
-    count_norm = count / n
-    return count_norm
+    if n == 0:
+        return 0.0
+    diag = np.diag(matrix)
+    temp = matrix.copy()
+    np.fill_diagonal(temp, -np.inf)
+    row_max = temp.max(axis=1)
+    col_max = temp.max(axis=0)
+    count = np.sum((diag > row_max) & (diag > col_max))
+    return float(count / n)
 
 def compute_distance(lang, embedding_type='embd_weighted', num_sents=100):
     with open(os.path.join(embedding_path, f"{lang}.pkl"), "rb") as pickle_file:
         lang_embd = pickle.load(pickle_file)    
 
-    similarities_dict = {}
+    alignments = {}
     for layer in lang_embd.keys():
         pivot_embd_layer = pivot_embd[layer][:num_sents]
         lang_embd_layer = lang_embd[layer][:num_sents]
         
-        # Initialize the similarities_dict matrix for each layer
         num_actual_sentences = min(len(pivot_embd_layer), len(lang_embd_layer))
-        similarities_dict[layer] = np.zeros((num_actual_sentences, num_actual_sentences))
+        if num_actual_sentences == 0:
+            alignments[layer] = 0.0
+            continue
+            
+        P = np.stack([x[embedding_type] for x in pivot_embd_layer[:num_actual_sentences]])
+        L = np.stack([x[embedding_type] for x in lang_embd_layer[:num_actual_sentences]])
         
-        # Compute similarities
-        for p_id, pivot_single in enumerate(pivot_embd_layer):
-            for l_id, lang_single in enumerate(lang_embd_layer):
-                similarities_dict[layer][p_id, l_id] = cosine_similarity(pivot_single[embedding_type], lang_single[embedding_type])
-
-    alignments = {}
-    for layer in lang_embd.keys():
-        alignments[layer] = mexa(similarities_dict[layer])
+        # Vectorized cosine similarity: (P_norm @ L_norm.T)
+        P_norm = P / (np.linalg.norm(P, axis=1, keepdims=True) + 1e-9)
+        L_norm = L / (np.linalg.norm(L, axis=1, keepdims=True) + 1e-9)
+        similarities = np.dot(P_norm, L_norm.T)
+        
+        alignments[layer] = mexa(similarities)
     
     return alignments
 

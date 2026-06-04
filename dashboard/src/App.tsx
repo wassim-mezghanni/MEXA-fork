@@ -3,8 +3,56 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Overview from './pages/Overview';
 import MexaFindings from './pages/MexaFindings';
-import MyFindings from './pages/MyFindings';
-import MistralFindings from './pages/MistralFindings';
+
+// Llama 3.1 8B
+import Llama31FloresFindings from './pages/Llama31FloresFindings';
+import Llama31BibleFindings from './pages/Llama31BibleFindings';
+import Llama31BibleTable1Findings from './pages/Llama31BibleTable1Findings';
+import Llama31FullDatasetFindings from './pages/Llama31FullDatasetFindings';
+import Llama31FloresTable1Findings from './pages/Llama31FloresTable1Findings';
+
+// Mistral 7B v0.3
+import MistralFloresFindings from './pages/MistralFloresFindings';
+import MistralBibleFindings from './pages/MistralBibleFindings';
+import MistralBibleTable1Findings from './pages/MistralBibleTable1Findings';
+import MistralFloresTable1Findings from './pages/MistralFloresTable1Findings';
+
+// Qwen3 8B Base
+import Qwen3FloresFindings from './pages/Qwen3FloresFindings';
+import Qwen3BibleFindings from './pages/Qwen3BibleFindings';
+import Qwen3FloresTable1Findings from './pages/Qwen3FloresTable1Findings';
+import Qwen3BibleTable1Findings from './pages/Qwen3BibleTable1Findings';
+import Qwen3FloresTable1_2000Findings from './pages/Qwen3FloresTable1_2000Findings';
+
+// Qwen3 4B
+import Qwen34BFloresFindings from './pages/Qwen34BFloresFindings';
+import Qwen34BBibleFindings from './pages/Qwen34BBibleFindings';
+import Qwen34BFloresTable1Findings from './pages/Qwen34BFloresTable1Findings';
+import Qwen34BBibleTable1Findings from './pages/Qwen34BBibleTable1Findings';
+
+// Qwen3 1.7B
+import Qwen317BFloresFindings from './pages/Qwen317BFloresFindings';
+import Qwen317BBibleFindings from './pages/Qwen317BBibleFindings';
+import Qwen317BFloresTable1Findings from './pages/Qwen317BFloresTable1Findings';
+import Qwen317BBibleTable1Findings from './pages/Qwen317BBibleTable1Findings';
+
+// Qwen3 0.6B
+import Qwen306BFloresFindings from './pages/Qwen306BFloresFindings';
+import Qwen306BBibleFindings from './pages/Qwen306BBibleFindings';
+import Qwen306BFloresTable1Findings from './pages/Qwen306BFloresTable1Findings';
+import Qwen306BBibleTable1Findings from './pages/Qwen306BBibleTable1Findings';
+
+// Qwen3.5 9B Base
+import Qwen35FloresFindings from './pages/Qwen35FloresFindings';
+import Qwen35BibleFindings from './pages/Qwen35BibleFindings';
+import Qwen35FloresTable1Findings from './pages/Qwen35FloresTable1Findings';
+import Qwen35BibleTable1Findings from './pages/Qwen35BibleTable1Findings';
+import Qwen35FloresTable1_2000Findings from './pages/Qwen35FloresTable1_2000Findings';
+
+// Apertus 8B
+import ApertusFloresFindings from './pages/ApertusFloresFindings';
+import ApertusBibleFindings from './pages/ApertusBibleFindings';
+import ApertusFloresTable1_2000Findings from './pages/ApertusFloresTable1_2000Findings';
 
 // Restyled Analysis Components
 import ModelComparison from './components/ModelComparison';
@@ -112,19 +160,16 @@ function App() {
     async function loadData() {
       setLoading(true);
       try {
-        const [langNamesRes, fmb, fma, bmb, bma, llamaCsvRes] = await Promise.all([
+        const [langNamesRes, fmb, fma, bmb, bma] = await Promise.all([
           fetch('/data/language_names.json').then((r) => r.json()),
           fetch('/data/flores-max-belebele.csv').then((r) => r.text()),
           fetch('/data/flores-mean-arc.csv').then((r) => r.text()),
           fetch('/data/bible-max-belebele.csv').then((r) => r.text()),
           fetch('/data/bible-mean-arc.csv').then((r) => r.text()),
-          fetch('/data/llama3-1-8b-results.csv')
-            .then((r) => r.text())
-            .catch(() => ''),
         ]);
 
         const floresNameMap = {};
-        const allCsvTexts = [fmb, fma, bmb, bma, llamaCsvRes].filter(Boolean);
+        const allCsvTexts = [fmb, fma, bmb, bma].filter(Boolean);
         const allFloresCodes = new Set();
         allCsvTexts.forEach((csv) => {
           csv.trim().split('\n').slice(1).forEach((line) => {
@@ -144,7 +189,6 @@ function App() {
           'flores-mean': parseCSV(fma),
           'bible-max': parseCSV(bmb),
           'bible-mean': parseCSV(bma),
-          my_results: llamaCsvRes ? parseCSV(llamaCsvRes) : null,
         });
       } catch (err) {
         console.error('Failed to load data:', err);
@@ -167,11 +211,61 @@ function App() {
           <div className="flex-1 p-12">
             {!loading ? (
               <Routes>
+                {/* General */}
                 <Route path="/" element={<Overview />} />
                 <Route path="/findings" element={<MexaFindings />} />
-                <Route path="/my-findings" element={<MyFindings />} />
-                <Route path="/mistral-findings" element={<MistralFindings />} />
 
+                {/* Llama 3.1 8B */}
+                <Route path="/llama31/flores" element={<Llama31FloresFindings />} />
+                <Route path="/llama31/bible" element={<Llama31BibleFindings />} />
+                <Route path="/llama31/bible-table1" element={<Llama31BibleTable1Findings />} />
+                <Route path="/llama31/full-dataset" element={<Llama31FullDatasetFindings />} />
+          <Route path="/llama31/flores-table1" element={<Llama31FloresTable1Findings />} />
+
+                {/* Mistral 7B v0.3 */}
+                <Route path="/mistral/flores" element={<MistralFloresFindings />} />
+                <Route path="/mistral/bible" element={<MistralBibleFindings />} />
+                <Route path="/mistral/bible-table1" element={<MistralBibleTable1Findings />} />
+                <Route path="/mistral/flores-table1" element={<MistralFloresTable1Findings />} />
+
+                {/* Qwen3 8B Base */}
+                <Route path="/qwen3/flores" element={<Qwen3FloresFindings />} />
+                <Route path="/qwen3/bible" element={<Qwen3BibleFindings />} />
+                <Route path="/qwen3/flores-table1" element={<Qwen3FloresTable1Findings />} />
+                <Route path="/qwen3/flores-table1-2000" element={<Qwen3FloresTable1_2000Findings />} />
+                <Route path="/qwen3/bible-table1" element={<Qwen3BibleTable1Findings />} />
+
+                {/* Qwen3 4B */}
+                <Route path="/qwen3-4b/flores" element={<Qwen34BFloresFindings />} />
+                <Route path="/qwen3-4b/bible" element={<Qwen34BBibleFindings />} />
+                <Route path="/qwen3-4b/flores-table1" element={<Qwen34BFloresTable1Findings />} />
+                <Route path="/qwen3-4b/bible-table1" element={<Qwen34BBibleTable1Findings />} />
+
+                {/* Qwen3 1.7B */}
+                <Route path="/qwen3-1.7b/flores" element={<Qwen317BFloresFindings />} />
+                <Route path="/qwen3-1.7b/bible" element={<Qwen317BBibleFindings />} />
+                <Route path="/qwen3-1.7b/flores-table1" element={<Qwen317BFloresTable1Findings />} />
+                <Route path="/qwen3-1.7b/bible-table1" element={<Qwen317BBibleTable1Findings />} />
+
+                {/* Qwen3 0.6B */}
+                <Route path="/qwen3-0.6b/flores" element={<Qwen306BFloresFindings />} />
+                <Route path="/qwen3-0.6b/bible" element={<Qwen306BBibleFindings />} />
+                <Route path="/qwen3-0.6b/flores-table1" element={<Qwen306BFloresTable1Findings />} />
+                <Route path="/qwen3-0.6b/bible-table1" element={<Qwen306BBibleTable1Findings />} />
+
+                {/* Qwen3.5 9B Base */}
+                <Route path="/qwen3.5/flores" element={<Qwen35FloresFindings />} />
+                <Route path="/qwen3.5/bible" element={<Qwen35BibleFindings />} />
+                <Route path="/qwen3.5/flores-table1" element={<Qwen35FloresTable1Findings />} />
+                <Route path="/qwen3.5/flores-table1-2000" element={<Qwen35FloresTable1_2000Findings />} />
+                <Route path="/qwen3.5/bible-table1" element={<Qwen35BibleTable1Findings />} />
+
+                {/* Apertus 8B */}
+                <Route path="/apertus/flores" element={<ApertusFloresFindings />} />
+                <Route path="/apertus/bible" element={<ApertusBibleFindings />} />
+                <Route path="/apertus/flores-table1-2000" element={<ApertusFloresTable1_2000Findings />} />
+
+                {/* Analysis Tools */}
                 <Route 
                   path="/alignment" 
                   element={<Heatmap data={defaultDataObj.data} models={defaultDataObj.models} languageNames={languageNames} />} 
@@ -184,6 +278,11 @@ function App() {
                   path="/comparison" 
                   element={<ModelComparison data={defaultDataObj.data} models={defaultDataObj.models} languageNames={languageNames} />} 
                 />
+
+                {/* Legacy redirects */}
+                <Route path="/my-findings" element={<Navigate to="/llama31/flores" replace />} />
+                <Route path="/llama31-table1" element={<Navigate to="/llama31/full-dataset" replace />} />
+                <Route path="/mistral-findings" element={<Navigate to="/mistral/flores" replace />} />
                 
                 {/* Fallback */}
                 <Route path="*" element={<Navigate to="/" replace />} />

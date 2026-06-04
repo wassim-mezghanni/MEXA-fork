@@ -1,0 +1,25 @@
+Ensuring required pip packages are installed...
+Bible dataset not found. Downloading...
+Downloading Bible (sPBC) dataset from:
+  https://huggingface.co/datasets/cis-lmu/sPBC/resolve/main/103.zip
+Downloaded to ../../bible_dataset/103.zip
+Extracting to ../../bible_dataset/103...
+Extracted 1401 language files to ../../bible_dataset/103
+Done!
+============================================
+  MEXA Table 1 — Llama 3.1 8B on Bible
+  Languages: 101 (Belebele overlap)
+  Model:     meta-llama/Llama-3.1-8B
+============================================
+1. Extracting Embeddings...
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  Bible Table 1 — Llama 3.1 8B Results
+  Languages: 101
+  µ_Max  = 0.4237
+  µ_Mean = 0.2155
+==================================================
+
+Job Finished Successfully!

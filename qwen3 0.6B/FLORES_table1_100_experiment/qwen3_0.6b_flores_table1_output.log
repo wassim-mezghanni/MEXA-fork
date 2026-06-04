@@ -1,0 +1,55 @@
+Ensuring required pip packages are installed...
+============================================
+  MEXA Table 1 (116 langs) — Qwen3 0.6B
+  Model:   Qwen/Qwen3-0.6B
+  Dataset: FLORES-200 (116 langs, 100 sents)
+  Pooling: max + mean
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — Qwen/Qwen3-0.6B
+  Languages evaluated: 110
+  µ_Max  = 0.3518
+  µ_Mean = 0.1504
+==================================================
+
+Saved to ../../dashboard/public/data/flores_table1_100_qwen3_0.6b_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 110 languages, 29 layers
+Computing projections (2D + 3D)...
+  Layer 0/28 done (PCA 2D: 41.0%, 3D: 46.0%)
+  Layer 1/28 done (PCA 2D: 40.7%, 3D: 47.3%)
+  Layer 2/28 done (PCA 2D: 37.4%, 3D: 43.1%)
+  Layer 3/28 done (PCA 2D: 75.4%, 3D: 78.2%)
+  Layer 4/28 done (PCA 2D: 74.7%, 3D: 78.4%)
+  Layer 5/28 done (PCA 2D: 75.8%, 3D: 80.1%)
+  Layer 6/28 done (PCA 2D: 66.5%, 3D: 72.9%)
+  Layer 7/28 done (PCA 2D: 64.8%, 3D: 72.3%)
+  Layer 8/28 done (PCA 2D: 65.4%, 3D: 72.5%)
+  Layer 9/28 done (PCA 2D: 65.0%, 3D: 72.3%)
+  Layer 10/28 done (PCA 2D: 66.6%, 3D: 72.7%)
+  Layer 11/28 done (PCA 2D: 66.2%, 3D: 71.9%)
+  Layer 12/28 done (PCA 2D: 62.9%, 3D: 69.2%)
+  Layer 13/28 done (PCA 2D: 63.9%, 3D: 69.9%)
+  Layer 14/28 done (PCA 2D: 64.3%, 3D: 70.1%)
+  Layer 15/28 done (PCA 2D: 64.9%, 3D: 70.9%)
+  Layer 16/28 done (PCA 2D: 65.7%, 3D: 71.6%)
+  Layer 17/28 done (PCA 2D: 57.4%, 3D: 64.0%)
+  Layer 18/28 done (PCA 2D: 57.0%, 3D: 63.2%)
+  Layer 19/28 done (PCA 2D: 51.3%, 3D: 60.8%)
+  Layer 20/28 done (PCA 2D: 51.3%, 3D: 60.8%)
+  Layer 21/28 done (PCA 2D: 43.1%, 3D: 53.5%)
+  Layer 22/28 done (PCA 2D: 35.0%, 3D: 46.1%)
+  Layer 23/28 done (PCA 2D: 34.5%, 3D: 45.5%)
+  Layer 24/28 done (PCA 2D: 32.1%, 3D: 41.5%)
+  Layer 25/28 done (PCA 2D: 32.2%, 3D: 40.8%)
+  Layer 26/28 done (PCA 2D: 31.5%, 3D: 39.3%)
+  Layer 27/28 done (PCA 2D: 31.7%, 3D: 39.6%)
+  Layer 28/28 done (PCA 2D: 46.3%, 3D: 54.2%)
+Saved projections to ../../dashboard/public/data/projections_flores_table1_100_qwen3_0.6b.json
+Job Finished Successfully!

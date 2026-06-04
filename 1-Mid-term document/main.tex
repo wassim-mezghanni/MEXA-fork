@@ -1,0 +1,489 @@
+\documentclass{article}
+
+% ============================================================
+% Packages
+% ============================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{caption}
+\usepackage{natbib}
+\usepackage[a4paper,margin=1in]{geometry}
+
+% ============================================================
+% Title
+% ============================================================
+
+\title{Midterm Thesis Document}
+\author{Wassim Mezghanni}
+\date{May 2026}
+
+\begin{document}
+
+\maketitle
+
+% ============================================================
+% SECTION 0: Thesis Title & Goal
+% ============================================================
+
+\section{Thesis Title and Goal}
+\label{sec:goal}
+
+\textbf{Title:} Cross-Lingual Alignment as a Proxy for Multilingual LLM Performance
+
+\medskip
+
+The goal of this thesis is to use the evaluation framework proposed by
+\citet{kargaran2025mexa} and apply it to a broader set of large language
+models (LLMs), including the Llama, Mistral, Qwen3, and Apertus families.
+
+MEXA estimates multilingual coverage without expensive downstream evaluations
+by measuring how well non-English sentence representations align with English
+representations across the hidden layers of decoder-only LLMs.
+
+The thesis validates the replication on two parallel corpora
+(FLORES-200 and the Super Parallel Bible Corpus) against three downstream
+benchmarks (Belebele, m-MMLU, and m-ARC), and extends the analysis to
+low-resource languages and new model architectures not covered by the
+original paper.
+
+% ============================================================
+% SECTION 1: Methodology
+% ============================================================
+
+\section{Methodology}
+\label{sec:methodology}
+
+The core methodology replicates and extends the MEXA framework
+proposed by \citet{kargaran2025mexa}.
+
+\paragraph{Theoretical foundation.}
+
+Autoregressive English-centric LLMs use English as an internal semantic pivot
+in their intermediate layers \citep{wendler2024llamas,zhao2024multilingualism}.
+Measuring how well non-English representations align with English at each
+layer therefore acts as a proxy for multilingual task performance.
+
+\paragraph{Alignment formulation.}
+
+For parallel sentences in a target language $L_1$ and English $L_2$,
+sentence embeddings $e_{L_1}^{(l)}$ and $e_{L_2}^{(l)}$ are extracted at
+each transformer layer $l$, forming a cosine similarity matrix $C$ of size
+$n \times n$.
+
+To overcome anisotropy and hubness, MEXA uses a bidirectional retrieval
+criterion:
+
+\begin{equation}
+\mu C(L_1, L_2, m, l)
+=
+\frac{1}{n}
+\sum_{i=1}^{n}
+\mathbb{1}
+\left(
+c_{ii}(l)
+>
+\max_{j \neq i}
+\{ c_{ij}(l),\, c_{ji}(l) \}
+\right)
+\end{equation}
+
+where $c_{ij}(l)$ is the cosine similarity between target sentence $i$
+and English sentence $j$ at layer $l$.
+
+\paragraph{Embedding extraction.}
+
+Two strategies are used:
+
+\begin{itemize}
+    \item \textbf{Last Token}: the hidden state of the final input token.
+    
+    \item \textbf{Position-Weighted Average}:
+\end{itemize}
+
+\begin{equation}
+e_l
+=
+\sum_{t=1}^{T}
+w_t h_t^{(l)},
+\qquad
+w_t
+=
+\frac{t}{\sum_{k=1}^{T} k}
+\end{equation}
+
+This weighting mitigates causal attention bias toward early tokens.
+
+\paragraph{Layer-wise aggregation.}
+
+Scores are summarised using:
+
+\begin{itemize}
+    \item $\mu_{\text{Max}}$: peak alignment across layers.
+    \item $\mu_{\text{Mean}}$: average alignment across layers.
+\end{itemize}
+
+\paragraph{Datasets.}
+
+\textbf{FLORES-200}: a 116-language subset
+(100 sentences overlapping with Belebele)
+and the full 204-language devtest set
+(2,000 sentences).
+
+\textbf{Super Parallel Bible Corpus (sPBC)}:
+a 101-language subset (103 verses) for replication
+and the full 1,401-language dataset for low-resource analysis.
+
+\paragraph{Models.}
+
+\begin{itemize}
+    \item Llama 3.1 8B
+    \item Mistral 7B v0.3
+    \item Qwen3 8B Base
+    \item Qwen3.5 9B Base
+    \item Apertus 8B
+\end{itemize}
+
+% ============================================================
+% SECTION 2: Literature Review
+% ============================================================
+
+\section{Literature Review}
+\label{sec:literature_review}
+
+The following works form the theoretical and methodological foundation
+of this thesis.
+
+\paragraph{\citet{kargaran2025mexa} --- MEXA}
+
+MEXA estimates multilingual LLM coverage by measuring whether
+non-English sentence embeddings retrieve their English counterparts
+at each transformer layer using a bidirectional retrieval criterion.
+
+Validated on nine LLMs and three downstream benchmarks,
+the framework achieves a mean Pearson correlation of $0.90$
+with actual multilingual task performance.
+
+This paper forms the central methodological foundation of the thesis.
+
+\paragraph{\citet{wendler2024llamas} --- Do Llamas Work in English?}
+
+Using the logit-lens technique, this work shows that Llama models
+internally process non-English inputs through English representations
+in middle transformer layers before generating target-language tokens.
+
+This pivot-language hypothesis motivates measuring alignment with
+English as a multilingual capability proxy.
+
+\paragraph{\citet{hammerl2024survey} --- Cross-Lingual Alignment Survey}
+
+Provides a taxonomy of multilingual alignment methods, including
+contrastive learning, parallel-data alignment objectives,
+and post-hoc transformations.
+
+The survey situates MEXA within broader multilingual NLP research.
+
+\paragraph{\citet{hammerl2023anisotropy} --- Anisotropy in Multilingual Models}
+
+Shows that anisotropy and outlier dimensions in multilingual embedding
+spaces cause unrelated sentences to appear artificially similar.
+
+This motivates the comparative retrieval-based metric used in MEXA.
+
+\paragraph{\citet{heffernan2022laser3} --- LASER3 / Bitext Mining}
+
+Introduces multilingual sentence encoders evaluated on FLORES-200
+for cross-lingual retrieval.
+
+The work is relevant because FLORES-200 is also used in this thesis.
+
+\paragraph{\citet{bandarkar2024belebele} --- Belebele Benchmark}
+
+Introduces a multilingual reading comprehension benchmark
+covering 122 language variants.
+
+Belebele is  used to validate MEXA scores.
+
+\paragraph{\citet{nllbteam2022} --- FLORES-200}
+
+Introduces FLORES-200, a human-translated multilingual benchmark
+covering 204 language-script pairs.
+
+This dataset is one of the primary datasets used in the thesis.
+
+\paragraph{\citet{dubey2024llama3} --- Llama 3}
+
+Describes the Llama 3 and Llama 3.1 model families.
+
+
+\paragraph{\citet{rajaee2022isotropy} --- Isotropy in Multilingual BERT}
+
+Studies isotropy variations across multilingual embedding spaces
+and explains why comparative metrics are preferable to raw cosine similarity.
+
+\paragraph{\citet{zhao2024multilingualism} --- Multilingual Reasoning in LLMs}
+
+Shows that multilingual LLMs often convert multilingual representations
+into English-centric latent representations during reasoning.
+
+\paragraph{\citet{mayer2014bible} --- Parallel Bible Corpus}
+
+Introduces a massively parallel corpus covering more than
+1,400 language-script pairs.
+
+The derived Super Parallel Bible Corpus is used in this thesis
+for low-resource multilingual evaluation.
+
+
+
+% ============================================================
+% SECTION 3: Experimental Results
+% ============================================================
+
+\section{Experimental Results}
+\label{sec:results}
+
+Table~\ref{tab:mexa_results} reports MEXA alignment scores
+for all experimental configurations.
+
+Our replication of Llama 3.1 8B  and Mistral 0.3 7B closely matches the paper's
+reference values, confirming successful replication.
+
+Qwen3.5 9B achieves the highest scores across most configurations,
+suggesting stronger multilingual representations despite similar
+parameter counts. In particular, a fine-grained language-level analysis for Qwen3.5 9B Base shows that English (\texttt{eng\_Latn}) consistently achieves the highest alignment score ($\mu_{\text{Max}} = 1.0$) across both the FLORES-200 (116 lang · 100 sent) and Bible (101 lang · sPBC) subsets. Conversely, Shan (\texttt{shn\_Mymr}) in Myanmar script is the lowest aligned language in both experiments, yielding a $\mu_{\text{Max}}$ score of only $0.06$ on FLORES and $0.0097$ on the Bible corpus.
+
+Apertus 8B performs better on the Bible corpus than on FLORES,
+indicating stronger low-resource language coverage.
+
+\begin{table*}[t]
+\centering
+\footnotesize
+
+\caption{
+MEXA alignment scores
+($\mu_{\text{Max}}$ / $\mu_{\text{Mean}}$)
+comparing our model runs against reference baselines.
+``---'' denotes configurations not yet run.
+}
+
+\label{tab:mexa_results}
+
+\begin{adjustbox}{width=\textwidth}
+
+\begin{tabular}{l|cc|cc|cc|cc|cc}
+
+\toprule
+
+\textbf{Model}
+& \multicolumn{2}{c|}{\textbf{FLORES T1}}
+& \multicolumn{2}{c|}{\textbf{FLORES T1 (2000)}}
+& \multicolumn{2}{c|}{\textbf{Bible T1}}
+& \multicolumn{2}{c|}{\textbf{FLORES Full}}
+& \multicolumn{2}{c}{\textbf{Bible Full}} \\
+
+& \multicolumn{2}{c|}{116 lang · 100 sent}
+& \multicolumn{2}{c|}{116 lang · 2000 sent}
+& \multicolumn{2}{c|}{101 lang · sPBC}
+& \multicolumn{2}{c|}{204 lang · 2000 sent}
+& \multicolumn{2}{c}{sPBC · all lang} \\
+
+& $\mu_{\text{Max}}$
+& $\mu_{\text{Mean}}$
+& $\mu_{\text{Max}}$
+& $\mu_{\text{Mean}}$
+& $\mu_{\text{Max}}$
+& $\mu_{\text{Mean}}$
+& $\mu_{\text{Max}}$
+& $\mu_{\text{Mean}}$
+& $\mu_{\text{Max}}$
+& $\mu_{\text{Mean}}$ \\
+
+\midrule
+
+\multicolumn{11}{l}{
+\textit{Paper reference values \citep{kargaran2025mexa}:}
+} \\
+
+Llama 3.1 8B
+& 0.6538 & 0.3963
+& --- & ---
+& 0.4212 & 0.2103
+& --- & ---
+& --- & --- \\
+
+Mistral 7B v0.3
+& 0.4716 & 0.2642
+& --- & ---
+& 0.2606 & 0.1198
+& --- & ---
+& --- & --- \\
+
+\midrule
+
+\multicolumn{11}{l}{
+\textit{Our replications and extensions:}
+} \\
+
+Llama 3.1 8B
+& 0.6735 & 0.4196
+& 0.6065 & 0.3370
+& 0.4180 & 0.2076
+& \textbf{0.5611} & \textbf{0.3235}
+& \textbf{0.0781} & \textbf{0.0320} \\
+
+Mistral 7B v0.3
+& 0.4980 & 0.2878
+& 0.4066 & 0.2127
+& 0.2571 & 0.1179
+& 0.4102 & 0.2232
+& 0.0465 & 0.0181 \\
+
+Qwen3 8B Base
+& 0.5759 & 0.3211
+& 0.4838 & 0.2416
+& 0.2970 & 0.1350
+& 0.4723 & 0.2509
+& 0.0499 & 0.0186 \\
+
+Qwen3.5 9B Base
+& \textbf{0.7814} & \textbf{0.5557}
+& \textbf{0.7193} & \textbf{0.4748}
+& \textbf{0.4821} & \textbf{0.2624}
+& \textbf{0.5901} & \textbf{0.3727}
+& \textbf{0.0845} & \textbf{0.0382} \\
+
+Apertus 8B
+& 0.3873 & 0.1637
+& 0.2827 & 0.1176
+& 0.4299 & 0.1896
+& 0.3264 & 0.1267
+& 0.0667 & 0.0237 \\
+
+\bottomrule
+
+\end{tabular}
+
+\end{adjustbox}
+
+\end{table*}
+
+
+\begin{table*}[t]
+\centering
+\footnotesize
+
+\caption{
+MEXA alignment scores ($\mu_{\text{Max}}$ / $\mu_{\text{Mean}}$) comparing different model sizes in the Qwen3 family.
+``---'' denotes configurations not run.
+}
+
+\label{tab:qwen_scaling}
+
+\begin{adjustbox}{width=\textwidth}
+
+\begin{tabular}{l|cc|cc|cc|cc|cc}
+
+\toprule
+
+\textbf{Model}
+& \multicolumn{2}{c|}{\textbf{FLORES T1}}
+& \multicolumn{2}{c|}{\textbf{FLORES T1 (2000)}}
+& \multicolumn{2}{c|}{\textbf{Bible T1}}
+& \multicolumn{2}{c|}{\textbf{FLORES Full}}
+& \multicolumn{2}{c}{\textbf{Bible Full}} \\
+
+& \multicolumn{2}{c|}{116 lang · 100 sent}
+& \multicolumn{2}{c|}{116 lang · 2000 sent}
+& \multicolumn{2}{c|}{101 lang · sPBC}
+& \multicolumn{2}{c|}{204 lang · 2000 sent}
+& \multicolumn{2}{c}{sPBC · all lang} \\
+
+& $\mu_{\text{Max}}$
+& $\mu_{\text{Mean}}$
+& $\mu_{\text{Max}}$
+& $\mu_{\text{Mean}}$
+& $\mu_{\text{Max}}$
+& $\mu_{\text{Mean}}$
+& $\mu_{\text{Max}}$
+& $\mu_{\text{Mean}}$
+& $\mu_{\text{Max}}$
+& $\mu_{\text{Mean}}$ \\
+
+\midrule
+
+Qwen3.5 9B Base
+& \textbf{0.7814} & \textbf{0.5557}
+& \textbf{0.7193} & \textbf{0.4748}
+& \textbf{0.4821} & \textbf{0.2624}
+& \textbf{0.5901} & \textbf{0.3727}
+& \textbf{0.0845} & \textbf{0.0382} \\
+
+Qwen3 8B Base
+& 0.5759 & 0.3211
+& 0.4838 & 0.2416
+& 0.2970 & 0.1350
+& \textbf{0.4723} & \textbf{0.2509}
+& \textbf{0.0499} & \textbf{0.0186} \\
+
+Qwen3 4B
+& 0.4433 & 0.2327
+& 0.3506 & 0.1658
+& 0.1981 & 0.0918
+& 0.2633 & 0.1200
+& 0.0315 & 0.0120 \\
+
+Qwen3 1.7B
+& 0.4946 & 0.2158
+& 0.4136 & 0.1531
+& 0.1541 & 0.0612
+& 0.3042 & 0.1106
+& 0.0221 & 0.0072 \\
+
+Qwen3 0.6B
+& 0.3518 & 0.1504
+& 0.2600 & 0.0936
+& 0.1340 & 0.0466
+& 0.1815 & 0.0639
+& 0.0235 & 0.0067 \\
+
+\bottomrule
+
+\end{tabular}
+
+\end{adjustbox}
+
+\end{table*}
+
+\subsection{Interactive Evaluation Dashboard}
+\label{subsec:dashboard}
+
+To facilitate a comprehensive exploration of the alignment results, I developed an interactive web visualization dashboard using React, Vite, and Plotly.js. The dashboard acts as an interface , providing a multi-dimensional overview of the experimental findings:
+
+\begin{itemize}
+    \item \textbf{Global Overview}: A comparative summary of the peak ($\mu_{\text{Max}}$) and average ($\mu_{\text{Mean}}$) alignment scores across all evaluated models and dataset variants (FLORES-200 and Bible).
+    \item \textbf{Model Findings}: Dedicated pages for each model highlighting key statistics, such as the highest and lowest aligned languages, script-level performance differences, and complete score rankings.
+    \item \textbf{Interactive Heatmaps}: A cell-grid visualization mapping MEXA alignment scores across 110+ languages and different model families.
+    \item \textbf{2D/3D PCA Projections}: Dynamic dimensionality reduction plots visualizing the spatial distribution and clustering of sentence embeddings across languages, colored by writing system and MEXA score.
+    \item \textbf{Cross-Model Correlation}: Interactive Pearson correlation matrices representing the similarity of alignment profiles across different model families.
+\end{itemize}
+
+This dashboard allows  to inspect fine-grained representation dynamics without having to parse raw data logs, to link the high-level alignment scores and qualitative language-script analyses.
+
+
+% ============================================================
+% Bibliography
+% ============================================================
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

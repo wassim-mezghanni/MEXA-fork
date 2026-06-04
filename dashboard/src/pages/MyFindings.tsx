@@ -7,11 +7,12 @@ export default function MyFindings() {
       description="Personal reproduction and evaluation of the MEXA metric on Meta's Llama 3.1 8B model across 205 languages using the FLORES-200 parallel corpus."
       badge="My Experiment"
       icon="experiment"
-      csvPath="/data/llama3-1-8b-results.csv"
+      csvPath="/data/flores_llama3.1_8b_results.csv"
       modelKeys={['meta-llama/Llama-3.1-8B']}
       modelLabels={['Llama 3.1 8B']}
       datasetName="FLORES-200"
       poolingMethod="Max pooling across layers"
+      projectionPath="/data/projections_flores_llama3.1_8b.json"
     />
   );
 }

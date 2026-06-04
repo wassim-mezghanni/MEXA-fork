@@ -1,0 +1,62 @@
+Ensuring required pip packages are installed...
+============================================
+  MEXA Table 1 (Bible) — Qwen3 4B
+  Languages: 101 (Belebele overlap)
+  Model:     Qwen/Qwen3-4B
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — Qwen/Qwen3-4B
+  Languages evaluated: 101
+  µ_Max  = 0.1981
+  µ_Mean = 0.0918
+==================================================
+
+Saved to ../../dashboard/public/data/bible_table1_qwen3_4b_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 101 languages, 37 layers
+Computing projections (2D + 3D)...
+  Layer 0/36 done (PCA 2D: 37.2%, 3D: 42.0%)
+  Layer 1/36 done (PCA 2D: 43.2%, 3D: 49.8%)
+  Layer 2/36 done (PCA 2D: 37.3%, 3D: 43.6%)
+  Layer 3/36 done (PCA 2D: 36.9%, 3D: 42.6%)
+  Layer 4/36 done (PCA 2D: 39.6%, 3D: 44.9%)
+  Layer 5/36 done (PCA 2D: 37.9%, 3D: 44.0%)
+  Layer 6/36 done (PCA 2D: 42.1%, 3D: 49.9%)
+  Layer 7/36 done (PCA 2D: 53.7%, 3D: 61.5%)
+  Layer 8/36 done (PCA 2D: 56.2%, 3D: 63.5%)
+  Layer 9/36 done (PCA 2D: 58.4%, 3D: 64.2%)
+  Layer 10/36 done (PCA 2D: 60.7%, 3D: 65.8%)
+  Layer 11/36 done (PCA 2D: 59.4%, 3D: 63.8%)
+  Layer 12/36 done (PCA 2D: 60.6%, 3D: 64.9%)
+  Layer 13/36 done (PCA 2D: 61.5%, 3D: 65.9%)
+  Layer 14/36 done (PCA 2D: 62.8%, 3D: 67.4%)
+  Layer 15/36 done (PCA 2D: 63.6%, 3D: 68.2%)
+  Layer 16/36 done (PCA 2D: 64.3%, 3D: 68.8%)
+  Layer 17/36 done (PCA 2D: 65.4%, 3D: 69.7%)
+  Layer 18/36 done (PCA 2D: 65.3%, 3D: 69.7%)
+  Layer 19/36 done (PCA 2D: 65.2%, 3D: 69.8%)
+  Layer 20/36 done (PCA 2D: 63.1%, 3D: 68.0%)
+  Layer 21/36 done (PCA 2D: 63.8%, 3D: 68.6%)
+  Layer 22/36 done (PCA 2D: 62.3%, 3D: 67.2%)
+  Layer 23/36 done (PCA 2D: 60.2%, 3D: 65.5%)
+  Layer 24/36 done (PCA 2D: 55.4%, 3D: 60.4%)
+  Layer 25/36 done (PCA 2D: 47.9%, 3D: 53.4%)
+  Layer 26/36 done (PCA 2D: 45.6%, 3D: 50.7%)
+  Layer 27/36 done (PCA 2D: 41.0%, 3D: 45.8%)
+  Layer 28/36 done (PCA 2D: 40.0%, 3D: 44.9%)
+  Layer 29/36 done (PCA 2D: 37.7%, 3D: 44.2%)
+  Layer 30/36 done (PCA 2D: 36.8%, 3D: 42.7%)
+  Layer 31/36 done (PCA 2D: 33.2%, 3D: 39.2%)
+  Layer 32/36 done (PCA 2D: 28.6%, 3D: 34.7%)
+  Layer 33/36 done (PCA 2D: 23.6%, 3D: 30.1%)
+  Layer 34/36 done (PCA 2D: 23.4%, 3D: 29.4%)
+  Layer 35/36 done (PCA 2D: 26.3%, 3D: 31.6%)
+  Layer 36/36 done (PCA 2D: 51.3%, 3D: 58.8%)
+Saved projections to ../../dashboard/public/data/projections_bible_table1_qwen3_4b.json
+Job Finished Successfully!

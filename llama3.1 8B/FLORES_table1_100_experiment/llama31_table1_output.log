@@ -1,0 +1,9 @@
+Ensuring required pip packages are installed...
+============================================
+  MEXA Table 1 Reproduction — Llama 3.1 8B
+  Model:   meta-llama/Llama-3.1-8B
+  Dataset: FLORES-200 (Full sentences)
+  Target:  mu_Max = 0.6538
+============================================
+1. Extracting Embeddings...
+2. Computing MEXA alignments...

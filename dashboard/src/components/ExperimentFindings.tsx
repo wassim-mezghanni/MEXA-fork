@@ -5,6 +5,7 @@ import { LineChart } from '../charts/LineChart';
 import { DataTable } from '../charts/DataTable';
 import { LanguageCard } from '../ui/LanguageCard';
 import { StatCard } from '../ui/StatCard';
+import { EmbeddingProjection } from '../charts/EmbeddingProjection';
 
 /* ── Types ── */
 interface ExperimentFindingsProps {
@@ -26,6 +27,8 @@ interface ExperimentFindingsProps {
   datasetName?: string;
   /** Pooling method shown in subtitles, e.g. "Max pooling across layers" */
   poolingMethod?: string;
+  /** Path to projection JSON file (from compute_projections.py). If provided, shows the embedding scatter plot. */
+  projectionPath?: string;
 }
 
 /* ── CSV parser ── */
@@ -87,6 +90,7 @@ export default function ExperimentFindings({
   modelLabels,
   datasetName = 'FLORES-200',
   poolingMethod = 'Max pooling across layers',
+  projectionPath,
 }: ExperimentFindingsProps) {
   const [data, setData] = useState<Record<string, any>[]>([]);
   const [languageNames, setLanguageNames] = useState<Record<string, string>>({});
@@ -125,8 +129,6 @@ export default function ExperimentFindings({
   }, [csvPath]);
 
   /* ── Average score per row (across selected models) ── */
-  const avgKey = isSingleModel ? modelKeys[0] : 'avg';
-
   const getAvg = (row: Record<string, any>) => {
     if (row.avg !== undefined) return row.avg;
     const vals = modelKeys.map(k => row[k] || 0);
@@ -160,6 +162,13 @@ export default function ExperimentFindings({
     });
 
     return { totalLangs, globalAvg, median, topLang, bottomLang, perfect, high, medium, low, veryLow, modelAvgs };
+  }, [data, modelKeys]);
+
+  /* ── Scores map for projection coloring ── */
+  const scoresMap = useMemo(() => {
+    const map: Record<string, number> = {};
+    data.forEach(row => { map[row.code] = getAvg(row); });
+    return map;
   }, [data, modelKeys]);
 
   /* ── Script-level aggregation ── */
@@ -450,6 +459,19 @@ export default function ExperimentFindings({
             valueFormatter={(v: number) => v.toFixed(3)}
           />
         </div>
+
+        {/* ── Embedding Projection ── */}
+        {projectionPath && (
+          <div className="col-span-12">
+            <EmbeddingProjection
+              dataPath={projectionPath}
+              languageNames={languageNames}
+              scores={scoresMap}
+              title="Embedding Projection"
+              subtitle={`Language embeddings projected to 2D — colored by writing system or MEXA score`}
+            />
+          </div>
+        )}
 
         {/* ── Grid Heatmap ── */}
         <div className="col-span-12 bg-surface-container-low p-8 rounded-xl overflow-hidden">

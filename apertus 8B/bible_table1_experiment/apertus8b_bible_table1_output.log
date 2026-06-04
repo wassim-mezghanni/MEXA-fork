@@ -1,0 +1,58 @@
+Ensuring required pip packages are installed...
+============================================
+  MEXA Table 1 (Bible) — Apertus 8B
+  Languages: 101 (Belebele overlap)
+  Model:     swiss-ai/Apertus-8B-2509
+============================================
+1. Extracting Embeddings...
+Using device: cpu
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — swiss-ai/Apertus-8B-2509
+  Languages evaluated: 101
+  µ_Max  = 0.4299
+  µ_Mean = 0.1896
+==================================================
+
+Saved to ../../dashboard/public/data/bible_table1_apertus8b_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 101 languages, 33 layers
+Computing projections (2D + 3D)...
+  Layer 0/32 done (PCA 2D: 31.8%, 3D: 38.8%)
+  Layer 1/32 done (PCA 2D: 41.5%, 3D: 51.7%)
+  Layer 2/32 done (PCA 2D: 63.1%, 3D: 66.6%)
+  Layer 3/32 done (PCA 2D: 100.0%, 3D: 100.0%)
+  Layer 4/32 done (PCA 2D: 100.0%, 3D: 100.0%)
+  Layer 5/32 done (PCA 2D: 100.0%, 3D: 100.0%)
+  Layer 6/32 done (PCA 2D: 99.9%, 3D: 99.9%)
+  Layer 7/32 done (PCA 2D: 99.7%, 3D: 99.8%)
+  Layer 8/32 done (PCA 2D: 99.5%, 3D: 99.7%)
+  Layer 9/32 done (PCA 2D: 99.3%, 3D: 99.6%)
+  Layer 10/32 done (PCA 2D: 99.1%, 3D: 99.5%)
+  Layer 11/32 done (PCA 2D: 98.8%, 3D: 99.3%)
+  Layer 12/32 done (PCA 2D: 98.5%, 3D: 99.1%)
+  Layer 13/32 done (PCA 2D: 97.6%, 3D: 98.5%)
+  Layer 14/32 done (PCA 2D: 96.1%, 3D: 97.5%)
+  Layer 15/32 done (PCA 2D: 94.1%, 3D: 96.4%)
+  Layer 16/32 done (PCA 2D: 88.1%, 3D: 92.2%)
+  Layer 17/32 done (PCA 2D: 81.6%, 3D: 87.4%)
+  Layer 18/32 done (PCA 2D: 61.1%, 3D: 68.0%)
+  Layer 19/32 done (PCA 2D: 53.0%, 3D: 60.4%)
+  Layer 20/32 done (PCA 2D: 47.0%, 3D: 54.6%)
+  Layer 21/32 done (PCA 2D: 40.8%, 3D: 48.7%)
+  Layer 22/32 done (PCA 2D: 33.6%, 3D: 40.0%)
+  Layer 23/32 done (PCA 2D: 30.5%, 3D: 36.8%)
+  Layer 24/32 done (PCA 2D: 23.9%, 3D: 31.0%)
+  Layer 25/32 done (PCA 2D: 23.6%, 3D: 29.5%)
+  Layer 26/32 done (PCA 2D: 21.8%, 3D: 27.6%)
+  Layer 27/32 done (PCA 2D: 20.7%, 3D: 26.2%)
+  Layer 28/32 done (PCA 2D: 18.9%, 3D: 23.9%)
+  Layer 29/32 done (PCA 2D: 18.5%, 3D: 23.3%)
+  Layer 30/32 done (PCA 2D: 18.3%, 3D: 23.1%)
+  Layer 31/32 done (PCA 2D: 20.5%, 3D: 25.2%)
+  Layer 32/32 done (PCA 2D: 78.0%, 3D: 83.7%)
+Saved projections to ../../dashboard/public/data/projections_bible_table1_apertus8b.json
+Job Finished Successfully!

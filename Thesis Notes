@@ -1,0 +1,51 @@
+
+ 
+# Notes on the thesis progress
+- Everything is online (including the thesis defence), unless you wish otherwise
+Timeline:
+- Start
+- Registration
+- Thesis writing (between one and two months)
+- Thesis submission
+- Thesis defence (at least one week or 10 days after the submission)
+## Start
+- Two documents are needed: CV + up-to-date transcript
+## Tips for experiments
+- The experiments should be reproducible at the end of your thesis. Fixing seeds is recommended.
+- Consistency is key in experiments, especially to compare results. Explicitly reporting:
+  - Dataset/language selection
+  - Model selection (and awareness of their training; e.g., was the model pre-trained on the language?)
+  - Hyperparameter settings
+  
+- It is better to keep track of the licence of the datasets and language resources that are used.
+## Mid-term document for the registration
+This is just for internal purposes (NOT graded). This serves both for you and me to keep track of what has been done.
+- Small literature review: Five (or more) articles that you have read in a few sentences (what is it about? why is it relevant for your thesis?)
+- Summary of the methodology (datasets, models); bullet points are enough
+- Presenting the results: tables and figures; no need to analyse in depth
+## Registration
+Details in: https://collab.dvb.bayern/pages/viewpage.action?spaceKey=TUMcit&title=Abschlussarbeiten
+Information needed: the thesis title + your matriculation number
+## On the usage of AI tools
+We follow the ACL policy on that point: https://2023.aclweb.org/blog/ACL-2023-policy/
+## Thesis writing
+LaTeX template: https://github.com/TUM-Dev/tum-thesis-latex
+More information: https://www.cit.tum.de/en/cit/studies/students/thesis-completing-your-studies/informatics/
+- For bachelor's theses: around 30 pages
+- For master's theses: around 60 pages 
+- Discuss the thesis structure
+There are three tiers in the template: 
+1. Chapter
+1.1 Section
+1.1.1 Subsection
+- Two rounds of proof-reading, if time allows: one per chapter/section, one at the end for the overall coherence
+- The file name should be clear.
+## Thesis defence (estimate)
+- For bachelor's theses: 10-15 min of presentation and 10-15 min of questions 
+- For master's theses: 15 min of presentation and 15-20 min of questions 
+Collapse
+
+
+
+
+

@@ -1,0 +1,56 @@
+============================================
+  MEXA Table 1 Reproduction (116 langs) — Llama 3.1 8B
+  Model:   meta-llama/Llama-3.1-8B
+  Dataset: FLORES-200 (116 langs, 2000 sents)
+============================================
+1. Extracting Embeddings...
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  FLORES Table 1 Reproduction Results
+  Languages evaluated: 110
+  µ_Max  = 0.6065  (paper target: 0.6538)
+  µ_Mean = 0.3370  (paper target: 0.3963)
+==================================================
+
+Formatted results saved to ../dashboard/public/data/flores_table1_llama3.1_8b_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 110 languages, 33 layers
+Computing projections (2D + 3D)...
+  Layer 0/32 done (PCA 2D: 32.3%, 3D: 39.6%)
+  Layer 1/32 done (PCA 2D: 44.6%, 3D: 50.6%)
+  Layer 2/32 done (PCA 2D: 59.2%, 3D: 63.7%)
+  Layer 3/32 done (PCA 2D: 57.5%, 3D: 62.5%)
+  Layer 4/32 done (PCA 2D: 50.7%, 3D: 56.0%)
+  Layer 5/32 done (PCA 2D: 52.2%, 3D: 57.3%)
+  Layer 6/32 done (PCA 2D: 52.5%, 3D: 57.7%)
+  Layer 7/32 done (PCA 2D: 55.8%, 3D: 61.0%)
+  Layer 8/32 done (PCA 2D: 58.7%, 3D: 63.5%)
+  Layer 9/32 done (PCA 2D: 59.7%, 3D: 64.4%)
+  Layer 10/32 done (PCA 2D: 56.8%, 3D: 61.9%)
+  Layer 11/32 done (PCA 2D: 56.7%, 3D: 62.5%)
+  Layer 12/32 done (PCA 2D: 58.4%, 3D: 63.9%)
+  Layer 13/32 done (PCA 2D: 60.7%, 3D: 66.4%)
+  Layer 14/32 done (PCA 2D: 61.0%, 3D: 66.2%)
+  Layer 15/32 done (PCA 2D: 54.1%, 3D: 60.5%)
+  Layer 16/32 done (PCA 2D: 55.2%, 3D: 61.3%)
+  Layer 17/32 done (PCA 2D: 40.9%, 3D: 45.6%)
+  Layer 18/32 done (PCA 2D: 36.7%, 3D: 42.2%)
+  Layer 19/32 done (PCA 2D: 29.9%, 3D: 34.6%)
+  Layer 20/32 done (PCA 2D: 27.7%, 3D: 33.5%)
+  Layer 21/32 done (PCA 2D: 25.2%, 3D: 30.6%)
+  Layer 22/32 done (PCA 2D: 24.0%, 3D: 29.2%)
+  Layer 23/32 done (PCA 2D: 23.2%, 3D: 28.1%)
+  Layer 24/32 done (PCA 2D: 23.0%, 3D: 27.8%)
+  Layer 25/32 done (PCA 2D: 18.1%, 3D: 23.0%)
+  Layer 26/32 done (PCA 2D: 17.5%, 3D: 22.1%)
+  Layer 27/32 done (PCA 2D: 15.6%, 3D: 20.6%)
+  Layer 28/32 done (PCA 2D: 14.7%, 3D: 20.1%)
+  Layer 29/32 done (PCA 2D: 15.1%, 3D: 20.6%)
+  Layer 30/32 done (PCA 2D: 14.9%, 3D: 20.2%)
+  Layer 31/32 done (PCA 2D: 16.1%, 3D: 21.8%)
+  Layer 32/32 done (PCA 2D: 28.4%, 3D: 34.0%)
+Saved projections to ../dashboard/public/data/projections_flores_table1_llama3.1_8b.json
+Job Finished Successfully!
