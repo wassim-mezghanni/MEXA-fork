@@ -98,7 +98,10 @@ def main():
 
     # Define model name and token
     model_name = args.model_name
-    token = args.token  # Optional token
+    # Treat an empty/whitespace token as "no token". Passing token="" makes
+    # huggingface_hub send a malformed `Authorization: Bearer ` header, which
+    # raises httpx LocalProtocolError — public models need no token at all.
+    token = args.token.strip() if args.token and args.token.strip() else None
 
     # Load the model and tokenizer
     device_map = 'auto' if device == 'cuda' else 'cpu'
@@ -108,7 +111,14 @@ def main():
     else:
         model = AutoModelForCausalLM.from_pretrained(model_name, device_map=device_map, cache_dir=args.cache_dir, token=token, trust_remote_code=True)
     model.eval()
-    tokenizer = AutoTokenizer.from_pretrained(model_name, token=token, trust_remote_code=True)
+    try:
+        tokenizer = AutoTokenizer.from_pretrained(model_name, token=token, trust_remote_code=True)
+    except Exception as e:
+        # Some SentencePiece models (e.g. Glot500) ship only sentencepiece.bpe.model
+        # and their fast-tokenizer conversion fails on newer transformers. Fall back
+        # to the slow tokenizer, which reads the SentencePiece model directly.
+        print(f"Fast tokenizer load failed ({type(e).__name__}); retrying with use_fast=False.")
+        tokenizer = AutoTokenizer.from_pretrained(model_name, token=token, trust_remote_code=True, use_fast=False)
     # Encoders already define a dedicated pad token; only causal LMs need the eos fallback.
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token

@@ -1,0 +1,37 @@
+CUDA OK: NVIDIA H200 NVL
+============================================
+  MEXA FLORES Table 1 (116 langs, 100 sents) — Glot500-base
+  Model:   cis-lmu/glot500-base
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — cis-lmu/glot500-base
+  Languages evaluated: 110
+  µ_Max  = 0.5926
+  µ_Mean = 0.3949
+==================================================
+
+Saved to ../../dashboard/public/data/flores_table1_100_glot500_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 110 languages, 13 layers
+Computing projections (2D + 3D)...
+  Layer 0/12 done (PCA 2D: 32.4%, 3D: 39.4%)
+  Layer 1/12 done (PCA 2D: 27.2%, 3D: 32.7%)
+  Layer 2/12 done (PCA 2D: 28.2%, 3D: 33.4%)
+  Layer 3/12 done (PCA 2D: 31.2%, 3D: 36.6%)
+  Layer 4/12 done (PCA 2D: 32.3%, 3D: 38.7%)
+  Layer 5/12 done (PCA 2D: 33.3%, 3D: 39.8%)
+  Layer 6/12 done (PCA 2D: 34.5%, 3D: 41.0%)
+  Layer 7/12 done (PCA 2D: 37.7%, 3D: 44.2%)
+  Layer 8/12 done (PCA 2D: 36.6%, 3D: 43.1%)
+  Layer 9/12 done (PCA 2D: 37.9%, 3D: 44.3%)
+  Layer 10/12 done (PCA 2D: 29.9%, 3D: 35.1%)
+  Layer 11/12 done (PCA 2D: 26.8%, 3D: 31.7%)
+  Layer 12/12 done (PCA 2D: 22.3%, 3D: 26.6%)
+Saved projections to ../../dashboard/public/data/projections_flores_table1_100_glot500.json
+Job Finished Successfully!

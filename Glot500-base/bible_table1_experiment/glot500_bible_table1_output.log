@@ -1,0 +1,37 @@
+CUDA OK: NVIDIA H200 NVL
+============================================
+  MEXA Bible Table 1 (101 langs, sPBC) — Glot500-base
+  Model:   cis-lmu/glot500-base
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — cis-lmu/glot500-base
+  Languages evaluated: 101
+  µ_Max  = 0.4883
+  µ_Mean = 0.2394
+==================================================
+
+Saved to ../../dashboard/public/data/bible_table1_glot500_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 101 languages, 13 layers
+Computing projections (2D + 3D)...
+  Layer 0/12 done (PCA 2D: 30.8%, 3D: 37.3%)
+  Layer 1/12 done (PCA 2D: 27.3%, 3D: 32.5%)
+  Layer 2/12 done (PCA 2D: 27.5%, 3D: 32.5%)
+  Layer 3/12 done (PCA 2D: 29.6%, 3D: 35.1%)
+  Layer 4/12 done (PCA 2D: 29.3%, 3D: 35.4%)
+  Layer 5/12 done (PCA 2D: 29.6%, 3D: 35.8%)
+  Layer 6/12 done (PCA 2D: 30.7%, 3D: 37.2%)
+  Layer 7/12 done (PCA 2D: 33.0%, 3D: 39.7%)
+  Layer 8/12 done (PCA 2D: 32.2%, 3D: 38.9%)
+  Layer 9/12 done (PCA 2D: 32.9%, 3D: 39.4%)
+  Layer 10/12 done (PCA 2D: 28.4%, 3D: 34.6%)
+  Layer 11/12 done (PCA 2D: 25.1%, 3D: 30.5%)
+  Layer 12/12 done (PCA 2D: 19.1%, 3D: 24.1%)
+Saved projections to ../../dashboard/public/data/projections_bible_table1_glot500.json
+Job Finished Successfully!

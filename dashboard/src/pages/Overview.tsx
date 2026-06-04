@@ -178,18 +178,79 @@ const ENCODER_SCORES: ModelRow[] = [
     model: 'XLM-RoBERTa large',
     note: 'masked-LM encoder · 550M',
     scores: {
-      ...blank(),
+      'flores-table1': { max: 0.6474, mean: 0.4308 },
       'flores-table1-2000': { max: 0.5877, mean: 0.3534 },
       'bible-table1': { max: 0.4084, mean: 0.1922 },
+      'flores-full': { max: 0.4297, mean: 0.2487 },
+      'bible-full': { max: 0.0520, mean: 0.0222 },
     },
   },
   {
     model: 'LaBSE',
     note: 'dual-encoder (sentence-transformers) · 471M',
     scores: {
-      ...blank(),
+      'flores-table1': { max: 0.9515, mean: 0.7255 },
       'flores-table1-2000': { max: 0.9141, mean: 0.6683 },
       'bible-table1': { max: 0.8392, mean: 0.5088 },
+      'flores-full': { max: 0.8011, mean: 0.5290 },
+      'bible-full': { max: 0.1998, mean: 0.0820 },
+    },
+  },
+  {
+    model: 'Multilingual E5 base',
+    note: 'dual-encoder (sentence-transformers) · 278M',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.9713, mean: 0.5415 },
+      'bible-table1': { max: 0.8960, mean: 0.3237 },
+    },
+  },
+  {
+    model: 'Glot500 base',
+    note: 'masked-LM encoder · 270M',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.5926, mean: 0.3949 },
+      'bible-table1': { max: 0.4883, mean: 0.2394 },
+    },
+  },
+  {
+    model: 'mmBERT base',
+    note: 'masked-LM encoder · 125M',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.5138, mean: 0.2350 },
+      'bible-table1': { max: 0.2695, mean: 0.1021 },
+    },
+  },
+];
+
+const EMBEDDING_SCORES: ModelRow[] = [
+  {
+    model: 'Qwen3-Embedding-8B',
+    note: 'causal embedding model · 8B',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.8479, mean: 0.5144 },
+      'bible-table1': { max: 0.5605, mean: 0.2667 },
+    },
+  },
+  {
+    model: 'Qwen3-Embedding-4B',
+    note: 'causal embedding model · 4B',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.8051, mean: 0.4464 },
+      'bible-table1': { max: 0.4876, mean: 0.2267 },
+    },
+  },
+  {
+    model: 'Qwen3-Embedding-0.6B',
+    note: 'causal embedding model · 600M',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.7095, mean: 0.3430 },
+      'bible-table1': { max: 0.3514, mean: 0.1557 },
     },
   },
 ];
@@ -212,7 +273,10 @@ const toSizeRows = (rows: ModelRow[]): SizeChartRow[] =>
 
 // Exclude the paper-reference rows from the all-models chart (their sizes
 // duplicate our own runs and would stack on the same X positions).
-const ALL_MODEL_SIZE_ROWS = toSizeRows(MEXA_SCORES.filter((r) => !r.model.startsWith('Paper ·')));
+const ALL_MODEL_SIZE_ROWS = toSizeRows([
+  ...MEXA_SCORES.filter((r) => !r.model.startsWith('Paper ·')),
+  ...EMBEDDING_SCORES
+]);
 const QWEN3_SIZE_ROWS = toSizeRows(QWEN3_SCORES);
 
 /* ── Experiment timeline mock ── */
@@ -499,7 +563,8 @@ export default function Overview() {
           <p className="text-xs text-on-surface-variant font-body leading-relaxed">
             Dedicated multilingual encoders evaluated with the same MEXA pipeline. Unlike the
             English-centric causal LMs above, these are bidirectional encoders — XLM-RoBERTa
-            (masked-LM) and LaBSE (a sentence-transformer trained for cross-lingual alignment).
+            (masked-LM), LaBSE (a sentence-transformer trained for cross-lingual alignment),
+            Multilingual E5 (dual-encoder), and mmBERT.
           </p>
         </div>
 
@@ -550,6 +615,105 @@ export default function Overview() {
                     key={row.model}
                     className={`border-b border-outline-variant/10 hover:bg-surface-container-lowest transition-colors ${
                       idx === ENCODER_SCORES.length - 1 ? 'border-b-0' : ''
+                    }`}
+                  >
+                    <td className="px-4 py-3">
+                      <div className="font-headline font-semibold text-on-surface">
+                        {row.model}
+                      </div>
+                      {row.note && (
+                        <div className="text-[10px] font-body text-on-surface-variant/70 italic mt-0.5">
+                          {row.note}
+                        </div>
+                      )}
+                    </td>
+                    {VARIANT_COLUMNS.flatMap((v) => {
+                      const cell = row.scores[v.key];
+                      return [
+                        <td
+                          key={`${row.model}-${v.key}-max`}
+                          className={`text-right font-mono tabular-nums px-3 py-3 border-l border-outline-variant/20 ${
+                            cell.max === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          }`}
+                        >
+                          {fmt(cell.max)}
+                        </td>,
+                        <td
+                          key={`${row.model}-${v.key}-mean`}
+                          className={`text-right font-mono tabular-nums px-3 py-3 ${
+                            cell.mean === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          }`}
+                        >
+                          {fmt(cell.mean)}
+                        </td>,
+                      ];
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Causal Embedding Models Comparison Table */}
+      <section className="bg-surface-container-low rounded-xl p-8">
+        <div className="mb-6 max-w-5xl">
+          <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider mb-3">
+            Causal Embedding Models (Qwen3-Embedding)
+          </h3>
+          <p className="text-xs text-on-surface-variant font-body leading-relaxed">
+            Decoder-only causal models adapted specifically for text embedding tasks, evaluated with the same MEXA pipeline.
+          </p>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b border-outline-variant/30">
+                <th
+                  rowSpan={2}
+                  className="text-left text-[10px] font-bold uppercase tracking-widest text-on-surface-variant px-4 py-3 align-bottom"
+                >
+                  Model
+                </th>
+                {VARIANT_COLUMNS.map((v) => (
+                  <th
+                    key={v.key}
+                    colSpan={2}
+                    className="text-center text-[10px] font-bold uppercase tracking-widest text-primary px-4 pt-3 pb-1 border-l border-outline-variant/20"
+                  >
+                    <div>{v.label}</div>
+                    <div className="text-[9px] font-medium normal-case tracking-normal text-on-surface-variant/70 mt-0.5">
+                      {v.subtitle}
+                    </div>
+                  </th>
+                ))}
+              </tr>
+              <tr className="border-b border-outline-variant/30">
+                {VARIANT_COLUMNS.flatMap((v) => [
+                  <th
+                    key={`${v.key}-max`}
+                    className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2 border-l border-outline-variant/20"
+                  >
+                    µ_Max
+                  </th>,
+                  <th
+                    key={`${v.key}-mean`}
+                    className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2"
+                  >
+                    µ_Mean
+                  </th>,
+                ])}
+              </tr>
+            </thead>
+            <tbody>
+              {EMBEDDING_SCORES.map((row, idx) => {
+                return (
+                  <tr
+                    key={row.model}
+                    className={`border-b border-outline-variant/10 hover:bg-surface-container-lowest transition-colors ${
+                      idx === EMBEDDING_SCORES.length - 1 ? 'border-b-0' : ''
                     }`}
                   >
                     <td className="px-4 py-3">
