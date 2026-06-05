@@ -84,4 +84,7 @@ python3 ../../compute_projections.py \
     --num_sents 2000 \
     --file_ext .pkl
 
+echo "5. Cleaning up embeddings to conserve disk quota..."
+rm -rf "$SAVE_EMBD_DIR"/*.pkl
+
 echo "Job Finished Successfully!"

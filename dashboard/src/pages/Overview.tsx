@@ -31,10 +31,11 @@ type ModelRow = {
 };
 
 const VARIANT_COLUMNS: { key: Variant; label: string; subtitle: string }[] = [
+  // FLORES experiments first, then Bible experiments
   { key: 'flores-table1', label: 'FLORES Table 1', subtitle: '116 langs · 100 sents' },
   { key: 'flores-table1-2000', label: 'FLORES Table 1', subtitle: '116 langs · 2000 sents' },
-  { key: 'bible-table1', label: 'Bible Table 1', subtitle: '101 langs · sPBC' },
   { key: 'flores-full', label: 'FLORES Full', subtitle: '204 langs · 2000 sents' },
+  { key: 'bible-table1', label: 'Bible Table 1', subtitle: '101 langs · sPBC' },
   { key: 'bible-full', label: 'Bible Full', subtitle: 'sPBC · all langs' },
 ];
 
@@ -200,27 +201,33 @@ const ENCODER_SCORES: ModelRow[] = [
     model: 'Multilingual E5 base',
     note: 'dual-encoder (sentence-transformers) · 278M',
     scores: {
-      ...blank(),
       'flores-table1': { max: 0.9713, mean: 0.5415 },
+      'flores-table1-2000': { max: 0.9505, mean: 0.4733 },
       'bible-table1': { max: 0.8960, mean: 0.3237 },
+      'flores-full': { max: 0.8768, mean: 0.3740 },
+      'bible-full': { max: 0.2046, mean: 0.0528 },
     },
   },
   {
     model: 'Glot500 base',
     note: 'masked-LM encoder · 270M',
     scores: {
-      ...blank(),
       'flores-table1': { max: 0.5926, mean: 0.3949 },
+      'flores-table1-2000': { max: 0.4876, mean: 0.2944 },
       'bible-table1': { max: 0.4883, mean: 0.2394 },
+      'flores-full': { max: 0.3791, mean: 0.2249 },
+      'bible-full': { max: 0.0995, mean: 0.0429 },
     },
   },
   {
     model: 'mmBERT base',
     note: 'masked-LM encoder · 125M',
     scores: {
-      ...blank(),
       'flores-table1': { max: 0.5138, mean: 0.2350 },
+      'flores-table1-2000': { max: 0.4185, mean: 0.1712 },
       'bible-table1': { max: 0.2695, mean: 0.1021 },
+      'flores-full': { max: 0.3067, mean: 0.1214 },
+      'bible-full': { max: 0.0434, mean: 0.0139 },
     },
   },
 ];
@@ -230,32 +237,61 @@ const EMBEDDING_SCORES: ModelRow[] = [
     model: 'Qwen3-Embedding-8B',
     note: 'causal embedding model · 8B',
     scores: {
-      ...blank(),
       'flores-table1': { max: 0.8479, mean: 0.5144 },
+      'flores-table1-2000': { max: 0.7816, mean: 0.4407 },
       'bible-table1': { max: 0.5605, mean: 0.2667 },
+      'flores-full': { max: 0.6927, mean: 0.3690 },
+      'bible-full': { max: 0.1133, mean: 0.0455 },
     },
   },
   {
     model: 'Qwen3-Embedding-4B',
     note: 'causal embedding model · 4B',
     scores: {
-      ...blank(),
       'flores-table1': { max: 0.8051, mean: 0.4464 },
+      'flores-table1-2000': { max: 0.7275, mean: 0.3741 },
       'bible-table1': { max: 0.4876, mean: 0.2267 },
+      'flores-full': { max: 0.6400, mean: 0.3042 },
+      'bible-full': { max: 0.0935, mean: 0.0359 },
     },
   },
   {
     model: 'Qwen3-Embedding-0.6B',
     note: 'causal embedding model · 600M',
     scores: {
-      ...blank(),
       'flores-table1': { max: 0.7095, mean: 0.3430 },
+      'flores-table1-2000': { max: 0.5668, mean: 0.2616 },
       'bible-table1': { max: 0.3514, mean: 0.1557 },
+      'flores-full': { max: 0.4852, mean: 0.2072 },
+      'bible-full': { max: 0.0706, mean: 0.0256 },
     },
   },
 ];
 
 const fmt = (v: Score) => (v === null || v === undefined ? '—' : v.toFixed(4));
+
+/* Per-table, per-column maxima so the highest µ_Max / µ_Mean in each experiment
+   column can be bolded. Keyed by row object so a single cell renderer can look up
+   the maxima for whichever table the row belongs to. */
+const columnMaxima = (rows: ModelRow[]): Record<Variant, { max: Score; mean: Score }> => {
+  const out = {} as Record<Variant, { max: Score; mean: Score }>;
+  for (const v of VARIANT_COLUMNS) {
+    let mx: Score = null, mn: Score = null;
+    for (const r of rows) {
+      const c = r.scores[v.key];
+      if (c?.max != null) mx = mx === null ? c.max : Math.max(mx, c.max);
+      if (c?.mean != null) mn = mn === null ? c.mean : Math.max(mn, c.mean);
+    }
+    out[v.key] = { max: mx, mean: mn };
+  }
+  return out;
+};
+
+const ROW_MAXIMA = new Map<ModelRow, Record<Variant, { max: Score; mean: Score }>>();
+for (const table of [MEXA_SCORES, QWEN3_SCORES, ENCODER_SCORES, EMBEDDING_SCORES]) {
+  const mx = columnMaxima(table);
+  for (const r of table) ROW_MAXIMA.set(r, mx);
+}
 
 /* Parse the parameter count (in billions) from a model name, e.g.
    "Qwen3.5 9B Base" → 9, "Qwen3 1.7B" → 1.7, "Mistral 7B v0.3" → 7. */
@@ -428,19 +464,22 @@ export default function Overview() {
                     </td>
                     {VARIANT_COLUMNS.flatMap((v) => {
                       const cell = row.scores[v.key];
+                      const mx = ROW_MAXIMA.get(row);
+                      const boldMax = cell.max !== null && mx != null && cell.max === mx[v.key].max;
+                      const boldMean = cell.mean !== null && mx != null && cell.mean === mx[v.key].mean;
                       return [
                         <td
                           key={`${row.model}-${v.key}-max`}
-                          className={`text-right font-mono tabular-nums px-3 py-3 border-l border-outline-variant/20 ${
-                            cell.max === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          className={`text-right font-mono tabular-nums text-base px-3 py-3 border-l border-outline-variant/20 ${
+                            cell.max === null ? 'text-on-surface-variant/30 font-medium' : boldMax ? 'font-bold text-primary text-lg bg-green-100' : 'font-semibold text-on-surface'
                           }`}
                         >
                           {fmt(cell.max)}
                         </td>,
                         <td
                           key={`${row.model}-${v.key}-mean`}
-                          className={`text-right font-mono tabular-nums px-3 py-3 ${
-                            cell.mean === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          className={`text-right font-mono tabular-nums text-base px-3 py-3 ${
+                            cell.mean === null ? 'text-on-surface-variant/30 font-medium' : boldMean ? 'font-bold text-primary text-lg bg-green-100' : 'font-semibold text-on-surface'
                           }`}
                         >
                           {fmt(cell.mean)}
@@ -527,19 +566,22 @@ export default function Overview() {
                     </td>
                     {VARIANT_COLUMNS.flatMap((v) => {
                       const cell = row.scores[v.key];
+                      const mx = ROW_MAXIMA.get(row);
+                      const boldMax = cell.max !== null && mx != null && cell.max === mx[v.key].max;
+                      const boldMean = cell.mean !== null && mx != null && cell.mean === mx[v.key].mean;
                       return [
                         <td
                           key={`${row.model}-${v.key}-max`}
-                          className={`text-right font-mono tabular-nums px-3 py-3 border-l border-outline-variant/20 ${
-                            cell.max === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          className={`text-right font-mono tabular-nums text-base px-3 py-3 border-l border-outline-variant/20 ${
+                            cell.max === null ? 'text-on-surface-variant/30 font-medium' : boldMax ? 'font-bold text-primary text-lg bg-green-100' : 'font-semibold text-on-surface'
                           }`}
                         >
                           {fmt(cell.max)}
                         </td>,
                         <td
                           key={`${row.model}-${v.key}-mean`}
-                          className={`text-right font-mono tabular-nums px-3 py-3 ${
-                            cell.mean === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          className={`text-right font-mono tabular-nums text-base px-3 py-3 ${
+                            cell.mean === null ? 'text-on-surface-variant/30 font-medium' : boldMean ? 'font-bold text-primary text-lg bg-green-100' : 'font-semibold text-on-surface'
                           }`}
                         >
                           {fmt(cell.mean)}
@@ -629,19 +671,22 @@ export default function Overview() {
                     </td>
                     {VARIANT_COLUMNS.flatMap((v) => {
                       const cell = row.scores[v.key];
+                      const mx = ROW_MAXIMA.get(row);
+                      const boldMax = cell.max !== null && mx != null && cell.max === mx[v.key].max;
+                      const boldMean = cell.mean !== null && mx != null && cell.mean === mx[v.key].mean;
                       return [
                         <td
                           key={`${row.model}-${v.key}-max`}
-                          className={`text-right font-mono tabular-nums px-3 py-3 border-l border-outline-variant/20 ${
-                            cell.max === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          className={`text-right font-mono tabular-nums text-base px-3 py-3 border-l border-outline-variant/20 ${
+                            cell.max === null ? 'text-on-surface-variant/30 font-medium' : boldMax ? 'font-bold text-primary text-lg bg-green-100' : 'font-semibold text-on-surface'
                           }`}
                         >
                           {fmt(cell.max)}
                         </td>,
                         <td
                           key={`${row.model}-${v.key}-mean`}
-                          className={`text-right font-mono tabular-nums px-3 py-3 ${
-                            cell.mean === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          className={`text-right font-mono tabular-nums text-base px-3 py-3 ${
+                            cell.mean === null ? 'text-on-surface-variant/30 font-medium' : boldMean ? 'font-bold text-primary text-lg bg-green-100' : 'font-semibold text-on-surface'
                           }`}
                         >
                           {fmt(cell.mean)}
@@ -728,19 +773,22 @@ export default function Overview() {
                     </td>
                     {VARIANT_COLUMNS.flatMap((v) => {
                       const cell = row.scores[v.key];
+                      const mx = ROW_MAXIMA.get(row);
+                      const boldMax = cell.max !== null && mx != null && cell.max === mx[v.key].max;
+                      const boldMean = cell.mean !== null && mx != null && cell.mean === mx[v.key].mean;
                       return [
                         <td
                           key={`${row.model}-${v.key}-max`}
-                          className={`text-right font-mono tabular-nums px-3 py-3 border-l border-outline-variant/20 ${
-                            cell.max === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          className={`text-right font-mono tabular-nums text-base px-3 py-3 border-l border-outline-variant/20 ${
+                            cell.max === null ? 'text-on-surface-variant/30 font-medium' : boldMax ? 'font-bold text-primary text-lg bg-green-100' : 'font-semibold text-on-surface'
                           }`}
                         >
                           {fmt(cell.max)}
                         </td>,
                         <td
                           key={`${row.model}-${v.key}-mean`}
-                          className={`text-right font-mono tabular-nums px-3 py-3 ${
-                            cell.mean === null ? 'text-on-surface-variant/30' : 'text-on-surface'
+                          className={`text-right font-mono tabular-nums text-base px-3 py-3 ${
+                            cell.mean === null ? 'text-on-surface-variant/30 font-medium' : boldMean ? 'font-bold text-primary text-lg bg-green-100' : 'font-semibold text-on-surface'
                           }`}
                         >
                           {fmt(cell.mean)}
