@@ -1,0 +1,340 @@
+Loaded experiments and counts:
+  flores_table1_100: 16 models
+  flores_table1_2000: 14 models
+  full_flores: 13 models
+  bible_table1: 16 models
+  bible: 32 models
+
+=== 1. MAX vs MEAN: Model Ranking Consistency ===
+
+Experiment: flores_table1_100 (16 models)
+  All Models (16 models):
+    Spearman Rho: 0.9500 (p=1.8346e-08)
+    Kendall Tau:  0.8333 (p=2.4419e-07)
+    Model Rankings:
+      me5_base            : Rank Max=1 (0.9710) | Rank Mean=3 (0.5373)
+      labse               : Rank Max=2 (0.9510) | Rank Mean=1 (0.7230)
+      qwen3_emb_8b        : Rank Max=3 (0.8465) | Rank Mean=4 (0.5099)
+      qwen3_emb_4b        : Rank Max=4 (0.8033) | Rank Mean=5 (0.4413)
+      qwen3.5_9b          : Rank Max=5 (0.7794) | Rank Mean=2 (0.5517)
+      qwen3_emb_0.6b      : Rank Max=6 (0.7069) | Rank Mean=9 (0.3369)
+      llama3.1_8b         : Rank Max=7 (0.6706) | Rank Mean=7 (0.4143)
+      xlmr_large          : Rank Max=8 (0.6441) | Rank Mean=6 (0.4256)
+      glot500             : Rank Max=9 (0.5889) | Rank Mean=8 (0.3893)
+      qwen3_8b            : Rank Max=10 (0.5720) | Rank Mean=10 (0.3149)
+      mmbert_base         : Rank Max=11 (0.5094) | Rank Mean=12 (0.2279)
+      mistral_7b_v03      : Rank Max=12 (0.4934) | Rank Mean=11 (0.2813)
+      qwen3_1.7b          : Rank Max=13 (0.4900) | Rank Mean=14 (0.2086)
+      qwen3_4b            : Rank Max=14 (0.4382) | Rank Mean=13 (0.2257)
+      apertus8b           : Rank Max=15 (0.3817) | Rank Mean=15 (0.1560)
+      qwen3_0.6b          : Rank Max=16 (0.3459) | Rank Mean=16 (0.1426)
+  Decoder-only (8 models):
+    Spearman Rho: 0.9762 (p=3.3144e-05)
+    Kendall Tau:  0.9286 (p=3.9683e-04)
+    Model Rankings:
+      qwen3.5_9b          : Rank Max=1 (0.7794) | Rank Mean=1 (0.5517)
+      llama3.1_8b         : Rank Max=2 (0.6706) | Rank Mean=2 (0.4143)
+      qwen3_8b            : Rank Max=3 (0.5720) | Rank Mean=3 (0.3149)
+      mistral_7b_v03      : Rank Max=4 (0.4934) | Rank Mean=4 (0.2813)
+      qwen3_1.7b          : Rank Max=5 (0.4900) | Rank Mean=6 (0.2086)
+      qwen3_4b            : Rank Max=6 (0.4382) | Rank Mean=5 (0.2257)
+      apertus8b           : Rank Max=7 (0.3817) | Rank Mean=7 (0.1560)
+      qwen3_0.6b          : Rank Max=8 (0.3459) | Rank Mean=8 (0.1426)
+  Encoder-only (8 models):
+    Spearman Rho: 0.9048 (p=2.0083e-03)
+    Kendall Tau:  0.7857 (p=5.5060e-03)
+    Model Rankings:
+      me5_base            : Rank Max=1 (0.9710) | Rank Mean=2 (0.5373)
+      labse               : Rank Max=2 (0.9510) | Rank Mean=1 (0.7230)
+      qwen3_emb_8b        : Rank Max=3 (0.8465) | Rank Mean=3 (0.5099)
+      qwen3_emb_4b        : Rank Max=4 (0.8033) | Rank Mean=4 (0.4413)
+      qwen3_emb_0.6b      : Rank Max=5 (0.7069) | Rank Mean=7 (0.3369)
+      xlmr_large          : Rank Max=6 (0.6441) | Rank Mean=5 (0.4256)
+      glot500             : Rank Max=7 (0.5889) | Rank Mean=6 (0.3893)
+      mmbert_base         : Rank Max=8 (0.5094) | Rank Mean=8 (0.2279)
+
+Experiment: flores_table1_2000 (14 models)
+  All Models (14 models):
+    Spearman Rho: 0.9560 (p=9.4698e-08)
+    Kendall Tau:  0.8681 (p=5.5259e-07)
+    Model Rankings:
+      me5_base            : Rank Max=1 (0.9501) | Rank Mean=3 (0.4685)
+      labse               : Rank Max=2 (0.9133) | Rank Mean=1 (0.6653)
+      qwen3_emb_8b        : Rank Max=3 (0.7796) | Rank Mean=4 (0.4356)
+      qwen3_emb_4b        : Rank Max=4 (0.7250) | Rank Mean=5 (0.3684)
+      qwen3.5_9b          : Rank Max=5 (0.7167) | Rank Mean=2 (0.4700)
+      xlmr_large          : Rank Max=6 (0.5839) | Rank Mean=6 (0.3475)
+      qwen3_emb_0.6b      : Rank Max=7 (0.5629) | Rank Mean=8 (0.2548)
+      glot500             : Rank Max=8 (0.4829) | Rank Mean=7 (0.2879)
+      qwen3_8b            : Rank Max=9 (0.4790) | Rank Mean=9 (0.2346)
+      mmbert_base         : Rank Max=10 (0.4132) | Rank Mean=10 (0.1636)
+      qwen3_1.7b          : Rank Max=11 (0.4083) | Rank Mean=12 (0.1453)
+      qwen3_4b            : Rank Max=12 (0.3446) | Rank Mean=11 (0.1582)
+      apertus8b           : Rank Max=13 (0.2761) | Rank Mean=13 (0.1095)
+      qwen3_0.6b          : Rank Max=14 (0.2533) | Rank Mean=14 (0.0853)
+  Decoder-only (6 models):
+    Spearman Rho: 0.9429 (p=4.8047e-03)
+    Kendall Tau:  0.8667 (p=1.6667e-02)
+    Model Rankings:
+      qwen3.5_9b          : Rank Max=1 (0.7167) | Rank Mean=1 (0.4700)
+      qwen3_8b            : Rank Max=2 (0.4790) | Rank Mean=2 (0.2346)
+      qwen3_1.7b          : Rank Max=3 (0.4083) | Rank Mean=4 (0.1453)
+      qwen3_4b            : Rank Max=4 (0.3446) | Rank Mean=3 (0.1582)
+      apertus8b           : Rank Max=5 (0.2761) | Rank Mean=5 (0.1095)
+      qwen3_0.6b          : Rank Max=6 (0.2533) | Rank Mean=6 (0.0853)
+  Encoder-only (8 models):
+    Spearman Rho: 0.9524 (p=2.6040e-04)
+    Kendall Tau:  0.8571 (p=1.7361e-03)
+    Model Rankings:
+      me5_base            : Rank Max=1 (0.9501) | Rank Mean=2 (0.4685)
+      labse               : Rank Max=2 (0.9133) | Rank Mean=1 (0.6653)
+      qwen3_emb_8b        : Rank Max=3 (0.7796) | Rank Mean=3 (0.4356)
+      qwen3_emb_4b        : Rank Max=4 (0.7250) | Rank Mean=4 (0.3684)
+      xlmr_large          : Rank Max=5 (0.5839) | Rank Mean=5 (0.3475)
+      qwen3_emb_0.6b      : Rank Max=6 (0.5629) | Rank Mean=7 (0.2548)
+      glot500             : Rank Max=7 (0.4829) | Rank Mean=6 (0.2879)
+      mmbert_base         : Rank Max=8 (0.4132) | Rank Mean=8 (0.1636)
+
+Experiment: full_flores (13 models)
+  All Models (13 models):
+    Spearman Rho: 0.9451 (p=1.1239e-06)
+    Kendall Tau:  0.8205 (p=1.3466e-05)
+    Model Rankings:
+      me5_base            : Rank Max=1 (0.8762) | Rank Mean=2 (0.3709)
+      labse               : Rank Max=2 (0.8001) | Rank Mean=1 (0.5267)
+      qwen3_emb_8b        : Rank Max=3 (0.6912) | Rank Mean=4 (0.3659)
+      qwen3_emb_4b        : Rank Max=4 (0.6382) | Rank Mean=6 (0.3008)
+      qwen3.5_9b          : Rank Max=5 (0.5881) | Rank Mean=3 (0.3696)
+      llama3.1_8b         : Rank Max=6 (0.5611) | Rank Mean=5 (0.3235)
+      qwen3_emb_0.6b      : Rank Max=7 (0.4827) | Rank Mean=9 (0.2033)
+      xlmr_large          : Rank Max=8 (0.4269) | Rank Mean=7 (0.2450)
+      glot500             : Rank Max=9 (0.3761) | Rank Mean=8 (0.2211)
+      mmbert_base         : Rank Max=10 (0.3033) | Rank Mean=10 (0.1171)
+      qwen3_1.7b          : Rank Max=11 (0.3008) | Rank Mean=12 (0.1062)
+      qwen3_4b            : Rank Max=12 (0.2597) | Rank Mean=11 (0.1157)
+      qwen3_0.6b          : Rank Max=13 (0.1775) | Rank Mean=13 (0.0593)
+  Decoder-only (5 models):
+    Spearman Rho: 0.9000 (p=3.7386e-02)
+    Kendall Tau:  0.8000 (p=8.3333e-02)
+    Model Rankings:
+      qwen3.5_9b          : Rank Max=1 (0.5881) | Rank Mean=1 (0.3696)
+      llama3.1_8b         : Rank Max=2 (0.5611) | Rank Mean=2 (0.3235)
+      qwen3_1.7b          : Rank Max=3 (0.3008) | Rank Mean=4 (0.1062)
+      qwen3_4b            : Rank Max=4 (0.2597) | Rank Mean=3 (0.1157)
+      qwen3_0.6b          : Rank Max=5 (0.1775) | Rank Mean=5 (0.0593)
+  Encoder-only (8 models):
+    Spearman Rho: 0.9048 (p=2.0083e-03)
+    Kendall Tau:  0.7857 (p=5.5060e-03)
+    Model Rankings:
+      me5_base            : Rank Max=1 (0.8762) | Rank Mean=2 (0.3709)
+      labse               : Rank Max=2 (0.8001) | Rank Mean=1 (0.5267)
+      qwen3_emb_8b        : Rank Max=3 (0.6912) | Rank Mean=3 (0.3659)
+      qwen3_emb_4b        : Rank Max=4 (0.6382) | Rank Mean=4 (0.3008)
+      qwen3_emb_0.6b      : Rank Max=5 (0.4827) | Rank Mean=7 (0.2033)
+      xlmr_large          : Rank Max=6 (0.4269) | Rank Mean=5 (0.2450)
+      glot500             : Rank Max=7 (0.3761) | Rank Mean=6 (0.2211)
+      mmbert_base         : Rank Max=8 (0.3033) | Rank Mean=8 (0.1171)
+
+Experiment: bible_table1 (16 models)
+  All Models (16 models):
+    Spearman Rho: 0.9765 (p=1.0062e-10)
+    Kendall Tau:  0.9000 (p=4.7256e-09)
+    Model Rankings:
+      me5_base            : Rank Max=1 (0.8950) | Rank Mean=2 (0.3170)
+      labse               : Rank Max=2 (0.8376) | Rank Mean=1 (0.5039)
+      qwen3_emb_8b        : Rank Max=3 (0.5561) | Rank Mean=3 (0.2594)
+      glot500             : Rank Max=4 (0.4832) | Rank Mean=5 (0.2318)
+      qwen3_emb_4b        : Rank Max=5 (0.4825) | Rank Mean=6 (0.2190)
+      qwen3.5_9b          : Rank Max=6 (0.4769) | Rank Mean=4 (0.2550)
+      apertus8b           : Rank Max=7 (0.4242) | Rank Mean=9 (0.1815)
+      llama3.1_8b         : Rank Max=8 (0.4180) | Rank Mean=7 (0.2076)
+      xlmr_large          : Rank Max=9 (0.4025) | Rank Mean=8 (0.1842)
+      qwen3_emb_0.6b      : Rank Max=10 (0.3449) | Rank Mean=10 (0.1472)
+      qwen3_8b            : Rank Max=11 (0.2900) | Rank Mean=11 (0.1263)
+      mmbert_base         : Rank Max=12 (0.2622) | Rank Mean=13 (0.0931)
+      mistral_7b_v03      : Rank Max=13 (0.2571) | Rank Mean=12 (0.1179)
+      qwen3_4b            : Rank Max=14 (0.1901) | Rank Mean=14 (0.0827)
+      qwen3_1.7b          : Rank Max=15 (0.1456) | Rank Mean=15 (0.0518)
+      qwen3_0.6b          : Rank Max=16 (0.1253) | Rank Mean=16 (0.0371)
+  Decoder-only (8 models):
+    Spearman Rho: 0.9762 (p=3.3144e-05)
+    Kendall Tau:  0.9286 (p=3.9683e-04)
+    Model Rankings:
+      qwen3.5_9b          : Rank Max=1 (0.4769) | Rank Mean=1 (0.2550)
+      apertus8b           : Rank Max=2 (0.4242) | Rank Mean=3 (0.1815)
+      llama3.1_8b         : Rank Max=3 (0.4180) | Rank Mean=2 (0.2076)
+      qwen3_8b            : Rank Max=4 (0.2900) | Rank Mean=4 (0.1263)
+      mistral_7b_v03      : Rank Max=5 (0.2571) | Rank Mean=5 (0.1179)
+      qwen3_4b            : Rank Max=6 (0.1901) | Rank Mean=6 (0.0827)
+      qwen3_1.7b          : Rank Max=7 (0.1456) | Rank Mean=7 (0.0518)
+      qwen3_0.6b          : Rank Max=8 (0.1253) | Rank Mean=8 (0.0371)
+  Encoder-only (8 models):
+    Spearman Rho: 0.9762 (p=3.3144e-05)
+    Kendall Tau:  0.9286 (p=3.9683e-04)
+    Model Rankings:
+      me5_base            : Rank Max=1 (0.8950) | Rank Mean=2 (0.3170)
+      labse               : Rank Max=2 (0.8376) | Rank Mean=1 (0.5039)
+      qwen3_emb_8b        : Rank Max=3 (0.5561) | Rank Mean=3 (0.2594)
+      glot500             : Rank Max=4 (0.4832) | Rank Mean=4 (0.2318)
+      qwen3_emb_4b        : Rank Max=5 (0.4825) | Rank Mean=5 (0.2190)
+      xlmr_large          : Rank Max=6 (0.4025) | Rank Mean=6 (0.1842)
+      qwen3_emb_0.6b      : Rank Max=7 (0.3449) | Rank Mean=7 (0.1472)
+      mmbert_base         : Rank Max=8 (0.2622) | Rank Mean=8 (0.0931)
+
+Experiment: bible (32 models)
+  All Models (32 models):
+    Spearman Rho: 0.9923 (p=8.8891e-29)
+    Kendall Tau:  0.9435 (p=1.1108e-24)
+    Model Rankings:
+      table1_me5_base     : Rank Max=1 (0.8950) | Rank Mean=2 (0.3170)
+      table1_labse        : Rank Max=2 (0.8376) | Rank Mean=1 (0.5039)
+      table1_qwen3_emb_8b : Rank Max=3 (0.5561) | Rank Mean=3 (0.2594)
+      table1_glot500      : Rank Max=4 (0.4832) | Rank Mean=5 (0.2318)
+      table1_qwen3_emb_4b : Rank Max=5 (0.4825) | Rank Mean=6 (0.2190)
+      table1_qwen3.5_9b   : Rank Max=6 (0.4769) | Rank Mean=4 (0.2550)
+      table1_apertus8b    : Rank Max=7 (0.4242) | Rank Mean=9 (0.1815)
+      table1_llama3.1_8b  : Rank Max=8 (0.4180) | Rank Mean=7 (0.2076)
+      table1_xlmr_large   : Rank Max=9 (0.4025) | Rank Mean=8 (0.1842)
+      table1_qwen3_emb_0.6b: Rank Max=10 (0.3449) | Rank Mean=10 (0.1472)
+      table1_qwen3_8b     : Rank Max=11 (0.2900) | Rank Mean=11 (0.1263)
+      table1_mmbert_base  : Rank Max=12 (0.2622) | Rank Mean=13 (0.0931)
+      table1_mistral_7b_v03: Rank Max=13 (0.2571) | Rank Mean=12 (0.1179)
+      me5_base            : Rank Max=14 (0.2040) | Rank Mean=16 (0.0521)
+      labse               : Rank Max=15 (0.1992) | Rank Mean=15 (0.0813)
+      table1_qwen3_4b     : Rank Max=16 (0.1901) | Rank Mean=14 (0.0827)
+      table1_qwen3_1.7b   : Rank Max=17 (0.1456) | Rank Mean=17 (0.0518)
+      table1_qwen3_0.6b   : Rank Max=18 (0.1253) | Rank Mean=21 (0.0371)
+      qwen3_emb_8b        : Rank Max=19 (0.1127) | Rank Mean=18 (0.0448)
+      glot500             : Rank Max=20 (0.0989) | Rank Mean=19 (0.0422)
+      qwen3_emb_4b        : Rank Max=21 (0.0929) | Rank Mean=22 (0.0352)
+      qwen3.5_9b          : Rank Max=22 (0.0838) | Rank Mean=20 (0.0375)
+      llama3.1_8b         : Rank Max=23 (0.0781) | Rank Mean=23 (0.0320)
+      qwen3_emb_0.6b      : Rank Max=24 (0.0700) | Rank Mean=24 (0.0249)
+      apertus_8b          : Rank Max=25 (0.0667) | Rank Mean=25 (0.0237)
+      xlmr_large          : Rank Max=26 (0.0514) | Rank Mean=26 (0.0215)
+      qwen3_8b            : Rank Max=27 (0.0499) | Rank Mean=27 (0.0186)
+      mistral_7b_v03      : Rank Max=28 (0.0465) | Rank Mean=28 (0.0181)
+      mmbert_base         : Rank Max=29 (0.0427) | Rank Mean=29 (0.0132)
+      qwen3_4b            : Rank Max=30 (0.0308) | Rank Mean=30 (0.0113)
+      qwen3_0.6b          : Rank Max=31 (0.0228) | Rank Mean=32 (0.0060)
+      qwen3_1.7b          : Rank Max=32 (0.0214) | Rank Mean=31 (0.0065)
+  Decoder-only (7 models):
+    Spearman Rho: 0.9643 (p=4.5415e-04)
+    Kendall Tau:  0.9048 (p=2.7778e-03)
+    Model Rankings:
+      qwen3.5_9b          : Rank Max=1 (0.0838) | Rank Mean=1 (0.0375)
+      llama3.1_8b         : Rank Max=2 (0.0781) | Rank Mean=2 (0.0320)
+      qwen3_8b            : Rank Max=3 (0.0499) | Rank Mean=3 (0.0186)
+      mistral_7b_v03      : Rank Max=4 (0.0465) | Rank Mean=4 (0.0181)
+      qwen3_4b            : Rank Max=5 (0.0308) | Rank Mean=5 (0.0113)
+      qwen3_0.6b          : Rank Max=6 (0.0228) | Rank Mean=7 (0.0060)
+      qwen3_1.7b          : Rank Max=7 (0.0214) | Rank Mean=6 (0.0065)
+  Encoder-only (8 models):
+    Spearman Rho: 0.9762 (p=3.3144e-05)
+    Kendall Tau:  0.9286 (p=3.9683e-04)
+    Model Rankings:
+      me5_base            : Rank Max=1 (0.2040) | Rank Mean=2 (0.0521)
+      labse               : Rank Max=2 (0.1992) | Rank Mean=1 (0.0813)
+      qwen3_emb_8b        : Rank Max=3 (0.1127) | Rank Mean=3 (0.0448)
+      glot500             : Rank Max=4 (0.0989) | Rank Mean=4 (0.0422)
+      qwen3_emb_4b        : Rank Max=5 (0.0929) | Rank Mean=5 (0.0352)
+      qwen3_emb_0.6b      : Rank Max=6 (0.0700) | Rank Mean=6 (0.0249)
+      xlmr_large          : Rank Max=7 (0.0514) | Rank Mean=7 (0.0215)
+      mmbert_base         : Rank Max=8 (0.0427) | Rank Mean=8 (0.0132)
+
+=== 2. MAX vs MEAN: Language Ranking Consistency (per model) ===
+
+Experiment: flores_table1_100
+  Average Spearman Rho across 16 models: 0.9396 (Min=0.6762, Max=0.9917)
+  Average Kendall Tau across 16 models:  0.8463 (Min=0.5486, Max=0.9327)
+
+Experiment: flores_table1_2000
+  Average Spearman Rho across 14 models: 0.9608 (Min=0.8059, Max=0.9965)
+  Average Kendall Tau across 14 models:  0.8750 (Min=0.6664, Max=0.9572)
+
+Experiment: full_flores
+  Average Spearman Rho across 13 models: 0.9754 (Min=0.9026, Max=0.9968)
+  Average Kendall Tau across 13 models:  0.8913 (Min=0.7504, Max=0.9554)
+
+Experiment: bible_table1
+  Average Spearman Rho across 16 models: 0.9676 (Min=0.8511, Max=0.9930)
+  Average Kendall Tau across 16 models:  0.8890 (Min=0.6994, Max=0.9435)
+
+Experiment: bible
+  Average Spearman Rho across 32 models: 0.9405 (Min=0.8193, Max=0.9930)
+  Average Kendall Tau across 32 models:  0.8523 (Min=0.6994, Max=0.9484)
+
+=== 3. SUBSET vs FULL: Language Ranking Consistency ===
+
+Comparing Flores Table 1 (100 sentences) vs (2000 sentences) - 14 overlapping models:
+  All models:
+    Max metric  - Avg Rho: 0.9552 (Min=0.7821, Max=0.9881) | Avg Tau: 0.8747
+    Mean metric - Avg Rho: 0.9880 (Min=0.9750, Max=0.9965) | Avg Tau: 0.9215
+  Decoder models:
+    Max metric  - Avg Rho: 0.9774 (Min=0.9677, Max=0.9851) | Avg Tau: 0.8974
+    Mean metric - Avg Rho: 0.9866 (Min=0.9766, Max=0.9965) | Avg Tau: 0.9177
+  Encoder models:
+    Max metric  - Avg Rho: 0.9386 (Min=0.7821, Max=0.9881) | Avg Tau: 0.8577
+    Mean metric - Avg Rho: 0.9891 (Min=0.9750, Max=0.9944) | Avg Tau: 0.9244
+
+Model Ranking consistency for Flores Table 1 (100 vs 2000 sents):
+  Metric MAX: Spearman Rho=0.9956, Kendall Tau=0.9780
+  Metric MEAN: Spearman Rho=1.0000, Kendall Tau=1.0000
+
+Comparing Flores Table 1 (116 langs) vs Flores Full (204 langs) - 2000 sents - 12 overlapping models:
+  glot500             : Max Rho=1.0000 | Mean Rho=1.0000
+  labse               : Max Rho=1.0000 | Mean Rho=1.0000
+  me5_base            : Max Rho=1.0000 | Mean Rho=1.0000
+  mmbert_base         : Max Rho=1.0000 | Mean Rho=1.0000
+  qwen3.5_9b          : Max Rho=1.0000 | Mean Rho=1.0000
+  qwen3_0.6b          : Max Rho=1.0000 | Mean Rho=1.0000
+  qwen3_1.7b          : Max Rho=1.0000 | Mean Rho=1.0000
+  qwen3_4b            : Max Rho=1.0000 | Mean Rho=1.0000
+  qwen3_emb_0.6b      : Max Rho=1.0000 | Mean Rho=1.0000
+  qwen3_emb_4b        : Max Rho=1.0000 | Mean Rho=1.0000
+  qwen3_emb_8b        : Max Rho=1.0000 | Mean Rho=1.0000
+  xlmr_large          : Max Rho=1.0000 | Mean Rho=1.0000
+
+Comparing Bible Table 1 (101 langs) vs Bible Full (1401 langs) - 15 overlapping models:
+  glot500             : Max Rho=1.0000 | Mean Rho=1.0000
+  labse               : Max Rho=1.0000 | Mean Rho=1.0000
+  llama3.1_8b         : Max Rho=1.0000 | Mean Rho=1.0000
+  me5_base            : Max Rho=1.0000 | Mean Rho=1.0000
+  mistral_7b_v03      : Max Rho=1.0000 | Mean Rho=1.0000
+  mmbert_base         : Max Rho=1.0000 | Mean Rho=1.0000
+  qwen3.5_9b          : Max Rho=0.9995 | Mean Rho=0.9999
+  qwen3_0.6b          : Max Rho=0.9942 | Mean Rho=0.9990
+  qwen3_1.7b          : Max Rho=0.9957 | Mean Rho=0.9983
+  qwen3_4b            : Max Rho=0.9996 | Mean Rho=0.9994
+  qwen3_8b            : Max Rho=1.0000 | Mean Rho=1.0000
+  qwen3_emb_0.6b      : Max Rho=1.0000 | Mean Rho=1.0000
+  qwen3_emb_4b        : Max Rho=1.0000 | Mean Rho=1.0000
+  qwen3_emb_8b        : Max Rho=1.0000 | Mean Rho=1.0000
+  xlmr_large          : Max Rho=1.0000 | Mean Rho=1.0000
+  Average over all models: Max Rho=0.9993, Mean Rho=0.9998
+
+=== 4. FLORES vs BIBLE ===
+
+Comparing Flores Table 1 vs Bible Table 1 - 16 overlapping models:
+  Model Ranking correlation between Flores Table 1 and Bible Table 1:
+    Max metric:  Spearman Rho = 0.8294
+    Mean metric: Spearman Rho = 0.9088
+
+Language ranking correlation per model (overlapping languages):
+  apertus8b           : Overlap Langs=89 | Max Rho=0.8197 | Mean Rho=0.8479
+  glot500             : Overlap Langs=89 | Max Rho=0.6648 | Mean Rho=0.6847
+  labse               : Overlap Langs=89 | Max Rho=0.3918 | Mean Rho=0.6604
+  llama3.1_8b         : Overlap Langs=89 | Max Rho=0.9258 | Mean Rho=0.9379
+  me5_base            : Overlap Langs=89 | Max Rho=0.5151 | Mean Rho=0.7222
+  mistral_7b_v03      : Overlap Langs=89 | Max Rho=0.9152 | Mean Rho=0.9389
+  mmbert_base         : Overlap Langs=89 | Max Rho=0.8761 | Mean Rho=0.8704
+  qwen3.5_9b          : Overlap Langs=89 | Max Rho=0.8922 | Mean Rho=0.9257
+  qwen3_0.6b          : Overlap Langs=89 | Max Rho=0.8796 | Mean Rho=0.8810
+  qwen3_1.7b          : Overlap Langs=89 | Max Rho=0.9486 | Mean Rho=0.9237
+  qwen3_4b            : Overlap Langs=89 | Max Rho=0.9054 | Mean Rho=0.9013
+  qwen3_8b            : Overlap Langs=89 | Max Rho=0.9419 | Mean Rho=0.9513
+  qwen3_emb_0.6b      : Overlap Langs=89 | Max Rho=0.9015 | Mean Rho=0.8912
+  qwen3_emb_4b        : Overlap Langs=89 | Max Rho=0.9480 | Mean Rho=0.9384
+  qwen3_emb_8b        : Overlap Langs=89 | Max Rho=0.9177 | Mean Rho=0.9335
+  xlmr_large          : Overlap Langs=89 | Max Rho=0.8842 | Mean Rho=0.8945
+  Average across all models: Max Rho=0.8330, Mean Rho=0.8689

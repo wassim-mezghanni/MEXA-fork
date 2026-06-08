@@ -109,7 +109,7 @@ export function ScoreVsSizeChart({
           <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider">{title}</h3>
           {subtitle && <p className="text-xs text-on-surface-variant font-label mt-1">{subtitle}</p>}
         </div>
-        <div className="w-full md:w-64 shrink-0">
+        <div className="w-full md:w-80 shrink-0">
           <Select
             label="Experiment"
             value={variantKey}

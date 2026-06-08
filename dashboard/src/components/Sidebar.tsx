@@ -125,6 +125,7 @@ const BOTTOM_NAV: TopNavItem[] = [
   { icon: 'grid_view', label: 'Alignment', path: '/alignment' },
   { icon: 'analytics', label: 'Distribution', path: '/distribution' },
   { icon: 'compare_arrows', label: 'Comparison', path: '/comparison' },
+  { icon: 'rule', label: 'Validation', path: '/validation' },
 ];
 
 /* ── Collapsible Model Section ── */

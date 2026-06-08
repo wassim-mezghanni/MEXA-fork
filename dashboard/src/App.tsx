@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
 import Overview from './pages/Overview';
 import MexaFindings from './pages/MexaFindings';
+import RankingValidation from './pages/RankingValidation';
 
 // Llama 3.1 8B
 import Llama31FloresFindings from './pages/Llama31FloresFindings';
@@ -214,6 +215,7 @@ function App() {
                 {/* General */}
                 <Route path="/" element={<Overview />} />
                 <Route path="/findings" element={<MexaFindings />} />
+                <Route path="/validation" element={<RankingValidation />} />
 
                 {/* Llama 3.1 8B */}
                 <Route path="/llama31/flores" element={<Llama31FloresFindings />} />

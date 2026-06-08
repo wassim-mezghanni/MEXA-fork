@@ -1,0 +1,1777 @@
+{
+  "/Users/wassim/MEXA-fork/compute_mexa.py": {
+    "mtime": 1779662387.2805157,
+    "ast_hash": "901161e1fcbcb0a2315512afa40149fb",
+    "semantic_hash": "901161e1fcbcb0a2315512afa40149fb"
+  },
+  "/Users/wassim/MEXA-fork/compute_projections.py": {
+    "mtime": 1778960518.0,
+    "ast_hash": "45851b90ddb14a7f09b452a87655733d",
+    "semantic_hash": "45851b90ddb14a7f09b452a87655733d"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/package.json": {
+    "mtime": 1775392962.0,
+    "ast_hash": "87e3662ce73d003af3a6ab6ea03ff367",
+    "semantic_hash": "87e3662ce73d003af3a6ab6ea03ff367"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/App.tsx": {
+    "mtime": 1780925490.592905,
+    "ast_hash": "8ba780ffe932f6ff6eeb0fa80d9a936b",
+    "semantic_hash": "8ba780ffe932f6ff6eeb0fa80d9a936b"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/charts/AttentionFlowExplorer.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "0670abf44fd355bb4d1b3d1bfee7931e",
+    "semantic_hash": "0670abf44fd355bb4d1b3d1bfee7931e"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/charts/BarChart.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "5bc72f21c15e03e1fde8c8f5de916d10",
+    "semantic_hash": "5bc72f21c15e03e1fde8c8f5de916d10"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/charts/CategoryBarList.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "ac1700f5b8cfe2eefcab45237d14764f",
+    "semantic_hash": "ac1700f5b8cfe2eefcab45237d14764f"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/charts/CorrelationMatrix.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "6d815a257e861d7559d805e35335de45",
+    "semantic_hash": "6d815a257e861d7559d805e35335de45"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/charts/DataTable.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "73ddaaeebdae502506c1cb0fe37fa6d2",
+    "semantic_hash": "73ddaaeebdae502506c1cb0fe37fa6d2"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/charts/DonutChart.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "59d81473437e5add598159df539d1154",
+    "semantic_hash": "59d81473437e5add598159df539d1154"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/charts/EmbeddingProjection.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "47961f4f5cea46eab086315797f8a85d",
+    "semantic_hash": "47961f4f5cea46eab086315797f8a85d"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/charts/FeatureRadar.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "1357757e470b5edff11588a7d544e13e",
+    "semantic_hash": "1357757e470b5edff11588a7d544e13e"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/charts/KPICard.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "037137a9e6559150a6e8406763b46c99",
+    "semantic_hash": "037137a9e6559150a6e8406763b46c99"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/charts/LatentSpaceProjection.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "16f200afdfac156c985ca7b91189e2be",
+    "semantic_hash": "16f200afdfac156c985ca7b91189e2be"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/charts/LayerwiseHeatmap.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "98ec75ca9ca52a438a5e3e2adfb39aab",
+    "semantic_hash": "98ec75ca9ca52a438a5e3e2adfb39aab"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/charts/LineChart.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "bb2cfc5a988b3e04b7792ade5b656a33",
+    "semantic_hash": "bb2cfc5a988b3e04b7792ade5b656a33"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/charts/ScoreDistribution.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "e22a6c39b8aa55c6d37e6564ae979727",
+    "semantic_hash": "e22a6c39b8aa55c6d37e6564ae979727"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/charts/ScoreVsSizeChart.tsx": {
+    "mtime": 1780142901.2491777,
+    "ast_hash": "f40588bd347cf9ff825da7cc6fe2f7e5",
+    "semantic_hash": "f40588bd347cf9ff825da7cc6fe2f7e5"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/components/ExperimentFindings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "5fe9d22120037c9f63de043bbdcfe2f7",
+    "semantic_hash": "5fe9d22120037c9f63de043bbdcfe2f7"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/components/Heatmap.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "f1dced0de8a176a86a5d153b9c968533",
+    "semantic_hash": "f1dced0de8a176a86a5d153b9c968533"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/components/ModelComparison.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "ad608b72db7cd09fd77a8fb79841a405",
+    "semantic_hash": "ad608b72db7cd09fd77a8fb79841a405"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/components/ScoreRanking.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "5900dbb32e81d8210740d98569159349",
+    "semantic_hash": "5900dbb32e81d8210740d98569159349"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/components/Sidebar.tsx": {
+    "mtime": 1780925463.379654,
+    "ast_hash": "4219f911b674ada3f325a0064f17b3b5",
+    "semantic_hash": "4219f911b674ada3f325a0064f17b3b5"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/form/Checkbox.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "6aa0537768b668ca6ddf62e401ff90fd",
+    "semantic_hash": "6aa0537768b668ca6ddf62e401ff90fd"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/form/DatePicker.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "df0cbc16549f3e04c6762c00a11d22a6",
+    "semantic_hash": "df0cbc16549f3e04c6762c00a11d22a6"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/form/Input.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "45d2dd9368a5bec22a6fb1fe7b32e385",
+    "semantic_hash": "45d2dd9368a5bec22a6fb1fe7b32e385"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/form/LayerSlider.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "72db135a5903aa6d7d9decc640361733",
+    "semantic_hash": "72db135a5903aa6d7d9decc640361733"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/form/RadioButton.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "60ec29af89cdc59b058f2a9dbec96f1b",
+    "semantic_hash": "60ec29af89cdc59b058f2a9dbec96f1b"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/form/Select.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "cf561b619e32e382285b9073e56c5ef4",
+    "semantic_hash": "cf561b619e32e382285b9073e56c5ef4"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/form/Toggle.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "a5b3a0e420da631800ef80e8de1df295",
+    "semantic_hash": "a5b3a0e420da631800ef80e8de1df295"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/main.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "42c0b1d9c2751a5e4e55876cee46fc57",
+    "semantic_hash": "42c0b1d9c2751a5e4e55876cee46fc57"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/ApertusBibleFindings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "1b640ba7ccda56b621d2e447717521f5",
+    "semantic_hash": "1b640ba7ccda56b621d2e447717521f5"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/ApertusFloresFindings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "da4b158b11c97fa2d90f2f8d78862a15",
+    "semantic_hash": "da4b158b11c97fa2d90f2f8d78862a15"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/ApertusFloresTable1_2000Findings.tsx": {
+    "mtime": 1779531481.2097573,
+    "ast_hash": "f389d9d2e8633234bd784f54b8aa02f9",
+    "semantic_hash": "f389d9d2e8633234bd784f54b8aa02f9"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Llama31BibleFindings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "aaba20241ba9f53c1b5f899f7ee7f604",
+    "semantic_hash": "aaba20241ba9f53c1b5f899f7ee7f604"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Llama31BibleTable1Findings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "624801cbf48a16a45122d8019d13cccc",
+    "semantic_hash": "624801cbf48a16a45122d8019d13cccc"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Llama31FloresFindings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "6b06002f3cf6cc056de544755ada181b",
+    "semantic_hash": "6b06002f3cf6cc056de544755ada181b"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Llama31FloresTable1Findings.tsx": {
+    "mtime": 1777809221.0,
+    "ast_hash": "fdc7f2e6758856d4f7b6fb84229f5c9d",
+    "semantic_hash": "fdc7f2e6758856d4f7b6fb84229f5c9d"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Llama31FullDatasetFindings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "1503e50603e42427b6d32680a6451a16",
+    "semantic_hash": "1503e50603e42427b6d32680a6451a16"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Llama31Table1Findings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "7e83f1f2bb6f094ad2b7e6e2f18fdf3a",
+    "semantic_hash": "7e83f1f2bb6f094ad2b7e6e2f18fdf3a"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/MexaFindings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "37e8ef241e7717ad118b4fe169a9a4ac",
+    "semantic_hash": "37e8ef241e7717ad118b4fe169a9a4ac"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/MistralBibleFindings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "434273195660afc9fe68fba67c015ef0",
+    "semantic_hash": "434273195660afc9fe68fba67c015ef0"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/MistralBibleTable1Findings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "bd04db2b2a4087d4dedc02ac7ec5153c",
+    "semantic_hash": "bd04db2b2a4087d4dedc02ac7ec5153c"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/MistralFindings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "6715e9907613bd099fb36fba3891555f",
+    "semantic_hash": "6715e9907613bd099fb36fba3891555f"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/MistralFloresFindings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "1bc1aa49504446036b0adbdf4ee89e86",
+    "semantic_hash": "1bc1aa49504446036b0adbdf4ee89e86"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/MistralFloresTable1Findings.tsx": {
+    "mtime": 1777809309.0,
+    "ast_hash": "12880487144e52191591bf04d4081c11",
+    "semantic_hash": "12880487144e52191591bf04d4081c11"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/MyFindings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "00660133c7d01a96e8bc644e6e899663",
+    "semantic_hash": "00660133c7d01a96e8bc644e6e899663"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Overview.tsx": {
+    "mtime": 1780925457.3824997,
+    "ast_hash": "0bba99ba67afaf0ebeacf35a52950984",
+    "semantic_hash": "0bba99ba67afaf0ebeacf35a52950984"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen306BBibleFindings.tsx": {
+    "mtime": 1780141658.736148,
+    "ast_hash": "7661decb690be1f5d83ea2539a94f0cb",
+    "semantic_hash": "7661decb690be1f5d83ea2539a94f0cb"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen306BBibleTable1Findings.tsx": {
+    "mtime": 1779225352.0,
+    "ast_hash": "1794a1651d9ac1f59162ebdec26b61df",
+    "semantic_hash": "1794a1651d9ac1f59162ebdec26b61df"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen306BFloresFindings.tsx": {
+    "mtime": 1780141650.9369187,
+    "ast_hash": "eea1229fda0f6c5b8d07ab9e33c9573e",
+    "semantic_hash": "eea1229fda0f6c5b8d07ab9e33c9573e"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen306BFloresTable1Findings.tsx": {
+    "mtime": 1779225350.0,
+    "ast_hash": "6eeafbe50027503e4cbb2ba654c691b4",
+    "semantic_hash": "6eeafbe50027503e4cbb2ba654c691b4"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen317BBibleFindings.tsx": {
+    "mtime": 1780141638.4029498,
+    "ast_hash": "da0ef26f5cfb7bd761c0986228a5cafd",
+    "semantic_hash": "da0ef26f5cfb7bd761c0986228a5cafd"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen317BBibleTable1Findings.tsx": {
+    "mtime": 1779225341.0,
+    "ast_hash": "0787d749fac17185ad59a9e230132d7c",
+    "semantic_hash": "0787d749fac17185ad59a9e230132d7c"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen317BFloresFindings.tsx": {
+    "mtime": 1780141630.7201693,
+    "ast_hash": "98daf72f2f30903c2e02c19fbe1018ad",
+    "semantic_hash": "98daf72f2f30903c2e02c19fbe1018ad"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen317BFloresTable1Findings.tsx": {
+    "mtime": 1779225339.0,
+    "ast_hash": "a2f4a78434fe8852a2e642c12564219c",
+    "semantic_hash": "a2f4a78434fe8852a2e642c12564219c"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen34BBibleFindings.tsx": {
+    "mtime": 1780141621.5212805,
+    "ast_hash": "b017f96f82e1d7590430f15d20f4ec43",
+    "semantic_hash": "b017f96f82e1d7590430f15d20f4ec43"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen34BBibleTable1Findings.tsx": {
+    "mtime": 1779225330.0,
+    "ast_hash": "5551496bb05b6945f76dd36f3ce1b372",
+    "semantic_hash": "5551496bb05b6945f76dd36f3ce1b372"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen34BFloresFindings.tsx": {
+    "mtime": 1780141610.6514957,
+    "ast_hash": "10a2a9f9c77d243d8ad067041a20c748",
+    "semantic_hash": "10a2a9f9c77d243d8ad067041a20c748"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen34BFloresTable1Findings.tsx": {
+    "mtime": 1779225328.0,
+    "ast_hash": "9e0188dd28acddc868091926f120df10",
+    "semantic_hash": "9e0188dd28acddc868091926f120df10"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen35BibleFindings.tsx": {
+    "mtime": 1778922142.0,
+    "ast_hash": "c58fba0cbc75932241acece988f5861b",
+    "semantic_hash": "c58fba0cbc75932241acece988f5861b"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen35BibleTable1Findings.tsx": {
+    "mtime": 1778922173.0,
+    "ast_hash": "0a8b9b3cb9c4099c2df1dbf5ecf2c4d1",
+    "semantic_hash": "0a8b9b3cb9c4099c2df1dbf5ecf2c4d1"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen35FloresFindings.tsx": {
+    "mtime": 1778922133.0,
+    "ast_hash": "6f7f16cd9125032d4c2055548fe4d613",
+    "semantic_hash": "6f7f16cd9125032d4c2055548fe4d613"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen35FloresTable1Findings.tsx": {
+    "mtime": 1778922152.0,
+    "ast_hash": "c07fdb376704ce728b0cf086f059b0ae",
+    "semantic_hash": "c07fdb376704ce728b0cf086f059b0ae"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen35FloresTable1_2000Findings.tsx": {
+    "mtime": 1779531479.1705093,
+    "ast_hash": "a7c96b228414ce5d6be1c50eb643c701",
+    "semantic_hash": "a7c96b228414ce5d6be1c50eb643c701"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen3BibleFindings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "0eec6b6e1cb4a57bfacd3339d773b696",
+    "semantic_hash": "0eec6b6e1cb4a57bfacd3339d773b696"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen3BibleTable1Findings.tsx": {
+    "mtime": 1778920209.0,
+    "ast_hash": "a6835f610b3c608f36ca5a79ebd512ec",
+    "semantic_hash": "a6835f610b3c608f36ca5a79ebd512ec"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen3FloresFindings.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "877e3c31e4c35bc48a6a969811b293dd",
+    "semantic_hash": "877e3c31e4c35bc48a6a969811b293dd"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen3FloresTable1Findings.tsx": {
+    "mtime": 1778920622.0,
+    "ast_hash": "0302da155328b05543e8659e5dcdda72",
+    "semantic_hash": "0302da155328b05543e8659e5dcdda72"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/Qwen3FloresTable1_2000Findings.tsx": {
+    "mtime": 1779531475.3949792,
+    "ast_hash": "bbcfee385ab74a7d7f986b84e97ce646",
+    "semantic_hash": "bbcfee385ab74a7d7f986b84e97ce646"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/pages/RankingValidation.tsx": {
+    "mtime": 1780926509.943256,
+    "ast_hash": "f21c05cdc0e10d7da1959626e71a36cf",
+    "semantic_hash": "f21c05cdc0e10d7da1959626e71a36cf"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/Accordion.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "9b7a4608ac74f208addd2dd9b024a71e",
+    "semantic_hash": "9b7a4608ac74f208addd2dd9b024a71e"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/Alert.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "5e6512c2a9b87dc107b95b1235d0a0ac",
+    "semantic_hash": "5e6512c2a9b87dc107b95b1235d0a0ac"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/Button.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "952602209238c05bf870f08cfea9388f",
+    "semantic_hash": "952602209238c05bf870f08cfea9388f"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/Card.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "6574835524d768fb3d1ebf0e0bd55cc1",
+    "semantic_hash": "6574835524d768fb3d1ebf0e0bd55cc1"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/ChatBubble.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "004a7fedccfc5ba673480f5ab07a2131",
+    "semantic_hash": "004a7fedccfc5ba673480f5ab07a2131"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/ChatInput.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "85079417aa6f74b42f408b0acab1048f",
+    "semantic_hash": "85079417aa6f74b42f408b0acab1048f"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/Chip.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "59df3aae632a5ea4d095a9f44eac8f8f",
+    "semantic_hash": "59df3aae632a5ea4d095a9f44eac8f8f"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/ContextActions.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "009b90e6362e49d60f18664539c93ac9",
+    "semantic_hash": "009b90e6362e49d60f18664539c93ac9"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/Dropdown.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "cdb41040dabde84270023bb6e8ed9ee5",
+    "semantic_hash": "cdb41040dabde84270023bb6e8ed9ee5"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/ExperimentTimeline.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "b7bb519fd93f7da56d836a0c2363653c",
+    "semantic_hash": "b7bb519fd93f7da56d836a0c2363653c"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/FigureSection.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "24c58efaf66a029a1464cd93b4a6861b",
+    "semantic_hash": "24c58efaf66a029a1464cd93b4a6861b"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/FilterChip.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "d35b152c1407aa91989846f1bf397a77",
+    "semantic_hash": "d35b152c1407aa91989846f1bf397a77"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/FilterPanel.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "fc5c95ba28d27e2b945ac1139b4811a1",
+    "semantic_hash": "fc5c95ba28d27e2b945ac1139b4811a1"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/HeroBanner.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "07abe03dd83d20bc36c1f20a0afa281b",
+    "semantic_hash": "07abe03dd83d20bc36c1f20a0afa281b"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/LanguageCard.tsx": {
+    "mtime": 1777046047.0,
+    "ast_hash": "654cea7947e5a13c2f8d8ad2d52303e8",
+    "semantic_hash": "654cea7947e5a13c2f8d8ad2d52303e8"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/Modal.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "1c1192bb638b69a2b0a9fef80ad1049b",
+    "semantic_hash": "1c1192bb638b69a2b0a9fef80ad1049b"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/Pagination.tsx": {
+    "mtime": 1777046047.0,
+    "ast_hash": "7b71ee7d70f615e61f8bcf209b0c79b9",
+    "semantic_hash": "7b71ee7d70f615e61f8bcf209b0c79b9"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/ProfileCard.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "6b7ed75bed52d6b03db30a5f581bf73e",
+    "semantic_hash": "6b7ed75bed52d6b03db30a5f581bf73e"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/SearchInput.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "1130e0d65fa8b783ccbf5509bd6f7830",
+    "semantic_hash": "1130e0d65fa8b783ccbf5509bd6f7830"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/Skeleton.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "b69bdc0289fe5cd84241c4bfbccbdf6e",
+    "semantic_hash": "b69bdc0289fe5cd84241c4bfbccbdf6e"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/StatCard.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "8c0c4a4fb9716292e3940892f7146bb6",
+    "semantic_hash": "8c0c4a4fb9716292e3940892f7146bb6"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/Tabs.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "e06e88b87a28af62cc4ebd2fd0704228",
+    "semantic_hash": "e06e88b87a28af62cc4ebd2fd0704228"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/ToggleGroup.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "ff9dc60a2e9b0152685a4e05bd80ddff",
+    "semantic_hash": "ff9dc60a2e9b0152685a4e05bd80ddff"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/Toolbar.tsx": {
+    "mtime": 1777046048.0,
+    "ast_hash": "689da93a85418b047601f7504c09ba83",
+    "semantic_hash": "689da93a85418b047601f7504c09ba83"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/ui/UserModal.tsx": {
+    "mtime": 1777046047.0,
+    "ast_hash": "ac4f101ef4d202ca67db293f9964b9fd",
+    "semantic_hash": "ac4f101ef4d202ca67db293f9964b9fd"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/src/utils/exportToCsv.ts": {
+    "mtime": 1777046028.0,
+    "ast_hash": "b298bc5145a58df137b77e25a3b3568d",
+    "semantic_hash": "b298bc5145a58df137b77e25a3b3568d"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/tsconfig.json": {
+    "mtime": 1775388209.0,
+    "ast_hash": "000a70655166865f6791b38b9907c5e5",
+    "semantic_hash": "000a70655166865f6791b38b9907c5e5"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/vite.config.js": {
+    "mtime": 1775250465.0,
+    "ast_hash": "6c35e7cb0f79ab71ac96bd5196907b81",
+    "semantic_hash": "6c35e7cb0f79ab71ac96bd5196907b81"
+  },
+  "/Users/wassim/MEXA-fork/download_bible.py": {
+    "mtime": 1776599929.0,
+    "ast_hash": "fce4a483d8edd99ccc91e1b1159e4384",
+    "semantic_hash": "fce4a483d8edd99ccc91e1b1159e4384"
+  },
+  "/Users/wassim/MEXA-fork/embed_extractor.py": {
+    "mtime": 1780588684.2796924,
+    "ast_hash": "15c4f93ac35583b0633163e290fad20f",
+    "semantic_hash": "15c4f93ac35583b0633163e290fad20f"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_experiment/run_local_mac.sh": {
+    "mtime": 1780585227.4343956,
+    "ast_hash": "50b85e24e933cf6eadcf873503464185",
+    "semantic_hash": "50b85e24e933cf6eadcf873503464185"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_full_experiment/run_local_mac.sh": {
+    "mtime": 1780585227.460947,
+    "ast_hash": "e1d9b07d6af172bbf724bc87a1bfb3a5",
+    "semantic_hash": "e1d9b07d6af172bbf724bc87a1bfb3a5"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/acm_Arab.json": {
+    "mtime": 1777890565.0,
+    "ast_hash": "a24ba7ffa7777882096f77cc3ef9095d",
+    "semantic_hash": "a24ba7ffa7777882096f77cc3ef9095d"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/afr_Latn.json": {
+    "mtime": 1777890513.0,
+    "ast_hash": "737669157ada843625c78b94dfc6a27f",
+    "semantic_hash": "737669157ada843625c78b94dfc6a27f"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/als_Latn.json": {
+    "mtime": 1777890541.0,
+    "ast_hash": "e43308189c9597643e72034d0b725d65",
+    "semantic_hash": "e43308189c9597643e72034d0b725d65"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/amh_Ethi.json": {
+    "mtime": 1777890768.0,
+    "ast_hash": "d86ced229348ee6f18705362f7aca937",
+    "semantic_hash": "d86ced229348ee6f18705362f7aca937"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/apc_Arab.json": {
+    "mtime": 1777890867.0,
+    "ast_hash": "098a3647e1ba624d7f2eb78492f2dd40",
+    "semantic_hash": "098a3647e1ba624d7f2eb78492f2dd40"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/arb_Arab.json": {
+    "mtime": 1777890739.0,
+    "ast_hash": "ab458536df5d8185f1aa62e301c1161f",
+    "semantic_hash": "ab458536df5d8185f1aa62e301c1161f"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/arb_Latn.json": {
+    "mtime": 1777890958.0,
+    "ast_hash": "65792366076b8d7be7d0508b033022a3",
+    "semantic_hash": "65792366076b8d7be7d0508b033022a3"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/ars_Arab.json": {
+    "mtime": 1777890735.0,
+    "ast_hash": "5cd8dee0da9cba06d021668804970ef5",
+    "semantic_hash": "5cd8dee0da9cba06d021668804970ef5"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/arz_Arab.json": {
+    "mtime": 1777890968.0,
+    "ast_hash": "46ec12d85b75d3a46def7de2cd7d9a82",
+    "semantic_hash": "46ec12d85b75d3a46def7de2cd7d9a82"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/asm_Beng.json": {
+    "mtime": 1777890615.0,
+    "ast_hash": "9011f1599518d9cc21a8c6558e787107",
+    "semantic_hash": "9011f1599518d9cc21a8c6558e787107"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/ast_Latn.json": {
+    "mtime": 1777890888.0,
+    "ast_hash": "f92e969cbb42bb50812775d644c38373",
+    "semantic_hash": "f92e969cbb42bb50812775d644c38373"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/bam_Latn.json": {
+    "mtime": 1777890862.0,
+    "ast_hash": "c72199e45f5c9222993935feeb7e7bdd",
+    "semantic_hash": "c72199e45f5c9222993935feeb7e7bdd"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/ben_Beng.json": {
+    "mtime": 1777890893.0,
+    "ast_hash": "0dd25b393a69a6340de1f4c659c265b2",
+    "semantic_hash": "0dd25b393a69a6340de1f4c659c265b2"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/bod_Tibt.json": {
+    "mtime": 1777890822.0,
+    "ast_hash": "46a04e0217b09bb959ae446d616ed872",
+    "semantic_hash": "46a04e0217b09bb959ae446d616ed872"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/bul_Cyrl.json": {
+    "mtime": 1777890718.0,
+    "ast_hash": "a25894dd63e969cd10426114564489f6",
+    "semantic_hash": "a25894dd63e969cd10426114564489f6"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/cat_Latn.json": {
+    "mtime": 1777890545.0,
+    "ast_hash": "199f19ef7c86c3afd7e6e8a03f9ded43",
+    "semantic_hash": "199f19ef7c86c3afd7e6e8a03f9ded43"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/ceb_Latn.json": {
+    "mtime": 1777890517.0,
+    "ast_hash": "d97e440e9521a28e05ed61d6d113bef1",
+    "semantic_hash": "d97e440e9521a28e05ed61d6d113bef1"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/ces_Latn.json": {
+    "mtime": 1777890521.0,
+    "ast_hash": "e8b961b3539cad6e40656f0a3527b180",
+    "semantic_hash": "e8b961b3539cad6e40656f0a3527b180"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/ckb_Arab.json": {
+    "mtime": 1777890582.0,
+    "ast_hash": "2ee81c27e10805d9fb2528a2058bfb93",
+    "semantic_hash": "2ee81c27e10805d9fb2528a2058bfb93"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/dan_Latn.json": {
+    "mtime": 1777890933.0,
+    "ast_hash": "86a6b6198c0e8aa3c56e2767d6538ac1",
+    "semantic_hash": "86a6b6198c0e8aa3c56e2767d6538ac1"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/deu_Latn.json": {
+    "mtime": 1777890668.0,
+    "ast_hash": "b037437aadf5d122f1129177784b29e0",
+    "semantic_hash": "b037437aadf5d122f1129177784b29e0"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/ell_Grek.json": {
+    "mtime": 1777890908.0,
+    "ast_hash": "7aff40269bb64971380c1d019ec1c693",
+    "semantic_hash": "7aff40269bb64971380c1d019ec1c693"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/eng_Latn.json": {
+    "mtime": 1777890524.0,
+    "ast_hash": "1ed5ca8e7ece41673ac389f77d2456f6",
+    "semantic_hash": "1ed5ca8e7ece41673ac389f77d2456f6"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/est_Latn.json": {
+    "mtime": 1777890685.0,
+    "ast_hash": "4ae1ddba9f1c072210e93f2fe7d6750a",
+    "semantic_hash": "4ae1ddba9f1c072210e93f2fe7d6750a"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/eus_Latn.json": {
+    "mtime": 1777890656.0,
+    "ast_hash": "df161cfa5d85aa2d001e443aa0ab48f8",
+    "semantic_hash": "df161cfa5d85aa2d001e443aa0ab48f8"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/fin_Latn.json": {
+    "mtime": 1777890948.0,
+    "ast_hash": "8db77fa948a58961bf0be3ada85ceaa9",
+    "semantic_hash": "8db77fa948a58961bf0be3ada85ceaa9"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/fra_Latn.json": {
+    "mtime": 1777890610.0,
+    "ast_hash": "35da32874376b5edc97599bc98cb07fa",
+    "semantic_hash": "35da32874376b5edc97599bc98cb07fa"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/fuv_Latn.json": {
+    "mtime": 1777890710.0,
+    "ast_hash": "7323f4d68ef79596a36a40861628722f",
+    "semantic_hash": "7323f4d68ef79596a36a40861628722f"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/gaz_Latn.json": {
+    "mtime": 1777890872.0,
+    "ast_hash": "e4fa88a6938fad6bbccd3e937d7476ad",
+    "semantic_hash": "e4fa88a6938fad6bbccd3e937d7476ad"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/glg_Latn.json": {
+    "mtime": 1777890698.0,
+    "ast_hash": "1a9d9c79c33ae2a523b4c8ac06546644",
+    "semantic_hash": "1a9d9c79c33ae2a523b4c8ac06546644"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/grn_Latn.json": {
+    "mtime": 1777890851.0,
+    "ast_hash": "a581a06a3df1e174bab01ba24354b72d",
+    "semantic_hash": "a581a06a3df1e174bab01ba24354b72d"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/guj_Gujr.json": {
+    "mtime": 1777890938.0,
+    "ast_hash": "8bc34104b63c0d480d343f9f653f4b79",
+    "semantic_hash": "8bc34104b63c0d480d343f9f653f4b79"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/hat_Latn.json": {
+    "mtime": 1777890557.0,
+    "ast_hash": "5d1303af1e15fe771fcc3fe71f2304a8",
+    "semantic_hash": "5d1303af1e15fe771fcc3fe71f2304a8"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/hau_Latn.json": {
+    "mtime": 1777890639.0,
+    "ast_hash": "1adaaad9e7241620c7eb013e0f0b93e2",
+    "semantic_hash": "1adaaad9e7241620c7eb013e0f0b93e2"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/heb_Hebr.json": {
+    "mtime": 1777890652.0,
+    "ast_hash": "c03583cc28df23a3a7cfd56759edb968",
+    "semantic_hash": "c03583cc28df23a3a7cfd56759edb968"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/hin_Deva.json": {
+    "mtime": 1777890528.0,
+    "ast_hash": "4a8c6f15bb9d66fb7c4f64a957f47709",
+    "semantic_hash": "4a8c6f15bb9d66fb7c4f64a957f47709"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/hrv_Latn.json": {
+    "mtime": 1777890631.0,
+    "ast_hash": "3123a13805940ac841c121e6edfcc0f9",
+    "semantic_hash": "3123a13805940ac841c121e6edfcc0f9"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/hun_Latn.json": {
+    "mtime": 1777890714.0,
+    "ast_hash": "cc66688e5c826f455d08406b025c314a",
+    "semantic_hash": "cc66688e5c826f455d08406b025c314a"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/hye_Armn.json": {
+    "mtime": 1777890602.0,
+    "ast_hash": "72e864d9e679858c3e861d20d19ca8ba",
+    "semantic_hash": "72e864d9e679858c3e861d20d19ca8ba"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/ibo_Latn.json": {
+    "mtime": 1777890706.0,
+    "ast_hash": "b77dfd31d9e344fa3eba582c34fc8d99",
+    "semantic_hash": "b77dfd31d9e344fa3eba582c34fc8d99"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/ilo_Latn.json": {
+    "mtime": 1777890553.0,
+    "ast_hash": "26610702db4bfb6e058b5798dc43d01b",
+    "semantic_hash": "26610702db4bfb6e058b5798dc43d01b"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/ind_Latn.json": {
+    "mtime": 1777890923.0,
+    "ast_hash": "00c6fd753ae12193406edead1cd29ea7",
+    "semantic_hash": "00c6fd753ae12193406edead1cd29ea7"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/isl_Latn.json": {
+    "mtime": 1777890549.0,
+    "ast_hash": "9e07dbf89ca870fdc01f1913e27bff30",
+    "semantic_hash": "9e07dbf89ca870fdc01f1913e27bff30"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/ita_Latn.json": {
+    "mtime": 1777890764.0,
+    "ast_hash": "e495d5cf488ccdcebf7caef6ae6740cd",
+    "semantic_hash": "e495d5cf488ccdcebf7caef6ae6740cd"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/jav_Latn.json": {
+    "mtime": 1777890983.0,
+    "ast_hash": "358fbea4d322e2c688c0c4e3e4e47f7a",
+    "semantic_hash": "358fbea4d322e2c688c0c4e3e4e47f7a"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/jpn_Jpan.json": {
+    "mtime": 1777890928.0,
+    "ast_hash": "c336a62616364c3c33927b1179220233",
+    "semantic_hash": "c336a62616364c3c33927b1179220233"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/kan_Knda.json": {
+    "mtime": 1777890813.0,
+    "ast_hash": "af51f690f1a345618522c076a322e676",
+    "semantic_hash": "af51f690f1a345618522c076a322e676"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/kat_Geor.json": {
+    "mtime": 1777890785.0,
+    "ast_hash": "5fc48ae7b7a7456db69a0ec4c0808d22",
+    "semantic_hash": "5fc48ae7b7a7456db69a0ec4c0808d22"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/kaz_Cyrl.json": {
+    "mtime": 1777890818.0,
+    "ast_hash": "ea4aae30272a25fc84fe3aa45c5e7530",
+    "semantic_hash": "ea4aae30272a25fc84fe3aa45c5e7530"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/kea_Latn.json": {
+    "mtime": 1777890681.0,
+    "ast_hash": "88bc2a0689919da31bd0273554cb9cab",
+    "semantic_hash": "88bc2a0689919da31bd0273554cb9cab"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/khk_Cyrl.json": {
+    "mtime": 1777890988.0,
+    "ast_hash": "39d8297bfb47138aeff8be66993e6d68",
+    "semantic_hash": "39d8297bfb47138aeff8be66993e6d68"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/khm_Khmr.json": {
+    "mtime": 1777890882.0,
+    "ast_hash": "ca635bfb3e388810d3e36083cae424fc",
+    "semantic_hash": "ca635bfb3e388810d3e36083cae424fc"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/kin_Latn.json": {
+    "mtime": 1777890598.0,
+    "ast_hash": "e4d5fd3d05e19cfa68000c63b98b00b3",
+    "semantic_hash": "e4d5fd3d05e19cfa68000c63b98b00b3"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/kir_Cyrl.json": {
+    "mtime": 1777890918.0,
+    "ast_hash": "12909b7fe386d46cf6858d376245ef05",
+    "semantic_hash": "12909b7fe386d46cf6858d376245ef05"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/kor_Hang.json": {
+    "mtime": 1777890677.0,
+    "ast_hash": "246b6ffefb2bb2cacda284df95900c20",
+    "semantic_hash": "246b6ffefb2bb2cacda284df95900c20"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/lao_Laoo.json": {
+    "mtime": 1777890752.0,
+    "ast_hash": "413fef37b36fb03bf9336079320013c2",
+    "semantic_hash": "413fef37b36fb03bf9336079320013c2"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/lin_Latn.json": {
+    "mtime": 1777890561.0,
+    "ast_hash": "f21c67f2b122c8c61e7599ed423b71be",
+    "semantic_hash": "f21c67f2b122c8c61e7599ed423b71be"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/lit_Latn.json": {
+    "mtime": 1777890877.0,
+    "ast_hash": "aea261fde48f6a2b1fe4a037e96d4586",
+    "semantic_hash": "aea261fde48f6a2b1fe4a037e96d4586"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/lug_Latn.json": {
+    "mtime": 1777890789.0,
+    "ast_hash": "00cc9a110db3517d1a262861ccd6e1cd",
+    "semantic_hash": "00cc9a110db3517d1a262861ccd6e1cd"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/lvs_Latn.json": {
+    "mtime": 1777890537.0,
+    "ast_hash": "408f2a36ec5e0f28162d2334af8faa88",
+    "semantic_hash": "408f2a36ec5e0f28162d2334af8faa88"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/mal_Mlym.json": {
+    "mtime": 1777890694.0,
+    "ast_hash": "9cd1b394455c620a5f318dac6dcd726a",
+    "semantic_hash": "9cd1b394455c620a5f318dac6dcd726a"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/mar_Deva.json": {
+    "mtime": 1777890772.0,
+    "ast_hash": "c9f0cc7e558ec04dcc870fb9ac06e966",
+    "semantic_hash": "c9f0cc7e558ec04dcc870fb9ac06e966"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/mlt_Latn.json": {
+    "mtime": 1777890533.0,
+    "ast_hash": "ba85f137ef0ca7618fdd48fb50e6a8b0",
+    "semantic_hash": "ba85f137ef0ca7618fdd48fb50e6a8b0"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/mri_Latn.json": {
+    "mtime": 1777890577.0,
+    "ast_hash": "617b453bb719fc3ef944c2d0214afaa0",
+    "semantic_hash": "617b453bb719fc3ef944c2d0214afaa0"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/mya_Mymr.json": {
+    "mtime": 1777890805.0,
+    "ast_hash": "79909333cdc8f7a11705d560c7136fe1",
+    "semantic_hash": "79909333cdc8f7a11705d560c7136fe1"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/nld_Latn.json": {
+    "mtime": 1777890978.0,
+    "ast_hash": "1ccc60068d0bb540cb9f08300cdca9fe",
+    "semantic_hash": "1ccc60068d0bb540cb9f08300cdca9fe"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/nob_Latn.json": {
+    "mtime": 1777890793.0,
+    "ast_hash": "8e373f00ea0ba6b19193b1962fe09377",
+    "semantic_hash": "8e373f00ea0ba6b19193b1962fe09377"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/nya_Latn.json": {
+    "mtime": 1777890841.0,
+    "ast_hash": "ca797dda449146be1145d810cba0dc7c",
+    "semantic_hash": "ca797dda449146be1145d810cba0dc7c"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/oci_Latn.json": {
+    "mtime": 1777890837.0,
+    "ast_hash": "c313b0ff8ed2f8f5de9446e418923a3f",
+    "semantic_hash": "c313b0ff8ed2f8f5de9446e418923a3f"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/pan_Guru.json": {
+    "mtime": 1777890623.0,
+    "ast_hash": "fb2da516a3ca42aa7d84c4091b2ead53",
+    "semantic_hash": "fb2da516a3ca42aa7d84c4091b2ead53"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/pbt_Arab.json": {
+    "mtime": 1777890627.0,
+    "ast_hash": "d1d56347665070d020da91b3b6a756ce",
+    "semantic_hash": "d1d56347665070d020da91b3b6a756ce"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/pes_Arab.json": {
+    "mtime": 1777890590.0,
+    "ast_hash": "3fa0c5188ba88c5f2e77c247cfca7d75",
+    "semantic_hash": "3fa0c5188ba88c5f2e77c247cfca7d75"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/plt_Latn.json": {
+    "mtime": 1777890619.0,
+    "ast_hash": "08282dfc01db339274e7a1dc58bd3319",
+    "semantic_hash": "08282dfc01db339274e7a1dc58bd3319"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/pol_Latn.json": {
+    "mtime": 1777890660.0,
+    "ast_hash": "bfab1db0da5857efa001f2b71d82bc35",
+    "semantic_hash": "bfab1db0da5857efa001f2b71d82bc35"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/por_Latn.json": {
+    "mtime": 1777890664.0,
+    "ast_hash": "d586a5cdecf9dcbe9c5b75ec865210ea",
+    "semantic_hash": "d586a5cdecf9dcbe9c5b75ec865210ea"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/ron_Latn.json": {
+    "mtime": 1777890801.0,
+    "ast_hash": "64f736aeec4b932f332a59ffed9c89a8",
+    "semantic_hash": "64f736aeec4b932f332a59ffed9c89a8"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/rus_Cyrl.json": {
+    "mtime": 1777890856.0,
+    "ast_hash": "adf93e6dcb18d2c59d509734bffe3faf",
+    "semantic_hash": "adf93e6dcb18d2c59d509734bffe3faf"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/shn_Mymr.json": {
+    "mtime": 1777890809.0,
+    "ast_hash": "f4424b68703a79c010a5d4c3303982cc",
+    "semantic_hash": "f4424b68703a79c010a5d4c3303982cc"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/sin_Sinh.json": {
+    "mtime": 1777890781.0,
+    "ast_hash": "b9a2a009887dfa4988de66cffa5d78ea",
+    "semantic_hash": "b9a2a009887dfa4988de66cffa5d78ea"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/slk_Latn.json": {
+    "mtime": 1777890913.0,
+    "ast_hash": "58ad56ee7823a29bc178a76cdf7423ce",
+    "semantic_hash": "58ad56ee7823a29bc178a76cdf7423ce"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/slv_Latn.json": {
+    "mtime": 1777890606.0,
+    "ast_hash": "ebd7671c42ec68c86098451b90973d16",
+    "semantic_hash": "ebd7671c42ec68c86098451b90973d16"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/sna_Latn.json": {
+    "mtime": 1777890644.0,
+    "ast_hash": "e6af1b666550ded77e707af6c27c4d78",
+    "semantic_hash": "e6af1b666550ded77e707af6c27c4d78"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/som_Latn.json": {
+    "mtime": 1777890827.0,
+    "ast_hash": "351d68038d77f181bec0a81f713db974",
+    "semantic_hash": "351d68038d77f181bec0a81f713db974"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/sot_Latn.json": {
+    "mtime": 1777890776.0,
+    "ast_hash": "40ae55f0b3fcf40352ed5fb961c59960",
+    "semantic_hash": "40ae55f0b3fcf40352ed5fb961c59960"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/spa_Latn.json": {
+    "mtime": 1777890797.0,
+    "ast_hash": "25e68db2aac2a1e95528b7f14a2d13d6",
+    "semantic_hash": "25e68db2aac2a1e95528b7f14a2d13d6"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/ssw_Latn.json": {
+    "mtime": 1777890760.0,
+    "ast_hash": "3df545b17a42e1e2d146bffa656f4f13",
+    "semantic_hash": "3df545b17a42e1e2d146bffa656f4f13"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/sun_Latn.json": {
+    "mtime": 1777890747.0,
+    "ast_hash": "c15d8bf87a7eaa12b962a2ba530dc545",
+    "semantic_hash": "c15d8bf87a7eaa12b962a2ba530dc545"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/swe_Latn.json": {
+    "mtime": 1777890648.0,
+    "ast_hash": "909235775b2a0603518214f85e1ea80b",
+    "semantic_hash": "909235775b2a0603518214f85e1ea80b"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/swh_Latn.json": {
+    "mtime": 1777890943.0,
+    "ast_hash": "d6fe58df0f992c1ef7af71b384f83e62",
+    "semantic_hash": "d6fe58df0f992c1ef7af71b384f83e62"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/tam_Taml.json": {
+    "mtime": 1777890702.0,
+    "ast_hash": "3c3bf782c954eb309114d18ba5b56ed4",
+    "semantic_hash": "3c3bf782c954eb309114d18ba5b56ed4"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/tel_Telu.json": {
+    "mtime": 1777890689.0,
+    "ast_hash": "35d287ecac68637b972238b51d4402d7",
+    "semantic_hash": "35d287ecac68637b972238b51d4402d7"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/tgk_Cyrl.json": {
+    "mtime": 1777890953.0,
+    "ast_hash": "5f139688b1b2677010d848b0008e989b",
+    "semantic_hash": "5f139688b1b2677010d848b0008e989b"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/tgl_Latn.json": {
+    "mtime": 1777890756.0,
+    "ast_hash": "a3b701e5c3424a3daf0b4a3f93e0fd77",
+    "semantic_hash": "a3b701e5c3424a3daf0b4a3f93e0fd77"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/tha_Thai.json": {
+    "mtime": 1777890963.0,
+    "ast_hash": "d1ba4feb6e510cf99464274b72ab8258",
+    "semantic_hash": "d1ba4feb6e510cf99464274b72ab8258"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/tir_Ethi.json": {
+    "mtime": 1777890973.0,
+    "ast_hash": "0306fe9071dcc9815c5fb53ac4fe5501",
+    "semantic_hash": "0306fe9071dcc9815c5fb53ac4fe5501"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/tsn_Latn.json": {
+    "mtime": 1777890743.0,
+    "ast_hash": "773f784fc9c6158b0023cec440b66490",
+    "semantic_hash": "773f784fc9c6158b0023cec440b66490"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/tso_Latn.json": {
+    "mtime": 1777890903.0,
+    "ast_hash": "12719bae20581709581e1e48867042bd",
+    "semantic_hash": "12719bae20581709581e1e48867042bd"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/tur_Latn.json": {
+    "mtime": 1777890573.0,
+    "ast_hash": "addb02c036052beb1802a387fc1c4025",
+    "semantic_hash": "addb02c036052beb1802a387fc1c4025"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/ukr_Cyrl.json": {
+    "mtime": 1777890673.0,
+    "ast_hash": "155841054c3458982bc3a3b12911f7e9",
+    "semantic_hash": "155841054c3458982bc3a3b12911f7e9"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/urd_Arab.json": {
+    "mtime": 1777890731.0,
+    "ast_hash": "8a1e763adaf4d1428e7a9fbfb1e85d08",
+    "semantic_hash": "8a1e763adaf4d1428e7a9fbfb1e85d08"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/uzn_Latn.json": {
+    "mtime": 1777890594.0,
+    "ast_hash": "f3c9e157afd7da8ebb57ea49867fca1b",
+    "semantic_hash": "f3c9e157afd7da8ebb57ea49867fca1b"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/vie_Latn.json": {
+    "mtime": 1777890898.0,
+    "ast_hash": "8919be3fab4225e4f511b4916db6efa1",
+    "semantic_hash": "8919be3fab4225e4f511b4916db6efa1"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/war_Latn.json": {
+    "mtime": 1777890509.0,
+    "ast_hash": "50f9d23ff8de675cbf24552efafc835b",
+    "semantic_hash": "50f9d23ff8de675cbf24552efafc835b"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/wol_Latn.json": {
+    "mtime": 1777890723.0,
+    "ast_hash": "1a1250935270950a5e06e1b992d74554",
+    "semantic_hash": "1a1250935270950a5e06e1b992d74554"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/xho_Latn.json": {
+    "mtime": 1777890635.0,
+    "ast_hash": "93dc55c78171f1176a757a16b1e0b579",
+    "semantic_hash": "93dc55c78171f1176a757a16b1e0b579"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/yor_Latn.json": {
+    "mtime": 1777890586.0,
+    "ast_hash": "5bffb2b93c616f9f4cc9d85124484fba",
+    "semantic_hash": "5bffb2b93c616f9f4cc9d85124484fba"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/zho_Hans.json": {
+    "mtime": 1777890832.0,
+    "ast_hash": "1487c35e93d2c634a10b01404ae2019e",
+    "semantic_hash": "1487c35e93d2c634a10b01404ae2019e"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/zho_Hant.json": {
+    "mtime": 1777890846.0,
+    "ast_hash": "89c9e2f5f3fb71409b76ac4b07cf7f2b",
+    "semantic_hash": "89c9e2f5f3fb71409b76ac4b07cf7f2b"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/zsm_Latn.json": {
+    "mtime": 1777890569.0,
+    "ast_hash": "1d35774cd8f4f4468e3e13485bb0fe0b",
+    "semantic_hash": "1d35774cd8f4f4468e3e13485bb0fe0b"
+  },
+  "/Users/wassim/MEXA-fork/llama3.1 8B/FLORES_table1_2000_experiment/scores_100/zul_Latn.json": {
+    "mtime": 1777890727.0,
+    "ast_hash": "c7ba2e11a2abd9f7592aff2c714c0007",
+    "semantic_hash": "c7ba2e11a2abd9f7592aff2c714c0007"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_experiment/run_local_mac.sh": {
+    "mtime": 1780585227.0591955,
+    "ast_hash": "ecdea29ed1105bf7fb3cfe8f914edb4d",
+    "semantic_hash": "ecdea29ed1105bf7fb3cfe8f914edb4d"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/acm_Arab.json": {
+    "mtime": 1777891141.0,
+    "ast_hash": "3f7db59856e7515828f1dfc03e39dbc4",
+    "semantic_hash": "3f7db59856e7515828f1dfc03e39dbc4"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/afr_Latn.json": {
+    "mtime": 1777891119.0,
+    "ast_hash": "0b34ef341fcd86d5263e84fa54c4e8cd",
+    "semantic_hash": "0b34ef341fcd86d5263e84fa54c4e8cd"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/als_Latn.json": {
+    "mtime": 1777891102.0,
+    "ast_hash": "e2c1419e6a5927edfcd166307d7e5a54",
+    "semantic_hash": "e2c1419e6a5927edfcd166307d7e5a54"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/amh_Ethi.json": {
+    "mtime": 1777890903.0,
+    "ast_hash": "5e413b6a97ec42c92bfb299d0345e110",
+    "semantic_hash": "5e413b6a97ec42c92bfb299d0345e110"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/apc_Arab.json": {
+    "mtime": 1777890953.0,
+    "ast_hash": "866368f40c6c1335bad148d8c2ca9550",
+    "semantic_hash": "866368f40c6c1335bad148d8c2ca9550"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/arb_Arab.json": {
+    "mtime": 1777890826.0,
+    "ast_hash": "3d531439ee3d9d1dbff271d76266ffc8",
+    "semantic_hash": "3d531439ee3d9d1dbff271d76266ffc8"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/arb_Latn.json": {
+    "mtime": 1777891036.0,
+    "ast_hash": "003b598300077476f8058b959e15dc54",
+    "semantic_hash": "003b598300077476f8058b959e15dc54"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/ars_Arab.json": {
+    "mtime": 1777890836.0,
+    "ast_hash": "963f367925ca42882d6ebd1a663633ef",
+    "semantic_hash": "963f367925ca42882d6ebd1a663633ef"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/arz_Arab.json": {
+    "mtime": 1777891076.0,
+    "ast_hash": "e84f8be15087e51d248eb4f6ae8819e7",
+    "semantic_hash": "e84f8be15087e51d248eb4f6ae8819e7"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/asm_Beng.json": {
+    "mtime": 1777891186.0,
+    "ast_hash": "14f40ac9d6af9e47f6dbf2e8c47c397c",
+    "semantic_hash": "14f40ac9d6af9e47f6dbf2e8c47c397c"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/ast_Latn.json": {
+    "mtime": 1777890973.0,
+    "ast_hash": "4c0052c5412acfcd59ed9a86f819caff",
+    "semantic_hash": "4c0052c5412acfcd59ed9a86f819caff"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/bam_Latn.json": {
+    "mtime": 1777890948.0,
+    "ast_hash": "6a0a59bd8a9ce26cd3734a148406be05",
+    "semantic_hash": "6a0a59bd8a9ce26cd3734a148406be05"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/ben_Beng.json": {
+    "mtime": 1777891032.0,
+    "ast_hash": "39bb1ba1950cbfcaef49c47b59f1966a",
+    "semantic_hash": "39bb1ba1950cbfcaef49c47b59f1966a"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/bod_Tibt.json": {
+    "mtime": 1777890923.0,
+    "ast_hash": "67b988148fc985d96d894fb9e030ae76",
+    "semantic_hash": "67b988148fc985d96d894fb9e030ae76"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/bul_Cyrl.json": {
+    "mtime": 1777891301.0,
+    "ast_hash": "7217e0361374dbae6fa43e4529c6fd12",
+    "semantic_hash": "7217e0361374dbae6fa43e4529c6fd12"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/cat_Latn.json": {
+    "mtime": 1777891106.0,
+    "ast_hash": "bb6335fca9c9b1431190bd9750b35832",
+    "semantic_hash": "bb6335fca9c9b1431190bd9750b35832"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/ceb_Latn.json": {
+    "mtime": 1777891123.0,
+    "ast_hash": "df7458b02099f60e31c7fb6e12ee6f58",
+    "semantic_hash": "df7458b02099f60e31c7fb6e12ee6f58"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/ces_Latn.json": {
+    "mtime": 1777891110.0,
+    "ast_hash": "54e4d83f1670f29a7b1145f57bdb6a46",
+    "semantic_hash": "54e4d83f1670f29a7b1145f57bdb6a46"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/ckb_Arab.json": {
+    "mtime": 1777891149.0,
+    "ast_hash": "41bc40df6aec0db5688809fc5ec8b45f",
+    "semantic_hash": "41bc40df6aec0db5688809fc5ec8b45f"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/dan_Latn.json": {
+    "mtime": 1777891048.0,
+    "ast_hash": "8e452913f048c6dd8374619b5118c66b",
+    "semantic_hash": "8e452913f048c6dd8374619b5118c66b"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/deu_Latn.json": {
+    "mtime": 1777891235.0,
+    "ast_hash": "9058b72b6d1954917f35e53656c0a6af",
+    "semantic_hash": "9058b72b6d1954917f35e53656c0a6af"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/ell_Grek.json": {
+    "mtime": 1777891015.0,
+    "ast_hash": "f831f7f903120368d1b0aa4b43cde0ed",
+    "semantic_hash": "f831f7f903120368d1b0aa4b43cde0ed"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/eng_Latn.json": {
+    "mtime": 1777891127.0,
+    "ast_hash": "1ed5ca8e7ece41673ac389f77d2456f6",
+    "semantic_hash": "1ed5ca8e7ece41673ac389f77d2456f6"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/est_Latn.json": {
+    "mtime": 1777891268.0,
+    "ast_hash": "5686e08fad12b7fd939b4fd0a1ab336c",
+    "semantic_hash": "5686e08fad12b7fd939b4fd0a1ab336c"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/eus_Latn.json": {
+    "mtime": 1777891264.0,
+    "ast_hash": "13d7f19d6ffc31b5d25995167ac723e0",
+    "semantic_hash": "13d7f19d6ffc31b5d25995167ac723e0"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/fin_Latn.json": {
+    "mtime": 1777891052.0,
+    "ast_hash": "62db9f500a4e890ee22163627595259a",
+    "semantic_hash": "62db9f500a4e890ee22163627595259a"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/fra_Latn.json": {
+    "mtime": 1777891174.0,
+    "ast_hash": "b6b9f4d519656770fe33a82756d8e1c1",
+    "semantic_hash": "b6b9f4d519656770fe33a82756d8e1c1"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/fuv_Latn.json": {
+    "mtime": 1777891289.0,
+    "ast_hash": "840790bea676d71976e8b85cbd03d073",
+    "semantic_hash": "840790bea676d71976e8b85cbd03d073"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/gaz_Latn.json": {
+    "mtime": 1777890958.0,
+    "ast_hash": "58b5e273971ac4f10560aa13f314bd52",
+    "semantic_hash": "58b5e273971ac4f10560aa13f314bd52"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/glg_Latn.json": {
+    "mtime": 1777891272.0,
+    "ast_hash": "057967d6047c7e0b9159385a54182afc",
+    "semantic_hash": "057967d6047c7e0b9159385a54182afc"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/grn_Latn.json": {
+    "mtime": 1777890988.0,
+    "ast_hash": "59268b5b6dfbd0cd25d9740699fd3611",
+    "semantic_hash": "59268b5b6dfbd0cd25d9740699fd3611"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/guj_Gujr.json": {
+    "mtime": 1777891040.0,
+    "ast_hash": "d62aa3327d383f646257ff1ffafe9167",
+    "semantic_hash": "d62aa3327d383f646257ff1ffafe9167"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/hat_Latn.json": {
+    "mtime": 1777891161.0,
+    "ast_hash": "4fedf93868c5de02333a4c1aabfa12d0",
+    "semantic_hash": "4fedf93868c5de02333a4c1aabfa12d0"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/hau_Latn.json": {
+    "mtime": 1777891252.0,
+    "ast_hash": "033b45a9d3f0af80f445d16b5f1e7098",
+    "semantic_hash": "033b45a9d3f0af80f445d16b5f1e7098"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/heb_Hebr.json": {
+    "mtime": 1777891260.0,
+    "ast_hash": "f954d777bcb097005fc13006bd1a60eb",
+    "semantic_hash": "f954d777bcb097005fc13006bd1a60eb"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/hin_Deva.json": {
+    "mtime": 1777891132.0,
+    "ast_hash": "c72b7840774e0a8fa189a385f2e285fc",
+    "semantic_hash": "c72b7840774e0a8fa189a385f2e285fc"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/hrv_Latn.json": {
+    "mtime": 1777891215.0,
+    "ast_hash": "3f98bc1f18966a58c313b8cf72b4b2da",
+    "semantic_hash": "3f98bc1f18966a58c313b8cf72b4b2da"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/hun_Latn.json": {
+    "mtime": 1777891309.0,
+    "ast_hash": "d356ba9e6169742a7048497d8a2e5d1c",
+    "semantic_hash": "d356ba9e6169742a7048497d8a2e5d1c"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/hye_Armn.json": {
+    "mtime": 1777891190.0,
+    "ast_hash": "b2af1729a56a9d5e13c390014aa6e050",
+    "semantic_hash": "b2af1729a56a9d5e13c390014aa6e050"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/ibo_Latn.json": {
+    "mtime": 1777891285.0,
+    "ast_hash": "5f12749aa46a6b50a70c713640528e59",
+    "semantic_hash": "5f12749aa46a6b50a70c713640528e59"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/ilo_Latn.json": {
+    "mtime": 1777891166.0,
+    "ast_hash": "9680a4916d82f49a6db1ec593dbb77a7",
+    "semantic_hash": "9680a4916d82f49a6db1ec593dbb77a7"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/ind_Latn.json": {
+    "mtime": 1777891019.0,
+    "ast_hash": "81f366d6264a9c43284f18e941d15a03",
+    "semantic_hash": "81f366d6264a9c43284f18e941d15a03"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/isl_Latn.json": {
+    "mtime": 1777891098.0,
+    "ast_hash": "6123ae27b92cc9b926c1886fe8469104",
+    "semantic_hash": "6123ae27b92cc9b926c1886fe8469104"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/ita_Latn.json": {
+    "mtime": 1777890897.0,
+    "ast_hash": "44888d5d6c82aa77227b732ec679884f",
+    "semantic_hash": "44888d5d6c82aa77227b732ec679884f"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/jav_Latn.json": {
+    "mtime": 1777891064.0,
+    "ast_hash": "bf6a0df44cb247e1c31cf9e96545f88b",
+    "semantic_hash": "bf6a0df44cb247e1c31cf9e96545f88b"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/jpn_Jpan.json": {
+    "mtime": 1777891044.0,
+    "ast_hash": "bf279ffa71d1f7d3289d64815cd6da3b",
+    "semantic_hash": "bf279ffa71d1f7d3289d64815cd6da3b"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/kan_Knda.json": {
+    "mtime": 1777890938.0,
+    "ast_hash": "f15f66939cb8609dbc7a75b3bd2f04dd",
+    "semantic_hash": "f15f66939cb8609dbc7a75b3bd2f04dd"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/kat_Geor.json": {
+    "mtime": 1777890872.0,
+    "ast_hash": "e8248ca58c217b9be6c4c70d1da4cbe0",
+    "semantic_hash": "e8248ca58c217b9be6c4c70d1da4cbe0"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/kaz_Cyrl.json": {
+    "mtime": 1777890928.0,
+    "ast_hash": "d529b9c016fcc10a1cfca0ddcfd30b62",
+    "semantic_hash": "d529b9c016fcc10a1cfca0ddcfd30b62"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/kea_Latn.json": {
+    "mtime": 1777891243.0,
+    "ast_hash": "27b537c9815934ac037e1bae908a64e9",
+    "semantic_hash": "27b537c9815934ac037e1bae908a64e9"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/khk_Cyrl.json": {
+    "mtime": 1777891072.0,
+    "ast_hash": "a72b21ed66d88543ae6b7c1b11464d5b",
+    "semantic_hash": "a72b21ed66d88543ae6b7c1b11464d5b"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/khm_Khmr.json": {
+    "mtime": 1777890978.0,
+    "ast_hash": "6712ff95a660a8760f05f2a987217bd2",
+    "semantic_hash": "6712ff95a660a8760f05f2a987217bd2"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/kin_Latn.json": {
+    "mtime": 1777891206.0,
+    "ast_hash": "da4132c5a43c34a6f37d314576595934",
+    "semantic_hash": "da4132c5a43c34a6f37d314576595934"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/kir_Cyrl.json": {
+    "mtime": 1777891028.0,
+    "ast_hash": "63f695dfc5be7859c34cd687d7af6010",
+    "semantic_hash": "63f695dfc5be7859c34cd687d7af6010"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/kor_Hang.json": {
+    "mtime": 1777891227.0,
+    "ast_hash": "1ff3cbd94071a7c73bacf41f6f4ad134",
+    "semantic_hash": "1ff3cbd94071a7c73bacf41f6f4ad134"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/lao_Laoo.json": {
+    "mtime": 1777890841.0,
+    "ast_hash": "e393abd43b5ca50bc72744eedbcbece8",
+    "semantic_hash": "e393abd43b5ca50bc72744eedbcbece8"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/lin_Latn.json": {
+    "mtime": 1777891170.0,
+    "ast_hash": "824481df94945d63eb63966d4987c236",
+    "semantic_hash": "824481df94945d63eb63966d4987c236"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/lit_Latn.json": {
+    "mtime": 1777890963.0,
+    "ast_hash": "acf0644c22f8430fe6539d5d6c18bf86",
+    "semantic_hash": "acf0644c22f8430fe6539d5d6c18bf86"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/lug_Latn.json": {
+    "mtime": 1777890861.0,
+    "ast_hash": "a1ecda479b0d85d7c2ebc573fc1355ed",
+    "semantic_hash": "a1ecda479b0d85d7c2ebc573fc1355ed"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/lvs_Latn.json": {
+    "mtime": 1777891094.0,
+    "ast_hash": "2512207304c823bb998e5e635af7afc4",
+    "semantic_hash": "2512207304c823bb998e5e635af7afc4"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/mal_Mlym.json": {
+    "mtime": 1777891281.0,
+    "ast_hash": "28925da054cb0c1c3e42c5b1cb6324bf",
+    "semantic_hash": "28925da054cb0c1c3e42c5b1cb6324bf"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/mar_Deva.json": {
+    "mtime": 1777890887.0,
+    "ast_hash": "71ebb3b5b8e291fe15cb9a010be0cd44",
+    "semantic_hash": "71ebb3b5b8e291fe15cb9a010be0cd44"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/mlt_Latn.json": {
+    "mtime": 1777891090.0,
+    "ast_hash": "719207ebe8f3537a4d2e7e7cb8dca00f",
+    "semantic_hash": "719207ebe8f3537a4d2e7e7cb8dca00f"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/mri_Latn.json": {
+    "mtime": 1777891157.0,
+    "ast_hash": "f93b1eb664544dbf596d976b1f3c875f",
+    "semantic_hash": "f93b1eb664544dbf596d976b1f3c875f"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/mya_Mymr.json": {
+    "mtime": 1777890913.0,
+    "ast_hash": "0076c9721ea3977e732363f6657add2b",
+    "semantic_hash": "0076c9721ea3977e732363f6657add2b"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/nld_Latn.json": {
+    "mtime": 1777891068.0,
+    "ast_hash": "990f012ff29f1346cb12796f527eba47",
+    "semantic_hash": "990f012ff29f1346cb12796f527eba47"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/nob_Latn.json": {
+    "mtime": 1777890867.0,
+    "ast_hash": "b813dd177012caedadf2c19303d13ebb",
+    "semantic_hash": "b813dd177012caedadf2c19303d13ebb"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/nya_Latn.json": {
+    "mtime": 1777891003.0,
+    "ast_hash": "f539e3bb47f29ed05ace662c02989fd6",
+    "semantic_hash": "f539e3bb47f29ed05ace662c02989fd6"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/oci_Latn.json": {
+    "mtime": 1777890996.0,
+    "ast_hash": "b3bd37e7a43e0fbeb4cb2dae08934f2f",
+    "semantic_hash": "b3bd37e7a43e0fbeb4cb2dae08934f2f"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/pan_Guru.json": {
+    "mtime": 1777891194.0,
+    "ast_hash": "baf93c48df1910aab667daf80819c7e2",
+    "semantic_hash": "baf93c48df1910aab667daf80819c7e2"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/pbt_Arab.json": {
+    "mtime": 1777891219.0,
+    "ast_hash": "71e71f71d2a721a7f2c68c04f07f3edd",
+    "semantic_hash": "71e71f71d2a721a7f2c68c04f07f3edd"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/pes_Arab.json": {
+    "mtime": 1777891202.0,
+    "ast_hash": "6a8a5168b147d152152cc83f6ada73ea",
+    "semantic_hash": "6a8a5168b147d152152cc83f6ada73ea"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/plt_Latn.json": {
+    "mtime": 1777891182.0,
+    "ast_hash": "39d3f755981fc42eb15d15bf9201600b",
+    "semantic_hash": "39d3f755981fc42eb15d15bf9201600b"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/pol_Latn.json": {
+    "mtime": 1777891239.0,
+    "ast_hash": "9217eeffa1aa85ad22ba90352c7316d8",
+    "semantic_hash": "9217eeffa1aa85ad22ba90352c7316d8"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/por_Latn.json": {
+    "mtime": 1777891223.0,
+    "ast_hash": "8d4678902319d28c6bb1cb7ac2c2f4db",
+    "semantic_hash": "8d4678902319d28c6bb1cb7ac2c2f4db"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/ron_Latn.json": {
+    "mtime": 1777890918.0,
+    "ast_hash": "e0bebb7a301bb5202283c4e589b7665c",
+    "semantic_hash": "e0bebb7a301bb5202283c4e589b7665c"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/rus_Cyrl.json": {
+    "mtime": 1777890968.0,
+    "ast_hash": "6f12087b819228e2ddf1e1311113555e",
+    "semantic_hash": "6f12087b819228e2ddf1e1311113555e"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/shn_Mymr.json": {
+    "mtime": 1777890943.0,
+    "ast_hash": "ed0012f632cb8ac1ec0a1a7b23b60490",
+    "semantic_hash": "ed0012f632cb8ac1ec0a1a7b23b60490"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/sin_Sinh.json": {
+    "mtime": 1777890856.0,
+    "ast_hash": "fba728b3a20581abcf5ab8f45e4da717",
+    "semantic_hash": "fba728b3a20581abcf5ab8f45e4da717"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/slk_Latn.json": {
+    "mtime": 1777891023.0,
+    "ast_hash": "2272d5844d9f68e7dba2e911c34cd6f0",
+    "semantic_hash": "2272d5844d9f68e7dba2e911c34cd6f0"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/slv_Latn.json": {
+    "mtime": 1777891178.0,
+    "ast_hash": "068038480e3a15128b0ff35fe4dbda19",
+    "semantic_hash": "068038480e3a15128b0ff35fe4dbda19"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/sna_Latn.json": {
+    "mtime": 1777891256.0,
+    "ast_hash": "1a72f75af11e38365df4deacf33c3f0d",
+    "semantic_hash": "1a72f75af11e38365df4deacf33c3f0d"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/som_Latn.json": {
+    "mtime": 1777890933.0,
+    "ast_hash": "5277b02e1b1d9fc981a4824eedaa1783",
+    "semantic_hash": "5277b02e1b1d9fc981a4824eedaa1783"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/sot_Latn.json": {
+    "mtime": 1777890892.0,
+    "ast_hash": "1e7061fc448bea35819d0e715ebd5d00",
+    "semantic_hash": "1e7061fc448bea35819d0e715ebd5d00"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/spa_Latn.json": {
+    "mtime": 1777890908.0,
+    "ast_hash": "cfd533322063102318fb60ad1d60a967",
+    "semantic_hash": "cfd533322063102318fb60ad1d60a967"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/ssw_Latn.json": {
+    "mtime": 1777890877.0,
+    "ast_hash": "c5d59dd53328247cdcebb63688d10dd5",
+    "semantic_hash": "c5d59dd53328247cdcebb63688d10dd5"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/sun_Latn.json": {
+    "mtime": 1777890846.0,
+    "ast_hash": "e6d54398f73725783ef602de0b5fc821",
+    "semantic_hash": "e6d54398f73725783ef602de0b5fc821"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/swe_Latn.json": {
+    "mtime": 1777891248.0,
+    "ast_hash": "460f9a523ddcd33395c0742b1a9cdc87",
+    "semantic_hash": "460f9a523ddcd33395c0742b1a9cdc87"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/swh_Latn.json": {
+    "mtime": 1777891060.0,
+    "ast_hash": "bed4cb75ef84fdaf036a8eeced9aadc0",
+    "semantic_hash": "bed4cb75ef84fdaf036a8eeced9aadc0"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/tam_Taml.json": {
+    "mtime": 1777891293.0,
+    "ast_hash": "e7e6c19b12f4b4a825307a7b722b8801",
+    "semantic_hash": "e7e6c19b12f4b4a825307a7b722b8801"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/tel_Telu.json": {
+    "mtime": 1777891276.0,
+    "ast_hash": "e2ae0958deb7f3e3a5db0ca22f44a237",
+    "semantic_hash": "e2ae0958deb7f3e3a5db0ca22f44a237"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/tgk_Cyrl.json": {
+    "mtime": 1777891056.0,
+    "ast_hash": "da0a5c38349a88be37527b55ab47f222",
+    "semantic_hash": "da0a5c38349a88be37527b55ab47f222"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/tgl_Latn.json": {
+    "mtime": 1777890882.0,
+    "ast_hash": "d80335cee2dfbdffcae37652a30b1360",
+    "semantic_hash": "d80335cee2dfbdffcae37652a30b1360"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/tha_Thai.json": {
+    "mtime": 1777891082.0,
+    "ast_hash": "be8a97f0e713d975870c9e866b08c913",
+    "semantic_hash": "be8a97f0e713d975870c9e866b08c913"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/tir_Ethi.json": {
+    "mtime": 1777891086.0,
+    "ast_hash": "479b508e06bf8f737527b3b790b1ed01",
+    "semantic_hash": "479b508e06bf8f737527b3b790b1ed01"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/tsn_Latn.json": {
+    "mtime": 1777890831.0,
+    "ast_hash": "da79619f654ca58b255aa357c650d0b7",
+    "semantic_hash": "da79619f654ca58b255aa357c650d0b7"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/tso_Latn.json": {
+    "mtime": 1777891011.0,
+    "ast_hash": "ae09a9356704cf789e9b011063d5fed4",
+    "semantic_hash": "ae09a9356704cf789e9b011063d5fed4"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/tur_Latn.json": {
+    "mtime": 1777891136.0,
+    "ast_hash": "5c0225af7e34081f655727b90f897a23",
+    "semantic_hash": "5c0225af7e34081f655727b90f897a23"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/ukr_Cyrl.json": {
+    "mtime": 1777891231.0,
+    "ast_hash": "57ee72564433cd257c504e7640023fb8",
+    "semantic_hash": "57ee72564433cd257c504e7640023fb8"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/urd_Arab.json": {
+    "mtime": 1777890851.0,
+    "ast_hash": "abaa0fc07e3dd1bb8ba6eb86b7d2b148",
+    "semantic_hash": "abaa0fc07e3dd1bb8ba6eb86b7d2b148"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/uzn_Latn.json": {
+    "mtime": 1777891198.0,
+    "ast_hash": "12ea5aa5b5ab584b3d5a51e83ae4bf1b",
+    "semantic_hash": "12ea5aa5b5ab584b3d5a51e83ae4bf1b"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/vie_Latn.json": {
+    "mtime": 1777891007.0,
+    "ast_hash": "85de02eedd77780f0f3761fcfc709d19",
+    "semantic_hash": "85de02eedd77780f0f3761fcfc709d19"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/war_Latn.json": {
+    "mtime": 1777891114.0,
+    "ast_hash": "9cb97f6909f32443f579cc0a8c8996ee",
+    "semantic_hash": "9cb97f6909f32443f579cc0a8c8996ee"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/wol_Latn.json": {
+    "mtime": 1777891297.0,
+    "ast_hash": "1eaf1032fca31b24eb3eac68789ff9fa",
+    "semantic_hash": "1eaf1032fca31b24eb3eac68789ff9fa"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/xho_Latn.json": {
+    "mtime": 1777891211.0,
+    "ast_hash": "9cdfd76c507b43ad3c4d15d1c85655a4",
+    "semantic_hash": "9cdfd76c507b43ad3c4d15d1c85655a4"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/yor_Latn.json": {
+    "mtime": 1777891153.0,
+    "ast_hash": "0805e41f5f340932695ee92bcb2b6bd3",
+    "semantic_hash": "0805e41f5f340932695ee92bcb2b6bd3"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/zho_Hans.json": {
+    "mtime": 1777890983.0,
+    "ast_hash": "3b9cf9f55ba31e7a44af80b6c6797b20",
+    "semantic_hash": "3b9cf9f55ba31e7a44af80b6c6797b20"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/zho_Hant.json": {
+    "mtime": 1777890992.0,
+    "ast_hash": "78e7d7db8c8ab4b1078c69650af89c8c",
+    "semantic_hash": "78e7d7db8c8ab4b1078c69650af89c8c"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/zsm_Latn.json": {
+    "mtime": 1777891145.0,
+    "ast_hash": "d09050f934c7152cab56bc41bcba39f6",
+    "semantic_hash": "d09050f934c7152cab56bc41bcba39f6"
+  },
+  "/Users/wassim/MEXA-fork/mistral 0.3 7B/FLORES_table1_2000_experiment/scores_100/zul_Latn.json": {
+    "mtime": 1777891305.0,
+    "ast_hash": "6340bfb493600ea0170d03b8018098e5",
+    "semantic_hash": "6340bfb493600ea0170d03b8018098e5"
+  },
+  "/Users/wassim/MEXA-fork/organize_data.sh": {
+    "mtime": 1777046022.0,
+    "ast_hash": "8ec38d1127cd6ded3c9e6589c70d522b",
+    "semantic_hash": "8ec38d1127cd6ded3c9e6589c70d522b"
+  },
+  "/Users/wassim/MEXA-fork/qwen3 8B/FLORES_table1_100_experiment/format_results.py": {
+    "mtime": 1778920503.0,
+    "ast_hash": "747b6db7f04bd21d1395b4d92e78cbdc",
+    "semantic_hash": "747b6db7f04bd21d1395b4d92e78cbdc"
+  },
+  "/Users/wassim/MEXA-fork/scratch/check_csvs.py": {
+    "mtime": 1780915166.4904244,
+    "ast_hash": "59067925dd169b04ca34d66360885bcc",
+    "semantic_hash": "59067925dd169b04ca34d66360885bcc"
+  },
+  "/Users/wassim/MEXA-fork/scratch/explore_scores.py": {
+    "mtime": 1780914935.6144803,
+    "ast_hash": "8d53cdff4bf09b523f1f2a07514aa722",
+    "semantic_hash": "8d53cdff4bf09b523f1f2a07514aa722"
+  },
+  "/Users/wassim/MEXA-fork/scratch/explore_scores_all.py": {
+    "mtime": 1780914947.2680123,
+    "ast_hash": "5a74bd77004c3bf79e19d0c109b4af22",
+    "semantic_hash": "5a74bd77004c3bf79e19d0c109b4af22"
+  },
+  "/Users/wassim/MEXA-fork/scratch/find_all_json.py": {
+    "mtime": 1780914963.704112,
+    "ast_hash": "b1eecabd487eb3eeebf2d45792aa8c9b",
+    "semantic_hash": "b1eecabd487eb3eeebf2d45792aa8c9b"
+  },
+  "/Users/wassim/MEXA-fork/scratch/run_analysis.py": {
+    "mtime": 1780915783.1439283,
+    "ast_hash": "8d43c60f0c86d26f23ee102477c18ffb",
+    "semantic_hash": "8d43c60f0c86d26f23ee102477c18ffb"
+  },
+  "/Users/wassim/MEXA-fork/shared/bible_table1_101.json": {
+    "mtime": 1776985114.993219,
+    "ast_hash": "4ed98e338003062e0ae3cb62b9aa66f4",
+    "semantic_hash": "4ed98e338003062e0ae3cb62b9aa66f4"
+  },
+  "/Users/wassim/MEXA-fork/shared/flores_table1_116.json": {
+    "mtime": 1777895245.814823,
+    "ast_hash": "4233621c4963311bab5260f47ebd0b96",
+    "semantic_hash": "4233621c4963311bab5260f47ebd0b96"
+  },
+  "/Users/wassim/MEXA-fork/shared/format_results.py": {
+    "mtime": 1778922475.6214006,
+    "ast_hash": "96b379af7cab788a73ea938fb39ba9af",
+    "semantic_hash": "96b379af7cab788a73ea938fb39ba9af"
+  },
+  "/Users/wassim/MEXA-fork/skills-lock.json": {
+    "mtime": 1775942386.0,
+    "ast_hash": "7d1cc6ab3c1f91efd2a4a34dfdc6ee4c",
+    "semantic_hash": "7d1cc6ab3c1f91efd2a4a34dfdc6ee4c"
+  },
+  "/Users/wassim/MEXA-fork/submit_all_experiments.sh": {
+    "mtime": 1777809334.0,
+    "ast_hash": "5919c616e2d74eabf8279b2636aea405",
+    "semantic_hash": "5919c616e2d74eabf8279b2636aea405"
+  },
+  "/Users/wassim/MEXA-fork/sync_and_submit.sh": {
+    "mtime": 1780140676.0116985,
+    "ast_hash": "e48b2a66ab7b1c1ef99bb7acfbcad560",
+    "semantic_hash": "e48b2a66ab7b1c1ef99bb7acfbcad560"
+  },
+  "/Users/wassim/MEXA-fork/.claude/CLAUDE.md": {
+    "mtime": 1775387504.0,
+    "ast_hash": "f1919a6246ffea34213dcddce2f69d56",
+    "semantic_hash": "f1919a6246ffea34213dcddce2f69d56"
+  },
+  "/Users/wassim/MEXA-fork/.skills/Coma-GPU-use/Coma README.md": {
+    "mtime": 1775388138.0,
+    "ast_hash": "61e065f596822768f874e9c5c5ee7427",
+    "semantic_hash": "61e065f596822768f874e9c5c5ee7427"
+  },
+  "/Users/wassim/MEXA-fork/.skills/Coma-GPU-use/SKILL.md": {
+    "mtime": 1778944759.0,
+    "ast_hash": "7366497b6ec01d0ed2dc46d00a871ccf",
+    "semantic_hash": "7366497b6ec01d0ed2dc46d00a871ccf"
+  },
+  "/Users/wassim/MEXA-fork/.skills/Coma-GPU-use/gpu_commands.md": {
+    "mtime": 1775388138.0,
+    "ast_hash": "c336f471b5de4b0dfb5ac36f820dd214",
+    "semantic_hash": "c336f471b5de4b0dfb5ac36f820dd214"
+  },
+  "/Users/wassim/MEXA-fork/.skills/DESIGN.md": {
+    "mtime": 1775388138.0,
+    "ast_hash": "ebc6ad3475ea439a86f90c536e5461b0",
+    "semantic_hash": "ebc6ad3475ea439a86f90c536e5461b0"
+  },
+  "/Users/wassim/MEXA-fork/.skills/Thesis.md": {
+    "mtime": 1775388138.0,
+    "ast_hash": "24ef081d6a313c41033c148ec4ee6936",
+    "semantic_hash": "24ef081d6a313c41033c148ec4ee6936"
+  },
+  "/Users/wassim/MEXA-fork/.skills/design/SKILL.md": {
+    "mtime": 1775388138.0,
+    "ast_hash": "ebc6ad3475ea439a86f90c536e5461b0",
+    "semantic_hash": "ebc6ad3475ea439a86f90c536e5461b0"
+  },
+  "/Users/wassim/MEXA-fork/.skills/frontend/SKILL.md": {
+    "mtime": 1775249627.0,
+    "ast_hash": "5ef90e472dc2cedec94ac5e46bd7ab09",
+    "semantic_hash": "5ef90e472dc2cedec94ac5e46bd7ab09"
+  },
+  "/Users/wassim/MEXA-fork/.skills/frontend_skill.md": {
+    "mtime": 1775249627.0,
+    "ast_hash": "5ef90e472dc2cedec94ac5e46bd7ab09",
+    "semantic_hash": "5ef90e472dc2cedec94ac5e46bd7ab09"
+  },
+  "/Users/wassim/MEXA-fork/.skills/nlp-natural-language-processing/SKILL.md": {
+    "mtime": 1775942385.0,
+    "ast_hash": "1b7742c9e39069d1aacb48dc43fb7a4b",
+    "semantic_hash": "1b7742c9e39069d1aacb48dc43fb7a4b"
+  },
+  "/Users/wassim/MEXA-fork/.skills/thesis/SKILL.md": {
+    "mtime": 1775388138.0,
+    "ast_hash": "24ef081d6a313c41033c148ec4ee6936",
+    "semantic_hash": "24ef081d6a313c41033c148ec4ee6936"
+  },
+  "/Users/wassim/MEXA-fork/1-Mid-term document/absract.md": {
+    "mtime": 1780406111.2961085,
+    "ast_hash": "6868df4385fc583a56597866fcd199f4",
+    "semantic_hash": "6868df4385fc583a56597866fcd199f4"
+  },
+  "/Users/wassim/MEXA-fork/Midterm_Draft.md": {
+    "mtime": 1779114978.0,
+    "ast_hash": "e654c2ae426e07a6d0289d7f7cb1b71e",
+    "semantic_hash": "e654c2ae426e07a6d0289d7f7cb1b71e"
+  },
+  "/Users/wassim/MEXA-fork/README.md": {
+    "mtime": 1773592919.0,
+    "ast_hash": "f2cc9f3b78886a2a2040f1d26c820bfd",
+    "semantic_hash": "f2cc9f3b78886a2a2040f1d26c820bfd"
+  },
+  "/Users/wassim/MEXA-fork/dashboard/index.html": {
+    "mtime": 1775388161.0,
+    "ast_hash": "b50e3e9a429f1f8ba55da31f2b62d89d",
+    "semantic_hash": "b50e3e9a429f1f8ba55da31f2b62d89d"
+  },
+  "/Users/wassim/MEXA-fork/scratch/analysis_results.txt": {
+    "mtime": 1780915789.8805535,
+    "ast_hash": "94816557e7864bb733750a1b9eb0bca2",
+    "semantic_hash": "94816557e7864bb733750a1b9eb0bca2"
+  },
+  "/Users/wassim/MEXA-fork/2025.findings-acl.1385.pdf": {
+    "mtime": 1773593536.0,
+    "ast_hash": "acffa1c0963150a8fd158820827a4030",
+    "semantic_hash": "acffa1c0963150a8fd158820827a4030"
+  },
+  "/Users/wassim/MEXA-fork/Remote access - CIP Computers - software@MGT - BayernCollab.pdf": {
+    "mtime": 1780772117.3285306,
+    "ast_hash": "83423fd1de2cede4b56c7b084fd73b1d",
+    "semantic_hash": "83423fd1de2cede4b56c7b084fd73b1d"
+  }
+}

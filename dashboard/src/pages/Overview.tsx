@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ExperimentTimeline } from '../ui/ExperimentTimeline';
 import { ScoreVsSizeChart, type SizeChartRow } from '../charts/ScoreVsSizeChart';
+import { ScoreHistogramChart } from '../charts/ScoreHistogramChart';
 
 /* ── Data helpers ── */
 function parseCSV(text) {
@@ -22,15 +23,15 @@ function parseCSV(text) {
 /* ── MEXA Score Comparison Table ──
    Edit MEXA_SCORES below to add results as experiments complete.
    Use `null` for entries you don't have yet — they render as "—". */
-type Score = number | null;
-type Variant = 'flores-table1' | 'flores-table1-2000' | 'bible-table1' | 'flores-full' | 'bible-full';
-type ModelRow = {
+export type Score = number | null;
+export type Variant = 'flores-table1' | 'flores-table1-2000' | 'bible-table1' | 'flores-full' | 'bible-full';
+export type ModelRow = {
   model: string;
   note?: string;
   scores: Record<Variant, { max: Score; mean: Score }>;
 };
 
-const VARIANT_COLUMNS: { key: Variant; label: string; subtitle: string }[] = [
+export const VARIANT_COLUMNS: { key: Variant; label: string; subtitle: string }[] = [
   // FLORES experiments first, then Bible experiments
   { key: 'flores-table1', label: 'FLORES Table 1', subtitle: '116 langs · 100 sents' },
   { key: 'flores-table1-2000', label: 'FLORES Table 1', subtitle: '116 langs · 2000 sents' },
@@ -47,7 +48,7 @@ const blank = (): Record<Variant, { max: Score; mean: Score }> => ({
   'bible-full': { max: null, mean: null },
 });
 
-const MEXA_SCORES: ModelRow[] = [
+export const MEXA_SCORES: ModelRow[] = [
   {
     model: 'Paper · Llama 3.1 8B',
     note: 'reference (Kargaran et al., 2025)',
@@ -118,7 +119,7 @@ const MEXA_SCORES: ModelRow[] = [
   },
 ];
 
-const QWEN3_SCORES: ModelRow[] = [
+export const QWEN3_SCORES: ModelRow[] = [
   {
     model: 'Qwen3 8B Base',
     scores: {
@@ -174,7 +175,7 @@ const QWEN3_SCORES: ModelRow[] = [
   }
 ];
 
-const ENCODER_SCORES: ModelRow[] = [
+export const ENCODER_SCORES: ModelRow[] = [
   {
     model: 'XLM-RoBERTa large',
     note: 'masked-LM encoder · 550M',
@@ -232,7 +233,7 @@ const ENCODER_SCORES: ModelRow[] = [
   },
 ];
 
-const EMBEDDING_SCORES: ModelRow[] = [
+export const EMBEDDING_SCORES: ModelRow[] = [
   {
     model: 'Qwen3-Embedding-8B',
     note: 'causal embedding model · 8B',
@@ -805,13 +806,13 @@ export default function Overview() {
 
       {/* MEXA score vs model size — scaling charts */}
       <div className="grid grid-cols-12 gap-8">
-        <ScoreVsSizeChart
-          title="MEXA Score vs Model Size — All Models"
-          subtitle="Each point is a model; pick an experiment to compare µ_Max and µ_Mean across parameter counts."
+        <ScoreHistogramChart
+          title="MEXA Score Distribution — All Models"
+          subtitle="Count of models in each score range; select an experiment and toggle bin resolution."
           rows={ALL_MODEL_SIZE_ROWS}
           variants={VARIANT_COLUMNS}
           defaultVariantKey="flores-table1-2000"
-          className="col-span-12 lg:col-span-6"
+          className="col-span-12"
         />
         <ScoreVsSizeChart
           title="MEXA Score vs Model Size — Qwen3 Scaling"
@@ -820,7 +821,7 @@ export default function Overview() {
           variants={VARIANT_COLUMNS}
           defaultVariantKey="flores-table1-2000"
           showTrendLine
-          className="col-span-12 lg:col-span-6"
+          className="col-span-12"
         />
       </div>
 

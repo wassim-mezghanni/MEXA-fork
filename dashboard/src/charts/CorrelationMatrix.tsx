@@ -98,12 +98,12 @@ export const CorrelationMatrix: React.FC<CorrelationMatrixProps> = ({
         <table className="border-collapse">
           {/* Column headers */}
           <thead>
-            <tr>
-              <th className="w-28 min-w-28" />
+            <tr className="h-28">
+              <th className="w-28 min-w-28 align-bottom" />
               {labels.map((label, ci) => (
                 <th
                   key={ci}
-                  className={`text-[10px] font-bold uppercase tracking-wider px-1 pb-3 text-center min-w-12 ${
+                  className={`text-[10px] font-bold uppercase tracking-wider px-1 pb-3 text-center min-w-12 align-bottom h-28 ${
                     hoveredCell?.col === ci ? 'text-primary' : 'text-on-surface-variant'
                   }`}
                 >
