@@ -129,12 +129,15 @@ function TopAppBar() {
 /* ── Footer ── */
 function Footer() {
   return (
-    <footer className="w-full py-8 bg-surface flex justify-between items-center px-12 mt-auto border-t border-outline-variant/10">
+    <footer className="w-full py-8 bg-surface flex flex-col md:flex-row justify-between items-center gap-4 px-12 mt-auto border-t border-outline-variant/10">
       <div className="flex items-center gap-2">
         <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
         <p className="text-on-secondary-container font-body text-[10px] uppercase tracking-widest">
           © 2024 Project MEXA Research Lab. High-Precision LLM Evaluation.
         </p>
+      </div>
+      <div className="text-on-secondary-container/60 font-body text-[9px] uppercase tracking-wider text-center max-w-xl">
+        Experiments presented in this work were carried out using the CIT-TUM-HN cluster at TUM Campus Heilbronn.
       </div>
       <div className="flex gap-8">
         {['Methodology', 'Whitepaper', 'Ethics Statement'].map((link) => (

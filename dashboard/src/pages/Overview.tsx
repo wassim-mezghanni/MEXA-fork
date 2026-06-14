@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { ExperimentTimeline } from '../ui/ExperimentTimeline';
 import { ScoreVsSizeChart, type SizeChartRow } from '../charts/ScoreVsSizeChart';
 import { ScoreHistogramChart } from '../charts/ScoreHistogramChart';
+import { ModelScoreBarChart } from '../charts/ModelScoreBarChart';
+import LowResourceAnalysis from '../components/LowResourceAnalysis';
 
 /* ── Data helpers ── */
 function parseCSV(text) {
@@ -188,6 +190,17 @@ export const ENCODER_SCORES: ModelRow[] = [
     },
   },
   {
+    model: 'XLM-RoBERTa base',
+    note: 'masked-LM encoder · 270M',
+    scores: {
+      'flores-table1': { max: 0.5491, mean: 0.3774 },
+      'flores-table1-2000': { max: 0.4636, mean: 0.2939 },
+      'bible-table1': { max: 0.3052, mean: 0.1620 },
+      'flores-full': { max: 0.3214, mean: 0.2003 },
+      'bible-full': { max: 0.0395, mean: 0.0191 },
+    },
+  },
+  {
     model: 'LaBSE',
     note: 'dual-encoder (sentence-transformers) · 471M',
     scores: {
@@ -316,6 +329,13 @@ const ALL_MODEL_SIZE_ROWS = toSizeRows([
 ]);
 const QWEN3_SIZE_ROWS = toSizeRows(QWEN3_SCORES);
 
+const ALL_INDIVIDUAL_MODELS = [
+  ...MEXA_SCORES.filter((r) => !r.model.startsWith('Paper ·')),
+  ...QWEN3_SCORES.filter((r) => !['Qwen3 8B Base', 'Qwen3.5 9B Base'].includes(r.model)),
+  ...EMBEDDING_SCORES,
+  ...ENCODER_SCORES
+];
+
 /* ── Experiment timeline mock ── */
 const EXPERIMENT_ENTRIES = [
   { id: 'exp-007', title: 'FLORES-200 Full Sweep — 32 layers', timestamp: '2 Apr 2026, 18:42', status: 'completed', model: 'Llama 3.1 8B', dataset: 'FLORES-200', score: 0.847, duration: '4h 12m' },
@@ -329,7 +349,7 @@ const EXPERIMENT_ENTRIES = [
 
 export default function Overview() {
   const [, setLanguageNames] = useState({});
-  const [, setAllData] = useState({});
+  const [allData, setAllData] = useState<any>({});
   const [, setLoading] = useState(true);
 
   useEffect(() => {
@@ -814,6 +834,14 @@ export default function Overview() {
           defaultVariantKey="flores-table1-2000"
           className="col-span-12"
         />
+        <ModelScoreBarChart
+          title="MEXA Scores by Model"
+          subtitle="Exact max and mean scores for each individual model; select an experiment to view results."
+          rows={ALL_INDIVIDUAL_MODELS}
+          variants={VARIANT_COLUMNS}
+          defaultVariantKey="flores-table1-2000"
+          className="col-span-12"
+        />
         <ScoreVsSizeChart
           title="MEXA Score vs Model Size — Qwen3 Scaling"
           subtitle="Qwen3 family (0.6B → 9B). The trend line shows how alignment scales with size within one model family."
@@ -824,6 +852,19 @@ export default function Overview() {
           className="col-span-12"
         />
       </div>
+
+      {/* Low-Resource & Script Alignment Analysis */}
+      <section className="space-y-6">
+        <div className="max-w-5xl">
+          <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider mb-2">
+            Low-Resource & Script Alignment Analysis
+          </h3>
+          <p className="text-xs text-on-surface-variant font-body leading-relaxed">
+            A deep-dive investigation into the worst-performing languages and orthographies. This section explores how different writing systems (scripts) affect model alignment, and exposes the performance gap between Latin and underrepresented scripts for the same language.
+          </p>
+        </div>
+        <LowResourceAnalysis floresData={allData['flores-max']?.data || []} />
+      </section>
 
       {/* Experiment Timeline */}
       <div className="grid grid-cols-12 gap-8">

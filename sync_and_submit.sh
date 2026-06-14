@@ -40,6 +40,9 @@ ssh "${CLUSTER_HOST}" "bash -s" << 'EOF'
   echo "Submitting XLM-RoBERTa large — FLORES Table 1 (2000 sents)..."
   cd "XLM-RoBERTa large/FLORES_table1_2000_experiment" && sbatch run_coma_cluster.slurm && cd ~/MEXA-fork
 
+  echo "Submitting XLM-RoBERTa base — FLORES Table 1 (2000 sents)..."
+  cd "XLM-RoBERTa base/FLORES_table1_2000_experiment" && sbatch run_coma_cluster.slurm && cd ~/MEXA-fork
+
   echo "Submitting LaBSE — FLORES Table 1 (2000 sents)..."
   cd "LaBSE/FLORES_table1_2000_experiment" && sbatch run_coma_cluster.slurm && cd ~/MEXA-fork
 

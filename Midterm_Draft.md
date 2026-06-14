@@ -166,4 +166,11 @@ For your mid-term document, you can report the following key diagnostic figures 
   year         = {2025},
   url          = {https://arxiv.org/abs/2410.05873}
 }
+```
 
+---
+
+# SECTION 4: Acknowledgements
+
+*   **Cluster Usage Statement**: 
+    > Experiments presented in this work were carried out using the CIT-TUM-HN cluster at TUM Campus Heilbronn.

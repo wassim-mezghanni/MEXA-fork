@@ -46,6 +46,7 @@ const MODEL_CSV_MAP: Record<string, string> = {
   'Multilingual E5 base': 'me5_base',
   'Glot500 base': 'glot500',
   'XLM-RoBERTa large': 'xlmr_large',
+  'XLM-RoBERTa base': 'xlmr_base',
   'mmBERT base': 'mmbert_base',
   'Qwen3-Embedding-8B': 'qwen3_emb_8b',
   'Qwen3-Embedding-4B': 'qwen3_emb_4b',
