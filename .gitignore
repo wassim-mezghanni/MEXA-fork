@@ -50,6 +50,8 @@ mexa_*/
 dashboard/public/data/
 **/scores/
 **/embeddings/
+flores200_dataset
+bible_dataset
 
 # IDEs
 .vscode/

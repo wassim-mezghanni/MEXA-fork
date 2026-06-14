@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import Overview from './pages/Overview';
 import MexaFindings from './pages/MexaFindings';
 import RankingValidation from './pages/RankingValidation';
+import DatasetDetail from './pages/DatasetDetail';
 
 // Llama 3.1 8B
 import Llama31FloresFindings from './pages/Llama31FloresFindings';
@@ -219,6 +220,10 @@ function App() {
                 <Route path="/" element={<Overview />} />
                 <Route path="/findings" element={<MexaFindings />} />
                 <Route path="/validation" element={<RankingValidation />} />
+
+                {/* Dataset references */}
+                <Route path="/datasets/flores" element={<DatasetDetail dataset="flores" />} />
+                <Route path="/datasets/bible" element={<DatasetDetail dataset="bible" />} />
 
                 {/* Llama 3.1 8B */}
                 <Route path="/llama31/flores" element={<Llama31FloresFindings />} />

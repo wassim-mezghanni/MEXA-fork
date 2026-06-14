@@ -121,6 +121,11 @@ const TOP_NAV: TopNavItem[] = [
   { icon: 'menu_book', label: 'MEXA Findings', path: '/findings' },
 ];
 
+const DATASET_NAV: TopNavItem[] = [
+  { icon: 'local_florist', label: 'FLORES-200', path: '/datasets/flores' },
+  { icon: 'auto_stories', label: 'Bible (sPBC)', path: '/datasets/bible' },
+];
+
 const BOTTOM_NAV: TopNavItem[] = [
   { icon: 'grid_view', label: 'Alignment', path: '/alignment' },
   { icon: 'analytics', label: 'Distribution', path: '/distribution' },
@@ -214,6 +219,29 @@ export default function Sidebar() {
       {/* Top nav */}
       <div className="space-y-1 mb-2">
         {TOP_NAV.map(item => (
+          <NavLink
+            key={item.path}
+            to={item.path}
+            className={({ isActive }) =>
+              isActive
+                ? 'w-full flex items-center gap-3 px-3 py-2 bg-surface-container-lowest text-primary font-medium rounded-lg shadow-sm'
+                : 'w-full flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-container-high hover:translate-x-1 transition-transform duration-200 rounded-lg'
+            }
+          >
+            <span className="material-symbols-outlined text-xl">{item.icon}</span>
+            <span className="font-body text-sm tracking-wide">{item.label}</span>
+          </NavLink>
+        ))}
+      </div>
+
+      {/* Datasets Section Label */}
+      <div className="px-3 pt-4 pb-2">
+        <span className="text-[9px] uppercase tracking-[0.25em] font-bold text-on-surface-variant/50">
+          Datasets
+        </span>
+      </div>
+      <div className="space-y-1 mb-2">
+        {DATASET_NAV.map(item => (
           <NavLink
             key={item.path}
             to={item.path}

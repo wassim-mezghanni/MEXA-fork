@@ -4,6 +4,9 @@ import { ScoreVsSizeChart, type SizeChartRow } from '../charts/ScoreVsSizeChart'
 import { ScoreHistogramChart } from '../charts/ScoreHistogramChart';
 import { ModelScoreBarChart } from '../charts/ModelScoreBarChart';
 import LowResourceAnalysis from '../components/LowResourceAnalysis';
+import FertilityScatter from '../components/FertilityScatter';
+import TokenizationDemo from '../components/TokenizationDemo';
+import ScriptAnalysis from '../components/ScriptAnalysis';
 
 /* ── Data helpers ── */
 function parseCSV(text) {
@@ -356,7 +359,7 @@ export default function Overview() {
     async function loadData() {
       setLoading(true);
       try {
-        const [langNamesRes, fmb, fma, bmb, bma, llamaCsvRes] = await Promise.all([
+        const [langNamesRes, fmb, fma, bmb, bma, llamaCsvRes, lrFlores, lrBible] = await Promise.all([
           fetch('/data/language_names.json').then((r) => r.json()),
           fetch('/data/flores-max-belebele.csv').then((r) => r.text()),
           fetch('/data/flores-mean-arc.csv').then((r) => r.text()),
@@ -365,6 +368,9 @@ export default function Overview() {
           fetch('/data/flores_llama3.1_8b_results.csv')
             .then((r) => r.text())
             .catch(() => ''),
+          // Cross-model average MEXA scores per language (built by scratch/build_lowresource_data.py)
+          fetch('/data/lowresource_flores_avg.csv').then((r) => r.text()).catch(() => ''),
+          fetch('/data/lowresource_bible_avg.csv').then((r) => r.text()).catch(() => ''),
         ]);
 
         const floresNameMap = {};
@@ -388,6 +394,8 @@ export default function Overview() {
           'flores-mean': parseCSV(fma),
           'bible-max': parseCSV(bmb),
           'bible-mean': parseCSV(bma),
+          'lowres-flores': lrFlores ? parseCSV(lrFlores) : null,
+          'lowres-bible': lrBible ? parseCSV(lrBible) : null,
           my_results: llamaCsvRes ? parseCSV(llamaCsvRes) : null,
         });
       } catch (err) {
@@ -863,7 +871,19 @@ export default function Overview() {
             A deep-dive investigation into the worst-performing languages and orthographies. This section explores how different writing systems (scripts) affect model alignment, and exposes the performance gap between Latin and underrepresented scripts for the same language.
           </p>
         </div>
-        <LowResourceAnalysis floresData={allData['flores-max']?.data || []} />
+        <LowResourceAnalysis
+          floresData={allData['lowres-flores']?.data || []}
+          bibleData={allData['lowres-bible']?.data || []}
+        />
+        <div className="mt-8">
+          <ScriptAnalysis />
+        </div>
+        <div className="mt-8">
+          <FertilityScatter />
+        </div>
+        <div className="mt-8">
+          <TokenizationDemo />
+        </div>
       </section>
 
       {/* Experiment Timeline */}
