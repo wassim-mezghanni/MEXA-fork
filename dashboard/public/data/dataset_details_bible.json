@@ -1,0 +1,10010 @@
+{
+ "id": "bible",
+ "name": "Bible (sPBC)",
+ "fullName": "Super Parallel Bible Corpus — 103-verse subset",
+ "source": "cis-lmu/sPBC · huggingface.co/datasets/cis-lmu/sPBC",
+ "license": "Per-translation (research use); compilation by cis-lmu",
+ "description": "A massively multilingual parallel corpus of Bible verses covering the long tail of low-resource languages. The 103-verse subset provides the same verses across every language, used here as the low-resource counterpart to FLORES. Translations are overwhelmingly in romanized/Latin orthography regardless of a language's native script.",
+ "numLanguages": 1401,
+ "numScripts": 29,
+ "sentsPerLang": 103,
+ "subsets": [
+  {
+   "name": "Table 1",
+   "langs": "101",
+   "sents": "103",
+   "note": "Downstream-overlap subset matching the paper"
+  },
+  {
+   "name": "Full",
+   "langs": "1401",
+   "sents": "103",
+   "note": "All available sPBC languages"
+  }
+ ],
+ "scripts": [
+  {
+   "code": "Latn",
+   "name": "Latin",
+   "count": 1281,
+   "pct": 91.4
+  },
+  {
+   "code": "Cyrl",
+   "name": "Cyrillic",
+   "count": 42,
+   "pct": 3.0
+  },
+  {
+   "code": "Deva",
+   "name": "Devanagari",
+   "count": 16,
+   "pct": 1.1
+  },
+  {
+   "code": "Arab",
+   "name": "Arabic",
+   "count": 11,
+   "pct": 0.8
+  },
+  {
+   "code": "Ethi",
+   "name": "Ethiopic (Geʿez)",
+   "count": 8,
+   "pct": 0.6
+  },
+  {
+   "code": "Thai",
+   "name": "Thai",
+   "count": 6,
+   "pct": 0.4
+  },
+  {
+   "code": "Hani",
+   "name": "Han (Chinese)",
+   "count": 4,
+   "pct": 0.3
+  },
+  {
+   "code": "Cans",
+   "name": "Canadian Syllabics",
+   "count": 4,
+   "pct": 0.3
+  },
+  {
+   "code": "Mymr",
+   "name": "Myanmar (Burmese)",
+   "count": 4,
+   "pct": 0.3
+  },
+  {
+   "code": "Beng",
+   "name": "Bengali",
+   "count": 3,
+   "pct": 0.2
+  },
+  {
+   "code": "Syrc",
+   "name": "Syriac",
+   "count": 2,
+   "pct": 0.1
+  },
+  {
+   "code": "Khmr",
+   "name": "Khmer",
+   "count": 2,
+   "pct": 0.1
+  },
+  {
+   "code": "Telu",
+   "name": "Telugu",
+   "count": 2,
+   "pct": 0.1
+  },
+  {
+   "code": "Copt",
+   "name": "Coptic",
+   "count": 1,
+   "pct": 0.1
+  },
+  {
+   "code": "Grek",
+   "name": "Greek",
+   "count": 1,
+   "pct": 0.1
+  },
+  {
+   "code": "Gujr",
+   "name": "Gujarati",
+   "count": 1,
+   "pct": 0.1
+  },
+  {
+   "code": "Hebr",
+   "name": "Hebrew",
+   "count": 1,
+   "pct": 0.1
+  },
+  {
+   "code": "Armn",
+   "name": "Armenian",
+   "count": 1,
+   "pct": 0.1
+  },
+  {
+   "code": "Laoo",
+   "name": "Lao",
+   "count": 1,
+   "pct": 0.1
+  },
+  {
+   "code": "Knda",
+   "name": "Kannada",
+   "count": 1,
+   "pct": 0.1
+  },
+  {
+   "code": "Geor",
+   "name": "Georgian",
+   "count": 1,
+   "pct": 0.1
+  },
+  {
+   "code": "Hang",
+   "name": "Hangul (Korean)",
+   "count": 1,
+   "pct": 0.1
+  },
+  {
+   "code": "Tibt",
+   "name": "Tibetan",
+   "count": 1,
+   "pct": 0.1
+  },
+  {
+   "code": "Limb",
+   "name": "Limbu",
+   "count": 1,
+   "pct": 0.1
+  },
+  {
+   "code": "Mlym",
+   "name": "Malayalam",
+   "count": 1,
+   "pct": 0.1
+  },
+  {
+   "code": "Orya",
+   "name": "Odia (Oriya)",
+   "count": 1,
+   "pct": 0.1
+  },
+  {
+   "code": "Guru",
+   "name": "Gurmukhi (Punjabi)",
+   "count": 1,
+   "pct": 0.1
+  },
+  {
+   "code": "Sinh",
+   "name": "Sinhala",
+   "count": 1,
+   "pct": 0.1
+  },
+  {
+   "code": "Taml",
+   "name": "Tamil",
+   "count": 1,
+   "pct": 0.1
+  }
+ ],
+ "languages": [
+  {
+   "code": "kud_Latn",
+   "iso": "kud",
+   "name": "'Auhelawa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aau_Latn",
+   "iso": "aau",
+   "name": "Abau",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aca_Latn",
+   "iso": "aca",
+   "name": "Achagua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "acn_Latn",
+   "iso": "acn",
+   "name": "Achang",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "acr_Latn",
+   "iso": "acr",
+   "name": "Achi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ace_Latn",
+   "iso": "ace",
+   "name": "Achinese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "acu_Latn",
+   "iso": "acu",
+   "name": "Achuar-Shiwiar",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "guq_Latn",
+   "iso": "guq",
+   "name": "Aché",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ach_Latn",
+   "iso": "ach",
+   "name": "Acoli",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "fub_Latn",
+   "iso": "fub",
+   "name": "Adamawa Fulfulde",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ade_Latn",
+   "iso": "ade",
+   "name": "Adele",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "adh_Latn",
+   "iso": "adh",
+   "name": "Adhola",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "adi_Latn",
+   "iso": "adi",
+   "name": "Adi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "adj_Latn",
+   "iso": "adj",
+   "name": "Adioukrou",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "awi_Latn",
+   "iso": "awi",
+   "name": "Aekyom",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "afr_Latn",
+   "iso": "afr",
+   "name": "Afrikaans",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "agd_Latn",
+   "iso": "agd",
+   "name": "Agarabi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "agx_Cyrl",
+   "iso": "agx",
+   "name": "Aghul",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "agu_Latn",
+   "iso": "agu",
+   "name": "Aguacateco",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "agr_Latn",
+   "iso": "agr",
+   "name": "Aguaruna",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "msm_Latn",
+   "iso": "msm",
+   "name": "Agusan Manobo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "agn_Latn",
+   "iso": "agn",
+   "name": "Agutaynen",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aim_Latn",
+   "iso": "aim",
+   "name": "Aimol",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aji_Latn",
+   "iso": "aji",
+   "name": "Ajië",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cpc_Latn",
+   "iso": "cpc",
+   "name": "Ajyíninka Apurucayali",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ake_Latn",
+   "iso": "ake",
+   "name": "Akawaio",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aeu_Latn",
+   "iso": "aeu",
+   "name": "Akeu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ahk_Latn",
+   "iso": "ahk",
+   "name": "Akha",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bss_Latn",
+   "iso": "bss",
+   "name": "Akoose",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "alj_Latn",
+   "iso": "alj",
+   "name": "Alangan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sqi_Latn",
+   "iso": "sqi",
+   "name": "Albanian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gah_Latn",
+   "iso": "gah",
+   "name": "Alekano",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "alq_Latn",
+   "iso": "alq",
+   "name": "Algonquin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ald_Latn",
+   "iso": "ald",
+   "name": "Alladian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "alp_Latn",
+   "iso": "alp",
+   "name": "Alune",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "alz_Latn",
+   "iso": "alz",
+   "name": "Alur",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aly_Latn",
+   "iso": "aly",
+   "name": "Alyawarr",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "amm_Latn",
+   "iso": "amm",
+   "name": "Ama (Papua New Guinea)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "amn_Latn",
+   "iso": "amn",
+   "name": "Amanab",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zpo_Latn",
+   "iso": "zpo",
+   "name": "Amatlán Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "amk_Latn",
+   "iso": "amk",
+   "name": "Ambai",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qva_Latn",
+   "iso": "qva",
+   "name": "Ambo-Pasco Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "abt_Latn",
+   "iso": "abt",
+   "name": "Ambulas",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aey_Latn",
+   "iso": "aey",
+   "name": "Amele",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ifa_Latn",
+   "iso": "ifa",
+   "name": "Amganad Ifugao",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "amh_Ethi",
+   "iso": "amh",
+   "name": "Amharic",
+   "script": "Ethi",
+   "scriptName": "Ethiopic (Geʿez)"
+  },
+  {
+   "code": "amh_Latn",
+   "iso": "amh",
+   "name": "Amharic",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "amo_Latn",
+   "iso": "amo",
+   "name": "Amo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ajz_Latn",
+   "iso": "ajz",
+   "name": "Amri Karbi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "anm_Latn",
+   "iso": "anm",
+   "name": "Anal",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "agm_Latn",
+   "iso": "agm",
+   "name": "Angaataha",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "akh_Latn",
+   "iso": "akh",
+   "name": "Angal Heneng",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "njm_Latn",
+   "iso": "njm",
+   "name": "Angami Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "agg_Latn",
+   "iso": "agg",
+   "name": "Angor",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aoi_Latn",
+   "iso": "aoi",
+   "name": "Anindilyakwa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "boj_Latn",
+   "iso": "boj",
+   "name": "Anjam",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aak_Latn",
+   "iso": "aak",
+   "name": "Ankave",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cko_Latn",
+   "iso": "cko",
+   "name": "Anufo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "any_Latn",
+   "iso": "any",
+   "name": "Anyin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "njo_Latn",
+   "iso": "njo",
+   "name": "Ao Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "apy_Latn",
+   "iso": "apy",
+   "name": "Apalaí",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "apt_Latn",
+   "iso": "apt",
+   "name": "Apatani",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "apn_Latn",
+   "iso": "apn",
+   "name": "Apinayé",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "apu_Latn",
+   "iso": "apu",
+   "name": "Apurinã",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "arl_Latn",
+   "iso": "arl",
+   "name": "Arabela",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "arp_Latn",
+   "iso": "arp",
+   "name": "Arapaho",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mwc_Latn",
+   "iso": "mwc",
+   "name": "Are",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aai_Latn",
+   "iso": "aai",
+   "name": "Arifama-Miniafia",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hye_Armn",
+   "iso": "hye",
+   "name": "Armenian",
+   "script": "Armn",
+   "scriptName": "Armenian"
+  },
+  {
+   "code": "hye_Latn",
+   "iso": "hye",
+   "name": "Armenian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "apr_Latn",
+   "iso": "apr",
+   "name": "Arop-Lokep",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aia_Latn",
+   "iso": "aia",
+   "name": "Arosi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "msy_Latn",
+   "iso": "msy",
+   "name": "Aruamu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cjo_Latn",
+   "iso": "cjo",
+   "name": "Ashéninka Pajonal",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "asm_Beng",
+   "iso": "asm",
+   "name": "Assamese",
+   "script": "Beng",
+   "scriptName": "Bengali"
+  },
+  {
+   "code": "aii_Syrc",
+   "iso": "aii",
+   "name": "Assyrian Neo-Aramaic",
+   "script": "Syrc",
+   "scriptName": "Syriac"
+  },
+  {
+   "code": "atd_Latn",
+   "iso": "atd",
+   "name": "Ata Manobo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mib_Latn",
+   "iso": "mib",
+   "name": "Atatláhuca Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "avt_Latn",
+   "iso": "avt",
+   "name": "Au",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ava_Cyrl",
+   "iso": "ava",
+   "name": "Avaric",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "awb_Latn",
+   "iso": "awb",
+   "name": "Awa (Papua New Guinea)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "awk_Latn",
+   "iso": "awk",
+   "name": "Awabakal",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "awa_Deva",
+   "iso": "awa",
+   "name": "Awadhi",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "quy_Latn",
+   "iso": "quy",
+   "name": "Ayacucho Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "vmy_Latn",
+   "iso": "vmy",
+   "name": "Ayautla Mazatec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aym_Latn",
+   "iso": "aym",
+   "name": "Aymara",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ayo_Latn",
+   "iso": "ayo",
+   "name": "Ayoreo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "miy_Latn",
+   "iso": "miy",
+   "name": "Ayutla Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aze_Cyrl",
+   "iso": "aze",
+   "name": "Azerbaijani",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "aze_Latn",
+   "iso": "aze",
+   "name": "Azerbaijani",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bba_Latn",
+   "iso": "bba",
+   "name": "Baatonum",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mbf_Latn",
+   "iso": "mbf",
+   "name": "Baba Malay",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bvd_Latn",
+   "iso": "bvd",
+   "name": "Baeggu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ksf_Latn",
+   "iso": "ksf",
+   "name": "Bafia",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bfd_Latn",
+   "iso": "bfd",
+   "name": "Bafut",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bsp_Latn",
+   "iso": "bsp",
+   "name": "Baga Sitemu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bdh_Latn",
+   "iso": "bdh",
+   "name": "Baka (South Sudan)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bkq_Latn",
+   "iso": "bkq",
+   "name": "Bakairí",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bki_Latn",
+   "iso": "bki",
+   "name": "Baki",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "blw_Latn",
+   "iso": "blw",
+   "name": "Balangao",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "blz_Latn",
+   "iso": "blz",
+   "name": "Balantak",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ban_Latn",
+   "iso": "ban",
+   "name": "Balinese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "rmn_Latn",
+   "iso": "rmn",
+   "name": "Balkan Romani",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ptu_Latn",
+   "iso": "ptu",
+   "name": "Bambam",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bam_Latn",
+   "iso": "bam",
+   "name": "Bambara",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bcw_Latn",
+   "iso": "bcw",
+   "name": "Bana",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bqj_Latn",
+   "iso": "bqj",
+   "name": "Bandial",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bgz_Latn",
+   "iso": "bgz",
+   "name": "Banggai",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bsj_Latn",
+   "iso": "bsj",
+   "name": "Bangwinji",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bci_Latn",
+   "iso": "bci",
+   "name": "Baoulé",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bsn_Latn",
+   "iso": "bsn",
+   "name": "Barasana-Eduria",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mlp_Latn",
+   "iso": "mlp",
+   "name": "Bargam",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bch_Latn",
+   "iso": "bch",
+   "name": "Bariai",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bjk_Latn",
+   "iso": "bjk",
+   "name": "Barok",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "byr_Latn",
+   "iso": "byr",
+   "name": "Baruya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bak_Cyrl",
+   "iso": "bak",
+   "name": "Bashkir",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "eus_Latn",
+   "iso": "eus",
+   "name": "Basque",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bsc_Latn",
+   "iso": "bsc",
+   "name": "Bassari",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ifb_Latn",
+   "iso": "ifb",
+   "name": "Batad Ifugao",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "akb_Latn",
+   "iso": "akb",
+   "name": "Batak Angkola",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "btd_Latn",
+   "iso": "btd",
+   "name": "Batak Dairi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "btx_Latn",
+   "iso": "btx",
+   "name": "Batak Karo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bts_Latn",
+   "iso": "bts",
+   "name": "Batak Simalungun",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bbc_Latn",
+   "iso": "bbc",
+   "name": "Batak Toba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bar_Latn",
+   "iso": "bar",
+   "name": "Bavarian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bgr_Latn",
+   "iso": "bgr",
+   "name": "Bawm Chin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "beo_Latn",
+   "iso": "beo",
+   "name": "Beami",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bjv_Latn",
+   "iso": "bjv",
+   "name": "Bedjond",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "beq_Latn",
+   "iso": "beq",
+   "name": "Beembe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bkv_Latn",
+   "iso": "bkv",
+   "name": "Bekwarra",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bel_Cyrl",
+   "iso": "bel",
+   "name": "Belarusian",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "bzj_Latn",
+   "iso": "bzj",
+   "name": "Belize Kriol English",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bem_Latn",
+   "iso": "bem",
+   "name": "Bemba (Zambia)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bmb_Latn",
+   "iso": "bmb",
+   "name": "Bembe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bef_Latn",
+   "iso": "bef",
+   "name": "Benabena",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ben_Beng",
+   "iso": "ben",
+   "name": "Bengali",
+   "script": "Beng",
+   "scriptName": "Bengali"
+  },
+  {
+   "code": "bom_Latn",
+   "iso": "bom",
+   "name": "Berom",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "btt_Latn",
+   "iso": "btt",
+   "name": "Bete-Bendi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "big_Latn",
+   "iso": "big",
+   "name": "Biangai",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bth_Latn",
+   "iso": "bth",
+   "name": "Biatah Bidayuh",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "biu_Latn",
+   "iso": "biu",
+   "name": "Biete",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bhp_Latn",
+   "iso": "bhp",
+   "name": "Bima",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bhl_Latn",
+   "iso": "bhl",
+   "name": "Bimin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bim_Latn",
+   "iso": "bim",
+   "name": "Bimoba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bhg_Latn",
+   "iso": "bhg",
+   "name": "Binandere",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bon_Latn",
+   "iso": "bon",
+   "name": "Bine",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bkd_Latn",
+   "iso": "bkd",
+   "name": "Binukid",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bis_Latn",
+   "iso": "bis",
+   "name": "Bislama",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bib_Latn",
+   "iso": "bib",
+   "name": "Bissa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bzi_Thai",
+   "iso": "bzi",
+   "name": "Bisu",
+   "script": "Thai",
+   "scriptName": "Thai"
+  },
+  {
+   "code": "mux_Latn",
+   "iso": "mux",
+   "name": "Bo-Ung",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bqc_Latn",
+   "iso": "bqc",
+   "name": "Boko (Benin)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bus_Latn",
+   "iso": "bus",
+   "name": "Bokobaru",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bnp_Latn",
+   "iso": "bnp",
+   "name": "Bola",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "smk_Latn",
+   "iso": "smk",
+   "name": "Bolinao",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bmq_Latn",
+   "iso": "bmq",
+   "name": "Bomu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "boa_Latn",
+   "iso": "boa",
+   "name": "Bora",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kvn_Latn",
+   "iso": "kvn",
+   "name": "Border Kuna",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gai_Latn",
+   "iso": "gai",
+   "name": "Borei",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ksr_Latn",
+   "iso": "ksr",
+   "name": "Borong",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sbl_Latn",
+   "iso": "sbl",
+   "name": "Botolan Sambal",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bre_Latn",
+   "iso": "bre",
+   "name": "Breton",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bzd_Latn",
+   "iso": "bzd",
+   "name": "Bribri",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "plw_Latn",
+   "iso": "plw",
+   "name": "Brooke's Point Palawano",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "jid_Latn",
+   "iso": "jid",
+   "name": "Bu (Kaduna State)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "box_Latn",
+   "iso": "box",
+   "name": "Buamu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "buk_Latn",
+   "iso": "buk",
+   "name": "Bugawac",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bgt_Latn",
+   "iso": "bgt",
+   "name": "Bughotu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bug_Latn",
+   "iso": "bug",
+   "name": "Buginese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sab_Latn",
+   "iso": "sab",
+   "name": "Buglere",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bku_Latn",
+   "iso": "bku",
+   "name": "Buhid",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ape_Latn",
+   "iso": "ape",
+   "name": "Bukiyip",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bul_Cyrl",
+   "iso": "bul",
+   "name": "Bulgarian",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "bwu_Latn",
+   "iso": "bwu",
+   "name": "Buli (Ghana)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bum_Latn",
+   "iso": "bum",
+   "name": "Bulu (Cameroon)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aon_Latn",
+   "iso": "aon",
+   "name": "Bumbita Arapesh",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bdd_Latn",
+   "iso": "bdd",
+   "name": "Bunama",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bvr_Latn",
+   "iso": "bvr",
+   "name": "Burarra",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mya_Mymr",
+   "iso": "mya",
+   "name": "Burmese",
+   "script": "Mymr",
+   "scriptName": "Myanmar (Burmese)"
+  },
+  {
+   "code": "bqp_Latn",
+   "iso": "bqp",
+   "name": "Busa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tte_Latn",
+   "iso": "tte",
+   "name": "Bwanabwana",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cjp_Latn",
+   "iso": "cjp",
+   "name": "Cabécar",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cbv_Latn",
+   "iso": "cbv",
+   "name": "Cacua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qvc_Latn",
+   "iso": "qvc",
+   "name": "Cajamarca Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zad_Latn",
+   "iso": "zad",
+   "name": "Cajonos Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tbk_Latn",
+   "iso": "tbk",
+   "name": "Calamian Tagbanwa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "clu_Latn",
+   "iso": "clu",
+   "name": "Caluyanun",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "rmq_Latn",
+   "iso": "rmq",
+   "name": "Caló",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mcu_Latn",
+   "iso": "mcu",
+   "name": "Cameroon Mambila",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kbh_Latn",
+   "iso": "kbh",
+   "name": "Camsá",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cbu_Latn",
+   "iso": "cbu",
+   "name": "Candoshi-Shapra",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kaq_Latn",
+   "iso": "kaq",
+   "name": "Capanahua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cot_Latn",
+   "iso": "cot",
+   "name": "Caquinte",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "caq_Latn",
+   "iso": "caq",
+   "name": "Car Nicobarese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cbc_Latn",
+   "iso": "cbc",
+   "name": "Carapana",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hns_Latn",
+   "iso": "hns",
+   "name": "Caribbean Hindustani",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "jvn_Latn",
+   "iso": "jvn",
+   "name": "Caribbean Javanese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "rmc_Latn",
+   "iso": "rmc",
+   "name": "Carpathian Romani",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "crx_Latn",
+   "iso": "crx",
+   "name": "Carrier",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cbr_Latn",
+   "iso": "cbr",
+   "name": "Cashibo-Cacataibo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dgc_Latn",
+   "iso": "dgc",
+   "name": "Casiguran Dumagat Agta",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cat_Latn",
+   "iso": "cat",
+   "name": "Catalan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cav_Latn",
+   "iso": "cav",
+   "name": "Cavineña",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qxr_Latn",
+   "iso": "qxr",
+   "name": "Cañar Highland Quichua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ceb_Latn",
+   "iso": "ceb",
+   "name": "Cebuano",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ayr_Latn",
+   "iso": "ayr",
+   "name": "Central Aymara",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bcl_Latn",
+   "iso": "bcl",
+   "name": "Central Bikol",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lbk_Latn",
+   "iso": "lbk",
+   "name": "Central Bontok",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nch_Latn",
+   "iso": "nch",
+   "name": "Central Huasteca Nahuatl",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ckb_Arab",
+   "iso": "ckb",
+   "name": "Central Kurdish",
+   "script": "Arab",
+   "scriptName": "Arabic"
+  },
+  {
+   "code": "pse_Latn",
+   "iso": "pse",
+   "name": "Central Malay",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "maz_Latn",
+   "iso": "maz",
+   "name": "Central Mazahua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cmo_Khmr",
+   "iso": "cmo",
+   "name": "Central Mnong",
+   "script": "Khmr",
+   "scriptName": "Khmer"
+  },
+  {
+   "code": "cmo_Latn",
+   "iso": "cmo",
+   "name": "Central Mnong",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sml_Latn",
+   "iso": "sml",
+   "name": "Central Sama",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "syb_Latn",
+   "iso": "syb",
+   "name": "Central Subanen",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tar_Latn",
+   "iso": "tar",
+   "name": "Central Tarahumara",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tuf_Latn",
+   "iso": "tuf",
+   "name": "Central Tunebo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "esu_Latn",
+   "iso": "esu",
+   "name": "Central Yupik",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "fuq_Latn",
+   "iso": "fuq",
+   "name": "Central-Eastern Niger Fulfulde",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cme_Latn",
+   "iso": "cme",
+   "name": "Cerma",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cbi_Latn",
+   "iso": "cbi",
+   "name": "Chachi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "shu_Latn",
+   "iso": "shu",
+   "name": "Chadian Arabic",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ceg_Latn",
+   "iso": "ceg",
+   "name": "Chamacoco",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cha_Latn",
+   "iso": "cha",
+   "name": "Chamorro",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nbc_Latn",
+   "iso": "nbc",
+   "name": "Chang Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cbk_Latn",
+   "iso": "cbk",
+   "name": "Chavacano",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cbt_Latn",
+   "iso": "cbt",
+   "name": "Chayahuita",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mih_Latn",
+   "iso": "mih",
+   "name": "Chayuco Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "che_Cyrl",
+   "iso": "che",
+   "name": "Chechen",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "chr_Latn",
+   "iso": "chr",
+   "name": "Cherokee",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hne_Deva",
+   "iso": "hne",
+   "name": "Chhattisgarhi",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "zpv_Latn",
+   "iso": "zpv",
+   "name": "Chichicapan Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qug_Latn",
+   "iso": "qug",
+   "name": "Chimborazo Highland Quichua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zho_Hani",
+   "iso": "zho",
+   "name": "Chinese",
+   "script": "Hani",
+   "scriptName": "Han (Chinese)"
+  },
+  {
+   "code": "cap_Latn",
+   "iso": "cap",
+   "name": "Chipaya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "maq_Latn",
+   "iso": "maq",
+   "name": "Chiquihuitlán Mazatec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cax_Latn",
+   "iso": "cax",
+   "name": "Chiquitano",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nhd_Latn",
+   "iso": "nhd",
+   "name": "Chiripá",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zpc_Latn",
+   "iso": "zpc",
+   "name": "Choapan Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nri_Latn",
+   "iso": "nri",
+   "name": "Chokri Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ctu_Latn",
+   "iso": "ctu",
+   "name": "Chol",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cce_Latn",
+   "iso": "cce",
+   "name": "Chopi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "caa_Latn",
+   "iso": "caa",
+   "name": "Chortí",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nct_Latn",
+   "iso": "nct",
+   "name": "Chothe Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cjv_Latn",
+   "iso": "cjv",
+   "name": "Chuave",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cac_Latn",
+   "iso": "cac",
+   "name": "Chuj",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ckt_Cyrl",
+   "iso": "ckt",
+   "name": "Chukot",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "ncu_Latn",
+   "iso": "ncu",
+   "name": "Chumburung",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "chu_Cyrl",
+   "iso": "chu",
+   "name": "Church Slavic",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "chk_Latn",
+   "iso": "chk",
+   "name": "Chuukese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "chv_Cyrl",
+   "iso": "chv",
+   "name": "Chuvash",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "cao_Latn",
+   "iso": "cao",
+   "name": "Chácobo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "asg_Latn",
+   "iso": "asg",
+   "name": "Cishingini",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "syc_Syrc",
+   "iso": "syc",
+   "name": "Classical Syriac",
+   "script": "Syrc",
+   "scriptName": "Syriac"
+  },
+  {
+   "code": "zca_Latn",
+   "iso": "zca",
+   "name": "Coatecas Altas Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mco_Latn",
+   "iso": "mco",
+   "name": "Coatlán Mixe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "miz_Latn",
+   "iso": "miz",
+   "name": "Coatzospan Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "con_Latn",
+   "iso": "con",
+   "name": "Cofán",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kog_Latn",
+   "iso": "kog",
+   "name": "Cogui",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cof_Latn",
+   "iso": "cof",
+   "name": "Colorado",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cco_Latn",
+   "iso": "cco",
+   "name": "Comaltepec Chinantec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "trc_Latn",
+   "iso": "trc",
+   "name": "Copala Triqui",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cop_Copt",
+   "iso": "cop",
+   "name": "Coptic",
+   "script": "Copt",
+   "scriptName": "Coptic"
+  },
+  {
+   "code": "cor_Latn",
+   "iso": "cor",
+   "name": "Cornish",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mta_Latn",
+   "iso": "mta",
+   "name": "Cotabato Manobo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "toc_Latn",
+   "iso": "toc",
+   "name": "Coyutla Totonac",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "crh_Cyrl",
+   "iso": "crh",
+   "name": "Crimean Tatar",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "hrv_Latn",
+   "iso": "hrv",
+   "name": "Croatian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cub_Latn",
+   "iso": "cub",
+   "name": "Cubeo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cui_Latn",
+   "iso": "cui",
+   "name": "Cuiba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cul_Latn",
+   "iso": "cul",
+   "name": "Culina",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "quz_Latn",
+   "iso": "quz",
+   "name": "Cusco Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ces_Latn",
+   "iso": "ces",
+   "name": "Czech",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kzf_Latn",
+   "iso": "kzf",
+   "name": "Da'a Kaili",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mps_Latn",
+   "iso": "mps",
+   "name": "Dadibi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dgz_Latn",
+   "iso": "dgz",
+   "name": "Daga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dnj_Latn",
+   "iso": "dnj",
+   "name": "Dan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "daa_Latn",
+   "iso": "daa",
+   "name": "Dangaléat",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dan_Latn",
+   "iso": "dan",
+   "name": "Danish",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aso_Latn",
+   "iso": "aso",
+   "name": "Dano",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dar_Cyrl",
+   "iso": "dar",
+   "name": "Dargwa",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "prs_Arab",
+   "iso": "prs",
+   "name": "Dari",
+   "script": "Arab",
+   "scriptName": "Arabic"
+  },
+  {
+   "code": "tcc_Latn",
+   "iso": "tcc",
+   "name": "Datooga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dww_Latn",
+   "iso": "dww",
+   "name": "Dawawa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dwr_Latn",
+   "iso": "dwr",
+   "name": "Dawro",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ded_Latn",
+   "iso": "ded",
+   "name": "Dedua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mzw_Latn",
+   "iso": "mzw",
+   "name": "Deg",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ntr_Latn",
+   "iso": "ntr",
+   "name": "Delo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "anv_Latn",
+   "iso": "anv",
+   "name": "Denya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "des_Latn",
+   "iso": "des",
+   "name": "Desano",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mbd_Latn",
+   "iso": "mbd",
+   "name": "Dibabawon Manobo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dif_Latn",
+   "iso": "dif",
+   "name": "Dieri",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dig_Latn",
+   "iso": "dig",
+   "name": "Digo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dur_Latn",
+   "iso": "dur",
+   "name": "Dii",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dis_Latn",
+   "iso": "dis",
+   "name": "Dimasa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tbz_Latn",
+   "iso": "tbz",
+   "name": "Ditammari",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "djr_Latn",
+   "iso": "djr",
+   "name": "Djambarrpuyngu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dyi_Latn",
+   "iso": "dyi",
+   "name": "Djimini Senoufo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dob_Latn",
+   "iso": "dob",
+   "name": "Dobu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dgr_Latn",
+   "iso": "dgr",
+   "name": "Dogrib",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dov_Latn",
+   "iso": "dov",
+   "name": "Dombe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kqc_Latn",
+   "iso": "kqc",
+   "name": "Doromu-Koki",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dow_Latn",
+   "iso": "dow",
+   "name": "Doyayo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mvp_Latn",
+   "iso": "mvp",
+   "name": "Duri",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dug_Latn",
+   "iso": "dug",
+   "name": "Duruma",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nld_Latn",
+   "iso": "nld",
+   "name": "Dutch",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dyu_Latn",
+   "iso": "dyu",
+   "name": "Dyula",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kjs_Latn",
+   "iso": "kjs",
+   "name": "East Kewa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qve_Latn",
+   "iso": "qve",
+   "name": "Eastern Apurímac Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aer_Latn",
+   "iso": "aer",
+   "name": "Eastern Arrernte",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gui_Latn",
+   "iso": "gui",
+   "name": "Eastern Bolivian Guaraní",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ebk_Latn",
+   "iso": "ebk",
+   "name": "Eastern Bontok",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bru_Latn",
+   "iso": "bru",
+   "name": "Eastern Bru",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ike_Cans",
+   "iso": "ike",
+   "name": "Eastern Canadian Inuktitut",
+   "script": "Cans",
+   "scriptName": "Canadian Syllabics"
+  },
+  {
+   "code": "cly_Latn",
+   "iso": "cly",
+   "name": "Eastern Highland Chatino",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "otm_Latn",
+   "iso": "otm",
+   "name": "Eastern Highland Otomi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nhe_Latn",
+   "iso": "nhe",
+   "name": "Eastern Huasteca Nahuatl",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xrb_Latn",
+   "iso": "xrb",
+   "name": "Eastern Karaboro",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cek_Latn",
+   "iso": "cek",
+   "name": "Eastern Khumi Chin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kqo_Latn",
+   "iso": "kqo",
+   "name": "Eastern Krahn",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mhr_Cyrl",
+   "iso": "mhr",
+   "name": "Eastern Mari",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "djk_Latn",
+   "iso": "djk",
+   "name": "Eastern Maroon Creole",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hae_Latn",
+   "iso": "hae",
+   "name": "Eastern Oromo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "taj_Deva",
+   "iso": "taj",
+   "name": "Eastern Tamang",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "bnj_Latn",
+   "iso": "bnj",
+   "name": "Eastern Tawbuid",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "efi_Latn",
+   "iso": "efi",
+   "name": "Efik",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "arz_Arab",
+   "iso": "arz",
+   "name": "Egyptian Arabic",
+   "script": "Arab",
+   "scriptName": "Arabic"
+  },
+  {
+   "code": "etu_Latn",
+   "iso": "etu",
+   "name": "Ejagham",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "eka_Latn",
+   "iso": "eka",
+   "name": "Ekajuk",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "crn_Latn",
+   "iso": "crn",
+   "name": "El Nayar Cora",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "enq_Latn",
+   "iso": "enq",
+   "name": "Enga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "eng_Latn",
+   "iso": "eng",
+   "name": "English",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "enl_Latn",
+   "iso": "enl",
+   "name": "Enlhet",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "enx_Latn",
+   "iso": "enx",
+   "name": "Enxet",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sja_Latn",
+   "iso": "sja",
+   "name": "Epena",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "myv_Cyrl",
+   "iso": "myv",
+   "name": "Erzya",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "mcq_Latn",
+   "iso": "mcq",
+   "name": "Ese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ese_Latn",
+   "iso": "ese",
+   "name": "Ese Ejja",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "epo_Latn",
+   "iso": "epo",
+   "name": "Esperanto",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ots_Latn",
+   "iso": "ots",
+   "name": "Estado de México Otomi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "est_Latn",
+   "iso": "est",
+   "name": "Estonian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "eve_Cyrl",
+   "iso": "eve",
+   "name": "Even",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "nou_Latn",
+   "iso": "nou",
+   "name": "Ewage-Notu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ewe_Latn",
+   "iso": "ewe",
+   "name": "Ewe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ewo_Latn",
+   "iso": "ewo",
+   "name": "Ewondo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "eza_Latn",
+   "iso": "eza",
+   "name": "Ezaa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "fai_Latn",
+   "iso": "fai",
+   "name": "Faiwol",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cfm_Latn",
+   "iso": "cfm",
+   "name": "Falam Chin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gur_Latn",
+   "iso": "gur",
+   "name": "Farefare",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "fao_Latn",
+   "iso": "fao",
+   "name": "Faroese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "faa_Latn",
+   "iso": "faa",
+   "name": "Fasu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "far_Latn",
+   "iso": "far",
+   "name": "Fataleka",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hif_Latn",
+   "iso": "hif",
+   "name": "Fiji Hindi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "fij_Latn",
+   "iso": "fij",
+   "name": "Fijian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "fil_Latn",
+   "iso": "fil",
+   "name": "Filipino",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "fin_Latn",
+   "iso": "fin",
+   "name": "Finnish",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ppo_Latn",
+   "iso": "ppo",
+   "name": "Folopa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "fon_Latn",
+   "iso": "fon",
+   "name": "Fon",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "for_Latn",
+   "iso": "for",
+   "name": "Fore",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zos_Latn",
+   "iso": "zos",
+   "name": "Francisco León Zoque",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "fra_Latn",
+   "iso": "fra",
+   "name": "French",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gaa_Latn",
+   "iso": "gaa",
+   "name": "Ga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gdg_Latn",
+   "iso": "gdg",
+   "name": "Ga'dang",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gag_Cyrl",
+   "iso": "gag",
+   "name": "Gagauz",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "gag_Latn",
+   "iso": "gag",
+   "name": "Gagauz",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gbi_Latn",
+   "iso": "gbi",
+   "name": "Galela",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "car_Latn",
+   "iso": "car",
+   "name": "Galibi Carib",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "adl_Latn",
+   "iso": "adl",
+   "name": "Galo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lug_Latn",
+   "iso": "lug",
+   "name": "Ganda",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gnb_Latn",
+   "iso": "gnb",
+   "name": "Gangte",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pwg_Latn",
+   "iso": "pwg",
+   "name": "Gapapaiwa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cab_Latn",
+   "iso": "cab",
+   "name": "Garifuna",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "grt_Beng",
+   "iso": "grt",
+   "name": "Garo",
+   "script": "Beng",
+   "scriptName": "Bengali"
+  },
+  {
+   "code": "nlg_Latn",
+   "iso": "nlg",
+   "name": "Gela",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gej_Latn",
+   "iso": "gej",
+   "name": "Gen",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kat_Geor",
+   "iso": "kat",
+   "name": "Georgian",
+   "script": "Geor",
+   "scriptName": "Georgian"
+  },
+  {
+   "code": "deu_Latn",
+   "iso": "deu",
+   "name": "German",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aln_Latn",
+   "iso": "aln",
+   "name": "Gheg Albanian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bbj_Latn",
+   "iso": "bbj",
+   "name": "Ghomálá'",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gid_Latn",
+   "iso": "gid",
+   "name": "Gidar",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "acd_Latn",
+   "iso": "acd",
+   "name": "Gikyode",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gil_Latn",
+   "iso": "gil",
+   "name": "Gilbertese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bbr_Latn",
+   "iso": "bbr",
+   "name": "Girawa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nyf_Latn",
+   "iso": "nyf",
+   "name": "Giryama",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "toh_Latn",
+   "iso": "toh",
+   "name": "Gitonga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tof_Latn",
+   "iso": "tof",
+   "name": "Gizrra",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gom_Latn",
+   "iso": "gom",
+   "name": "Goan Konkani",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gof_Latn",
+   "iso": "gof",
+   "name": "Gofa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gog_Latn",
+   "iso": "gog",
+   "name": "Gogo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gkn_Latn",
+   "iso": "gkn",
+   "name": "Gokana",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gvf_Latn",
+   "iso": "gvf",
+   "name": "Golin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gjn_Latn",
+   "iso": "gjn",
+   "name": "Gonja",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gqr_Latn",
+   "iso": "gqr",
+   "name": "Gor",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gor_Latn",
+   "iso": "gor",
+   "name": "Gorontalo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "got_Latn",
+   "iso": "got",
+   "name": "Gothic",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gux_Latn",
+   "iso": "gux",
+   "name": "Gourmanchéma",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "guh_Latn",
+   "iso": "guh",
+   "name": "Guahibo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gub_Latn",
+   "iso": "gub",
+   "name": "Guajajára",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gum_Latn",
+   "iso": "gum",
+   "name": "Guambiano",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gvc_Latn",
+   "iso": "gvc",
+   "name": "Guanano",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gyr_Latn",
+   "iso": "gyr",
+   "name": "Guarayu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "guo_Latn",
+   "iso": "guo",
+   "name": "Guayabero",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gde_Latn",
+   "iso": "gde",
+   "name": "Gude",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "amu_Latn",
+   "iso": "amu",
+   "name": "Guerrero Amuzgo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ngu_Latn",
+   "iso": "ngu",
+   "name": "Guerrero Nahuatl",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ghs_Latn",
+   "iso": "ghs",
+   "name": "Guhu-Samane",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gkp_Latn",
+   "iso": "gkp",
+   "name": "Guinea Kpelle",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "guj_Gujr",
+   "iso": "guj",
+   "name": "Gujarati",
+   "script": "Gujr",
+   "scriptName": "Gujarati"
+  },
+  {
+   "code": "gvl_Latn",
+   "iso": "gvl",
+   "name": "Gulay",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gnn_Latn",
+   "iso": "gnn",
+   "name": "Gumatj",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gvs_Latn",
+   "iso": "gvs",
+   "name": "Gumawana",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "guk_Ethi",
+   "iso": "guk",
+   "name": "Gumuz",
+   "script": "Ethi",
+   "scriptName": "Ethiopic (Geʿez)"
+  },
+  {
+   "code": "guw_Latn",
+   "iso": "guw",
+   "name": "Gun",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "rub_Latn",
+   "iso": "rub",
+   "name": "Gungu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gup_Latn",
+   "iso": "gup",
+   "name": "Gunwinggu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "guz_Latn",
+   "iso": "guz",
+   "name": "Gusii",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dah_Latn",
+   "iso": "dah",
+   "name": "Gwahatike",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gwi_Latn",
+   "iso": "gwi",
+   "name": "Gwichʼin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hat_Latn",
+   "iso": "hat",
+   "name": "Haitian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cnh_Latn",
+   "iso": "cnh",
+   "name": "Hakha Chin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hak_Hani",
+   "iso": "hak",
+   "name": "Hakka Chinese",
+   "script": "Hani",
+   "scriptName": "Han (Chinese)"
+  },
+  {
+   "code": "hak_Latn",
+   "iso": "hak",
+   "name": "Hakka Chinese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "khk_Latn",
+   "iso": "khk",
+   "name": "Halh Mongolian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hla_Latn",
+   "iso": "hla",
+   "name": "Halia",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "amf_Latn",
+   "iso": "amf",
+   "name": "Hamer-Banna",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hag_Latn",
+   "iso": "hag",
+   "name": "Hanga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wos_Latn",
+   "iso": "wos",
+   "name": "Hanga Hundi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hnn_Latn",
+   "iso": "hnn",
+   "name": "Hanunoo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hau_Latn",
+   "iso": "hau",
+   "name": "Hausa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hwc_Latn",
+   "iso": "hwc",
+   "name": "Hawai'i Creole English",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hay_Latn",
+   "iso": "hay",
+   "name": "Haya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xed_Latn",
+   "iso": "xed",
+   "name": "Hdi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "heb_Hebr",
+   "iso": "heb",
+   "name": "Hebrew",
+   "script": "Hebr",
+   "scriptName": "Hebrew"
+  },
+  {
+   "code": "heh_Latn",
+   "iso": "heh",
+   "name": "Hehe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "chd_Latn",
+   "iso": "chd",
+   "name": "Highland Oaxaca Chontal",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "poi_Latn",
+   "iso": "poi",
+   "name": "Highland Popoluca",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "azz_Latn",
+   "iso": "azz",
+   "name": "Highland Puebla Nahuatl",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tos_Latn",
+   "iso": "tos",
+   "name": "Highland Totonac",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hil_Latn",
+   "iso": "hil",
+   "name": "Hiligaynon",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hin_Deva",
+   "iso": "hin",
+   "name": "Hindi",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "hin_Latn",
+   "iso": "hin",
+   "name": "Hindi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hmo_Latn",
+   "iso": "hmo",
+   "name": "Hiri Motu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hix_Latn",
+   "iso": "hix",
+   "name": "Hixkaryána",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hmr_Latn",
+   "iso": "hmr",
+   "name": "Hmar",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mww_Latn",
+   "iso": "mww",
+   "name": "Hmong Daw",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hnj_Latn",
+   "iso": "hnj",
+   "name": "Hmong Njua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hop_Latn",
+   "iso": "hop",
+   "name": "Hopi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hot_Latn",
+   "iso": "hot",
+   "name": "Hote",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hra_Latn",
+   "iso": "hra",
+   "name": "Hrangkhol",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qub_Latn",
+   "iso": "qub",
+   "name": "Huallaga Huánuco Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qvh_Latn",
+   "iso": "qvh",
+   "name": "Huamalíes-Dos de Mayo Huánuco Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hub_Latn",
+   "iso": "hub",
+   "name": "Huambisa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "var_Latn",
+   "iso": "var",
+   "name": "Huarijio",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hus_Latn",
+   "iso": "hus",
+   "name": "Huastec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mau_Latn",
+   "iso": "mau",
+   "name": "Huautla Mazatec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qwh_Latn",
+   "iso": "qwh",
+   "name": "Huaylas Ancash Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tee_Latn",
+   "iso": "tee",
+   "name": "Huehuetla Tepehua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hch_Latn",
+   "iso": "hch",
+   "name": "Huichol",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hui_Latn",
+   "iso": "hui",
+   "name": "Huli",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hun_Latn",
+   "iso": "hun",
+   "name": "Hungarian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yml_Latn",
+   "iso": "yml",
+   "name": "Iamalele",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ian_Latn",
+   "iso": "ian",
+   "name": "Iatmul",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "iba_Latn",
+   "iso": "iba",
+   "name": "Iban",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ivb_Latn",
+   "iso": "ivb",
+   "name": "Ibatan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "isl_Latn",
+   "iso": "isl",
+   "name": "Icelandic",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "viv_Latn",
+   "iso": "viv",
+   "name": "Iduna",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ife_Latn",
+   "iso": "ife",
+   "name": "Ifè",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ibo_Latn",
+   "iso": "ibo",
+   "name": "Igbo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ign_Latn",
+   "iso": "ign",
+   "name": "Ignaciano",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ikk_Latn",
+   "iso": "ikk",
+   "name": "Ika",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ikw_Latn",
+   "iso": "ikw",
+   "name": "Ikwere",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "iqw_Latn",
+   "iso": "iqw",
+   "name": "Ikwo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mbi_Latn",
+   "iso": "mbi",
+   "name": "Ilianen Manobo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ilo_Latn",
+   "iso": "ilo",
+   "name": "Iloko",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qvi_Latn",
+   "iso": "qvi",
+   "name": "Imbabura Highland Quichua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "imo_Latn",
+   "iso": "imo",
+   "name": "Imbongu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "abx_Latn",
+   "iso": "abx",
+   "name": "Inabaknon",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ind_Latn",
+   "iso": "ind",
+   "name": "Indonesian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "inb_Latn",
+   "iso": "inb",
+   "name": "Inga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pes_Arab",
+   "iso": "pes",
+   "name": "Iranian Persian",
+   "script": "Arab",
+   "scriptName": "Arabic"
+  },
+  {
+   "code": "irk_Latn",
+   "iso": "irk",
+   "name": "Iraqw",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "iry_Latn",
+   "iso": "iry",
+   "name": "Iraya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gle_Latn",
+   "iso": "gle",
+   "name": "Irish",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "isn_Latn",
+   "iso": "isn",
+   "name": "Isanzu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "icr_Latn",
+   "iso": "icr",
+   "name": "Islander Creole English",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "isd_Latn",
+   "iso": "isd",
+   "name": "Isnag",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zai_Latn",
+   "iso": "zai",
+   "name": "Isthmus Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nhx_Latn",
+   "iso": "nhx",
+   "name": "Isthmus-Mecayapan Nahuatl",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ita_Latn",
+   "iso": "ita",
+   "name": "Italian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "itv_Latn",
+   "iso": "itv",
+   "name": "Itawit",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ium_Laoo",
+   "iso": "ium",
+   "name": "Iu Mien",
+   "script": "Laoo",
+   "scriptName": "Lao"
+  },
+  {
+   "code": "ium_Latn",
+   "iso": "ium",
+   "name": "Iu Mien",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ium_Thai",
+   "iso": "ium",
+   "name": "Iu Mien",
+   "script": "Thai",
+   "scriptName": "Thai"
+  },
+  {
+   "code": "ivv_Latn",
+   "iso": "ivv",
+   "name": "Ivatan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "atg_Latn",
+   "iso": "atg",
+   "name": "Ivbie North-Okpela-Arhe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kbm_Latn",
+   "iso": "kbm",
+   "name": "Iwal",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ixl_Latn",
+   "iso": "ixl",
+   "name": "Ixil",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nca_Latn",
+   "iso": "nca",
+   "name": "Iyo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "crq_Latn",
+   "iso": "crq",
+   "name": "Iyo'wujwa Chorote",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "crt_Latn",
+   "iso": "crt",
+   "name": "Iyojwa'ja Chorote",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "izr_Latn",
+   "iso": "izr",
+   "name": "Izere",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "izz_Latn",
+   "iso": "izz",
+   "name": "Izii",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "maj_Latn",
+   "iso": "maj",
+   "name": "Jalapa De Díaz Mazatec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "jam_Latn",
+   "iso": "jam",
+   "name": "Jamaican Creole English",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mxt_Latn",
+   "iso": "mxt",
+   "name": "Jamiltepec Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "jni_Latn",
+   "iso": "jni",
+   "name": "Janji",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "jra_Latn",
+   "iso": "jra",
+   "name": "Jarai",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "jav_Latn",
+   "iso": "jav",
+   "name": "Javanese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dyo_Latn",
+   "iso": "dyo",
+   "name": "Jola-Fonyi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "csk_Latn",
+   "iso": "csk",
+   "name": "Jola-Kasa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "jbu_Latn",
+   "iso": "jbu",
+   "name": "Jukun Takum",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mxq_Latn",
+   "iso": "mxq",
+   "name": "Juquila Mixe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bex_Latn",
+   "iso": "bex",
+   "name": "Jur Modo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "quc_Latn",
+   "iso": "quc",
+   "name": "K'iche'",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ksp_Latn",
+   "iso": "ksp",
+   "name": "Kaba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kbd_Cyrl",
+   "iso": "kbd",
+   "name": "Kabardian",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "kbp_Latn",
+   "iso": "kbp",
+   "name": "Kabiyè",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kab_Latn",
+   "iso": "kab",
+   "name": "Kabyle",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kac_Latn",
+   "iso": "kac",
+   "name": "Kachin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dtp_Latn",
+   "iso": "dtp",
+   "name": "Kadazan Dusun",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kbc_Latn",
+   "iso": "kbc",
+   "name": "Kadiwéu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kbr_Latn",
+   "iso": "kbr",
+   "name": "Kafa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cgc_Latn",
+   "iso": "cgc",
+   "name": "Kagayanen",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kki_Latn",
+   "iso": "kki",
+   "name": "Kagulu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "agw_Latn",
+   "iso": "agw",
+   "name": "Kahua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kgp_Latn",
+   "iso": "kgp",
+   "name": "Kaingang",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kgk_Latn",
+   "iso": "kgk",
+   "name": "Kaiwá",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kkj_Latn",
+   "iso": "kkj",
+   "name": "Kako",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mwp_Latn",
+   "iso": "mwp",
+   "name": "Kala Lagaw Ya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kal_Latn",
+   "iso": "kal",
+   "name": "Kalaallisut",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kqe_Latn",
+   "iso": "kqe",
+   "name": "Kalagan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kck_Latn",
+   "iso": "kck",
+   "name": "Kalanga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xal_Cyrl",
+   "iso": "xal",
+   "name": "Kalmyk",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "kbq_Latn",
+   "iso": "kbq",
+   "name": "Kamano",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kms_Latn",
+   "iso": "kms",
+   "name": "Kamasau",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ktb_Ethi",
+   "iso": "ktb",
+   "name": "Kambaata",
+   "script": "Ethi",
+   "scriptName": "Ethiopic (Geʿez)"
+  },
+  {
+   "code": "xbr_Latn",
+   "iso": "xbr",
+   "name": "Kambera",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xla_Latn",
+   "iso": "xla",
+   "name": "Kamula",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hig_Latn",
+   "iso": "hig",
+   "name": "Kamwe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "soq_Latn",
+   "iso": "soq",
+   "name": "Kanasi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gam_Latn",
+   "iso": "gam",
+   "name": "Kandawo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kne_Latn",
+   "iso": "kne",
+   "name": "Kankanaey",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kan_Knda",
+   "iso": "kan",
+   "name": "Kannada",
+   "script": "Knda",
+   "scriptName": "Kannada"
+  },
+  {
+   "code": "kan_Latn",
+   "iso": "kan",
+   "name": "Kannada",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kpg_Latn",
+   "iso": "kpg",
+   "name": "Kapingamarangi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cak_Latn",
+   "iso": "cak",
+   "name": "Kaqchikel",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "leu_Latn",
+   "iso": "leu",
+   "name": "Kara (Papua New Guinea)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "reg_Latn",
+   "iso": "reg",
+   "name": "Kara (Tanzania)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kaa_Cyrl",
+   "iso": "kaa",
+   "name": "Kara-Kalpak",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "kaa_Latn",
+   "iso": "kaa",
+   "name": "Kara-Kalpak",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "krc_Cyrl",
+   "iso": "krc",
+   "name": "Karachay-Balkar",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "kpj_Latn",
+   "iso": "kpj",
+   "name": "Karajá",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kdj_Latn",
+   "iso": "kdj",
+   "name": "Karamojong",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mjw_Latn",
+   "iso": "mjw",
+   "name": "Karbi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yuj_Latn",
+   "iso": "yuj",
+   "name": "Karkar-Yuri",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xsm_Latn",
+   "iso": "xsm",
+   "name": "Kasem",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "khs_Latn",
+   "iso": "khs",
+   "name": "Kasua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kaz_Cyrl",
+   "iso": "kaz",
+   "name": "Kazakh",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "khz_Latn",
+   "iso": "khz",
+   "name": "Keapara",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bmh_Latn",
+   "iso": "bmh",
+   "name": "Kein",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kek_Latn",
+   "iso": "kek",
+   "name": "Kekchí",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "khy_Latn",
+   "iso": "khy",
+   "name": "Kele (Democratic Republic of Congo)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ify_Latn",
+   "iso": "ify",
+   "name": "Keley-I Kallahan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kyq_Latn",
+   "iso": "kyq",
+   "name": "Kenga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ken_Latn",
+   "iso": "ken",
+   "name": "Kenyang",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kyg_Latn",
+   "iso": "kyg",
+   "name": "Keyagana",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kjh_Cyrl",
+   "iso": "kjh",
+   "name": "Khakas",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "kha_Latn",
+   "iso": "kha",
+   "name": "Khasi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kix_Latn",
+   "iso": "kix",
+   "name": "Khiamniungan Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "khm_Khmr",
+   "iso": "khm",
+   "name": "Khmer",
+   "script": "Khmr",
+   "scriptName": "Khmer"
+  },
+  {
+   "code": "naq_Latn",
+   "iso": "naq",
+   "name": "Khoekhoe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kik_Latn",
+   "iso": "kik",
+   "name": "Kikuyu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kia_Latn",
+   "iso": "kia",
+   "name": "Kim",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kqp_Latn",
+   "iso": "kqp",
+   "name": "Kimré",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "krj_Latn",
+   "iso": "krj",
+   "name": "Kinaray-A",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zga_Latn",
+   "iso": "zga",
+   "name": "Kinga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kin_Latn",
+   "iso": "kin",
+   "name": "Kinyarwanda",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kir_Cyrl",
+   "iso": "kir",
+   "name": "Kirghiz",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "kje_Latn",
+   "iso": "kje",
+   "name": "Kisar",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kiz_Latn",
+   "iso": "kiz",
+   "name": "Kisi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ktu_Latn",
+   "iso": "ktu",
+   "name": "Kituba (Democratic Republic of Congo)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tlh_Latn",
+   "iso": "tlh",
+   "name": "Klingon",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "trp_Latn",
+   "iso": "trp",
+   "name": "Kok Borok",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kmm_Latn",
+   "iso": "kmm",
+   "name": "Kom (India)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kpf_Latn",
+   "iso": "kpf",
+   "name": "Komba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kpv_Cyrl",
+   "iso": "kpv",
+   "name": "Komi-Zyrian",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "kxw_Latn",
+   "iso": "kxw",
+   "name": "Konai",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xon_Latn",
+   "iso": "xon",
+   "name": "Konkomba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kma_Latn",
+   "iso": "kma",
+   "name": "Konni",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kno_Latn",
+   "iso": "kno",
+   "name": "Kono (Sierra Leone)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kxc_Ethi",
+   "iso": "kxc",
+   "name": "Konso",
+   "script": "Ethi",
+   "scriptName": "Ethiopic (Geʿez)"
+  },
+  {
+   "code": "nbe_Latn",
+   "iso": "nbe",
+   "name": "Konyak Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kng_Latn",
+   "iso": "kng",
+   "name": "Koongo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ozm_Latn",
+   "iso": "ozm",
+   "name": "Koonzime",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kqy_Ethi",
+   "iso": "kqy",
+   "name": "Koorete",
+   "script": "Ethi",
+   "scriptName": "Ethiopic (Geʿez)"
+  },
+  {
+   "code": "kor_Hang",
+   "iso": "kor",
+   "name": "Korean",
+   "script": "Hang",
+   "scriptName": "Hangul (Korean)"
+  },
+  {
+   "code": "kor_Latn",
+   "iso": "kor",
+   "name": "Korean",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "coe_Latn",
+   "iso": "coe",
+   "name": "Koreguaje",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bpr_Latn",
+   "iso": "bpr",
+   "name": "Koronadal Blaan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "eko_Latn",
+   "iso": "eko",
+   "name": "Koti",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kyf_Latn",
+   "iso": "kyf",
+   "name": "Kouya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kff_Telu",
+   "iso": "kff",
+   "name": "Koya",
+   "script": "Telu",
+   "scriptName": "Telugu"
+  },
+  {
+   "code": "ses_Latn",
+   "iso": "ses",
+   "name": "Koyraboro Senni Songhai",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kri_Latn",
+   "iso": "kri",
+   "name": "Krio",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ksd_Latn",
+   "iso": "ksd",
+   "name": "Kuanua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kua_Latn",
+   "iso": "kua",
+   "name": "Kuanyama",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kgf_Latn",
+   "iso": "kgf",
+   "name": "Kube",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kez_Latn",
+   "iso": "kez",
+   "name": "Kukele",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gvn_Latn",
+   "iso": "gvn",
+   "name": "Kuku-Yalanji",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kdi_Latn",
+   "iso": "kdi",
+   "name": "Kumam",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kue_Latn",
+   "iso": "kue",
+   "name": "Kuman (Papua New Guinea)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kum_Cyrl",
+   "iso": "kum",
+   "name": "Kumyk",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "kvg_Latn",
+   "iso": "kvg",
+   "name": "Kuni-Boazi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kup_Latn",
+   "iso": "kup",
+   "name": "Kunimaipa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xuo_Latn",
+   "iso": "xuo",
+   "name": "Kuo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kto_Latn",
+   "iso": "kto",
+   "name": "Kuot",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kpz_Latn",
+   "iso": "kpz",
+   "name": "Kupsabiny",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "knk_Latn",
+   "iso": "knk",
+   "name": "Kuranko",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kuj_Latn",
+   "iso": "kuj",
+   "name": "Kuria",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kru_Deva",
+   "iso": "kru",
+   "name": "Kurukh",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "kus_Latn",
+   "iso": "kus",
+   "name": "Kusaal",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kub_Latn",
+   "iso": "kub",
+   "name": "Kutep",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kdc_Latn",
+   "iso": "kdc",
+   "name": "Kutu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "blh_Latn",
+   "iso": "blh",
+   "name": "Kuwaa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cwt_Latn",
+   "iso": "cwt",
+   "name": "Kuwaataay",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kwd_Latn",
+   "iso": "kwd",
+   "name": "Kwaio",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tnk_Latn",
+   "iso": "tnk",
+   "name": "Kwamera",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kwj_Latn",
+   "iso": "kwj",
+   "name": "Kwanga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kwf_Latn",
+   "iso": "kwf",
+   "name": "Kwara'ae",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cwe_Latn",
+   "iso": "cwe",
+   "name": "Kwere",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kmo_Latn",
+   "iso": "kmo",
+   "name": "Kwoma",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kyc_Latn",
+   "iso": "kyc",
+   "name": "Kyaka",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kmg_Latn",
+   "iso": "kmg",
+   "name": "Kâte",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ldi_Latn",
+   "iso": "ldi",
+   "name": "Laari",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lac_Latn",
+   "iso": "lac",
+   "name": "Lacandon",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zpl_Latn",
+   "iso": "zpl",
+   "name": "Lachixío Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lbj_Tibt",
+   "iso": "lbj",
+   "name": "Ladakhi",
+   "script": "Tibt",
+   "scriptName": "Tibetan"
+  },
+  {
+   "code": "lhu_Latn",
+   "iso": "lhu",
+   "name": "Lahu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lhi_Latn",
+   "iso": "lhi",
+   "name": "Lahu Shi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cnl_Latn",
+   "iso": "cnl",
+   "name": "Lalana Chinantec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "las_Latn",
+   "iso": "las",
+   "name": "Lama (Togo)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lam_Latn",
+   "iso": "lam",
+   "name": "Lamba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "quf_Latn",
+   "iso": "quf",
+   "name": "Lambayeque Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lai_Latn",
+   "iso": "lai",
+   "name": "Lambya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lmk_Latn",
+   "iso": "lmk",
+   "name": "Lamkang",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ljp_Latn",
+   "iso": "ljp",
+   "name": "Lampung Api",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "laj_Latn",
+   "iso": "laj",
+   "name": "Lango (Uganda)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lsi_Latn",
+   "iso": "lsi",
+   "name": "Lashi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lat_Latn",
+   "iso": "lat",
+   "name": "Latin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lav_Latn",
+   "iso": "lav",
+   "name": "Latvian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cle_Latn",
+   "iso": "cle",
+   "name": "Lealao Chinantec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lew_Latn",
+   "iso": "lew",
+   "name": "Ledo Kaili",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lgm_Latn",
+   "iso": "lgm",
+   "name": "Lega-Mwenga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lef_Latn",
+   "iso": "lef",
+   "name": "Lelemi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "leh_Latn",
+   "iso": "leh",
+   "name": "Lenje",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lww_Latn",
+   "iso": "lww",
+   "name": "Lewo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lhm_Latn",
+   "iso": "lhm",
+   "name": "Lhomi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "njn_Latn",
+   "iso": "njn",
+   "name": "Liangmai Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xpe_Latn",
+   "iso": "xpe",
+   "name": "Liberia Kpelle",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lif_Deva",
+   "iso": "lif",
+   "name": "Limbu",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "lif_Limb",
+   "iso": "lif",
+   "name": "Limbu",
+   "script": "Limb",
+   "scriptName": "Limbu"
+  },
+  {
+   "code": "lmp_Latn",
+   "iso": "lmp",
+   "name": "Limbum",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kmk_Latn",
+   "iso": "kmk",
+   "name": "Limos Kalinga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lin_Latn",
+   "iso": "lin",
+   "name": "Lingala",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lzh_Hani",
+   "iso": "lzh",
+   "name": "Literary Chinese",
+   "script": "Hani",
+   "scriptName": "Han (Chinese)"
+  },
+  {
+   "code": "lit_Latn",
+   "iso": "lit",
+   "name": "Lithuanian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "loq_Latn",
+   "iso": "loq",
+   "name": "Lobala",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lob_Latn",
+   "iso": "lob",
+   "name": "Lobi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "log_Latn",
+   "iso": "log",
+   "name": "Logo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lom_Latn",
+   "iso": "lom",
+   "name": "Loma (Liberia)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "uvl_Latn",
+   "iso": "uvl",
+   "name": "Lote",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nds_Latn",
+   "iso": "nds",
+   "name": "Low German",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tac_Latn",
+   "iso": "tac",
+   "name": "Lowland Tarahumara",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "loz_Latn",
+   "iso": "loz",
+   "name": "Lozi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lex_Latn",
+   "iso": "lex",
+   "name": "Luang",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ruf_Latn",
+   "iso": "ruf",
+   "name": "Luguru",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dop_Latn",
+   "iso": "dop",
+   "name": "Lukpa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "luo_Latn",
+   "iso": "luo",
+   "name": "Luo (Kenya and Tanzania)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lus_Latn",
+   "iso": "lus",
+   "name": "Lushai",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lwo_Latn",
+   "iso": "lwo",
+   "name": "Luwo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lee_Latn",
+   "iso": "lee",
+   "name": "Lyélé",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mhy_Latn",
+   "iso": "mhy",
+   "name": "Ma'anyan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mhi_Latn",
+   "iso": "mhi",
+   "name": "Ma'di",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ffm_Latn",
+   "iso": "ffm",
+   "name": "Maasina Fulfulde",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mca_Latn",
+   "iso": "mca",
+   "name": "Maca",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "rup_Latn",
+   "iso": "rup",
+   "name": "Macedo-Romanian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mkd_Cyrl",
+   "iso": "mkd",
+   "name": "Macedonian",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "jmc_Latn",
+   "iso": "jmc",
+   "name": "Machame",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mcb_Latn",
+   "iso": "mcb",
+   "name": "Machiguenga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "myy_Latn",
+   "iso": "myy",
+   "name": "Macuna",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mbc_Latn",
+   "iso": "mbc",
+   "name": "Macushi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mda_Latn",
+   "iso": "mda",
+   "name": "Mada (Nigeria)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mmx_Latn",
+   "iso": "mmx",
+   "name": "Madak",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mad_Latn",
+   "iso": "mad",
+   "name": "Madurese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "maf_Latn",
+   "iso": "maf",
+   "name": "Mafa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sgb_Latn",
+   "iso": "sgb",
+   "name": "Mag-antsi Ayta",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xtm_Latn",
+   "iso": "xtm",
+   "name": "Magdalena Peñasco Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mai_Deva",
+   "iso": "mai",
+   "name": "Maithili",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "mti_Latn",
+   "iso": "mti",
+   "name": "Maiwa (Papua New Guinea)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mcp_Latn",
+   "iso": "mcp",
+   "name": "Makaa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mak_Latn",
+   "iso": "mak",
+   "name": "Makasar",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mgh_Latn",
+   "iso": "mgh",
+   "name": "Makhuwa-Meetto",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kde_Latn",
+   "iso": "kde",
+   "name": "Makonde",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "swk_Latn",
+   "iso": "swk",
+   "name": "Malawi Sena",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zlm_Latn",
+   "iso": "zlm",
+   "name": "Malay (individual language)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "msa_Latn",
+   "iso": "msa",
+   "name": "Malay (macrolanguage)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mal_Latn",
+   "iso": "mal",
+   "name": "Malayalam",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mal_Mlym",
+   "iso": "mal",
+   "name": "Malayalam",
+   "script": "Mlym",
+   "scriptName": "Malayalam"
+  },
+  {
+   "code": "bfo_Latn",
+   "iso": "bfo",
+   "name": "Malba Birifor",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mdy_Ethi",
+   "iso": "mdy",
+   "name": "Male (Ethiopia)",
+   "script": "Ethi",
+   "scriptName": "Ethiopic (Geʿez)"
+  },
+  {
+   "code": "mlt_Latn",
+   "iso": "mlt",
+   "name": "Maltese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mam_Latn",
+   "iso": "mam",
+   "name": "Mam",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mmn_Latn",
+   "iso": "mmn",
+   "name": "Mamanwa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "myk_Latn",
+   "iso": "myk",
+   "name": "Mamara Senoufo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mqj_Latn",
+   "iso": "mqj",
+   "name": "Mamasa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mgr_Latn",
+   "iso": "mgr",
+   "name": "Mambwe-Lungu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "maw_Latn",
+   "iso": "maw",
+   "name": "Mampruli",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mva_Latn",
+   "iso": "mva",
+   "name": "Manam",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mle_Latn",
+   "iso": "mle",
+   "name": "Manambu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tbf_Latn",
+   "iso": "tbf",
+   "name": "Mandara",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cmn_Hani",
+   "iso": "cmn",
+   "name": "Mandarin Chinese",
+   "script": "Hani",
+   "scriptName": "Han (Chinese)"
+  },
+  {
+   "code": "mnk_Latn",
+   "iso": "mnk",
+   "name": "Mandinka",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mmo_Latn",
+   "iso": "mmo",
+   "name": "Mangga Buang",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mqy_Latn",
+   "iso": "mqy",
+   "name": "Manggarai",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mbh_Latn",
+   "iso": "mbh",
+   "name": "Mangseng",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "knf_Latn",
+   "iso": "knf",
+   "name": "Mankanya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "msk_Latn",
+   "iso": "msk",
+   "name": "Mansaka",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "glv_Latn",
+   "iso": "glv",
+   "name": "Manx",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mri_Latn",
+   "iso": "mri",
+   "name": "Maori",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mlh_Latn",
+   "iso": "mlh",
+   "name": "Mape",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bzh_Latn",
+   "iso": "bzh",
+   "name": "Mapos Buang",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "arn_Latn",
+   "iso": "arn",
+   "name": "Mapudungun",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nma_Latn",
+   "iso": "nma",
+   "name": "Maram Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mrw_Latn",
+   "iso": "mrw",
+   "name": "Maranao",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mar_Deva",
+   "iso": "mar",
+   "name": "Marathi",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "mpg_Latn",
+   "iso": "mpg",
+   "name": "Marba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qvm_Latn",
+   "iso": "qvm",
+   "name": "Margos-Yarowilca-Lauricocha Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dad_Latn",
+   "iso": "dad",
+   "name": "Marik",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nng_Latn",
+   "iso": "nng",
+   "name": "Maring Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "enb_Latn",
+   "iso": "enb",
+   "name": "Markweeta",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mah_Latn",
+   "iso": "mah",
+   "name": "Marshallese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mhx_Latn",
+   "iso": "mhx",
+   "name": "Maru",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "myx_Latn",
+   "iso": "myx",
+   "name": "Masaaba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mas_Latn",
+   "iso": "mas",
+   "name": "Masai",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mcn_Latn",
+   "iso": "mcn",
+   "name": "Masana",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "msb_Latn",
+   "iso": "msb",
+   "name": "Masbatenyo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "klv_Latn",
+   "iso": "klv",
+   "name": "Maskelynes",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mfh_Latn",
+   "iso": "mfh",
+   "name": "Matal",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mbt_Latn",
+   "iso": "mbt",
+   "name": "Matigsalug Manobo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "met_Latn",
+   "iso": "met",
+   "name": "Mato",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mcf_Latn",
+   "iso": "mcf",
+   "name": "Matsés",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hlt_Latn",
+   "iso": "hlt",
+   "name": "Matu Chin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mgw_Latn",
+   "iso": "mgw",
+   "name": "Matumbi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mhl_Latn",
+   "iso": "mhl",
+   "name": "Mauwake",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mbl_Latn",
+   "iso": "mbl",
+   "name": "Maxakalí",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yan_Latn",
+   "iso": "yan",
+   "name": "Mayangna",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mfy_Latn",
+   "iso": "mfy",
+   "name": "Mayo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ifu_Latn",
+   "iso": "ifu",
+   "name": "Mayoyao Ifugao",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mzl_Latn",
+   "iso": "mzl",
+   "name": "Mazatlán Mixe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "myb_Latn",
+   "iso": "myb",
+   "name": "Mbay",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mqb_Latn",
+   "iso": "mqb",
+   "name": "Mbuko",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mna_Latn",
+   "iso": "mna",
+   "name": "Mbula",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mck_Latn",
+   "iso": "mck",
+   "name": "Mbunda",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gun_Latn",
+   "iso": "gun",
+   "name": "Mbyá Guaraní",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sim_Latn",
+   "iso": "sim",
+   "name": "Mende (Papua New Guinea)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "men_Latn",
+   "iso": "men",
+   "name": "Mende (Sierra Leone)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mee_Latn",
+   "iso": "mee",
+   "name": "Mengen",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mwv_Latn",
+   "iso": "mwv",
+   "name": "Mentawai",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mcr_Latn",
+   "iso": "mcr",
+   "name": "Menya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "meq_Latn",
+   "iso": "meq",
+   "name": "Merey",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mxv_Latn",
+   "iso": "mxv",
+   "name": "Metlatónoc Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mej_Latn",
+   "iso": "mej",
+   "name": "Meyah",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ote_Latn",
+   "iso": "ote",
+   "name": "Mezquital Otomi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mic_Latn",
+   "iso": "mic",
+   "name": "Mi'kmaq",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zam_Latn",
+   "iso": "zam",
+   "name": "Miahuatlán Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mpt_Latn",
+   "iso": "mpt",
+   "name": "Mian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ncl_Latn",
+   "iso": "ncl",
+   "name": "Michoacán Nahuatl",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "enm_Latn",
+   "iso": "enm",
+   "name": "Middle English (1100-1500)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nwx_Deva",
+   "iso": "nwx",
+   "name": "Middle Newar",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "mpp_Latn",
+   "iso": "mpp",
+   "name": "Migabac",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nan_Latn",
+   "iso": "nan",
+   "name": "Min Nan Chinese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "min_Latn",
+   "iso": "min",
+   "name": "Minangkabau",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mvn_Latn",
+   "iso": "mvn",
+   "name": "Minaveha",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hto_Latn",
+   "iso": "hto",
+   "name": "Minica Huitoto",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mwl_Latn",
+   "iso": "mwl",
+   "name": "Mirandese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mpx_Latn",
+   "iso": "mpx",
+   "name": "Misima-Panaeati",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mrg_Latn",
+   "iso": "mrg",
+   "name": "Mising",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zaw_Latn",
+   "iso": "zaw",
+   "name": "Mitla Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zpm_Latn",
+   "iso": "zpm",
+   "name": "Mixtepec Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "soy_Latn",
+   "iso": "soy",
+   "name": "Miyobe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mfq_Latn",
+   "iso": "mfq",
+   "name": "Moba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "old_Latn",
+   "iso": "old",
+   "name": "Mochi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "moc_Latn",
+   "iso": "moc",
+   "name": "Mocoví",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ell_Grek",
+   "iso": "ell",
+   "name": "Modern Greek (1453-)",
+   "script": "Grek",
+   "scriptName": "Greek"
+  },
+  {
+   "code": "mif_Latn",
+   "iso": "mif",
+   "name": "Mofu-Gudur",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mkj_Latn",
+   "iso": "mkj",
+   "name": "Mokilese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mkl_Latn",
+   "iso": "mkl",
+   "name": "Mokole",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mox_Latn",
+   "iso": "mox",
+   "name": "Molima",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lol_Latn",
+   "iso": "lol",
+   "name": "Mongo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mog_Latn",
+   "iso": "mog",
+   "name": "Mongondow",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nmh_Latn",
+   "iso": "nmh",
+   "name": "Monsang Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "crm_Cans",
+   "iso": "crm",
+   "name": "Moose Cree",
+   "script": "Cans",
+   "scriptName": "Canadian Syllabics"
+  },
+  {
+   "code": "mop_Latn",
+   "iso": "mop",
+   "name": "Mopán Maya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mfe_Latn",
+   "iso": "mfe",
+   "name": "Morisyen",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mor_Latn",
+   "iso": "mor",
+   "name": "Moro",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ary_Arab",
+   "iso": "ary",
+   "name": "Moroccan Arabic",
+   "script": "Arab",
+   "scriptName": "Arabic"
+  },
+  {
+   "code": "mtj_Latn",
+   "iso": "mtj",
+   "name": "Moskona",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mos_Latn",
+   "iso": "mos",
+   "name": "Mossi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "meu_Latn",
+   "iso": "meu",
+   "name": "Motu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kpx_Latn",
+   "iso": "kpx",
+   "name": "Mountain Koiali",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nmo_Latn",
+   "iso": "nmo",
+   "name": "Moyon Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bmr_Latn",
+   "iso": "bmr",
+   "name": "Muinane",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mzm_Latn",
+   "iso": "mzm",
+   "name": "Mumuye",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mnb_Latn",
+   "iso": "mnb",
+   "name": "Muna",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mua_Latn",
+   "iso": "mua",
+   "name": "Mundang",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mnf_Latn",
+   "iso": "mnf",
+   "name": "Mundani",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mur_Latn",
+   "iso": "mur",
+   "name": "Murle",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "huu_Latn",
+   "iso": "huu",
+   "name": "Murui Huitoto",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mse_Latn",
+   "iso": "mse",
+   "name": "Musey",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mug_Latn",
+   "iso": "mug",
+   "name": "Musgu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "emi_Latn",
+   "iso": "emi",
+   "name": "Mussau-Emira",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tuc_Latn",
+   "iso": "tuc",
+   "name": "Mutu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "muy_Latn",
+   "iso": "muy",
+   "name": "Muyang",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sur_Latn",
+   "iso": "sur",
+   "name": "Mwaghavul",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "moa_Latn",
+   "iso": "moa",
+   "name": "Mwan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wmw_Latn",
+   "iso": "wmw",
+   "name": "Mwani",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mwe_Latn",
+   "iso": "mwe",
+   "name": "Mwera (Chimwera)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "miq_Latn",
+   "iso": "miq",
+   "name": "Mískito",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mwq_Latn",
+   "iso": "mwq",
+   "name": "Mün Chin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "muh_Latn",
+   "iso": "muh",
+   "name": "Mündü",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nas_Latn",
+   "iso": "nas",
+   "name": "Naasioi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "naf_Latn",
+   "iso": "naf",
+   "name": "Nabak",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mbj_Latn",
+   "iso": "mbj",
+   "name": "Nadëb",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nfr_Latn",
+   "iso": "nfr",
+   "name": "Nafaanra",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nak_Latn",
+   "iso": "nak",
+   "name": "Nakanai",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nlc_Latn",
+   "iso": "nlc",
+   "name": "Nalca",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nnb_Latn",
+   "iso": "nnb",
+   "name": "Nande",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "niq_Latn",
+   "iso": "niq",
+   "name": "Nandi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qvo_Latn",
+   "iso": "qvo",
+   "name": "Napo Lowland Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "npy_Latn",
+   "iso": "npy",
+   "name": "Napu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nhr_Latn",
+   "iso": "nhr",
+   "name": "Naro",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ntu_Latn",
+   "iso": "ntu",
+   "name": "Natügu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nav_Latn",
+   "iso": "nav",
+   "name": "Navajo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nmz_Latn",
+   "iso": "nmz",
+   "name": "Nawdm",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "naw_Latn",
+   "iso": "naw",
+   "name": "Nawuri",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ndj_Latn",
+   "iso": "ndj",
+   "name": "Ndamba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ndc_Latn",
+   "iso": "ndc",
+   "name": "Ndau",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ndg_Latn",
+   "iso": "ndg",
+   "name": "Ndengereko",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ndp_Latn",
+   "iso": "ndp",
+   "name": "Ndo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ndz_Latn",
+   "iso": "ndz",
+   "name": "Ndogo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ndo_Latn",
+   "iso": "ndo",
+   "name": "Ndonga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nsn_Latn",
+   "iso": "nsn",
+   "name": "Nehan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nif_Latn",
+   "iso": "nif",
+   "name": "Nek",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yrk_Cyrl",
+   "iso": "yrk",
+   "name": "Nenets",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "npi_Deva",
+   "iso": "npi",
+   "name": "Nepali (individual language)",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "nep_Deva",
+   "iso": "nep",
+   "name": "Nepali (macrolanguage)",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "nij_Latn",
+   "iso": "nij",
+   "name": "Ngaju",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "szb_Latn",
+   "iso": "szb",
+   "name": "Ngalum",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sba_Latn",
+   "iso": "sba",
+   "name": "Ngambay",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nxd_Latn",
+   "iso": "nxd",
+   "name": "Ngando (Democratic Republic of Congo)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gng_Latn",
+   "iso": "gng",
+   "name": "Ngangam",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cnw_Latn",
+   "iso": "cnw",
+   "name": "Ngawn Chin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nbq_Latn",
+   "iso": "nbq",
+   "name": "Nggem",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nnh_Latn",
+   "iso": "nnh",
+   "name": "Ngiemboon",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nnq_Latn",
+   "iso": "nnq",
+   "name": "Ngindo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "niy_Latn",
+   "iso": "niy",
+   "name": "Ngiti",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ngc_Latn",
+   "iso": "ngc",
+   "name": "Ngombe (Democratic Republic of Congo)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ngp_Latn",
+   "iso": "ngp",
+   "name": "Ngulu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nia_Latn",
+   "iso": "nia",
+   "name": "Nias",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mzk_Latn",
+   "iso": "mzk",
+   "name": "Nigeria Mambila",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "fuv_Latn",
+   "iso": "fuv",
+   "name": "Nigerian Fulfulde",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pcm_Latn",
+   "iso": "pcm",
+   "name": "Nigerian Pidgin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nii_Latn",
+   "iso": "nii",
+   "name": "Nii",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nim_Latn",
+   "iso": "nim",
+   "name": "Nilamba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nin_Latn",
+   "iso": "nin",
+   "name": "Ninzo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cag_Latn",
+   "iso": "cag",
+   "name": "Nivaclé",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nko_Latn",
+   "iso": "nko",
+   "name": "Nkonya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gaw_Latn",
+   "iso": "gaw",
+   "name": "Nobonob",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "njb_Latn",
+   "iso": "njb",
+   "name": "Nocte Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nog_Cyrl",
+   "iso": "nog",
+   "name": "Nogai",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "lem_Latn",
+   "iso": "lem",
+   "name": "Nomaande",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "not_Latn",
+   "iso": "not",
+   "name": "Nomatsiguenga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "snf_Latn",
+   "iso": "snf",
+   "name": "Noon",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nhu_Latn",
+   "iso": "nhu",
+   "name": "Noone",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cya_Latn",
+   "iso": "cya",
+   "name": "Nopala Chatino",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "esi_Latn",
+   "iso": "esi",
+   "name": "North Alaskan Inupiatun",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qul_Latn",
+   "iso": "qul",
+   "name": "North Bolivian Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qvn_Latn",
+   "iso": "qvn",
+   "name": "North Junín Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mfk_Latn",
+   "iso": "mfk",
+   "name": "North Mofu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nde_Latn",
+   "iso": "nde",
+   "name": "North Ndebele",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tbg_Latn",
+   "iso": "tbg",
+   "name": "North Tairora",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tnn_Latn",
+   "iso": "tnn",
+   "name": "North Tanna",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kiw_Latn",
+   "iso": "kiw",
+   "name": "Northeast Kiwai",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dip_Latn",
+   "iso": "dip",
+   "name": "Northeastern Dinka",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qxn_Latn",
+   "iso": "qxn",
+   "name": "Northern Conchucos Ancash Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dgi_Latn",
+   "iso": "dgi",
+   "name": "Northern Dagara",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "emp_Latn",
+   "iso": "emp",
+   "name": "Northern Emberá",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gbo_Latn",
+   "iso": "gbo",
+   "name": "Northern Grebo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xnn_Latn",
+   "iso": "xnn",
+   "name": "Northern Kankanay",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kxm_Thai",
+   "iso": "kxm",
+   "name": "Northern Khmer",
+   "script": "Thai",
+   "scriptName": "Thai"
+  },
+  {
+   "code": "kqs_Latn",
+   "iso": "kqs",
+   "name": "Northern Kissi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kmr_Latn",
+   "iso": "kmr",
+   "name": "Northern Kurdish",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nhy_Latn",
+   "iso": "nhy",
+   "name": "Northern Oaxaca Nahuatl",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qvz_Latn",
+   "iso": "qvz",
+   "name": "Northern Pastaza Quichua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ncj_Latn",
+   "iso": "ncj",
+   "name": "Northern Puebla Nahuatl",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nnl_Latn",
+   "iso": "nnl",
+   "name": "Northern Rengma Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sme_Latn",
+   "iso": "sme",
+   "name": "Northern Sami",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ntp_Latn",
+   "iso": "ntp",
+   "name": "Northern Tepehuan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xtn_Latn",
+   "iso": "xtn",
+   "name": "Northern Tlaxiaco Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "esk_Latn",
+   "iso": "esk",
+   "name": "Northwest Alaska Inupiatun",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gya_Latn",
+   "iso": "gya",
+   "name": "Northwest Gbaya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ojb_Cans",
+   "iso": "ojb",
+   "name": "Northwestern Ojibwa",
+   "script": "Cans",
+   "scriptName": "Canadian Syllabics"
+  },
+  {
+   "code": "ojb_Latn",
+   "iso": "ojb",
+   "name": "Northwestern Ojibwa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nob_Latn",
+   "iso": "nob",
+   "name": "Norwegian Bokmål",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nno_Latn",
+   "iso": "nno",
+   "name": "Norwegian Nynorsk",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nse_Latn",
+   "iso": "nse",
+   "name": "Nsenga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bud_Latn",
+   "iso": "bud",
+   "name": "Ntcham",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nus_Latn",
+   "iso": "nus",
+   "name": "Nuer",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nop_Latn",
+   "iso": "nop",
+   "name": "Numanggang",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nuy_Latn",
+   "iso": "nuy",
+   "name": "Nunggubuyu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nwb_Latn",
+   "iso": "nwb",
+   "name": "Nyabwa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nyy_Latn",
+   "iso": "nyy",
+   "name": "Nyakyusa-Ngonde",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nya_Latn",
+   "iso": "nya",
+   "name": "Nyanja",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nyn_Latn",
+   "iso": "nyn",
+   "name": "Nyankole",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "rim_Latn",
+   "iso": "rim",
+   "name": "Nyaturu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lid_Latn",
+   "iso": "lid",
+   "name": "Nyindrou",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "njz_Latn",
+   "iso": "njz",
+   "name": "Nyishi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nyo_Latn",
+   "iso": "nyo",
+   "name": "Nyoro",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nys_Latn",
+   "iso": "nys",
+   "name": "Nyungar",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nyu_Latn",
+   "iso": "nyu",
+   "name": "Nyungwe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "obo_Latn",
+   "iso": "obo",
+   "name": "Obo Manobo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ann_Latn",
+   "iso": "ann",
+   "name": "Obolo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mie_Latn",
+   "iso": "mie",
+   "name": "Ocotepec Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zac_Latn",
+   "iso": "zac",
+   "name": "Ocotlán Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ory_Orya",
+   "iso": "ory",
+   "name": "Odia",
+   "script": "Orya",
+   "scriptName": "Odia (Oriya)"
+  },
+  {
+   "code": "kkc_Latn",
+   "iso": "kkc",
+   "name": "Odoodee",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "eri_Latn",
+   "iso": "eri",
+   "name": "Ogea",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "oji_Latn",
+   "iso": "oji",
+   "name": "Ojibwa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ong_Latn",
+   "iso": "ong",
+   "name": "Olo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ons_Latn",
+   "iso": "ons",
+   "name": "Ono",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "oss_Cyrl",
+   "iso": "oss",
+   "name": "Ossetian",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "stn_Latn",
+   "iso": "stn",
+   "name": "Owa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zao_Latn",
+   "iso": "zao",
+   "name": "Ozolotepec Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "chz_Latn",
+   "iso": "chz",
+   "name": "Ozumacín Chinantec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pma_Latn",
+   "iso": "pma",
+   "name": "Paama",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sig_Latn",
+   "iso": "sig",
+   "name": "Paasaal",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pri_Latn",
+   "iso": "pri",
+   "name": "Paicî",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pck_Latn",
+   "iso": "pck",
+   "name": "Paite Chin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cpa_Latn",
+   "iso": "cpa",
+   "name": "Palantla Chinantec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "plu_Latn",
+   "iso": "plu",
+   "name": "Palikúr",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pmf_Latn",
+   "iso": "pmf",
+   "name": "Pamona",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pam_Latn",
+   "iso": "pam",
+   "name": "Pampanga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "att_Latn",
+   "iso": "att",
+   "name": "Pamplona Atta",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qxh_Latn",
+   "iso": "qxh",
+   "name": "Panao Huánuco Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pag_Latn",
+   "iso": "pag",
+   "name": "Pangasinan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pan_Guru",
+   "iso": "pan",
+   "name": "Panjabi",
+   "script": "Guru",
+   "scriptName": "Gurmukhi (Punjabi)"
+  },
+  {
+   "code": "top_Latn",
+   "iso": "top",
+   "name": "Papantla Totonac",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pap_Latn",
+   "iso": "pap",
+   "name": "Papiamento",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gug_Latn",
+   "iso": "gug",
+   "name": "Paraguayan Guaraní",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "prf_Latn",
+   "iso": "prf",
+   "name": "Paranan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "prk_Latn",
+   "iso": "prk",
+   "name": "Parauk",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pab_Latn",
+   "iso": "pab",
+   "name": "Parecís",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pbi_Latn",
+   "iso": "pbi",
+   "name": "Parkwa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pbc_Latn",
+   "iso": "pbc",
+   "name": "Patamona",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ptp_Latn",
+   "iso": "ptp",
+   "name": "Patep",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gfk_Latn",
+   "iso": "gfk",
+   "name": "Patpatar",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pad_Latn",
+   "iso": "pad",
+   "name": "Paumarí",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nso_Latn",
+   "iso": "nso",
+   "name": "Pedi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ata_Latn",
+   "iso": "ata",
+   "name": "Pele-Ata",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pdc_Latn",
+   "iso": "pdc",
+   "name": "Pennsylvania German",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pfe_Latn",
+   "iso": "pfe",
+   "name": "Pere",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mil_Latn",
+   "iso": "mil",
+   "name": "Peñoles Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nph_Latn",
+   "iso": "nph",
+   "name": "Phom Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pio_Latn",
+   "iso": "pio",
+   "name": "Piapoco",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cpu_Latn",
+   "iso": "cpu",
+   "name": "Pichis Ashéninka",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pis_Latn",
+   "iso": "pis",
+   "name": "Pijin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "plg_Latn",
+   "iso": "plg",
+   "name": "Pilagá",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mio_Latn",
+   "iso": "mio",
+   "name": "Pinotepa Nacional Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pir_Latn",
+   "iso": "pir",
+   "name": "Piratapuyo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tpp_Latn",
+   "iso": "tpp",
+   "name": "Pisaflores Tepehua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ktj_Latn",
+   "iso": "ktj",
+   "name": "Plapo Krumen",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "plt_Latn",
+   "iso": "plt",
+   "name": "Plateau Malagasy",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pdt_Latn",
+   "iso": "pdt",
+   "name": "Plautdietsch",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "npo_Latn",
+   "iso": "npo",
+   "name": "Pochuri Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "poy_Latn",
+   "iso": "poy",
+   "name": "Pogolo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pon_Latn",
+   "iso": "pon",
+   "name": "Pohnpeian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pkb_Latn",
+   "iso": "pkb",
+   "name": "Pokomo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pol_Latn",
+   "iso": "pol",
+   "name": "Polish",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "jac_Latn",
+   "iso": "jac",
+   "name": "Popti'",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "poh_Latn",
+   "iso": "poh",
+   "name": "Poqomchi'",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "por_Latn",
+   "iso": "por",
+   "name": "Portuguese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pmx_Latn",
+   "iso": "pmx",
+   "name": "Poumei Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kvj_Latn",
+   "iso": "kvj",
+   "name": "Psikye",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "fuf_Latn",
+   "iso": "fuf",
+   "name": "Pular",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tsz_Latn",
+   "iso": "tsz",
+   "name": "Purepecha",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pww_Thai",
+   "iso": "pww",
+   "name": "Pwo Northern Karen",
+   "script": "Thai",
+   "scriptName": "Thai"
+  },
+  {
+   "code": "pbb_Latn",
+   "iso": "pbb",
+   "name": "Páez",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kjb_Latn",
+   "iso": "kjb",
+   "name": "Q'anjob'al",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "byx_Latn",
+   "iso": "byx",
+   "name": "Qaqet",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "otq_Latn",
+   "iso": "otq",
+   "name": "Querétaro Otomi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ztq_Latn",
+   "iso": "ztq",
+   "name": "Quioquitani-Quierí Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "chq_Latn",
+   "iso": "chq",
+   "name": "Quiotepec Chinantec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "rad_Latn",
+   "iso": "rad",
+   "name": "Rade",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "rai_Latn",
+   "iso": "rai",
+   "name": "Ramoaaina",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "rnl_Latn",
+   "iso": "rnl",
+   "name": "Ranglong",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "rar_Latn",
+   "iso": "rar",
+   "name": "Rarotongan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ria_Latn",
+   "iso": "ria",
+   "name": "Riang (India)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "iri_Latn",
+   "iso": "iri",
+   "name": "Rigwe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "rkb_Latn",
+   "iso": "rkb",
+   "name": "Rikbaktsa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zar_Latn",
+   "iso": "zar",
+   "name": "Rincón Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ron_Latn",
+   "iso": "ron",
+   "name": "Romanian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nbu_Latn",
+   "iso": "nbu",
+   "name": "Rongmei Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "roo_Latn",
+   "iso": "roo",
+   "name": "Rotokas",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "rug_Latn",
+   "iso": "rug",
+   "name": "Roviana",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dru_Latn",
+   "iso": "dru",
+   "name": "Rukai",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "run_Latn",
+   "iso": "run",
+   "name": "Rundi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bxr_Cyrl",
+   "iso": "bxr",
+   "name": "Russia Buriat",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "rus_Cyrl",
+   "iso": "rus",
+   "name": "Russian",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "ksw_Mymr",
+   "iso": "ksw",
+   "name": "S'gaw Karen",
+   "script": "Mymr",
+   "scriptName": "Myanmar (Burmese)"
+  },
+  {
+   "code": "apb_Latn",
+   "iso": "apb",
+   "name": "Sa'a",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lsm_Latn",
+   "iso": "lsm",
+   "name": "Saamia",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "spy_Latn",
+   "iso": "spy",
+   "name": "Sabaot",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "hvn_Latn",
+   "iso": "hvn",
+   "name": "Sabu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "apz_Latn",
+   "iso": "apz",
+   "name": "Safeyoka",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sbk_Latn",
+   "iso": "sbk",
+   "name": "Safwa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "acf_Latn",
+   "iso": "acf",
+   "name": "Saint Lucian Creole French",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qxl_Latn",
+   "iso": "qxl",
+   "name": "Salasaca Highland Quichua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sll_Latn",
+   "iso": "sll",
+   "name": "Salt-Yui",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ndi_Latn",
+   "iso": "ndi",
+   "name": "Samba Leko",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xsb_Latn",
+   "iso": "xsb",
+   "name": "Sambal",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ssx_Latn",
+   "iso": "ssx",
+   "name": "Samberigi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "smo_Latn",
+   "iso": "smo",
+   "name": "Samoan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cuk_Latn",
+   "iso": "cuk",
+   "name": "San Blas Kuna",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "maa_Latn",
+   "iso": "maa",
+   "name": "San Jerónimo Tecóatl Mazatec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "poe_Latn",
+   "iso": "poe",
+   "name": "San Juan Atzingo Popoloca",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mjc_Latn",
+   "iso": "mjc",
+   "name": "San Juan Colorado Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pps_Latn",
+   "iso": "pps",
+   "name": "San Luís Temalacayuca Popoloca",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pls_Latn",
+   "iso": "pls",
+   "name": "San Marcos Tlacoyalco Popoloca",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "trq_Latn",
+   "iso": "trq",
+   "name": "San Martín Itunyoso Triqui",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qvs_Latn",
+   "iso": "qvs",
+   "name": "San Martín Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "huv_Latn",
+   "iso": "huv",
+   "name": "San Mateo Del Mar Huave",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mig_Latn",
+   "iso": "mig",
+   "name": "San Miguel El Grande Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "azg_Latn",
+   "iso": "azg",
+   "name": "San Pedro Amuzgos Amuzgo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zpt_Latn",
+   "iso": "zpt",
+   "name": "San Vicente Coatlán Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sxn_Latn",
+   "iso": "sxn",
+   "name": "Sangir",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sag_Latn",
+   "iso": "sag",
+   "name": "Sango",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nsa_Latn",
+   "iso": "nsa",
+   "name": "Sangtam Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "san_Deva",
+   "iso": "san",
+   "name": "Sanskrit",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "zpi_Latn",
+   "iso": "zpi",
+   "name": "Santa María Quiegolani Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mza_Latn",
+   "iso": "mza",
+   "name": "Santa María Zacatepec Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cok_Latn",
+   "iso": "cok",
+   "name": "Santa Teresa Cora",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sat_Latn",
+   "iso": "sat",
+   "name": "Santali",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zas_Latn",
+   "iso": "zas",
+   "name": "Santo Domingo Albarradas Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xsu_Latn",
+   "iso": "xsu",
+   "name": "Sanumá",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sps_Latn",
+   "iso": "sps",
+   "name": "Saposa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mwm_Latn",
+   "iso": "mwm",
+   "name": "Sar",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "srm_Latn",
+   "iso": "srm",
+   "name": "Saramaccan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bps_Latn",
+   "iso": "bps",
+   "name": "Sarangani Blaan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mbs_Latn",
+   "iso": "mbs",
+   "name": "Sarangani Manobo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sas_Latn",
+   "iso": "sas",
+   "name": "Sasak",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "stq_Latn",
+   "iso": "stq",
+   "name": "Saterfriesisch",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mav_Latn",
+   "iso": "mav",
+   "name": "Sateré-Mawé",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sco_Latn",
+   "iso": "sco",
+   "name": "Scots",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gla_Latn",
+   "iso": "gla",
+   "name": "Scottish Gaelic",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gul_Latn",
+   "iso": "gul",
+   "name": "Sea Island Creole English",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sgw_Ethi",
+   "iso": "sgw",
+   "name": "Sebat Bet Gurage",
+   "script": "Ethi",
+   "scriptName": "Ethiopic (Geʿez)"
+  },
+  {
+   "code": "sey_Latn",
+   "iso": "sey",
+   "name": "Secoya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ssg_Latn",
+   "iso": "ssg",
+   "name": "Seimat",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lip_Latn",
+   "iso": "lip",
+   "name": "Sekpele",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "snw_Latn",
+   "iso": "snw",
+   "name": "Selee",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "seh_Latn",
+   "iso": "seh",
+   "name": "Sena",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "iws_Latn",
+   "iso": "iws",
+   "name": "Sepik Iwam",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "srp_Cyrl",
+   "iso": "srp",
+   "name": "Serbian",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "srp_Latn",
+   "iso": "srp",
+   "name": "Serbian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "crs_Latn",
+   "iso": "crs",
+   "name": "Seselwa Creole French",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ojs_Cans",
+   "iso": "ojs",
+   "name": "Severn Ojibwa",
+   "script": "Cans",
+   "scriptName": "Canadian Syllabics"
+  },
+  {
+   "code": "ksb_Latn",
+   "iso": "ksb",
+   "name": "Shambala",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "shn_Mymr",
+   "iso": "shn",
+   "name": "Shan",
+   "script": "Mymr",
+   "scriptName": "Myanmar (Burmese)"
+  },
+  {
+   "code": "mcd_Latn",
+   "iso": "mcd",
+   "name": "Sharanahua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "shj_Latn",
+   "iso": "shj",
+   "name": "Shatt",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xsr_Deva",
+   "iso": "xsr",
+   "name": "Sherpa",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "shk_Latn",
+   "iso": "shk",
+   "name": "Shilluk",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "shp_Latn",
+   "iso": "shp",
+   "name": "Shipibo-Conibo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sna_Latn",
+   "iso": "sna",
+   "name": "Shona",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "jiv_Latn",
+   "iso": "jiv",
+   "name": "Shuar",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "snp_Latn",
+   "iso": "snp",
+   "name": "Siane",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zaa_Latn",
+   "iso": "zaa",
+   "name": "Sierra de Juárez Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nsu_Latn",
+   "iso": "nsu",
+   "name": "Sierra Negra Nahuatl",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mks_Latn",
+   "iso": "mks",
+   "name": "Silacayoapan Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "smt_Latn",
+   "iso": "smt",
+   "name": "Simte",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "snc_Latn",
+   "iso": "snc",
+   "name": "Sinaugoro",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "snd_Arab",
+   "iso": "snd",
+   "name": "Sindhi",
+   "script": "Arab",
+   "scriptName": "Arabic"
+  },
+  {
+   "code": "sin_Sinh",
+   "iso": "sin",
+   "name": "Sinhala",
+   "script": "Sinh",
+   "scriptName": "Sinhala"
+  },
+  {
+   "code": "rmo_Latn",
+   "iso": "rmo",
+   "name": "Sinte Romani",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xsi_Latn",
+   "iso": "xsi",
+   "name": "Sio",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "snn_Latn",
+   "iso": "snn",
+   "name": "Siona",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sri_Latn",
+   "iso": "sri",
+   "name": "Siriano",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "srq_Latn",
+   "iso": "srq",
+   "name": "Sirionó",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ssd_Latn",
+   "iso": "ssd",
+   "name": "Siroi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sld_Latn",
+   "iso": "sld",
+   "name": "Sissala",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "akp_Latn",
+   "iso": "akp",
+   "name": "Siwu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "csy_Latn",
+   "iso": "csy",
+   "name": "Siyin Chin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "slk_Latn",
+   "iso": "slk",
+   "name": "Slovak",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "slv_Latn",
+   "iso": "slv",
+   "name": "Slovenian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cso_Latn",
+   "iso": "cso",
+   "name": "Sochiapam Chinantec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "som_Latn",
+   "iso": "som",
+   "name": "Somali",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bmu_Latn",
+   "iso": "bmu",
+   "name": "Somba-Siawari",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sop_Latn",
+   "iso": "sop",
+   "name": "Songe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "urw_Latn",
+   "iso": "urw",
+   "name": "Sop",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "azb_Latn",
+   "iso": "azb",
+   "name": "South Azerbaijani",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "quh_Latn",
+   "iso": "quh",
+   "name": "South Bolivian Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "fal_Latn",
+   "iso": "fal",
+   "name": "South Fali",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "giz_Latn",
+   "iso": "giz",
+   "name": "South Giziga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nbl_Latn",
+   "iso": "nbl",
+   "name": "South Ndebele",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "omw_Latn",
+   "iso": "omw",
+   "name": "South Tairora",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tvk_Latn",
+   "iso": "tvk",
+   "name": "Southeast Ambrym",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dks_Latn",
+   "iso": "dks",
+   "name": "Southeastern Dinka",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "npl_Latn",
+   "iso": "npl",
+   "name": "Southeastern Puebla Nahuatl",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "stp_Latn",
+   "iso": "stp",
+   "name": "Southeastern Tepehuan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "alt_Cyrl",
+   "iso": "alt",
+   "name": "Southern Altai",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "biv_Latn",
+   "iso": "biv",
+   "name": "Southern Birifor",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bwq_Latn",
+   "iso": "bwq",
+   "name": "Southern Bobo Madaré",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "caf_Latn",
+   "iso": "caf",
+   "name": "Southern Carrier",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qxo_Latn",
+   "iso": "qxo",
+   "name": "Southern Conchucos Ancash Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ghe_Deva",
+   "iso": "ghe",
+   "name": "Southern Ghale",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "ksc_Latn",
+   "iso": "ksc",
+   "name": "Southern Kalinga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kss_Latn",
+   "iso": "kss",
+   "name": "Southern Kisi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nnw_Latn",
+   "iso": "nnw",
+   "name": "Southern Nuni",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "qup_Latn",
+   "iso": "qup",
+   "name": "Southern Pastaza Quechua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mit_Latn",
+   "iso": "mit",
+   "name": "Southern Puebla Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nre_Latn",
+   "iso": "nre",
+   "name": "Southern Rengma Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zsr_Latn",
+   "iso": "zsr",
+   "name": "Southern Rincon Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sbd_Latn",
+   "iso": "sbd",
+   "name": "Southern Samo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sot_Latn",
+   "iso": "sot",
+   "name": "Southern Sotho",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wib_Latn",
+   "iso": "wib",
+   "name": "Southern Toussian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gso_Latn",
+   "iso": "gso",
+   "name": "Southwest Gbaya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nwi_Latn",
+   "iso": "nwi",
+   "name": "Southwest Tanna",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dik_Latn",
+   "iso": "dik",
+   "name": "Southwestern Dinka",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "spa_Latn",
+   "iso": "spa",
+   "name": "Spanish",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "srn_Latn",
+   "iso": "srn",
+   "name": "Sranan Tongo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "arb_Arab",
+   "iso": "arb",
+   "name": "Standard Arabic",
+   "script": "Arab",
+   "scriptName": "Arabic"
+  },
+  {
+   "code": "zsm_Latn",
+   "iso": "zsm",
+   "name": "Standard Malay",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "swp_Latn",
+   "iso": "swp",
+   "name": "Suau",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sxb_Latn",
+   "iso": "sxb",
+   "name": "Suba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sbs_Latn",
+   "iso": "sbs",
+   "name": "Subiya",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tgo_Latn",
+   "iso": "tgo",
+   "name": "Sudest",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sue_Latn",
+   "iso": "sue",
+   "name": "Suena",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "suk_Latn",
+   "iso": "suk",
+   "name": "Sukuma",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nsm_Latn",
+   "iso": "nsm",
+   "name": "Sumi Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sun_Latn",
+   "iso": "sun",
+   "name": "Sundanese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "suz_Deva",
+   "iso": "suz",
+   "name": "Sunwar",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "spp_Latn",
+   "iso": "spp",
+   "name": "Supyire Senoufo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sgz_Latn",
+   "iso": "sgz",
+   "name": "Sursurunga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sus_Latn",
+   "iso": "sus",
+   "name": "Susu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "swg_Latn",
+   "iso": "swg",
+   "name": "Swabian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "swh_Latn",
+   "iso": "swh",
+   "name": "Swahili (individual language)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ssw_Latn",
+   "iso": "ssw",
+   "name": "Swati",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "swe_Latn",
+   "iso": "swe",
+   "name": "Swedish",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zat_Latn",
+   "iso": "zat",
+   "name": "Tabaa Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tby_Latn",
+   "iso": "tby",
+   "name": "Tabaru",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "chf_Latn",
+   "iso": "chf",
+   "name": "Tabasco Chontal",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tab_Cyrl",
+   "iso": "tab",
+   "name": "Tabassaran",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "knv_Latn",
+   "iso": "knv",
+   "name": "Tabo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tna_Latn",
+   "iso": "tna",
+   "name": "Tacana",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "shi_Latn",
+   "iso": "shi",
+   "name": "Tachelhit",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bgs_Latn",
+   "iso": "bgs",
+   "name": "Tagabawa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tgl_Latn",
+   "iso": "tgl",
+   "name": "Tagalog",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "taw_Latn",
+   "iso": "taw",
+   "name": "Tai",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tgk_Cyrl",
+   "iso": "tgk",
+   "name": "Tajik",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "tbc_Latn",
+   "iso": "tbc",
+   "name": "Takia",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nho_Latn",
+   "iso": "nho",
+   "name": "Takuu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tke_Latn",
+   "iso": "tke",
+   "name": "Takwane",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tlj_Latn",
+   "iso": "tlj",
+   "name": "Talinga-Bwisi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "taq_Latn",
+   "iso": "taq",
+   "name": "Tamasheq",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tam_Taml",
+   "iso": "tam",
+   "name": "Tamil",
+   "script": "Taml",
+   "scriptName": "Tamil"
+  },
+  {
+   "code": "tpm_Latn",
+   "iso": "tpm",
+   "name": "Tampulma",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nmf_Latn",
+   "iso": "nmf",
+   "name": "Tangkhul Naga (India)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tgp_Latn",
+   "iso": "tgp",
+   "name": "Tangoa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tro_Latn",
+   "iso": "tro",
+   "name": "Tarao Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nst_Latn",
+   "iso": "nst",
+   "name": "Tase Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cta_Latn",
+   "iso": "cta",
+   "name": "Tataltepec Chatino",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tat_Cyrl",
+   "iso": "tat",
+   "name": "Tatar",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "tav_Latn",
+   "iso": "tav",
+   "name": "Tatuyo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tsg_Latn",
+   "iso": "tsg",
+   "name": "Tausug",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tbo_Latn",
+   "iso": "tbo",
+   "name": "Tawala",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tbl_Latn",
+   "iso": "tbl",
+   "name": "Tboli",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ctd_Latn",
+   "iso": "ctd",
+   "name": "Tedim Chin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ttc_Latn",
+   "iso": "ttc",
+   "name": "Tektiteko",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tlf_Latn",
+   "iso": "tlf",
+   "name": "Telefol",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tel_Telu",
+   "iso": "tel",
+   "name": "Telugu",
+   "script": "Telu",
+   "scriptName": "Telugu"
+  },
+  {
+   "code": "tqb_Latn",
+   "iso": "tqb",
+   "name": "Tembé",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "quw_Latn",
+   "iso": "quw",
+   "name": "Tena Lowland Quichua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "otn_Latn",
+   "iso": "otn",
+   "name": "Tenango Otomi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pah_Latn",
+   "iso": "pah",
+   "name": "Tenharim",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cnt_Latn",
+   "iso": "cnt",
+   "name": "Tepetotutla Chinantec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cux_Latn",
+   "iso": "cux",
+   "name": "Tepeuxila Cuicatec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ted_Latn",
+   "iso": "ted",
+   "name": "Tepo Krumen",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ter_Latn",
+   "iso": "ter",
+   "name": "Tereno",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "twu_Latn",
+   "iso": "twu",
+   "name": "Termanu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "teo_Latn",
+   "iso": "teo",
+   "name": "Teso",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nhg_Latn",
+   "iso": "nhg",
+   "name": "Tetelcingo Nahuatl",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tdt_Latn",
+   "iso": "tdt",
+   "name": "Tetun Dili",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cut_Latn",
+   "iso": "cut",
+   "name": "Teutila Cuicatec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tew_Latn",
+   "iso": "tew",
+   "name": "Tewa (USA)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zpz_Latn",
+   "iso": "zpz",
+   "name": "Texmelucan Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mxb_Latn",
+   "iso": "mxb",
+   "name": "Tezoatlán Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tcz_Latn",
+   "iso": "tcz",
+   "name": "Thado Chin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tha_Thai",
+   "iso": "tha",
+   "name": "Thai",
+   "script": "Thai",
+   "scriptName": "Thai"
+  },
+  {
+   "code": "cth_Latn",
+   "iso": "cth",
+   "name": "Thaiphum Chin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nki_Latn",
+   "iso": "nki",
+   "name": "Thangal Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "thk_Latn",
+   "iso": "thk",
+   "name": "Tharaka",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tca_Latn",
+   "iso": "tca",
+   "name": "Ticuna",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tif_Latn",
+   "iso": "tif",
+   "name": "Tifal",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tir_Ethi",
+   "iso": "tir",
+   "name": "Tigrinya",
+   "script": "Ethi",
+   "scriptName": "Ethiopic (Geʿez)"
+  },
+  {
+   "code": "tik_Latn",
+   "iso": "tik",
+   "name": "Tikar",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tim_Latn",
+   "iso": "tim",
+   "name": "Timbe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tem_Latn",
+   "iso": "tem",
+   "name": "Timne",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tih_Latn",
+   "iso": "tih",
+   "name": "Timugon Murut",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tpz_Latn",
+   "iso": "tpz",
+   "name": "Tinputz",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tiy_Latn",
+   "iso": "tiy",
+   "name": "Tiruray",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tpt_Latn",
+   "iso": "tpt",
+   "name": "Tlachichilco Tepehua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mxp_Latn",
+   "iso": "mxp",
+   "name": "Tlahuitoltepec Mixe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tob_Latn",
+   "iso": "tob",
+   "name": "Toba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tlb_Latn",
+   "iso": "tlb",
+   "name": "Tobelo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "toj_Latn",
+   "iso": "toj",
+   "name": "Tojolabal",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tpi_Latn",
+   "iso": "tpi",
+   "name": "Tok Pisin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "jic_Latn",
+   "iso": "jic",
+   "name": "Tol",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ton_Latn",
+   "iso": "ton",
+   "name": "Tonga (Tonga Islands)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "toi_Latn",
+   "iso": "toi",
+   "name": "Tonga (Zambia)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sda_Latn",
+   "iso": "sda",
+   "name": "Toraja-Sa'dan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dts_Latn",
+   "iso": "dts",
+   "name": "Toro So Dogon",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tcs_Latn",
+   "iso": "tcs",
+   "name": "Torres Strait Creole",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mto_Latn",
+   "iso": "mto",
+   "name": "Totontepec Mixe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "neb_Latn",
+   "iso": "neb",
+   "name": "Toura (Côte d'Ivoire)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "trn_Latn",
+   "iso": "trn",
+   "name": "Trinitario",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kdl_Latn",
+   "iso": "kdl",
+   "name": "Tsikimba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cas_Latn",
+   "iso": "cas",
+   "name": "Tsimané",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tsw_Latn",
+   "iso": "tsw",
+   "name": "Tsishingini",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tso_Latn",
+   "iso": "tso",
+   "name": "Tsonga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tsn_Latn",
+   "iso": "tsn",
+   "name": "Tswana",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tuo_Latn",
+   "iso": "tuo",
+   "name": "Tucano",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tum_Latn",
+   "iso": "tum",
+   "name": "Tumbuka",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sil_Latn",
+   "iso": "sil",
+   "name": "Tumulung Sisaala",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lcm_Latn",
+   "iso": "lcm",
+   "name": "Tungag",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aeb_Arab",
+   "iso": "aeb",
+   "name": "Tunisian Arabic",
+   "script": "Arab",
+   "scriptName": "Arabic"
+  },
+  {
+   "code": "tui_Latn",
+   "iso": "tui",
+   "name": "Tupuri",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tur_Latn",
+   "iso": "tur",
+   "name": "Turkish",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tuk_Arab",
+   "iso": "tuk",
+   "name": "Turkmen",
+   "script": "Arab",
+   "scriptName": "Arabic"
+  },
+  {
+   "code": "tuk_Cyrl",
+   "iso": "tuk",
+   "name": "Turkmen",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "tuk_Latn",
+   "iso": "tuk",
+   "name": "Turkmen",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tyv_Cyrl",
+   "iso": "tyv",
+   "name": "Tuvinian",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "ifk_Latn",
+   "iso": "ifk",
+   "name": "Tuwali Ifugao",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bov_Latn",
+   "iso": "bov",
+   "name": "Tuwuli",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tue_Latn",
+   "iso": "tue",
+   "name": "Tuyuca",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "twi_Latn",
+   "iso": "twi",
+   "name": "Twi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tzj_Latn",
+   "iso": "tzj",
+   "name": "Tz'utujil",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tzh_Latn",
+   "iso": "tzh",
+   "name": "Tzeltal",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tzo_Latn",
+   "iso": "tzo",
+   "name": "Tzotzil",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aoz_Latn",
+   "iso": "aoz",
+   "name": "Uab Meto",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ksj_Latn",
+   "iso": "ksj",
+   "name": "Uare",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ubr_Latn",
+   "iso": "ubr",
+   "name": "Ubir",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cpb_Latn",
+   "iso": "cpb",
+   "name": "Ucayali-Yurúa Ashéninka",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "udu_Latn",
+   "iso": "udu",
+   "name": "Uduk",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "uig_Arab",
+   "iso": "uig",
+   "name": "Uighur",
+   "script": "Arab",
+   "scriptName": "Arabic"
+  },
+  {
+   "code": "uig_Cyrl",
+   "iso": "uig",
+   "name": "Uighur",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "uig_Latn",
+   "iso": "uig",
+   "name": "Uighur",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ukr_Cyrl",
+   "iso": "ukr",
+   "name": "Ukrainian",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "uli_Latn",
+   "iso": "uli",
+   "name": "Ulithian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ppk_Latn",
+   "iso": "ppk",
+   "name": "Uma",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gdn_Latn",
+   "iso": "gdn",
+   "name": "Umanakaina",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ubu_Latn",
+   "iso": "ubu",
+   "name": "Umbu-Ungu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "due_Latn",
+   "iso": "due",
+   "name": "Umiray Dumaget Agta",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mtg_Latn",
+   "iso": "mtg",
+   "name": "Una",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tku_Latn",
+   "iso": "tku",
+   "name": "Upper Necaxa Totonac",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "urk_Thai",
+   "iso": "urk",
+   "name": "Urak Lawoi'",
+   "script": "Thai",
+   "scriptName": "Thai"
+  },
+  {
+   "code": "ura_Latn",
+   "iso": "ura",
+   "name": "Urarina",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "urt_Latn",
+   "iso": "urt",
+   "name": "Urat",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "urd_Arab",
+   "iso": "urd",
+   "name": "Urdu",
+   "script": "Arab",
+   "scriptName": "Arabic"
+  },
+  {
+   "code": "urd_Deva",
+   "iso": "urd",
+   "name": "Urdu",
+   "script": "Deva",
+   "scriptName": "Devanagari"
+  },
+  {
+   "code": "urd_Latn",
+   "iso": "urd",
+   "name": "Urdu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "uvh_Latn",
+   "iso": "uvh",
+   "name": "Uri",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "uri_Latn",
+   "iso": "uri",
+   "name": "Urim",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "upv_Latn",
+   "iso": "upv",
+   "name": "Uripiv-Wala-Rano-Atchin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "urb_Latn",
+   "iso": "urb",
+   "name": "Urubú-Kaapor",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wnu_Latn",
+   "iso": "wnu",
+   "name": "Usan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "usa_Latn",
+   "iso": "usa",
+   "name": "Usarufa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cuc_Latn",
+   "iso": "cuc",
+   "name": "Usila Chinantec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "usp_Latn",
+   "iso": "usp",
+   "name": "Uspanteco",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "uzb_Cyrl",
+   "iso": "uzb",
+   "name": "Uzbek",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "uzb_Latn",
+   "iso": "uzb",
+   "name": "Uzbek",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "vag_Latn",
+   "iso": "vag",
+   "name": "Vagla",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "vap_Latn",
+   "iso": "vap",
+   "name": "Vaiphei",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ven_Latn",
+   "iso": "ven",
+   "name": "Venda",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bav_Latn",
+   "iso": "bav",
+   "name": "Vengo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "vid_Latn",
+   "iso": "vid",
+   "name": "Vidunda",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "vie_Latn",
+   "iso": "vie",
+   "name": "Vietnamese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wiv_Latn",
+   "iso": "wiv",
+   "name": "Vitu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "rmy_Latn",
+   "iso": "rmy",
+   "name": "Vlax Romani",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "vun_Latn",
+   "iso": "vun",
+   "name": "Vunjo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "vut_Latn",
+   "iso": "vut",
+   "name": "Vute",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wbi_Latn",
+   "iso": "wbi",
+   "name": "Vwanji",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wbm_Latn",
+   "iso": "wbm",
+   "name": "Wa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wwa_Latn",
+   "iso": "wwa",
+   "name": "Waama",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "waj_Latn",
+   "iso": "waj",
+   "name": "Waffa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "fad_Latn",
+   "iso": "fad",
+   "name": "Wagi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "whk_Latn",
+   "iso": "whk",
+   "name": "Wahau Kenyah",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "rro_Latn",
+   "iso": "rro",
+   "name": "Waima",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "bao_Latn",
+   "iso": "bao",
+   "name": "Waimaha",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lgl_Latn",
+   "iso": "lgl",
+   "name": "Wala",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nnp_Latn",
+   "iso": "nnp",
+   "name": "Wancho Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mfi_Latn",
+   "iso": "mfi",
+   "name": "Wandala",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wnc_Latn",
+   "iso": "wnc",
+   "name": "Wantoat",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "auc_Latn",
+   "iso": "auc",
+   "name": "Waorani",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wap_Latn",
+   "iso": "wap",
+   "name": "Wapishana",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "war_Latn",
+   "iso": "war",
+   "name": "Waray (Philippines)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wbp_Latn",
+   "iso": "wbp",
+   "name": "Warlpiri",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wsk_Latn",
+   "iso": "wsk",
+   "name": "Waskia",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "oym_Latn",
+   "iso": "oym",
+   "name": "Wayampi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "way_Latn",
+   "iso": "way",
+   "name": "Wayana",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "guc_Latn",
+   "iso": "guc",
+   "name": "Wayuu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "cym_Latn",
+   "iso": "cym",
+   "name": "Welsh",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wer_Latn",
+   "iso": "wer",
+   "name": "Weri",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kew_Latn",
+   "iso": "kew",
+   "name": "West Kewa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "lia_Latn",
+   "iso": "lia",
+   "name": "West-Central Limba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "apw_Latn",
+   "iso": "apw",
+   "name": "Western Apache",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "are_Latn",
+   "iso": "are",
+   "name": "Western Arrarnta",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gnw_Latn",
+   "iso": "gnw",
+   "name": "Western Bolivian Guaraní",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mbb_Latn",
+   "iso": "mbb",
+   "name": "Western Bukidnon Manobo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "fry_Latn",
+   "iso": "fry",
+   "name": "Western Frisian",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ctp_Latn",
+   "iso": "ctp",
+   "name": "Western Highland Chatino",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pua_Latn",
+   "iso": "pua",
+   "name": "Western Highland Purepecha",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nhw_Latn",
+   "iso": "nhw",
+   "name": "Western Huasteca Nahuatl",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "knj_Latn",
+   "iso": "knj",
+   "name": "Western Kanjobal",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kyu_Mymr",
+   "iso": "kyu",
+   "name": "Western Kayah",
+   "script": "Mymr",
+   "scriptName": "Myanmar (Burmese)"
+  },
+  {
+   "code": "fuh_Latn",
+   "iso": "fuh",
+   "name": "Western Niger Fulfulde",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pne_Latn",
+   "iso": "pne",
+   "name": "Western Penan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "suc_Latn",
+   "iso": "suc",
+   "name": "Western Subanon",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zab_Latn",
+   "iso": "zab",
+   "name": "Western Tlacolula Valley Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "tnp_Latn",
+   "iso": "tnp",
+   "name": "Whitesands",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mzh_Latn",
+   "iso": "mzh",
+   "name": "Wichí Lhamtés Güisnay",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mtp_Latn",
+   "iso": "mtp",
+   "name": "Wichí Lhamtés Nocten",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gdr_Latn",
+   "iso": "gdr",
+   "name": "Wipi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wol_Latn",
+   "iso": "wol",
+   "name": "Wolof",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wro_Latn",
+   "iso": "wro",
+   "name": "Worrorra",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "noa_Latn",
+   "iso": "noa",
+   "name": "Woun Meu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wuv_Latn",
+   "iso": "wuv",
+   "name": "Wuvulu-Aua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wob_Latn",
+   "iso": "wob",
+   "name": "Wè Northern",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "kao_Latn",
+   "iso": "kao",
+   "name": "Xaasongaxango",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xav_Latn",
+   "iso": "xav",
+   "name": "Xavánte",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "xho_Latn",
+   "iso": "xho",
+   "name": "Xhosa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "too_Latn",
+   "iso": "too",
+   "name": "Xicotepec De Juárez Totonac",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "jae_Latn",
+   "iso": "jae",
+   "name": "Yabem",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yad_Latn",
+   "iso": "yad",
+   "name": "Yagua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yka_Latn",
+   "iso": "yka",
+   "name": "Yakan",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "sah_Cyrl",
+   "iso": "sah",
+   "name": "Yakut",
+   "script": "Cyrl",
+   "scriptName": "Cyrillic"
+  },
+  {
+   "code": "yal_Latn",
+   "iso": "yal",
+   "name": "Yalunka",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zpu_Latn",
+   "iso": "zpu",
+   "name": "Yalálag Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yam_Latn",
+   "iso": "yam",
+   "name": "Yamba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yaa_Latn",
+   "iso": "yaa",
+   "name": "Yaminahua",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ame_Latn",
+   "iso": "ame",
+   "name": "Yanesha'",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "wca_Latn",
+   "iso": "wca",
+   "name": "Yanomámi",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yao_Latn",
+   "iso": "yao",
+   "name": "Yao",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yre_Latn",
+   "iso": "yre",
+   "name": "Yaouré",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yap_Latn",
+   "iso": "yap",
+   "name": "Yapese",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yaq_Latn",
+   "iso": "yaq",
+   "name": "Yaqui",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zae_Latn",
+   "iso": "zae",
+   "name": "Yareni Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zty_Latn",
+   "iso": "zty",
+   "name": "Yatee Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zav_Latn",
+   "iso": "zav",
+   "name": "Yatzachi Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yuw_Latn",
+   "iso": "yuw",
+   "name": "Yau (Morobe Province)",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yva_Latn",
+   "iso": "yva",
+   "name": "Yawa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yby_Latn",
+   "iso": "yby",
+   "name": "Yaweyuha",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yle_Latn",
+   "iso": "yle",
+   "name": "Yele",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yss_Latn",
+   "iso": "yss",
+   "name": "Yessan-Mayo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yim_Latn",
+   "iso": "yim",
+   "name": "Yimchungru Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "pib_Latn",
+   "iso": "pib",
+   "name": "Yine",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gud_Latn",
+   "iso": "gud",
+   "name": "Yocoboué Dida",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yom_Latn",
+   "iso": "yom",
+   "name": "Yombe",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zyb_Latn",
+   "iso": "zyb",
+   "name": "Yongbei Zhuang",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yon_Latn",
+   "iso": "yon",
+   "name": "Yongkom",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yut_Latn",
+   "iso": "yut",
+   "name": "Yopno",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yor_Latn",
+   "iso": "yor",
+   "name": "Yoruba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "mpm_Latn",
+   "iso": "mpm",
+   "name": "Yosondúa Mixtec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yua_Latn",
+   "iso": "yua",
+   "name": "Yucateco",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ycn_Latn",
+   "iso": "ycn",
+   "name": "Yucuna",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "yuz_Latn",
+   "iso": "yuz",
+   "name": "Yuracare",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nhi_Latn",
+   "iso": "nhi",
+   "name": "Zacatlán-Ahuacatlán-Tepetzintla Nahuatl",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "atb_Latn",
+   "iso": "atb",
+   "name": "Zaiwa",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zaj_Latn",
+   "iso": "zaj",
+   "name": "Zaramo",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dje_Latn",
+   "iso": "dje",
+   "name": "Zarma",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "dhm_Latn",
+   "iso": "dhm",
+   "name": "Zemba",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "nzm_Latn",
+   "iso": "nzm",
+   "name": "Zeme Naga",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zia_Latn",
+   "iso": "zia",
+   "name": "Zia",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "ziw_Latn",
+   "iso": "ziw",
+   "name": "Zigula",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zpq_Latn",
+   "iso": "zpq",
+   "name": "Zoogocho Zapotec",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "czt_Latn",
+   "iso": "czt",
+   "name": "Zotung Chin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zom_Latn",
+   "iso": "zom",
+   "name": "Zou",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "gnd_Latn",
+   "iso": "gnd",
+   "name": "Zulgo-Gemzek",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zul_Latn",
+   "iso": "zul",
+   "name": "Zulu",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "zyp_Latn",
+   "iso": "zyp",
+   "name": "Zyphe Chin",
+   "script": "Latn",
+   "scriptName": "Latin"
+  },
+  {
+   "code": "aom_Latn",
+   "iso": "aom",
+   "name": "Ömie",
+   "script": "Latn",
+   "scriptName": "Latin"
+  }
+ ]
+}
