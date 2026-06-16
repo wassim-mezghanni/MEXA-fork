@@ -41,6 +41,18 @@ const MODEL_GROUPS: ModelGroup[] = [
     ],
   },
   {
+    modelName: 'Mixtral 8x7B',
+    modelIcon: 'smart_toy',
+    accentColor: 'bg-primary',
+    datasets: [
+      { icon: 'auto_stories', label: 'Bible (sPBC)', path: '/mixtral/bible' },
+      { icon: 'local_florist', label: 'FLORES-200', path: '/mixtral/flores' },
+      { icon: 'table_chart', label: 'FLORES Table 1 (100)', path: '/mixtral/flores-table1-100' },
+      { icon: 'format_list_numbered', label: 'FLORES Table 1 (2k)', path: '/mixtral/flores-table1-2000' },
+      { icon: 'table_view', label: 'Bible Table 1', path: '/mixtral/bible-table1' },
+    ],
+  },
+  {
     modelName: 'Qwen3 8B Base',
     modelIcon: 'smart_toy',
     accentColor: 'bg-secondary',

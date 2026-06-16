@@ -9,6 +9,18 @@ try:
 except ImportError:
     pass
 
+# Monkeypatch to avoid ValueError: `.to` is not supported for quantized models when loading on a single GPU with device_map='auto'
+try:
+    from transformers import PreTrainedModel
+    original_to = PreTrainedModel.to
+    def patched_to(self, *args, **kwargs):
+        if getattr(self, "quantization_method", None) is not None:
+            return self
+        return original_to(self, *args, **kwargs)
+    PreTrainedModel.to = patched_to
+except ImportError:
+    pass
+
 # Preemptively initialize CUDA to prevent context corruption during model loading
 if torch.cuda.is_available():
     torch.cuda.init()
@@ -83,6 +95,8 @@ def main():
                         help='Architecture family of the model. Use "causal" for decoder-only LMs '
                              '(Llama, Qwen, Mistral, Apertus) loaded via AutoModelForCausalLM, and '
                              '"encoder" for bidirectional encoders (XLM-RoBERTa, LaBSE) loaded via AutoModel.')
+    parser.add_argument('--load_in_4bit', action='store_true', help='Load the model in 4-bit precision (requires bitsandbytes).')
+    parser.add_argument('--load_in_8bit', action='store_true', help='Load the model in 8-bit precision (requires bitsandbytes).')
 
     # Parse the arguments
     args = parser.parse_args()
@@ -105,11 +119,38 @@ def main():
 
     # Load the model and tokenizer
     device_map = 'auto' if device == 'cuda' else 'cpu'
+    
+    # Set up quantization kwargs
+    quantization_kwargs = {}
+    if args.load_in_4bit or args.load_in_8bit:
+        from transformers import BitsAndBytesConfig
+        if args.load_in_4bit:
+            compute_dtype = torch.bfloat16 if torch.cuda.is_available() and torch.cuda.is_bf16_supported() else torch.float16
+            print(f"Loading in 4-bit with compute_dtype={compute_dtype}")
+            quantization_kwargs['quantization_config'] = BitsAndBytesConfig(
+                load_in_4bit=True,
+                bnb_4bit_compute_dtype=compute_dtype,
+                bnb_4bit_quant_type="nf4",
+                bnb_4bit_use_double_quant=True
+            )
+        elif args.load_in_8bit:
+            print("Loading in 8-bit")
+            quantization_kwargs['quantization_config'] = BitsAndBytesConfig(
+                load_in_8bit=True
+            )
+
     if args.model_type == 'encoder':
         # Bidirectional encoders (XLM-RoBERTa, LaBSE) expose hidden states via AutoModel.
-        model = AutoModel.from_pretrained(model_name, device_map=device_map, cache_dir=args.cache_dir, token=token, trust_remote_code=True)
+        model = AutoModel.from_pretrained(model_name, device_map=device_map, cache_dir=args.cache_dir, token=token, trust_remote_code=True, **quantization_kwargs)
     else:
-        model = AutoModelForCausalLM.from_pretrained(model_name, device_map=device_map, cache_dir=args.cache_dir, token=token, trust_remote_code=True)
+        model = AutoModelForCausalLM.from_pretrained(model_name, device_map=device_map, cache_dir=args.cache_dir, token=token, trust_remote_code=True, **quantization_kwargs)
+    
+    # Ensure rotary embeddings are on the correct device (accelerate sometimes leaves them on CPU for quantized models)
+    if device != 'cpu':
+        for name, module in model.named_modules():
+            if "rotary" in name.lower() or "rotary" in module.__class__.__name__.lower():
+                module.to(device)
+
     model.eval()
     try:
         tokenizer = AutoTokenizer.from_pretrained(model_name, token=token, trust_remote_code=True)

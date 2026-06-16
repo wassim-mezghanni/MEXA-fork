@@ -19,6 +19,13 @@ import MistralBibleFindings from './pages/MistralBibleFindings';
 import MistralBibleTable1Findings from './pages/MistralBibleTable1Findings';
 import MistralFloresTable1Findings from './pages/MistralFloresTable1Findings';
 
+// Mixtral 8x7B
+import Mixtral8x7BFloresFindings from './pages/Mixtral8x7BFloresFindings';
+import Mixtral8x7BBibleFindings from './pages/Mixtral8x7BBibleFindings';
+import Mixtral8x7BBibleTable1Findings from './pages/Mixtral8x7BBibleTable1Findings';
+import Mixtral8x7BFloresTable1Findings from './pages/Mixtral8x7BFloresTable1Findings';
+import Mixtral8x7BFloresTable1_2000Findings from './pages/Mixtral8x7BFloresTable1_2000Findings';
+
 // Qwen3 8B Base
 import Qwen3FloresFindings from './pages/Qwen3FloresFindings';
 import Qwen3BibleFindings from './pages/Qwen3BibleFindings';
@@ -237,6 +244,13 @@ function App() {
                 <Route path="/mistral/bible" element={<MistralBibleFindings />} />
                 <Route path="/mistral/bible-table1" element={<MistralBibleTable1Findings />} />
                 <Route path="/mistral/flores-table1" element={<MistralFloresTable1Findings />} />
+
+                {/* Mixtral 8x7B */}
+                <Route path="/mixtral/flores" element={<Mixtral8x7BFloresFindings />} />
+                <Route path="/mixtral/bible" element={<Mixtral8x7BBibleFindings />} />
+                <Route path="/mixtral/bible-table1" element={<Mixtral8x7BBibleTable1Findings />} />
+                <Route path="/mixtral/flores-table1-100" element={<Mixtral8x7BFloresTable1Findings />} />
+                <Route path="/mixtral/flores-table1-2000" element={<Mixtral8x7BFloresTable1_2000Findings />} />
 
                 {/* Qwen3 8B Base */}
                 <Route path="/qwen3/flores" element={<Qwen3FloresFindings />} />

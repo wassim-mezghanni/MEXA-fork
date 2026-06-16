@@ -47,7 +47,9 @@ outputs/
 results/
 embd_*/
 mexa_*/
-dashboard/public/data/
+dashboard/public/data/*
+!dashboard/public/data/*.csv
+!dashboard/public/data/*.json
 **/scores/
 **/embeddings/
 flores200_dataset

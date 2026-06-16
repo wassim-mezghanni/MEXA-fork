@@ -41,7 +41,14 @@ def load_embeddings(embedding_path, file_ext, embedding_type, num_sents):
                 layer_embeddings[layer_idx] = {}
 
             vecs = [s[embedding_type] for s in sentences[:num_sents]]
-            mean_vec = np.mean(vecs, axis=0).astype(np.float64)
+            # Filter out any vectors that contain NaN or Inf values
+            valid_vecs = [v for v in vecs if v is not None and not np.isnan(v).any() and not np.isinf(v).any()]
+            if len(valid_vecs) > 0:
+                mean_vec = np.mean(valid_vecs, axis=0).astype(np.float64)
+            else:
+                # Fallback to zero vector of the same shape if no valid vectors exist
+                shape = vecs[0].shape if len(vecs) > 0 and vecs[0] is not None else (4096,)
+                mean_vec = np.zeros(shape, dtype=np.float64)
             layer_embeddings[layer_idx][lang] = mean_vec
 
     return languages, layer_embeddings
