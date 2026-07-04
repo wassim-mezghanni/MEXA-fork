@@ -509,7 +509,7 @@ export default function PivotComparison() {
               {[
                 { model: 'Llama 3.1 8B', engMax: 0.6735, engMean: 0.4196, arMax: 0.7335, arMean: 0.4638, deMax: 0.7315, deMean: 0.4852, frMax: 0.7266, frMean: 0.4822 },
                 { model: 'Mistral 7B v0.3', engMax: 0.4980, engMean: 0.2878, arMax: 0.5068, arMean: 0.2911, deMax: 0.5322, deMean: 0.3689, frMax: 0.5275, frMean: 0.3614 },
-                { model: 'Qwen3.5 9B Base', engMax: 0.7814, engMean: 0.5557, arMax: 0.7986, arMean: 0.5625, deMax: 0.7949, deMean: 0.5673, frMax: 0.8034, frMean: 0.5701 },
+                { model: 'Qwen3.5 9B Base', engMax: 0.7809, engMean: 0.5556, arMax: 0.7986, arMean: 0.5625, deMax: 0.7949, deMean: 0.5673, frMax: 0.8034, frMean: 0.5701 },
                 { model: 'Qwen3 8B Base', engMax: 0.5759, engMean: 0.3211, arMax: 0.6537, arMean: 0.3815, deMax: 0.6697, deMean: 0.3965, frMax: 0.6566, frMean: 0.3905 },
                 { model: 'Qwen3 4B', engMax: 0.4433, engMean: 0.2327, arMax: 0.5481, arMean: 0.3206, deMax: 0.5535, deMean: 0.3339, frMax: 0.5476, frMean: 0.3330 }
               ].map((row, idx) => {

@@ -6,6 +6,7 @@ import MexaFindings from './pages/MexaFindings';
 import RankingValidation from './pages/RankingValidation';
 import DatasetDetail from './pages/DatasetDetail';
 import PivotComparison from './pages/PivotComparison';
+import MarginAnalysis from './pages/MarginAnalysis';
 import BadLanguages from './pages/BadLanguages';
 
 // Llama 3.1 8B
@@ -319,9 +320,13 @@ function App() {
                   path="/comparison" 
                   element={<ModelComparison data={defaultDataObj.data} models={defaultDataObj.models} languageNames={languageNames} />} 
                 />
-                <Route 
-                  path="/pivot-comparison" 
-                  element={<PivotComparison />} 
+                <Route
+                  path="/pivot-comparison"
+                  element={<PivotComparison />}
+                />
+                <Route
+                  path="/margin-analysis"
+                  element={<MarginAnalysis />}
                 />
 
                 {/* Legacy redirects */}

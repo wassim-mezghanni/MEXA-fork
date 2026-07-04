@@ -8,16 +8,18 @@
 # comparisons therefore mixed two different embedding sets. Re-scoring English
 # from the current embeddings makes all four pivots consistent.
 #
+# Repo layout: experiments/<family>/<model dir>/FLORES_table1_100_experiment/embeddings
+#
 # To be run on the cluster: ssh wassim@10.152.225.230 "bash -s" < rescore_english_pivot.sh
 
 set -e
 
 MODELS=(
-  "llama3.1 8B|meta-llama/Llama-3.1-8B|llama3.1_8b"
-  "mistral 0.3 7B|mistralai/Mistral-7B-v0.3|mistral_7b_v03"
-  "qwen3 4B|Qwen/Qwen3-4B|qwen3_4b"
-  "qwen3 8B|Qwen/Qwen3-8B-Base|qwen3_8b"
-  "qwen3.5 9B|Qwen/Qwen3.5-9B-Base|qwen3.5_9b"
+  "experiments/llama/llama3.1 8B|meta-llama/Llama-3.1-8B|llama3.1_8b"
+  "experiments/mistral/mistral 0.3 7B|mistralai/Mistral-7B-v0.3|mistral_7b_v03"
+  "experiments/qwen/qwen3 4B|Qwen/Qwen3-4B|qwen3_4b"
+  "experiments/qwen/qwen3 8B|Qwen/Qwen3-8B-Base|qwen3_8b"
+  "experiments/qwen/qwen3.5 9B|Qwen/Qwen3.5-9B-Base|qwen3.5_9b"
 )
 
 VENV_DIR="$HOME/mexa_env"
@@ -50,5 +52,3 @@ for item in "${MODELS[@]}"; do
 done
 
 echo "ENGLISH PIVOT RESCORED FOR ALL MODELS!"
-echo "Pull the regenerated CSVs (dashboard/public/data/flores_table1_100_*_results.csv)"
-echo "back to your local repo so the dashboard uses consistent scores."

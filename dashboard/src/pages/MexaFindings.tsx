@@ -317,6 +317,45 @@ export default function MexaFindings() {
         </p>
       </div>
 
+      {/* ── Explanation Card (Workflow & Parallel Data Example) ── */}
+      <div className="bg-surface-container-low border border-primary/10 rounded-2xl p-6 max-w-4xl space-y-6">
+        <div className="flex items-start gap-4">
+          <span className="material-symbols-outlined text-primary text-3xl mt-1">info</span>
+          <div className="space-y-2">
+            <h3 className="text-lg font-headline font-extrabold text-primary">How MEXA Works</h3>
+            <p className="text-sm text-on-surface-variant leading-relaxed">
+              MEXA evaluates a model's multilingual capabilities by measuring how closely its internal representations of target-language sentences align with parallel English pivot sentences.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2 border-t border-primary/5">
+          <div className="space-y-3">
+            <h4 className="text-xs font-headline font-bold text-primary uppercase tracking-wider">The 4-Step Process</h4>
+            <ol className="list-decimal list-inside text-xs text-on-surface-variant space-y-2 leading-relaxed">
+              <li><strong className="text-on-surface">Extraction:</strong> Extract hidden state activations across all layers for parallel sentences.</li>
+              <li><strong className="text-on-surface">Alignment:</strong> Compute the cosine similarity between the target language vectors and the English pivot vectors.</li>
+              <li><strong className="text-on-surface">Formatting:</strong> Pool similarities (via mean/max) to generate a summary alignment score.</li>
+              <li><strong className="text-on-surface">Visualization:</strong> Plot the alignment trends and generate 2D semantic maps of language proximity.</li>
+            </ol>
+          </div>
+
+          <div className="space-y-3">
+            <h4 className="text-xs font-headline font-bold text-primary uppercase tracking-wider">Parallel Data Example (FLORES-200, Line 1)</h4>
+            <div className="bg-surface-container-lowest p-3 rounded-lg border border-primary/5 space-y-2 text-xs">
+              <div>
+                <span className="font-bold text-primary text-[10px] uppercase tracking-wider">English (eng_Latn):</span>
+                <p className="italic text-on-surface-variant font-mono mt-0.5 font-light">"We now have 4-month-old mice that are non-diabetic that used to be diabetic," he added.</p>
+              </div>
+              <div className="border-t border-primary/5 pt-2">
+                <span className="font-bold text-primary text-[10px] uppercase tracking-wider">French (fra_Latn):</span>
+                <p className="italic text-on-surface-variant font-mono mt-0.5 font-light">« Nous avons à présent des souris de 4 mois qui ne sont pas diabétiques alors qu'elles l'étaient auparavant », a-t-il ajouté.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* ── Dataset & Metric Toggles ── */}
       <div className="flex flex-wrap gap-4">
         {/* Dataset toggle */}
