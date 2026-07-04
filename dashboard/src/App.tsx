@@ -65,6 +65,13 @@ import ApertusFloresFindings from './pages/ApertusFloresFindings';
 import ApertusBibleFindings from './pages/ApertusBibleFindings';
 import ApertusFloresTable1_2000Findings from './pages/ApertusFloresTable1_2000Findings';
 
+// Apertus 4B (v1.1)
+import ApertusMini4BFloresFindings from './pages/ApertusMini4BFloresFindings';
+import ApertusMini4BBibleFindings from './pages/ApertusMini4BBibleFindings';
+import ApertusMini4BFloresTable1Findings from './pages/ApertusMini4BFloresTable1Findings';
+import ApertusMini4BFloresTable1_2000Findings from './pages/ApertusMini4BFloresTable1_2000Findings';
+import ApertusMini4BBibleTable1Findings from './pages/ApertusMini4BBibleTable1Findings';
+
 // Restyled Analysis Components
 import ModelComparison from './components/ModelComparison';
 import ScoreRanking from './components/ScoreRanking';
@@ -291,6 +298,13 @@ function App() {
                 <Route path="/apertus/flores" element={<ApertusFloresFindings />} />
                 <Route path="/apertus/bible" element={<ApertusBibleFindings />} />
                 <Route path="/apertus/flores-table1-2000" element={<ApertusFloresTable1_2000Findings />} />
+
+                {/* Apertus 4B (v1.1) */}
+                <Route path="/apertus-4b/flores" element={<ApertusMini4BFloresFindings />} />
+                <Route path="/apertus-4b/bible" element={<ApertusMini4BBibleFindings />} />
+                <Route path="/apertus-4b/flores-table1" element={<ApertusMini4BFloresTable1Findings />} />
+                <Route path="/apertus-4b/flores-table1-2000" element={<ApertusMini4BFloresTable1_2000Findings />} />
+                <Route path="/apertus-4b/bible-table1" element={<ApertusMini4BBibleTable1Findings />} />
 
                 {/* Analysis Tools */}
                 <Route 

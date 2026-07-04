@@ -119,6 +119,18 @@ const MODEL_GROUPS: ModelGroup[] = [
       { icon: 'format_list_numbered', label: 'FLORES Table 1 (2k)', path: '/apertus/flores-table1-2000' },
     ],
   },
+  {
+    modelName: 'Apertus 4B (v1.1)',
+    modelIcon: 'smart_toy',
+    accentColor: 'bg-error',
+    datasets: [
+      { icon: 'local_florist', label: 'FLORES-200', path: '/apertus-4b/flores' },
+      { icon: 'auto_stories', label: 'Bible (sPBC)', path: '/apertus-4b/bible' },
+      { icon: 'table_chart', label: 'FLORES Table 1', path: '/apertus-4b/flores-table1' },
+      { icon: 'format_list_numbered', label: 'FLORES Table 1 (2k)', path: '/apertus-4b/flores-table1-2000' },
+      { icon: 'table_view', label: 'Bible Table 1', path: '/apertus-4b/bible-table1' },
+    ],
+  },
 ];
 
 interface TopNavItem {
