@@ -1,0 +1,37 @@
+CUDA OK: NVIDIA H100 NVL
+============================================
+  MEXA FLORES Table 1 (116 langs, 2000 sents) — multilingual-e5-base
+  Model:   intfloat/multilingual-e5-base
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — intfloat/multilingual-e5-base
+  Languages evaluated: 110
+  µ_Max  = 0.9505
+  µ_Mean = 0.4733
+==================================================
+
+Saved to ../../dashboard/public/data/flores_table1_2000_me5_base_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 110 languages, 13 layers
+Computing projections (2D + 3D)...
+  Layer 0/12 done (PCA 2D: 30.3%, 3D: 37.4%)
+  Layer 1/12 done (PCA 2D: 30.3%, 3D: 36.0%)
+  Layer 2/12 done (PCA 2D: 33.5%, 3D: 39.5%)
+  Layer 3/12 done (PCA 2D: 37.6%, 3D: 44.9%)
+  Layer 4/12 done (PCA 2D: 37.6%, 3D: 45.9%)
+  Layer 5/12 done (PCA 2D: 38.1%, 3D: 47.1%)
+  Layer 6/12 done (PCA 2D: 34.5%, 3D: 44.3%)
+  Layer 7/12 done (PCA 2D: 38.5%, 3D: 48.6%)
+  Layer 8/12 done (PCA 2D: 39.0%, 3D: 47.9%)
+  Layer 9/12 done (PCA 2D: 41.7%, 3D: 51.1%)
+  Layer 10/12 done (PCA 2D: 37.3%, 3D: 45.5%)
+  Layer 11/12 done (PCA 2D: 36.7%, 3D: 46.4%)
+  Layer 12/12 done (PCA 2D: 25.8%, 3D: 35.1%)
+Saved projections to ../../dashboard/public/data/projections_flores_table1_2000_me5_base.json
+Job Finished Successfully!

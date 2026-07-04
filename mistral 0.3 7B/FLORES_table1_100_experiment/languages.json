@@ -1,0 +1,13 @@
+[
+  "eng_Latn", "fra_Latn", "por_Latn", "deu_Latn", "spa_Latn", "ita_Latn", "nld_Latn", "rus_Cyrl", "cat_Latn", "swe_Latn",
+  "dan_Latn", "ces_Latn", "nob_Latn", "ron_Latn", "pol_Latn", "ukr_Cyrl", "hrv_Latn", "slv_Latn", "bul_Cyrl", "slk_Latn",
+  "hun_Latn", "fin_Latn", "ell_Grek", "isl_Latn", "lit_Latn", "est_Latn", "lvs_Latn", "mlt_Latn", "zho_Hans", "zho_Hant",
+  "jpn_Jpan", "kor_Hang", "ind_Latn", "zsm_Latn", "vie_Latn", "tha_Thai", "tgl_Latn", "hin_Deva", "ben_Beng", "urd_Arab",
+  "arb_Arab", "arb_Latn", "ars_Arab", "acm_Arab", "pes_Arab", "tur_Latn", "apc_Arab", "arz_Arab", "heb_Hebr", "mar_Deva",
+  "tam_Taml", "tel_Telu", "kan_Knda", "mal_Mlym", "asm_Beng", "guj_Gujr", "pan_Guru", "sin_Sinh", "mya_Mymr", "khm_Khmr",
+  "lao_Laoo", "kat_Geor", "hye_Armn", "kaz_Cyrl", "uzn_Latn", "tgk_Cyrl", "kir_Cyrl", "khk_Cyrl", "bod_Tibt", "shn_Mymr",
+  "ckb_Arab", "pbt_Arab", "swh_Latn", "afr_Latn", "amh_Ethi", "yor_Latn", "ibo_Latn", "zul_Latn", "xho_Latn", "som_Latn",
+  "hau_Latn", "kin_Latn", "nya_Latn", "sna_Latn", "sot_Latn", "tsn_Latn", "tso_Latn", "ssw_Latn", "lug_Latn", "lin_Latn",
+  "bam_Latn", "wol_Latn", "gaz_Latn", "tir_Ethi", "kea_Latn", "fuv_Latn", "hat_Latn", "ceb_Latn", "ilo_Latn", "war_Latn",
+  "jav_Latn", "sun_Latn", "mri_Latn", "plt_Latn", "grn_Latn", "eus_Latn", "als_Latn", "ast_Latn", "glg_Latn", "oci_Latn"
+]

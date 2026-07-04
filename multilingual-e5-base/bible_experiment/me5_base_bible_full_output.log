@@ -1,0 +1,37 @@
+CUDA OK: NVIDIA H100 NVL
+============================================
+  MEXA Bible Full (all langs, sPBC) — multilingual-e5-base
+  Model:   intfloat/multilingual-e5-base
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — intfloat/multilingual-e5-base
+  Languages evaluated: 1401
+  µ_Max  = 0.2046
+  µ_Mean = 0.0528
+==================================================
+
+Saved to ../../dashboard/public/data/bible_me5_base_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 1401 languages, 13 layers
+Computing projections (2D + 3D)...
+  Layer 0/12 done (PCA 2D: 27.5%, 3D: 33.4%)
+  Layer 1/12 done (PCA 2D: 28.0%, 3D: 33.6%)
+  Layer 2/12 done (PCA 2D: 28.8%, 3D: 34.9%)
+  Layer 3/12 done (PCA 2D: 31.2%, 3D: 37.8%)
+  Layer 4/12 done (PCA 2D: 29.5%, 3D: 36.1%)
+  Layer 5/12 done (PCA 2D: 30.4%, 3D: 37.4%)
+  Layer 6/12 done (PCA 2D: 32.2%, 3D: 39.5%)
+  Layer 7/12 done (PCA 2D: 33.8%, 3D: 42.0%)
+  Layer 8/12 done (PCA 2D: 34.4%, 3D: 42.0%)
+  Layer 9/12 done (PCA 2D: 41.7%, 3D: 48.2%)
+  Layer 10/12 done (PCA 2D: 37.8%, 3D: 47.6%)
+  Layer 11/12 done (PCA 2D: 30.2%, 3D: 37.4%)
+  Layer 12/12 done (PCA 2D: 19.7%, 3D: 25.2%)
+Saved projections to ../../dashboard/public/data/projections_bible_me5_base.json
+Job Finished Successfully!

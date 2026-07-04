@@ -43,12 +43,17 @@ export default function Heatmap({ data, languageNames, models }: HeatmapProps) {
 
   const displayModels = useMemo(() => models.filter(m => m !== 'avg'), [models]);
 
+  // Resolve a language name. Codes are like "sat_Olck" but language_names.json
+  // is keyed by ISO-639-3 ("sat"), so fall back to the code prefix before giving up.
+  const resolveName = (code: string) =>
+    languageNames[code] || languageNames[code.split('_')[0]] || code;
+
   const filteredData = useMemo(() => {
     let filtered = data;
     if (searchTerm) {
       const q = searchTerm.toLowerCase();
       filtered = data.filter(row => {
-        const name = (languageNames[row.code] || row.code).toLowerCase();
+        const name = resolveName(row.code).toLowerCase();
         return name.includes(q) || row.code.toLowerCase().includes(q);
       });
     }
@@ -94,13 +99,13 @@ export default function Heatmap({ data, languageNames, models }: HeatmapProps) {
         </div>
 
         <div className="overflow-x-auto custom-scrollbar">
-          <table className="w-full border-separate border-spacing-y-1">
+          <table className="border-separate border-spacing-y-1" style={{ minWidth: displayModels.length * 92 + 200 }}>
             <thead>
               <tr>
-                <th className="sticky left-0 bg-surface-container-low z-20 px-4 py-3 text-left text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/10">Variant</th>
+                <th className="sticky left-0 bg-surface-container-low z-20 px-4 py-3 text-left text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/10 min-w-[180px]">Variant</th>
                 {displayModels.map(m => (
-                  <th key={m} className="px-2 py-3 text-center text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/10 min-w-[80px]">
-                    <div className="whitespace-pre-line leading-tight opacity-70 italic">{m.replace('-', '\n')}</div>
+                  <th key={m} className="px-2 py-3 text-center text-[10px] font-bold text-on-surface-variant uppercase tracking-widest border-b border-outline-variant/10 w-[92px] min-w-[92px] max-w-[92px]">
+                    <div className="leading-tight break-words opacity-70" title={m}>{m}</div>
                   </th>
                 ))}
               </tr>
@@ -108,10 +113,12 @@ export default function Heatmap({ data, languageNames, models }: HeatmapProps) {
             <tbody className="divide-y divide-transparent">
               {filteredData.map(row => (
                 <tr key={row.code} className="hover:bg-white/40 transition-colors group/row">
-                  <td className="sticky left-0 bg-surface-container-low group-hover/row:bg-white/40 z-20 px-4 py-3 border-r border-outline-variant/5">
+                  <td className="sticky left-0 bg-surface-container-low group-hover/row:bg-white/40 z-20 px-4 py-3 border-r border-outline-variant/5 min-w-[180px]">
                     <div className="flex flex-col">
-                      <span className="text-[11px] font-bold text-on-surface truncate">{languageNames[row.code] || row.code}</span>
-                      <span className="text-[9px] font-mono text-on-surface-variant opacity-40 uppercase">{row.code}</span>
+                      <span className="text-[11px] font-bold text-on-surface truncate">{resolveName(row.code)}</span>
+                      {resolveName(row.code) !== row.code && (
+                        <span className="text-[9px] font-mono text-on-surface-variant opacity-40 uppercase">{row.code}</span>
+                      )}
                     </div>
                   </td>
                   {displayModels.map(model => {

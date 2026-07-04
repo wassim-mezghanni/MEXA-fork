@@ -1,0 +1,37 @@
+CUDA OK: NVIDIA H200 NVL
+============================================
+  MEXA Table 1 (116 langs, 100 sents) — XLM-RoBERTa base
+  Model:   FacebookAI/xlm-roberta-base
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — FacebookAI/xlm-roberta-base
+  Languages evaluated: 110
+  µ_Max  = 0.5491
+  µ_Mean = 0.3774
+==================================================
+
+Saved to ../../dashboard/public/data/flores_table1_100_xlmr_base_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 110 languages, 13 layers
+Computing projections (2D + 3D)...
+  Layer 0/12 done (PCA 2D: 31.3%, 3D: 38.6%)
+  Layer 1/12 done (PCA 2D: 36.3%, 3D: 42.8%)
+  Layer 2/12 done (PCA 2D: 41.4%, 3D: 48.0%)
+  Layer 3/12 done (PCA 2D: 45.3%, 3D: 53.2%)
+  Layer 4/12 done (PCA 2D: 49.9%, 3D: 58.6%)
+  Layer 5/12 done (PCA 2D: 52.6%, 3D: 61.4%)
+  Layer 6/12 done (PCA 2D: 50.3%, 3D: 58.7%)
+  Layer 7/12 done (PCA 2D: 52.8%, 3D: 61.0%)
+  Layer 8/12 done (PCA 2D: 54.9%, 3D: 62.6%)
+  Layer 9/12 done (PCA 2D: 56.7%, 3D: 65.4%)
+  Layer 10/12 done (PCA 2D: 51.0%, 3D: 57.6%)
+  Layer 11/12 done (PCA 2D: 49.0%, 3D: 54.7%)
+  Layer 12/12 done (PCA 2D: 40.4%, 3D: 46.3%)
+Saved projections to ../../dashboard/public/data/projections_flores_table1_100_xlmr_base.json
+Job Finished Successfully!

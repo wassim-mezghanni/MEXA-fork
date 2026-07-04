@@ -1,0 +1,49 @@
+CUDA OK: NVIDIA H200 NVL
+============================================
+  MEXA FLORES Full (204 langs, 2000 sents) — XLM-RoBERTa large
+  Model:   FacebookAI/xlm-roberta-large
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — FacebookAI/xlm-roberta-large
+  Languages evaluated: 204
+  µ_Max  = 0.4297
+  µ_Mean = 0.2487
+==================================================
+
+Saved to ../../dashboard/public/data/full_flores_xlmr_large_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 204 languages, 25 layers
+Computing projections (2D + 3D)...
+  Layer 0/24 done (PCA 2D: 37.1%, 3D: 47.0%)
+  Layer 1/24 done (PCA 2D: 33.5%, 3D: 42.2%)
+  Layer 2/24 done (PCA 2D: 34.6%, 3D: 44.0%)
+  Layer 3/24 done (PCA 2D: 34.4%, 3D: 43.8%)
+  Layer 4/24 done (PCA 2D: 35.9%, 3D: 43.5%)
+  Layer 5/24 done (PCA 2D: 39.9%, 3D: 46.5%)
+  Layer 6/24 done (PCA 2D: 41.8%, 3D: 48.2%)
+  Layer 7/24 done (PCA 2D: 46.9%, 3D: 53.1%)
+  Layer 8/24 done (PCA 2D: 52.2%, 3D: 57.8%)
+  Layer 9/24 done (PCA 2D: 56.2%, 3D: 61.3%)
+  Layer 10/24 done (PCA 2D: 59.6%, 3D: 64.2%)
+  Layer 11/24 done (PCA 2D: 62.1%, 3D: 66.5%)
+  Layer 12/24 done (PCA 2D: 58.7%, 3D: 62.6%)
+  Layer 13/24 done (PCA 2D: 59.4%, 3D: 63.7%)
+  Layer 14/24 done (PCA 2D: 58.3%, 3D: 62.3%)
+  Layer 15/24 done (PCA 2D: 58.5%, 3D: 62.5%)
+  Layer 16/24 done (PCA 2D: 61.9%, 3D: 66.2%)
+  Layer 17/24 done (PCA 2D: 59.2%, 3D: 64.9%)
+  Layer 18/24 done (PCA 2D: 61.0%, 3D: 66.3%)
+  Layer 19/24 done (PCA 2D: 57.6%, 3D: 63.3%)
+  Layer 20/24 done (PCA 2D: 55.5%, 3D: 61.0%)
+  Layer 21/24 done (PCA 2D: 56.5%, 3D: 61.1%)
+  Layer 22/24 done (PCA 2D: 48.7%, 3D: 54.2%)
+  Layer 23/24 done (PCA 2D: 39.5%, 3D: 45.2%)
+  Layer 24/24 done (PCA 2D: 30.6%, 3D: 35.3%)
+Saved projections to ../../dashboard/public/data/projections_full_flores_xlmr_large.json
+Job Finished Successfully!

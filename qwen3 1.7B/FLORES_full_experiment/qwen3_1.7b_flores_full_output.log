@@ -1,0 +1,21 @@
+CUDA OK: NVIDIA H200 NVL
+============================================
+  MEXA — Qwen3 1.7B on FLORES Full
+  Model:   Qwen/Qwen3-1.7B
+  Dataset: FLORES-200 (204 langs, 2000 sents)
+  Pooling: max + mean
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — Qwen/Qwen3-1.7B
+  Languages evaluated: 204
+  µ_Max  = 0.3042
+  µ_Mean = 0.1106
+==================================================
+
+Saved to ../../dashboard/public/data/full_flores_qwen3_1.7b_results.csv
+4. Computing 2D Projections...

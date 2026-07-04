@@ -1,0 +1,21 @@
+CUDA OK: NVIDIA H200 NVL
+============================================
+  MEXA — Qwen3 4B on Bible (sPBC)
+  Model:   Qwen/Qwen3-4B
+  Dataset: Bible (103 sentences)
+  Pooling: max + mean
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — Qwen/Qwen3-4B
+  Languages evaluated: 1401
+  µ_Max  = 0.0315
+  µ_Mean = 0.0120
+==================================================
+
+Saved to ../../dashboard/public/data/bible_qwen3_4b_results.csv
+4. Computing 2D Projections...

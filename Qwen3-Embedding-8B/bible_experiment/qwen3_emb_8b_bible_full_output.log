@@ -1,0 +1,62 @@
+CUDA OK: NVIDIA H200 NVL
+============================================
+  MEXA Bible Full (all langs, sPBC) — Qwen3-Embedding-8B
+  Model:   Qwen/Qwen3-Embedding-8B
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — Qwen/Qwen3-Embedding-8B
+  Languages evaluated: 1401
+  µ_Max  = 0.1133
+  µ_Mean = 0.0455
+==================================================
+
+Saved to ../../dashboard/public/data/bible_qwen3_emb_8b_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 1401 languages, 37 layers
+Computing projections (2D + 3D)...
+  Layer 0/36 done (PCA 2D: 21.2%, 3D: 25.8%)
+  Layer 1/36 done (PCA 2D: 35.5%, 3D: 40.6%)
+  Layer 2/36 done (PCA 2D: 30.7%, 3D: 35.9%)
+  Layer 3/36 done (PCA 2D: 30.6%, 3D: 36.3%)
+  Layer 4/36 done (PCA 2D: 28.0%, 3D: 34.3%)
+  Layer 5/36 done (PCA 2D: 30.1%, 3D: 37.8%)
+  Layer 6/36 done (PCA 2D: 30.3%, 3D: 40.1%)
+  Layer 7/36 done (PCA 2D: 32.2%, 3D: 42.4%)
+  Layer 8/36 done (PCA 2D: 32.4%, 3D: 43.1%)
+  Layer 9/36 done (PCA 2D: 33.5%, 3D: 41.7%)
+  Layer 10/36 done (PCA 2D: 36.4%, 3D: 43.6%)
+  Layer 11/36 done (PCA 2D: 36.6%, 3D: 44.2%)
+  Layer 12/36 done (PCA 2D: 38.5%, 3D: 46.0%)
+  Layer 13/36 done (PCA 2D: 40.9%, 3D: 48.3%)
+  Layer 14/36 done (PCA 2D: 43.7%, 3D: 51.2%)
+  Layer 15/36 done (PCA 2D: 43.7%, 3D: 51.2%)
+  Layer 16/36 done (PCA 2D: 43.8%, 3D: 51.4%)
+  Layer 17/36 done (PCA 2D: 45.4%, 3D: 52.9%)
+  Layer 18/36 done (PCA 2D: 45.5%, 3D: 52.8%)
+  Layer 19/36 done (PCA 2D: 45.4%, 3D: 52.7%)
+  Layer 20/36 done (PCA 2D: 45.3%, 3D: 52.5%)
+  Layer 21/36 done (PCA 2D: 44.3%, 3D: 51.6%)
+  Layer 22/36 done (PCA 2D: 44.1%, 3D: 51.2%)
+  Layer 23/36 done (PCA 2D: 42.4%, 3D: 49.0%)
+  Layer 24/36 done (PCA 2D: 38.1%, 3D: 44.3%)
+  Layer 25/36 done (PCA 2D: 29.1%, 3D: 35.1%)
+  Layer 26/36 done (PCA 2D: 26.5%, 3D: 32.7%)
+  Layer 27/36 done (PCA 2D: 23.1%, 3D: 29.1%)
+  Layer 28/36 done (PCA 2D: 22.1%, 3D: 28.5%)
+  Layer 29/36 done (PCA 2D: 21.1%, 3D: 27.0%)
+  Layer 30/36 done (PCA 2D: 20.2%, 3D: 26.3%)
+  Layer 31/36 done (PCA 2D: 21.1%, 3D: 26.7%)
+  Layer 32/36 done (PCA 2D: 20.7%, 3D: 26.7%)
+  Layer 33/36 done (PCA 2D: 20.3%, 3D: 25.9%)
+  Layer 34/36 done (PCA 2D: 22.2%, 3D: 27.1%)
+  Layer 35/36 done (PCA 2D: 23.2%, 3D: 27.9%)
+  Layer 36/36 done (PCA 2D: 41.6%, 3D: 45.7%)
+Saved projections to ../../dashboard/public/data/projections_bible_qwen3_emb_8b.json
+5. Cleaning up embeddings to conserve disk quota...
+Job Finished Successfully!

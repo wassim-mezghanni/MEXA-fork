@@ -1,0 +1,37 @@
+CUDA OK: NVIDIA H100 NVL
+============================================
+  MEXA FLORES Full (204 langs, 2000 sents) — LaBSE
+  Model:   sentence-transformers/LaBSE
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — sentence-transformers/LaBSE
+  Languages evaluated: 204
+  µ_Max  = 0.8011
+  µ_Mean = 0.5290
+==================================================
+
+Saved to ../../dashboard/public/data/full_flores_labse_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 204 languages, 13 layers
+Computing projections (2D + 3D)...
+  Layer 0/12 done (PCA 2D: 35.6%, 3D: 43.3%)
+  Layer 1/12 done (PCA 2D: 32.7%, 3D: 42.8%)
+  Layer 2/12 done (PCA 2D: 35.9%, 3D: 46.5%)
+  Layer 3/12 done (PCA 2D: 36.6%, 3D: 45.7%)
+  Layer 4/12 done (PCA 2D: 43.3%, 3D: 51.7%)
+  Layer 5/12 done (PCA 2D: 51.5%, 3D: 59.2%)
+  Layer 6/12 done (PCA 2D: 55.1%, 3D: 62.1%)
+  Layer 7/12 done (PCA 2D: 60.0%, 3D: 66.9%)
+  Layer 8/12 done (PCA 2D: 66.9%, 3D: 73.2%)
+  Layer 9/12 done (PCA 2D: 73.3%, 3D: 78.9%)
+  Layer 10/12 done (PCA 2D: 77.4%, 3D: 82.1%)
+  Layer 11/12 done (PCA 2D: 87.4%, 3D: 89.6%)
+  Layer 12/12 done (PCA 2D: 81.2%, 3D: 83.8%)
+Saved projections to ../../dashboard/public/data/projections_full_flores_labse.json
+Job Finished Successfully!

@@ -1,0 +1,36 @@
+============================================
+  MEXA Bible Full (all langs) — XLM-RoBERTa base
+  Model:   FacebookAI/xlm-roberta-base
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — FacebookAI/xlm-roberta-base
+  Languages evaluated: 1401
+  µ_Max  = 0.0395
+  µ_Mean = 0.0191
+==================================================
+
+Saved to ../../dashboard/public/data/bible_xlmr_base_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 1401 languages, 13 layers
+Computing projections (2D + 3D)...
+  Layer 0/12 done (PCA 2D: 28.2%, 3D: 34.5%)
+  Layer 1/12 done (PCA 2D: 29.8%, 3D: 36.2%)
+  Layer 2/12 done (PCA 2D: 28.9%, 3D: 35.9%)
+  Layer 3/12 done (PCA 2D: 31.7%, 3D: 37.5%)
+  Layer 4/12 done (PCA 2D: 35.1%, 3D: 41.4%)
+  Layer 5/12 done (PCA 2D: 38.5%, 3D: 44.9%)
+  Layer 6/12 done (PCA 2D: 37.2%, 3D: 43.4%)
+  Layer 7/12 done (PCA 2D: 39.4%, 3D: 45.5%)
+  Layer 8/12 done (PCA 2D: 41.3%, 3D: 46.9%)
+  Layer 9/12 done (PCA 2D: 42.4%, 3D: 48.0%)
+  Layer 10/12 done (PCA 2D: 39.7%, 3D: 45.7%)
+  Layer 11/12 done (PCA 2D: 36.9%, 3D: 44.0%)
+  Layer 12/12 done (PCA 2D: 27.4%, 3D: 34.8%)
+Saved projections to ../../dashboard/public/data/projections_bible_xlmr_base.json
+Job Finished Successfully!

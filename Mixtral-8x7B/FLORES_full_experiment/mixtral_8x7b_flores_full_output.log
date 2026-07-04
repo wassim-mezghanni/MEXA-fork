@@ -1,0 +1,7 @@
+CUDA OK: 2x NVIDIA H200 NVL
+============================================
+  MEXA FLORES Full (204 langs, 2000 sents) — Mixtral-8x7B (SMoE)
+  Model:   mistralai/Mixtral-8x7B-v0.1
+============================================
+1. Extracting Embeddings...
+Using device: cuda

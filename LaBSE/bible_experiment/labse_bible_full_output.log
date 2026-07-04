@@ -1,0 +1,36 @@
+============================================
+  MEXA Bible Full (all langs) — LaBSE
+  Model:   sentence-transformers/LaBSE
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — sentence-transformers/LaBSE
+  Languages evaluated: 1401
+  µ_Max  = 0.1998
+  µ_Mean = 0.0820
+==================================================
+
+Saved to ../../dashboard/public/data/bible_labse_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 1401 languages, 13 layers
+Computing projections (2D + 3D)...
+  Layer 0/12 done (PCA 2D: 23.8%, 3D: 32.2%)
+  Layer 1/12 done (PCA 2D: 28.0%, 3D: 35.7%)
+  Layer 2/12 done (PCA 2D: 31.9%, 3D: 40.1%)
+  Layer 3/12 done (PCA 2D: 31.7%, 3D: 40.6%)
+  Layer 4/12 done (PCA 2D: 37.9%, 3D: 48.2%)
+  Layer 5/12 done (PCA 2D: 44.9%, 3D: 53.8%)
+  Layer 6/12 done (PCA 2D: 41.2%, 3D: 50.5%)
+  Layer 7/12 done (PCA 2D: 47.4%, 3D: 55.1%)
+  Layer 8/12 done (PCA 2D: 51.8%, 3D: 59.0%)
+  Layer 9/12 done (PCA 2D: 55.7%, 3D: 62.1%)
+  Layer 10/12 done (PCA 2D: 59.4%, 3D: 65.0%)
+  Layer 11/12 done (PCA 2D: 57.4%, 3D: 63.6%)
+  Layer 12/12 done (PCA 2D: 36.3%, 3D: 42.9%)
+Saved projections to ../../dashboard/public/data/projections_bible_labse.json
+Job Finished Successfully!

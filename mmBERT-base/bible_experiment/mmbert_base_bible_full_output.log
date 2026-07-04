@@ -1,0 +1,19 @@
+CUDA OK: NVIDIA H200 NVL
+============================================
+  MEXA Bible Full (all langs, sPBC) — mmBERT-base
+  Model:   jhu-clsp/mmBERT-base
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — jhu-clsp/mmBERT-base
+  Languages evaluated: 1401
+  µ_Max  = 0.0434
+  µ_Mean = 0.0139
+==================================================
+
+Saved to ../../dashboard/public/data/bible_mmbert_base_results.csv
+4. Computing 2D Projections...

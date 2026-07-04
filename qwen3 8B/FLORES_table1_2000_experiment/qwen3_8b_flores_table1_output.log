@@ -1,0 +1,7 @@
+============================================
+  MEXA Table 1 Reproduction (116 langs) — Qwen3 8B Base
+  Model:   Qwen/Qwen3-8B-Base
+  Dataset: FLORES-200 (116 langs, 2000 sents)
+============================================
+1. Extracting Embeddings...
+Using device: cpu

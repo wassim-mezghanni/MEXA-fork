@@ -1,0 +1,37 @@
+CUDA OK: NVIDIA H100 NVL
+============================================
+  MEXA Table 1 (116 langs, 100 sents) — LaBSE
+  Model:   sentence-transformers/LaBSE
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — sentence-transformers/LaBSE
+  Languages evaluated: 110
+  µ_Max  = 0.9515
+  µ_Mean = 0.7255
+==================================================
+
+Saved to ../../dashboard/public/data/flores_table1_100_labse_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 110 languages, 13 layers
+Computing projections (2D + 3D)...
+  Layer 0/12 done (PCA 2D: 28.0%, 3D: 34.4%)
+  Layer 1/12 done (PCA 2D: 29.0%, 3D: 34.9%)
+  Layer 2/12 done (PCA 2D: 35.0%, 3D: 41.4%)
+  Layer 3/12 done (PCA 2D: 35.1%, 3D: 41.3%)
+  Layer 4/12 done (PCA 2D: 41.0%, 3D: 47.4%)
+  Layer 5/12 done (PCA 2D: 46.9%, 3D: 54.0%)
+  Layer 6/12 done (PCA 2D: 50.8%, 3D: 57.2%)
+  Layer 7/12 done (PCA 2D: 57.5%, 3D: 63.4%)
+  Layer 8/12 done (PCA 2D: 64.1%, 3D: 69.5%)
+  Layer 9/12 done (PCA 2D: 71.8%, 3D: 76.4%)
+  Layer 10/12 done (PCA 2D: 78.6%, 3D: 81.9%)
+  Layer 11/12 done (PCA 2D: 87.1%, 3D: 88.9%)
+  Layer 12/12 done (PCA 2D: 81.5%, 3D: 83.8%)
+Saved projections to ../../dashboard/public/data/projections_flores_table1_100_labse.json
+Job Finished Successfully!

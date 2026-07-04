@@ -1,0 +1,62 @@
+CUDA OK: NVIDIA H200 NVL
+============================================
+  MEXA FLORES Full (204 langs, 2000 sents) — Qwen3-Embedding-8B
+  Model:   Qwen/Qwen3-Embedding-8B
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — Qwen/Qwen3-Embedding-8B
+  Languages evaluated: 204
+  µ_Max  = 0.6927
+  µ_Mean = 0.3690
+==================================================
+
+Saved to ../../dashboard/public/data/full_flores_qwen3_emb_8b_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 204 languages, 37 layers
+Computing projections (2D + 3D)...
+  Layer 0/36 done (PCA 2D: 38.1%, 3D: 43.7%)
+  Layer 1/36 done (PCA 2D: 41.6%, 3D: 48.5%)
+  Layer 2/36 done (PCA 2D: 39.1%, 3D: 45.6%)
+  Layer 3/36 done (PCA 2D: 40.0%, 3D: 46.2%)
+  Layer 4/36 done (PCA 2D: 37.4%, 3D: 43.9%)
+  Layer 5/36 done (PCA 2D: 35.5%, 3D: 41.7%)
+  Layer 6/36 done (PCA 2D: 39.7%, 3D: 46.8%)
+  Layer 7/36 done (PCA 2D: 48.0%, 3D: 55.2%)
+  Layer 8/36 done (PCA 2D: 48.3%, 3D: 56.9%)
+  Layer 9/36 done (PCA 2D: 48.1%, 3D: 56.4%)
+  Layer 10/36 done (PCA 2D: 50.4%, 3D: 58.3%)
+  Layer 11/36 done (PCA 2D: 52.6%, 3D: 58.7%)
+  Layer 12/36 done (PCA 2D: 55.2%, 3D: 60.9%)
+  Layer 13/36 done (PCA 2D: 57.5%, 3D: 62.8%)
+  Layer 14/36 done (PCA 2D: 59.7%, 3D: 65.0%)
+  Layer 15/36 done (PCA 2D: 60.1%, 3D: 65.5%)
+  Layer 16/36 done (PCA 2D: 61.1%, 3D: 66.5%)
+  Layer 17/36 done (PCA 2D: 60.9%, 3D: 66.2%)
+  Layer 18/36 done (PCA 2D: 61.8%, 3D: 67.1%)
+  Layer 19/36 done (PCA 2D: 61.7%, 3D: 67.1%)
+  Layer 20/36 done (PCA 2D: 61.5%, 3D: 66.7%)
+  Layer 21/36 done (PCA 2D: 60.4%, 3D: 65.6%)
+  Layer 22/36 done (PCA 2D: 59.0%, 3D: 64.2%)
+  Layer 23/36 done (PCA 2D: 58.2%, 3D: 63.0%)
+  Layer 24/36 done (PCA 2D: 52.4%, 3D: 56.9%)
+  Layer 25/36 done (PCA 2D: 41.2%, 3D: 46.9%)
+  Layer 26/36 done (PCA 2D: 38.8%, 3D: 44.4%)
+  Layer 27/36 done (PCA 2D: 33.8%, 3D: 39.3%)
+  Layer 28/36 done (PCA 2D: 33.7%, 3D: 39.2%)
+  Layer 29/36 done (PCA 2D: 33.1%, 3D: 38.7%)
+  Layer 30/36 done (PCA 2D: 31.3%, 3D: 36.8%)
+  Layer 31/36 done (PCA 2D: 32.8%, 3D: 38.1%)
+  Layer 32/36 done (PCA 2D: 28.2%, 3D: 33.4%)
+  Layer 33/36 done (PCA 2D: 27.7%, 3D: 32.8%)
+  Layer 34/36 done (PCA 2D: 32.1%, 3D: 36.7%)
+  Layer 35/36 done (PCA 2D: 37.3%, 3D: 41.5%)
+  Layer 36/36 done (PCA 2D: 46.3%, 3D: 51.6%)
+Saved projections to ../../dashboard/public/data/projections_full_flores_qwen3_emb_8b.json
+5. Cleaning up embeddings to conserve disk quota...
+Job Finished Successfully!

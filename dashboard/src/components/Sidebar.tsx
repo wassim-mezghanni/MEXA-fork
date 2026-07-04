@@ -121,7 +121,6 @@ const MODEL_GROUPS: ModelGroup[] = [
   },
 ];
 
-/* ── Top-level nav items ── */
 interface TopNavItem {
   icon: string;
   label: string;
@@ -130,7 +129,6 @@ interface TopNavItem {
 
 const TOP_NAV: TopNavItem[] = [
   { icon: 'dashboard', label: 'Overview', path: '/' },
-  { icon: 'menu_book', label: 'MEXA Findings', path: '/findings' },
 ];
 
 const DATASET_NAV: TopNavItem[] = [
@@ -139,11 +137,79 @@ const DATASET_NAV: TopNavItem[] = [
 ];
 
 const BOTTOM_NAV: TopNavItem[] = [
+  { icon: 'swap_horiz', label: 'Pivot Comparison', path: '/pivot-comparison' },
+  { icon: 'trending_down', label: 'Bad Languages', path: '/bad-languages' },
+  { icon: 'rule', label: 'Validation', path: '/validation' },
+];
+
+const MEXA_NAV = [
+  { icon: 'menu_book', label: 'MEXA Findings', path: '/findings' },
   { icon: 'grid_view', label: 'Alignment', path: '/alignment' },
   { icon: 'analytics', label: 'Distribution', path: '/distribution' },
   { icon: 'compare_arrows', label: 'Comparison', path: '/comparison' },
-  { icon: 'rule', label: 'Validation', path: '/validation' },
 ];
+
+/* ── Collapsible MEXA Section ── */
+function MexaFolder() {
+  const location = useLocation();
+  const isAnyChildActive = MEXA_NAV.some(d => location.pathname === d.path);
+  const [open, setOpen] = useState(isAnyChildActive);
+
+  return (
+    <div className="mb-1">
+      <button
+        onClick={() => setOpen(!open)}
+        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 group ${
+          isAnyChildActive
+            ? 'bg-surface-container-lowest text-primary shadow-sm'
+            : 'text-on-surface-variant hover:bg-surface-container-high'
+        }`}
+      >
+        <span className="material-symbols-outlined text-lg">folder</span>
+        <span className="font-body text-sm font-semibold tracking-wide flex-1 text-left">
+          MEXA
+        </span>
+        <span
+          className={`material-symbols-outlined text-base transition-transform duration-300 ${
+            open ? 'rotate-180' : ''
+          }`}
+        >
+          expand_more
+        </span>
+      </button>
+
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          open ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="ml-6 pl-3 border-l border-outline-variant/20 space-y-0.5 py-1">
+          {MEXA_NAV.map(item => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              className={({ isActive }) =>
+                `flex items-center gap-2.5 px-3 py-1.5 rounded-md text-xs font-body tracking-wide transition-all duration-150 ${
+                  isActive
+                    ? 'bg-primary/10 text-primary font-bold'
+                    : 'text-on-surface-variant hover:text-primary hover:bg-surface-container-high hover:translate-x-0.5'
+                }`
+              }
+            >
+              <span
+                className="material-symbols-outlined text-sm"
+                style={{ fontSize: '16px' }}
+              >
+                {item.icon}
+              </span>
+              <span>{item.label}</span>
+            </NavLink>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 /* ── Collapsible Model Section ── */
 function ModelSection({ group }: { group: ModelGroup }) {
@@ -244,6 +310,7 @@ export default function Sidebar() {
             <span className="font-body text-sm tracking-wide">{item.label}</span>
           </NavLink>
         ))}
+        <MexaFolder />
       </div>
 
       {/* Datasets Section Label */}

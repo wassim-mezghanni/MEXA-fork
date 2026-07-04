@@ -1,0 +1,81 @@
+import os
+import json
+import argparse
+import pandas as pd
+
+"""
+Format MEXA JSON scores into Dashboard CSV — Bible (sPBC) dataset.
+
+Computes BOTH max and mean pooling across layers, prints µ_Max and µ_Mean.
+The CSV output includes both pooling columns for the dashboard.
+
+Model: mistralai/Mistral-7B-v0.3
+Dataset: Bible (sPBC) — 103 sentences
+"""
+
+MODEL_NAME = "mistralai/Mistral-7B-v0.3"
+
+
+def main():
+    parser = argparse.ArgumentParser("Format MEXA json scores into Dashboard CSV (Bible — Mistral 7B v0.3)")
+    parser.add_argument('--scores_dir', type=str, required=True, help="Directory containing .json scores")
+    parser.add_argument('--output_csv', type=str, required=True, help="Path to save the resulting .csv file")
+    args = parser.parse_args()
+
+    results = []
+
+    if not os.path.exists(args.scores_dir):
+        print(f"Directory {args.scores_dir} not found. Please run compute_mexa.py first.")
+        return
+
+    for file in os.listdir(args.scores_dir):
+        if file.endswith('.json'):
+            lang_code = file.replace('.json', '')
+
+            with open(os.path.join(args.scores_dir, file), 'r') as f:
+                try:
+                    data = json.load(f)
+                    if not data:
+                        continue
+
+                    scores = list(data.values())
+                    max_score = max(scores)
+                    mean_score = sum(scores) / len(scores)
+
+                    results.append({
+                        'code': lang_code,
+                        f'{MODEL_NAME}_max': round(max_score, 4),
+                        f'{MODEL_NAME}_mean': round(mean_score, 4),
+                        'max_score': max_score,
+                        'mean_score': mean_score,
+                    })
+                except json.JSONDecodeError:
+                    print(f"Failed to parse {file}, skipping.")
+
+    if not results:
+        print("No valid scores found. CSV not generated.")
+        return
+
+    df = pd.DataFrame(results)
+
+    # Compute µ_Max and µ_Mean
+    mu_max = df['max_score'].mean()
+    mu_mean = df['mean_score'].mean()
+
+    print(f"\n{'='*50}")
+    print(f"  Bible — Mistral 7B v0.3 Results")
+    print(f"  Languages evaluated: {len(df)}")
+    print(f"  µ_Max  = {mu_max:.4f}")
+    print(f"  µ_Mean = {mu_mean:.4f}")
+    print(f"{'='*50}\n")
+
+    # Use max pooling as primary avg score
+    df['avg'] = df[f'{MODEL_NAME}_max']
+    df = df[['code', f'{MODEL_NAME}_max', f'{MODEL_NAME}_mean', 'avg']]
+
+    os.makedirs(os.path.dirname(args.output_csv), exist_ok=True)
+    df.to_csv(args.output_csv, index=False)
+    print(f"Formatted results saved to {args.output_csv}")
+
+if __name__ == "__main__":
+    main()

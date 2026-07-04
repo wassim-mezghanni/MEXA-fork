@@ -1,0 +1,47 @@
+CUDA OK: NVIDIA H100 NVL
+============================================
+  MEXA FLORES Table 1 (116 langs, 100 sents) — mmBERT-base
+  Model:   jhu-clsp/mmBERT-base
+============================================
+1. Extracting Embeddings...
+Using device: cuda
+2. Computing MEXA alignments...
+3. Formatting Results for the Dashboard...
+
+==================================================
+  scores — jhu-clsp/mmBERT-base
+  Languages evaluated: 110
+  µ_Max  = 0.5138
+  µ_Mean = 0.2350
+==================================================
+
+Saved to ../../dashboard/public/data/flores_table1_100_mmbert_base_results.csv
+4. Computing 2D Projections...
+Loading embeddings from ./embeddings...
+Loaded 110 languages, 23 layers
+Computing projections (2D + 3D)...
+  Layer 0/22 done (PCA 2D: 36.1%, 3D: 43.0%)
+  Layer 1/22 done (PCA 2D: 37.3%, 3D: 42.7%)
+  Layer 2/22 done (PCA 2D: 43.2%, 3D: 48.6%)
+  Layer 3/22 done (PCA 2D: 42.9%, 3D: 48.6%)
+  Layer 4/22 done (PCA 2D: 41.4%, 3D: 48.6%)
+  Layer 5/22 done (PCA 2D: 42.0%, 3D: 49.1%)
+  Layer 6/22 done (PCA 2D: 49.9%, 3D: 55.8%)
+  Layer 7/22 done (PCA 2D: 46.0%, 3D: 51.7%)
+  Layer 8/22 done (PCA 2D: 49.4%, 3D: 54.7%)
+  Layer 9/22 done (PCA 2D: 54.9%, 3D: 59.7%)
+  Layer 10/22 done (PCA 2D: 50.5%, 3D: 55.9%)
+  Layer 11/22 done (PCA 2D: 50.0%, 3D: 55.8%)
+  Layer 12/22 done (PCA 2D: 54.4%, 3D: 59.9%)
+  Layer 13/22 done (PCA 2D: 98.9%, 3D: 99.0%)
+  Layer 14/22 done (PCA 2D: 98.8%, 3D: 98.9%)
+  Layer 15/22 done (PCA 2D: 98.7%, 3D: 98.8%)
+  Layer 16/22 done (PCA 2D: 98.4%, 3D: 98.6%)
+  Layer 17/22 done (PCA 2D: 98.1%, 3D: 98.3%)
+  Layer 18/22 done (PCA 2D: 97.7%, 3D: 98.0%)
+  Layer 19/22 done (PCA 2D: 95.4%, 3D: 95.8%)
+  Layer 20/22 done (PCA 2D: 95.0%, 3D: 95.4%)
+  Layer 21/22 done (PCA 2D: 94.6%, 3D: 95.1%)
+  Layer 22/22 done (PCA 2D: 28.4%, 3D: 33.9%)
+Saved projections to ../../dashboard/public/data/projections_flores_table1_100_mmbert_base.json
+Job Finished Successfully!
