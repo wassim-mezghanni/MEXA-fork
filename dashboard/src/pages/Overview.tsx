@@ -39,8 +39,8 @@ export type ModelRow = {
 export const VARIANT_COLUMNS: { key: Variant; label: string; subtitle: string }[] = [
   // FLORES experiments first, then Bible experiments
   { key: 'flores-table1', label: 'FLORES Table 1', subtitle: '116 langs · 100 sents' },
-  { key: 'flores-table1-2000', label: 'FLORES Table 1', subtitle: '116 langs · 2000 sents' },
-  { key: 'flores-full', label: 'FLORES Full', subtitle: '204 langs · 2000 sents' },
+  { key: 'flores-table1-2000', label: 'FLORES Table 1', subtitle: '116 langs · 1012 sents' },
+  { key: 'flores-full', label: 'FLORES Full', subtitle: '204 langs · 1012 sents' },
   { key: 'bible-table1', label: 'Bible Table 1', subtitle: '101 langs · sPBC' },
   { key: 'bible-full', label: 'Bible Full', subtitle: 'sPBC · all langs' },
 ];
@@ -120,6 +120,16 @@ export const MEXA_SCORES: ModelRow[] = [
       'bible-table1': { max: 0.4299, mean: 0.1896 },
       'flores-full': { max: 0.3264, mean: 0.1267 },
       'bible-full': { max: 0.0667, mean: 0.0237 },
+    },
+  },
+  {
+    model: 'Apertus 4B (v1.1)',
+    scores: {
+      'flores-table1': { max: 0.5840, mean: 0.3191 },
+      'flores-table1-2000': { max: 0.5231, mean: 0.2543 },
+      'bible-table1': { max: 0.3868, mean: 0.1728 },
+      'flores-full': { max: 0.4689, mean: 0.2412 },
+      'bible-full': { max: 0.0514, mean: 0.0196 },
     },
   },
 ];
@@ -308,6 +318,15 @@ export const MISTRAL_VS_MIXTRAL_SCORES: ModelRow[] = [
       'bible-full': { max: 0.0126, mean: 0.0009 },
     },
   },
+  {
+    model: 'Mixtral 8x22B',
+    note: 'sparse MoE architecture · 8x22B (~141B total, ~39B active)',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.5184, mean: 0.2686 },
+      'bible-table1': { max: 0.4403, mean: 0.2370 },
+    },
+  },
 ];
 
 export const GEMMA_SCORES: ModelRow[] = [
@@ -337,7 +356,7 @@ export const GEMMA_SCORES: ModelRow[] = [
   },
   {
     model: 'Gemma 4 26B-A4B',
-    note: 'sparse MoE · 25.2B total (3.8B active, 128 experts top-8) · run on LRZ H100',
+    note: 'sparse MoE · 25.2B total (3.8B active, 128 experts top-8) ·',
     scores: {
       ...blank(),
       'flores-table1': { max: 0.8840, mean: 0.6291 },
@@ -493,7 +512,7 @@ export default function Overview() {
             The original MEXA paper (<em>Kargaran et al., ACL 2025 Findings</em>) reports its
             headline numbers in <strong>Table 1</strong> on the subsets of languages overlapping
             with the Belebele benchmark: <strong>116 languages from FLORES-200</strong> (full
-            devtest, 2000 parallel sentences) and <strong>101 languages from the Bible / sPBC
+            devtest, 1012 parallel sentences) and <strong>101 languages from the Bible / sPBC
             corpus</strong> (~103 parallel verses). The embedding setting is identical across
             both: layer-wise <strong>weighted-token average</strong> sentence embeddings, English
             as the pivot, alignment computed via cosine-similarity matrices, and final scores

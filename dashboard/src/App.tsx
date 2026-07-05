@@ -30,6 +30,10 @@ import Mixtral8x7BBibleTable1Findings from './pages/Mixtral8x7BBibleTable1Findin
 import Mixtral8x7BFloresTable1Findings from './pages/Mixtral8x7BFloresTable1Findings';
 import Mixtral8x7BFloresTable1_2000Findings from './pages/Mixtral8x7BFloresTable1_2000Findings';
 
+// Mixtral 8x22B
+import Mixtral8x22BFloresTable1Findings from './pages/Mixtral8x22BFloresTable1Findings';
+import Mixtral8x22BBibleTable1Findings from './pages/Mixtral8x22BBibleTable1Findings';
+
 // Qwen3 8B Base
 import Qwen3FloresFindings from './pages/Qwen3FloresFindings';
 import Qwen3BibleFindings from './pages/Qwen3BibleFindings';
@@ -228,7 +232,7 @@ function App() {
       <div className="font-body text-on-surface bg-surface min-h-screen">
         <Sidebar />
 
-        <main className="ml-64 min-h-screen flex flex-col">
+        <main className="ml-80 min-h-screen flex flex-col">
           <TopAppBar />
 
           <div className="flex-1 p-12">
@@ -263,6 +267,10 @@ function App() {
                 <Route path="/mixtral/bible-table1" element={<Mixtral8x7BBibleTable1Findings />} />
                 <Route path="/mixtral/flores-table1-100" element={<Mixtral8x7BFloresTable1Findings />} />
                 <Route path="/mixtral/flores-table1-2000" element={<Mixtral8x7BFloresTable1_2000Findings />} />
+
+                {/* Mixtral 8x22B */}
+                <Route path="/mixtral-8x22b/flores-table1-100" element={<Mixtral8x22BFloresTable1Findings />} />
+                <Route path="/mixtral-8x22b/bible-table1" element={<Mixtral8x22BBibleTable1Findings />} />
 
                 {/* Qwen3 8B Base */}
                 <Route path="/qwen3/flores" element={<Qwen3FloresFindings />} />

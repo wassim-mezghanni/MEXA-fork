@@ -48,8 +48,17 @@ const MODEL_GROUPS: ModelGroup[] = [
       { icon: 'auto_stories', label: 'Bible (sPBC)', path: '/mixtral/bible' },
       { icon: 'local_florist', label: 'FLORES-200', path: '/mixtral/flores' },
       { icon: 'table_chart', label: 'FLORES Table 1 (100)', path: '/mixtral/flores-table1-100' },
-      { icon: 'format_list_numbered', label: 'FLORES Table 1 (2k)', path: '/mixtral/flores-table1-2000' },
+      { icon: 'format_list_numbered', label: 'FLORES Table 1 (1012)', path: '/mixtral/flores-table1-2000' },
       { icon: 'table_view', label: 'Bible Table 1', path: '/mixtral/bible-table1' },
+    ],
+  },
+  {
+    modelName: 'Mixtral 8x22B',
+    modelIcon: 'smart_toy',
+    accentColor: 'bg-primary',
+    datasets: [
+      { icon: 'table_chart', label: 'FLORES Table 1 (100)', path: '/mixtral-8x22b/flores-table1-100' },
+      { icon: 'table_view', label: 'Bible Table 1', path: '/mixtral-8x22b/bible-table1' },
     ],
   },
   {
@@ -60,7 +69,7 @@ const MODEL_GROUPS: ModelGroup[] = [
       { icon: 'local_florist', label: 'FLORES-200', path: '/qwen3/flores' },
       { icon: 'auto_stories', label: 'Bible (sPBC)', path: '/qwen3/bible' },
       { icon: 'table_chart', label: 'FLORES Table 1', path: '/qwen3/flores-table1' },
-      { icon: 'format_list_numbered', label: 'FLORES Table 1 (2k)', path: '/qwen3/flores-table1-2000' },
+      { icon: 'format_list_numbered', label: 'FLORES Table 1 (1012)', path: '/qwen3/flores-table1-2000' },
       { icon: 'table_view', label: 'Bible Table 1', path: '/qwen3/bible-table1' },
     ],
   },
@@ -72,7 +81,7 @@ const MODEL_GROUPS: ModelGroup[] = [
       { icon: 'local_florist', label: 'FLORES-200', path: '/qwen3.5/flores' },
       { icon: 'auto_stories', label: 'Bible (sPBC)', path: '/qwen3.5/bible' },
       { icon: 'table_chart', label: 'FLORES Table 1', path: '/qwen3.5/flores-table1' },
-      { icon: 'format_list_numbered', label: 'FLORES Table 1 (2k)', path: '/qwen3.5/flores-table1-2000' },
+      { icon: 'format_list_numbered', label: 'FLORES Table 1 (1012)', path: '/qwen3.5/flores-table1-2000' },
       { icon: 'table_view', label: 'Bible Table 1', path: '/qwen3.5/bible-table1' },
     ],
   },
@@ -116,7 +125,7 @@ const MODEL_GROUPS: ModelGroup[] = [
     datasets: [
       { icon: 'local_florist', label: 'FLORES-200', path: '/apertus/flores' },
       { icon: 'auto_stories', label: 'Bible (sPBC)', path: '/apertus/bible' },
-      { icon: 'format_list_numbered', label: 'FLORES Table 1 (2k)', path: '/apertus/flores-table1-2000' },
+      { icon: 'format_list_numbered', label: 'FLORES Table 1 (1012)', path: '/apertus/flores-table1-2000' },
     ],
   },
   {
@@ -127,7 +136,7 @@ const MODEL_GROUPS: ModelGroup[] = [
       { icon: 'local_florist', label: 'FLORES-200', path: '/apertus-4b/flores' },
       { icon: 'auto_stories', label: 'Bible (sPBC)', path: '/apertus-4b/bible' },
       { icon: 'table_chart', label: 'FLORES Table 1', path: '/apertus-4b/flores-table1' },
-      { icon: 'format_list_numbered', label: 'FLORES Table 1 (2k)', path: '/apertus-4b/flores-table1-2000' },
+      { icon: 'format_list_numbered', label: 'FLORES Table 1 (1012)', path: '/apertus-4b/flores-table1-2000' },
       { icon: 'table_view', label: 'Bible Table 1', path: '/apertus-4b/bible-table1' },
     ],
   },
@@ -294,7 +303,7 @@ function ModelSection({ group }: { group: ModelGroup }) {
 /* ── Sidebar ── */
 export default function Sidebar() {
   return (
-    <nav className="h-screen w-64 fixed left-0 bg-surface-container-low flex flex-col p-4 space-y-1 z-50 overflow-y-auto">
+    <nav className="h-screen w-80 fixed left-0 bg-surface-container-low flex flex-col p-4 space-y-1 z-50 overflow-y-auto">
       {/* Logo */}
       <div className="flex items-center gap-3 px-2 py-4 mb-4">
         <div className="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-white font-headline font-bold">

@@ -55,10 +55,10 @@ const MODEL_CSV_MAP: Record<string, string> = {
 
 // Available comparisons for the interactive Rank Scatter Plot
 const COMPARISON_OPTIONS = [
-  { value: 'max_vs_mean_flores', label: 'Max vs. Mean (FLORES Table 1, 2k sents)' },
+  { value: 'max_vs_mean_flores', label: 'Max vs. Mean (FLORES Table 1, 1012 sents)' },
   { value: 'max_vs_mean_bible', label: 'Max vs. Mean (Bible Table 1)' },
-  { value: 'flores_100_vs_2000_max', label: 'FLORES 100 vs. 2000 sents (Max)' },
-  { value: 'flores_100_vs_2000_mean', label: 'FLORES 100 vs. 2000 sents (Mean)' },
+  { value: 'flores_100_vs_2000_max', label: 'FLORES 100 vs. 1012 sents (Max)' },
+  { value: 'flores_100_vs_2000_mean', label: 'FLORES 100 vs. 1012 sents (Mean)' },
   { value: 'flores_vs_bible_max', label: 'FLORES vs. Bible Table 1 (Max)' },
   { value: 'flores_vs_bible_mean', label: 'FLORES vs. Bible Table 1 (Mean)' },
 ];

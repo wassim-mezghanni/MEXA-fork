@@ -18,7 +18,7 @@ export interface BarChartVariant {
   key: string;
   /** Human label shown in the dropdown. */
   label: string;
-  /** Optional secondary line shown under the label (e.g. "116 langs · 2000 sents"). */
+  /** Optional secondary line shown under the label (e.g. "116 langs · 1012 sents"). */
   subtitle?: string;
 }
 
