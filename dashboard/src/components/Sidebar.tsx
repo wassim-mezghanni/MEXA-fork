@@ -149,6 +149,7 @@ const DATASET_NAV: TopNavItem[] = [
 ];
 
 const BOTTOM_NAV: TopNavItem[] = [
+  { icon: 'hub', label: 'MoE Analysis', path: '/moe-analysis' },
   { icon: 'swap_horiz', label: 'Pivot Comparison', path: '/pivot-comparison' },
   { icon: 'straighten', label: 'Margin Analysis', path: '/margin-analysis' },
   { icon: 'trending_down', label: 'Bad Languages', path: '/bad-languages' },

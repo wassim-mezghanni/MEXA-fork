@@ -7,6 +7,7 @@ import RankingValidation from './pages/RankingValidation';
 import DatasetDetail from './pages/DatasetDetail';
 import PivotComparison from './pages/PivotComparison';
 import MarginAnalysis from './pages/MarginAnalysis';
+import MoeAnalysis from './pages/MoeAnalysis';
 import BadLanguages from './pages/BadLanguages';
 
 // Llama 3.1 8B
@@ -327,6 +328,10 @@ function App() {
                 <Route
                   path="/margin-analysis"
                   element={<MarginAnalysis />}
+                />
+                <Route
+                  path="/moe-analysis"
+                  element={<MoeAnalysis />}
                 />
 
                 {/* Legacy redirects */}

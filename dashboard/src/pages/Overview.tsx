@@ -310,6 +310,49 @@ export const MISTRAL_VS_MIXTRAL_SCORES: ModelRow[] = [
   },
 ];
 
+export const GEMMA_SCORES: ModelRow[] = [
+  {
+    model: 'Gemma 4 E2B',
+    note: 'dense (MatFormer) · ~2B effective',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.8574, mean: 0.5064 },
+    },
+  },
+  {
+    model: 'Gemma 4 E4B',
+    note: 'dense (MatFormer) · ~4B effective — active-param match for the 26B-A4B MoE',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.8719, mean: 0.4995 },
+    },
+  },
+  {
+    model: 'Gemma 4 12B',
+    note: 'dense · 12B',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.8905, mean: 0.4625 },
+    },
+  },
+  {
+    model: 'Gemma 4 26B-A4B',
+    note: 'sparse MoE · 25.2B total (3.8B active, 128 experts top-8) · run on LRZ H100',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.8840, mean: 0.6291 },
+      'bible-table1': { max: 0.7140, mean: 0.3500 },
+    },
+  },
+  {
+    model: 'Gemma 4 31B',
+    note: 'dense · 31B — total-param match for the 26B-A4B MoE',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.9189, mean: 0.5782 },
+    },
+  },
+];
 
 const fmt = (v: Score) => (v === null || v === undefined ? '—' : v.toFixed(4));
 
@@ -331,7 +374,7 @@ const columnMaxima = (rows: ModelRow[]): Record<Variant, { max: Score; mean: Sco
 };
 
 const ROW_MAXIMA = new Map<ModelRow, Record<Variant, { max: Score; mean: Score }>>();
-for (const table of [MEXA_SCORES, QWEN3_SCORES, ENCODER_SCORES, EMBEDDING_SCORES, MISTRAL_VS_MIXTRAL_SCORES]) {
+for (const table of [MEXA_SCORES, QWEN3_SCORES, ENCODER_SCORES, EMBEDDING_SCORES, MISTRAL_VS_MIXTRAL_SCORES, GEMMA_SCORES]) {
   const mx = columnMaxima(table);
   for (const r of table) ROW_MAXIMA.set(r, mx);
 }
@@ -364,7 +407,8 @@ const ALL_INDIVIDUAL_MODELS = [
   ...QWEN3_SCORES.filter((r) => !['Qwen3 8B Base', 'Qwen3.5 9B Base'].includes(r.model)),
   ...EMBEDDING_SCORES,
   ...ENCODER_SCORES,
-  ...MISTRAL_VS_MIXTRAL_SCORES.filter((r) => r.model.includes('Mixtral'))
+  ...MISTRAL_VS_MIXTRAL_SCORES.filter((r) => r.model.includes('Mixtral')),
+  ...GEMMA_SCORES
 ];
 
 /* ── Experiment timeline mock ── */
@@ -920,6 +964,117 @@ export default function Overview() {
                     key={row.model}
                     className={`border-b border-outline-variant/10 hover:bg-surface-container-lowest transition-colors ${
                       idx === MISTRAL_VS_MIXTRAL_SCORES.length - 1 ? 'border-b-0' : ''
+                    }`}
+                  >
+                    <td className="px-4 py-3">
+                      <div className="font-headline font-semibold text-on-surface">
+                        {row.model}
+                      </div>
+                      {row.note && (
+                        <div className="text-[10px] font-body text-on-surface-variant/70 italic mt-0.5">
+                          {row.note}
+                        </div>
+                      )}
+                    </td>
+                    {VARIANT_COLUMNS.flatMap((v) => {
+                      const cell = row.scores[v.key];
+                      const mx = ROW_MAXIMA.get(row);
+                      const boldMax = cell.max !== null && mx != null && cell.max === mx[v.key].max;
+                      const boldMean = cell.mean !== null && mx != null && cell.mean === mx[v.key].mean;
+                      return [
+                        <td
+                          key={`${row.model}-${v.key}-max`}
+                          className={`text-right font-mono tabular-nums text-base px-3 py-3 border-l border-outline-variant/20 ${
+                            cell.max === null ? 'text-on-surface-variant/30 font-medium' : boldMax ? 'font-bold text-primary text-lg bg-green-100' : 'font-semibold text-on-surface'
+                          }`}
+                        >
+                          {fmt(cell.max)}
+                        </td>,
+                        <td
+                          key={`${row.model}-${v.key}-mean`}
+                          className={`text-right font-mono tabular-nums text-base px-3 py-3 ${
+                            cell.mean === null ? 'text-on-surface-variant/30 font-medium' : boldMean ? 'font-bold text-primary text-lg bg-green-100' : 'font-semibold text-on-surface'
+                          }`}
+                        >
+                          {fmt(cell.mean)}
+                        </td>,
+                      ];
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* Gemma Models Comparison Table */}
+      <section className="bg-surface-container-low rounded-xl p-8">
+        <div className="mb-6 max-w-5xl">
+          <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider mb-3">
+            Gemma 4 Family — Scaling & Dense vs. MoE
+          </h3>
+          <p className="text-xs text-on-surface-variant font-body leading-relaxed">
+            The Gemma 4 family evaluated with the same MEXA pipeline on the LRZ AI Systems
+            cluster (1× H100 94GB). The family spans a scaling curve (E2B → E4B → 12B → 31B)
+            around the sparse Mixture-of-Experts <strong>26B-A4B</strong> (25.2B total, 3.8B
+            active per token via 8-of-128 expert routing). Two contrasts matter here:
+            <strong> E4B vs. 26B-A4B</strong> matches <em>active</em> parameters (~4B) to isolate
+            the effect of expert routing at equal compute, while <strong>31B vs. 26B-A4B</strong>
+            matches <em>total</em> parameters to isolate sparsity at equal capacity. In contrast
+            to the alignment collapse observed in Mixtral 8x7B, the Gemma 4 MoE achieves the
+            strongest cross-lingual alignment of all causal LMs evaluated so far. Pending runs
+            are marked <code className="text-on-surface">—</code>.
+          </p>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm border-collapse">
+            <thead>
+              <tr className="border-b border-outline-variant/30">
+                <th
+                  rowSpan={2}
+                  className="text-left text-[10px] font-bold uppercase tracking-widest text-on-surface-variant px-4 py-3 align-bottom"
+                >
+                  Model
+                </th>
+                {VARIANT_COLUMNS.map((v) => (
+                  <th
+                    key={v.key}
+                    colSpan={2}
+                    className="text-center text-[10px] font-bold uppercase tracking-widest text-primary px-4 pt-3 pb-1 border-l border-outline-variant/20"
+                  >
+                    <div>{v.label}</div>
+                    <div className="text-[9px] font-medium normal-case tracking-normal text-on-surface-variant/70 mt-0.5">
+                      {v.subtitle}
+                    </div>
+                  </th>
+                ))}
+              </tr>
+              <tr className="border-b border-outline-variant/30">
+                {VARIANT_COLUMNS.flatMap((v) => [
+                  <th
+                    key={`${v.key}-max`}
+                    className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2 border-l border-outline-variant/20"
+                  >
+                    µ_Max
+                  </th>,
+                  <th
+                    key={`${v.key}-mean`}
+                    className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2"
+                  >
+                    µ_Mean
+                  </th>,
+                ])}
+              </tr>
+            </thead>
+            <tbody>
+              {GEMMA_SCORES.map((row, idx) => {
+                return (
+                  <tr
+                    key={row.model}
+                    className={`border-b border-outline-variant/10 hover:bg-surface-container-lowest transition-colors ${
+                      idx === GEMMA_SCORES.length - 1 ? 'border-b-0' : ''
                     }`}
                   >
                     <td className="px-4 py-3">
