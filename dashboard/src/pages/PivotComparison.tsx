@@ -75,6 +75,25 @@ interface PivotStat {
   sorted: number[];
 }
 
+// Per-model mean scores across all languages (µ over the 110-language set),
+// precomputed from the CSVs in public/data for both scoring variants.
+const SUMMARY_ROWS: Record<'standard' | 'centered', Array<Record<string, any>>> = {
+  standard: [
+    { model: 'Llama 3.1 8B', engMax: 0.6735, engMean: 0.4196, arMax: 0.7335, arMean: 0.4638, deMax: 0.7315, deMean: 0.4852, frMax: 0.7266, frMean: 0.4822 },
+    { model: 'Mistral 7B v0.3', engMax: 0.4980, engMean: 0.2878, arMax: 0.5068, arMean: 0.2911, deMax: 0.5322, deMean: 0.3689, frMax: 0.5275, frMean: 0.3614 },
+    { model: 'Qwen3.5 9B Base', engMax: 0.7809, engMean: 0.5556, arMax: 0.7986, arMean: 0.5625, deMax: 0.7949, deMean: 0.5673, frMax: 0.8034, frMean: 0.5701 },
+    { model: 'Qwen3 8B Base', engMax: 0.5759, engMean: 0.3211, arMax: 0.6537, arMean: 0.3815, deMax: 0.6697, deMean: 0.3965, frMax: 0.6566, frMean: 0.3905 },
+    { model: 'Qwen3 4B', engMax: 0.4433, engMean: 0.2327, arMax: 0.5481, arMean: 0.3206, deMax: 0.5535, deMean: 0.3339, frMax: 0.5476, frMean: 0.3330 },
+  ],
+  centered: [
+    { model: 'Llama 3.1 8B', engMax: 0.8902, engMean: 0.7365, arMax: 0.9033, arMean: 0.7435, deMax: 0.8990, deMean: 0.7556, frMax: 0.8984, frMean: 0.7578 },
+    { model: 'Mistral 7B v0.3', engMax: 0.7264, engMean: 0.5578, arMax: 0.7250, arMean: 0.5545, deMax: 0.7418, deMean: 0.5962, frMax: 0.7404, frMean: 0.5941 },
+    { model: 'Qwen3.5 9B Base', engMax: 0.9564, engMean: 0.8442, arMax: 0.9485, arMean: 0.8228, deMax: 0.9547, deMean: 0.8415, frMax: 0.9462, frMean: 0.8351 },
+    { model: 'Qwen3 8B Base', engMax: 0.8429, engMean: 0.6584, arMax: 0.8467, arMean: 0.6646, deMax: 0.8566, deMean: 0.6908, frMax: 0.8483, frMean: 0.6883 },
+    { model: 'Qwen3 4B', engMax: 0.7469, engMean: 0.5443, arMax: 0.7798, arMean: 0.5753, deMax: 0.7800, deMean: 0.5994, frMax: 0.7696, frMean: 0.6059 },
+  ],
+};
+
 // Map a (possibly normalized) value to a 0..1 fraction for progress bars.
 // Raw and percentile are already in [0,1]; z-scores are clamped to [-3, 3].
 function barFraction(mode: NormMode, val: number): number {
@@ -115,6 +134,7 @@ export default function PivotComparison() {
   const [selectedMetric, setSelectedMetric] = useState<'max' | 'mean'>('max');
   const [normMode, setNormMode] = useState<NormMode>('raw');
   const [swapSelf, setSwapSelf] = useState<boolean>(true);
+  const [scoring, setScoring] = useState<'standard' | 'centered'>('standard');
   const [selectedPivots, setSelectedPivots] = useState<string[]>(['english', 'arabic', 'german', 'french']);
   const [activeLangs, setActiveLangs] = useState<string[]>(['arb_Arab', 'heb_Hebr', 'fra_Latn', 'hin_Deva', 'pes_Arab']);
   const [searchTerm, setSearchTerm] = useState('');
@@ -144,12 +164,16 @@ export default function PivotComparison() {
       const model = MODELS.find(m => m.key === selectedModel);
       if (!model) return;
 
+      // Centered scoring: embeddings are mean-centered per language before
+      // cosine, removing the per-pivot compression that makes raw scores
+      // incomparable across pivots. Files carry a `centered_` name segment.
+      const seg = scoring === 'centered' ? 'centered_' : '';
       try {
         const [engText, arText, deText, frText] = await Promise.all([
-          fetch(`/data/flores_table1_100_${model.csvSuffix}_results.csv`).then(r => r.text()),
-          fetch(`/data/flores_table1_100_${model.csvSuffix}_arabic_pivot_results.csv`).then(r => r.text()),
-          fetch(`/data/flores_table1_100_${model.csvSuffix}_german_pivot_results.csv`).then(r => r.text()),
-          fetch(`/data/flores_table1_100_${model.csvSuffix}_french_pivot_results.csv`).then(r => r.text())
+          fetch(`/data/flores_table1_100_${model.csvSuffix}_${seg}results.csv`).then(r => r.text()),
+          fetch(`/data/flores_table1_100_${model.csvSuffix}_arabic_pivot_${seg}results.csv`).then(r => r.text()),
+          fetch(`/data/flores_table1_100_${model.csvSuffix}_german_pivot_${seg}results.csv`).then(r => r.text()),
+          fetch(`/data/flores_table1_100_${model.csvSuffix}_french_pivot_${seg}results.csv`).then(r => r.text())
         ]);
 
         setPivotData({
@@ -164,7 +188,7 @@ export default function PivotComparison() {
       setLoading(false);
     }
     loadData();
-  }, [selectedModel]);
+  }, [selectedModel, scoring]);
 
   // Active Model Config
   const activeModel = useMemo(() => MODELS.find(m => m.key === selectedModel)!, [selectedModel]);
@@ -451,11 +475,17 @@ export default function PivotComparison() {
       {/* Models MEXA Score Comparison Table */}
       <section className="bg-surface-container-low rounded-xl p-8 border border-outline-variant/10">
         <div className="mb-6 max-w-5xl">
-          <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider mb-3">
+          <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider mb-3 flex items-center gap-3">
             MEXA Score Comparison · Models × Pivot Languages
+            <span className={`text-[9px] px-2.5 py-1 rounded-full tracking-widest ${scoring === 'centered' ? 'bg-primary/10 text-primary' : 'bg-surface-container-high text-on-surface-variant'}`}>
+              {scoring === 'centered' ? 'CENTERED SCORING' : 'STANDARD SCORING'}
+            </span>
           </h3>
           <p className="text-xs text-on-surface-variant font-body leading-relaxed">
-            Comparing the overall model alignment scores on <strong>FLORES Table 1 (100 sentences)</strong> when changing the pivot language from <strong>English (eng_Latn)</strong> to <strong>Arabic (arb_Arab)</strong>, <strong>German (deu_Latn)</strong>, and <strong>French (fra_Latn)</strong>. For all evaluated models, shifting to non-English pivots yields distinct shifts in alignment scores, demonstrating language-specific representation patterns.
+            Comparing the overall model alignment scores on <strong>FLORES Table 1 (100 sentences)</strong> when changing the pivot language from <strong>English (eng_Latn)</strong> to <strong>Arabic (arb_Arab)</strong>, <strong>German (deu_Latn)</strong>, and <strong>French (fra_Latn)</strong>.{' '}
+            {scoring === 'standard'
+              ? <>Under standard scoring, non-English pivots yield systematically <strong>higher</strong> means — not better alignment, but an easier discrimination test: each pivot's own representational geometry sets the difficulty (see the Margin Analysis page).</>
+              : <>Under centered scoring (embeddings mean-centered per language before cosine), the cross-pivot offset largely disappears and the means become nearly equal — confirming the standard-scoring gap is a geometry artifact, at the cost of scores saturating toward 1.0.</>}
           </p>
         </div>
 
@@ -506,13 +536,7 @@ export default function PivotComparison() {
               </tr>
             </thead>
             <tbody>
-              {[
-                { model: 'Llama 3.1 8B', engMax: 0.6735, engMean: 0.4196, arMax: 0.7335, arMean: 0.4638, deMax: 0.7315, deMean: 0.4852, frMax: 0.7266, frMean: 0.4822 },
-                { model: 'Mistral 7B v0.3', engMax: 0.4980, engMean: 0.2878, arMax: 0.5068, arMean: 0.2911, deMax: 0.5322, deMean: 0.3689, frMax: 0.5275, frMean: 0.3614 },
-                { model: 'Qwen3.5 9B Base', engMax: 0.7809, engMean: 0.5556, arMax: 0.7986, arMean: 0.5625, deMax: 0.7949, deMean: 0.5673, frMax: 0.8034, frMean: 0.5701 },
-                { model: 'Qwen3 8B Base', engMax: 0.5759, engMean: 0.3211, arMax: 0.6537, arMean: 0.3815, deMax: 0.6697, deMean: 0.3965, frMax: 0.6566, frMean: 0.3905 },
-                { model: 'Qwen3 4B', engMax: 0.4433, engMean: 0.2327, arMax: 0.5481, arMean: 0.3206, deMax: 0.5535, deMean: 0.3339, frMax: 0.5476, frMean: 0.3330 }
-              ].map((row, idx) => {
+              {SUMMARY_ROWS[scoring].map((row, idx) => {
                 return (
                   <tr
                     key={row.model}
@@ -595,6 +619,29 @@ export default function PivotComparison() {
             >
               Mean Pooling
             </button>
+          </div>
+        </div>
+
+        {/* Scoring Selector */}
+        <div className="flex flex-col gap-2">
+          <label className="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest px-1">Scoring</label>
+          <div className="bg-surface-container-lowest border border-outline-variant/15 p-1 rounded-xl flex gap-1 h-[45px] items-center">
+            {(['standard', 'centered'] as const).map(m => (
+              <button
+                key={m}
+                onClick={() => setScoring(m)}
+                title={m === 'centered'
+                  ? 'Embeddings mean-centered per language before cosine — removes the per-pivot hubness offset, but scores saturate toward 1.0.'
+                  : 'Standard MEXA on raw embeddings.'}
+                className={`px-4 py-1.5 rounded-lg text-xs font-headline font-bold transition-all capitalize ${
+                  scoring === m
+                    ? 'bg-primary/10 text-primary'
+                    : 'text-on-surface-variant hover:text-primary'
+                }`}
+              >
+                {m}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -687,6 +734,12 @@ export default function PivotComparison() {
               {swapSelf && (
                 <p className="text-[11px] text-primary/80 font-body mt-1 max-w-xl normal-case tracking-normal">
                   Self-score swap: each non-English pivot’s own row shows its alignment to English — MEXA(eng, pivot) — instead of the trivial 1.0 self-similarity.
+                </p>
+              )}
+              {scoring === 'centered' && (
+                <p className="text-[11px] text-primary/80 font-body mt-1 max-w-xl normal-case tracking-normal">
+                  Centered scoring: each language’s embeddings are mean-centered per layer before cosine similarity, removing the pivot-specific hubness offset so raw
+                  scores are nearly comparable across pivots. Caveat: scores saturate toward 1.0, reducing discrimination between languages.
                 </p>
               )}
             </div>
