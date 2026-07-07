@@ -336,6 +336,7 @@ export const GEMMA_SCORES: ModelRow[] = [
     scores: {
       ...blank(),
       'flores-table1': { max: 0.8574, mean: 0.5064 },
+      'bible-table1': { max: 0.6335, mean: 0.1811 },
     },
   },
   {
@@ -344,6 +345,7 @@ export const GEMMA_SCORES: ModelRow[] = [
     scores: {
       ...blank(),
       'flores-table1': { max: 0.8719, mean: 0.4995 },
+      'bible-table1': { max: 0.6591, mean: 0.2158 },
     },
   },
   {
@@ -352,6 +354,7 @@ export const GEMMA_SCORES: ModelRow[] = [
     scores: {
       ...blank(),
       'flores-table1': { max: 0.8905, mean: 0.4625 },
+      'bible-table1': { max: 0.7303, mean: 0.2635 },
     },
   },
   {
@@ -369,6 +372,7 @@ export const GEMMA_SCORES: ModelRow[] = [
     scores: {
       ...blank(),
       'flores-table1': { max: 0.9189, mean: 0.5782 },
+      'bible-table1': { max: 0.8293, mean: 0.3502 },
     },
   },
 ];

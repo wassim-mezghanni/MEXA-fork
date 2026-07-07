@@ -10,33 +10,31 @@
 - 1.3 Contributions
 - 1.4 Thesis Outline
 
-## Chapter 2 — Background and Related Work
-- 2.1 Multilingual Language Models
-- 2.2 English as a Pivot Language
-- 2.3 Multilingual Evaluation
-- 2.4 The MEXA Metric
+## Chapter 2 — Background 
+- 2.1 Multilingual Language Models : related mexa  repsrenations 
+- 2.2 English as a Pivot Language 
+- 2.3 Multilingual Evaluation 
 - 2.5 Parallel Corpora
 
 ## Chapter 3 — Methodology
 - 3.1 The MEXA Pipeline
 - 3.2 Models
-  - 3.2.1 Reproduction Models
+  - 3.2.1 Reproduction Models 
   - 3.2.2 New Decoder Families
-  - 3.2.3 Encoder and Embedding Models
-  - 3.2.4 Mixture-of-Experts Models
-- 3.3 Datasets
-- 3.4 Experimental Settings
-- 3.5 Evaluation and Analysis Methods
-- 3.6 Implementation and Compute
+  - 3.2.3 Mixture-of-Experts Models 
+  - 3.2.4 Encoder and Embedding Models
+- 3.3 Datasets (Parallel Corpora either here )
+- 3.4 Experimental Settings : Evaluation and Analysis Methods , Implementation and Compute
 
 ## Chapter 4 — Results and Discussion
-- 4.1 Reproduction of the Original Results 
-- 4.2 New Model Families 
-- 4.3 Encoder and Embedding Models (Enc)
+- 4.1 Mexa score reulst 
+- 4.1.1Reproduction of the Original Results 
+- 4.1.2 New Model Families 
+- 4.1.3 Encoder and Embedding Models (Enc)
 - 4.4 Mixture-of-Experts Models (MoE)
 - 4.5 Non-English Pivots (Pivot)
 - 4.6 Cross-Experiment Language Analysis
-- 4.7 Validity of MEXA (Downstream)
+- 4.7 Validity of MEXA (Downstream)???
 
 ## Chapter 5 — Conclusion
 - 5.1 Summary

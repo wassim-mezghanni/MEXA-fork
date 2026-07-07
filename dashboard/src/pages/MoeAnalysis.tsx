@@ -195,12 +195,16 @@ export default function MoeAnalysis() {
               ),
             },
             {
-              title: 'The Bible result is a standout for low-resource languages.',
+              title: 'On low-resource languages, the same two contrasts hold — amplified.',
               body: (
                 <>
-                  0.7140 µ_Max is by far the best Bible Table 1 score of any causal LM evaluated
-                  (Qwen3.5 9B: 0.4821, Llama 3.1 8B: 0.4180) — approaching encoder territory
-                  (LaBSE: 0.8392) on low-resource languages.
+                  On Bible Table 1 the MoE again beats its active-param match (0.7140 vs. E4B's
+                  0.6591, and +62% on µ_Mean: 0.3500 vs. 0.2158), while dense 31B again wins the
+                  peak at matched total params (0.8293 vs. 0.7140) — yet their µ_Mean is a dead
+                  heat (0.3502 vs. 0.3500), so per active parameter the MoE remains far more
+                  efficient. The whole family dominates this benchmark: even E2B (0.6335)
+                  clears every non-Gemma causal LM (Qwen3.5 9B: 0.4821, Llama 3.1 8B: 0.4180),
+                  and 31B approaches encoder territory (LaBSE: 0.8392).
                 </>
               ),
             },
@@ -303,7 +307,9 @@ export default function MoeAnalysis() {
             scaling the same recipe 3× does not fix it (0.5184 µ_Max at 141B total, still ~0.37
             below a 2B-effective Gemma). Meanwhile Gemma 4 26B-A4B (fine-grained 8-of-128
             routing <em>plus a shared expert</em> that every token passes through, and a
-            heavily multilingual recipe) is the strongest causal LM in the entire evaluation.
+            heavily multilingual recipe) outperforms every causal LM outside its own family
+            and every dense Gemma at matched active compute — only dense Gemma 4 models with
+            several times its active parameters score higher.
             The shared expert is the architectural suspect worth highlighting in the thesis: it
             guarantees a common representational pathway for all languages regardless of routing
             decisions, giving the model a place to maintain the English-pivot semantic space
