@@ -18,6 +18,8 @@ const PIVOTS = [
   { code: 'arb_Arab', key: 'arb', label: 'Arabic', color: '#f59e0b' },
   { code: 'deu_Latn', key: 'deu', label: 'German', color: '#10b981' },
   { code: 'fra_Latn', key: 'fra', label: 'French', color: '#8b5cf6' },
+  { code: 'eus_Latn', key: 'eus', label: 'Basque', color: '#f43f5e' },
+  { code: 'zho_Hans', key: 'zho', label: 'Chinese', color: '#0891b2' },
 ];
 
 interface PivotEntry {
@@ -79,7 +81,7 @@ export default function MarginAnalysis() {
   const scatterData = useMemo(() => {
     if (!data) return [];
     return Object.entries(data.languages)
-      .filter(([code]) => code !== 'eng_Latn' && code !== altPivot)
+      .filter(([code, entry]) => code !== 'eng_Latn' && code !== altPivot && entry['eng_Latn'] && entry[altPivot])
       .map(([code, entry]) => ({
         code,
         name: langName(code),
@@ -233,9 +235,72 @@ export default function MarginAnalysis() {
           on is the <strong>margin</strong>: true-pair similarity minus the best distractor. This page measures that
           margin directly, showing that English imposes the <em>strictest</em> test — its margins are the largest for
           well-aligned languages, while its lower average score comes from low-resource languages whose margins hover
-          at zero.
+          at zero. Basque (eus_Latn), a language isolate, is included as a maximally peripheral pivot to probe the
+          opposite extreme.
         </p>
       </div>
+
+      {/* Key Findings */}
+      <section className="bg-surface-container-low rounded-2xl p-8 border border-outline-variant/10">
+        <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider mb-6 flex items-center gap-3">
+          <span className="material-symbols-outlined text-primary/70">lightbulb</span>
+          Key Findings
+        </h3>
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10">
+            <div className="text-[10px] uppercase tracking-widest font-bold text-blue-600 mb-2">1 · Compression ladder</div>
+            <h4 className="font-headline font-bold text-sm text-on-surface mb-2">
+              Compression tracks training exposure, not script
+            </h4>
+            <p className="text-xs text-on-surface-variant font-body leading-relaxed">
+              Within-language similarity rises monotonically as a pivot's resource level falls — for Llama 3.1 8B:
+              English 0.612 &lt; German 0.653 &lt; French 0.658 &lt; <strong>Chinese 0.666</strong> &lt; Arabic 0.692
+              &lt; <strong>Basque 0.729</strong>. Chinese — high-resource but non-Latin script — lands with the
+              high-resource Latin pivots, not with Arabic: it is <em>resource level</em>, not script, that drives
+              compression. Raw MEXA difficulty is therefore pivot-dependent by construction.
+            </p>
+          </div>
+          <div className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10">
+            <div className="text-[10px] uppercase tracking-widest font-bold text-amber-600 mb-2">2 · Inflation</div>
+            <h4 className="font-headline font-bold text-sm text-on-surface mb-2">
+              Compressed pivots flip failing languages to wins
+            </h4>
+            <p className="text-xs text-on-surface-variant font-body leading-relaxed">
+              Languages whose margin is negative under English but positive under a compressed pivot drive the
+              apparent "English is worse" effect — for Llama 3.1 8B: 7 languages flip under Arabic and{' '}
+              <strong>9 under Basque</strong> (shaded region in the scatter below). The blurrier the pivot's space,
+              the more near-zero-signal languages sneak past the distractor floor. English's margins remain the
+              largest for well-aligned languages — it is the sharpest grader, not the weakest hub.
+            </p>
+          </div>
+          <div className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10">
+            <div className="text-[10px] uppercase tracking-widest font-bold text-rose-600 mb-2">3 · Deflation</div>
+            <h4 className="font-headline font-bold text-sm text-on-surface mb-2">
+              A pivot the model barely knows caps every score
+            </h4>
+            <p className="text-xs text-on-surface-variant font-body leading-relaxed">
+              Compression helps per-comparison, but MEXA(pivot → X) is ultimately capped by the pivot's own
+              representation quality. Mistral 7B v0.3 barely differentiates Basque (within-language sim{' '}
+              <strong>0.864</strong> vs 0.511 for English) and its Basque-pivot mean collapses to{' '}
+              <strong>0.216</strong> vs 0.498 with English. Well-represented peripheral pivots inflate; poorly
+              represented ones deflate — English is the only pivot that is both well-represented <em>and</em> the
+              model's internal hub.
+            </p>
+          </div>
+          <div className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10">
+            <div className="text-[10px] uppercase tracking-widest font-bold text-cyan-600 mb-2">4 · Hub follows provenance</div>
+            <h4 className="font-headline font-bold text-sm text-on-surface mb-2">
+              Chinese is hub-like in Qwen, peripheral in Llama
+            </h4>
+            <p className="text-xs text-on-surface-variant font-body leading-relaxed">
+              For Qwen3.5 9B (a Chinese-lab model), Chinese's space is as sharp as English's (within-language sim{' '}
+              <strong>0.892 vs 0.891</strong>) and Chinese-as-pivot grades as strictly as English does. For Llama and
+              Mistral, Chinese is clearly more compressed than English (0.666 vs 0.612; 0.652 vs 0.511). The hub is
+              not English per se — it is whatever dominated the model's training distribution.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* Controls */}
       <div className="flex flex-wrap gap-6 bg-surface-container-low p-6 rounded-2xl border border-outline-variant/10">
@@ -300,9 +365,10 @@ export default function MarginAnalysis() {
               mean similarity of pivot sentences to non-parallel sentences of other languages. English has the most
               spread-out space and the lowest floor: it is the sharpest grader.
             </p>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
               {PIVOTS.map((p) => {
                 const g = data.geometry[p.code];
+                if (!g) return null;
                 return (
                   <div key={p.code} className="bg-surface-container-lowest rounded-xl p-5 border border-outline-variant/10">
                     <div className="flex items-center gap-2 mb-3">

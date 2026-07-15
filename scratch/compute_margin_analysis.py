@@ -13,7 +13,7 @@ import numpy as np
 import os
 import json
 
-PIVOTS = ["eng_Latn", "arb_Arab", "deu_Latn", "fra_Latn"]
+PIVOTS = ["eng_Latn", "arb_Arab", "deu_Latn", "fra_Latn", "eus_Latn", "zho_Hans"]
 NUM_SENTS = 100
 
 MODELS = [

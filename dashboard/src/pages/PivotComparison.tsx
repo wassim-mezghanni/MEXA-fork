@@ -52,7 +52,9 @@ const PIVOT_LANGUAGES = [
   { key: 'english', label: 'English (eng_Latn)', code: 'eng_Latn', color: '#3b82f6' },
   { key: 'arabic', label: 'Arabic (arb_Arab)', code: 'arb_Arab', color: '#f59e0b' },
   { key: 'german', label: 'German (deu_Latn)', code: 'deu_Latn', color: '#10b981' },
-  { key: 'french', label: 'French (fra_Latn)', code: 'fra_Latn', color: '#8b5cf6' }
+  { key: 'french', label: 'French (fra_Latn)', code: 'fra_Latn', color: '#8b5cf6' },
+  { key: 'basque', label: 'Basque (eus_Latn)', code: 'eus_Latn', color: '#f43f5e' },
+  { key: 'chinese', label: 'Chinese (zho_Hans)', code: 'zho_Hans', color: '#0891b2' }
 ];
 
 interface LangRow {
@@ -79,18 +81,18 @@ interface PivotStat {
 // precomputed from the CSVs in public/data for both scoring variants.
 const SUMMARY_ROWS: Record<'standard' | 'centered', Array<Record<string, any>>> = {
   standard: [
-    { model: 'Llama 3.1 8B', engMax: 0.6735, engMean: 0.4196, arMax: 0.7335, arMean: 0.4638, deMax: 0.7315, deMean: 0.4852, frMax: 0.7266, frMean: 0.4822 },
-    { model: 'Mistral 7B v0.3', engMax: 0.4980, engMean: 0.2878, arMax: 0.5068, arMean: 0.2911, deMax: 0.5322, deMean: 0.3689, frMax: 0.5275, frMean: 0.3614 },
-    { model: 'Qwen3.5 9B Base', engMax: 0.7809, engMean: 0.5556, arMax: 0.7986, arMean: 0.5625, deMax: 0.7949, deMean: 0.5673, frMax: 0.8034, frMean: 0.5701 },
-    { model: 'Qwen3 8B Base', engMax: 0.5759, engMean: 0.3211, arMax: 0.6537, arMean: 0.3815, deMax: 0.6697, deMean: 0.3965, frMax: 0.6566, frMean: 0.3905 },
-    { model: 'Qwen3 4B', engMax: 0.4433, engMean: 0.2327, arMax: 0.5481, arMean: 0.3206, deMax: 0.5535, deMean: 0.3339, frMax: 0.5476, frMean: 0.3330 },
+    { model: 'Llama 3.1 8B', engMax: 0.6735, engMean: 0.4196, arMax: 0.7335, arMean: 0.4638, deMax: 0.7315, deMean: 0.4852, frMax: 0.7266, frMean: 0.4822, basMax: 0.6995, basMean: 0.3500, zhoMax: 0.6856, zhoMean: 0.4397 },
+    { model: 'Mistral 7B v0.3', engMax: 0.4980, engMean: 0.2878, arMax: 0.5068, arMean: 0.2911, deMax: 0.5322, deMean: 0.3689, frMax: 0.5275, frMean: 0.3614, basMax: 0.2158, basMean: 0.1007, zhoMax: 0.5000, zhoMean: 0.3228 },
+    { model: 'Qwen3.5 9B Base', engMax: 0.7809, engMean: 0.5556, arMax: 0.7986, arMean: 0.5625, deMax: 0.7949, deMean: 0.5673, frMax: 0.8034, frMean: 0.5701, basMax: 0.7995, basMean: 0.4858, zhoMax: 0.7286, zhoMean: 0.4941 },
+    { model: 'Qwen3 8B Base', engMax: 0.5759, engMean: 0.3211, arMax: 0.6537, arMean: 0.3815, deMax: 0.6697, deMean: 0.3965, frMax: 0.6566, frMean: 0.3905, basMax: 0.5903, basMean: 0.2517, zhoMax: 0.5275, zhoMean: 0.2712 },
+    { model: 'Qwen3 4B', engMax: 0.4433, engMean: 0.2327, arMax: 0.5481, arMean: 0.3206, deMax: 0.5535, deMean: 0.3339, frMax: 0.5476, frMean: 0.3330, basMax: 0.3942, basMean: 0.1780, zhoMax: 0.3448, zhoMean: 0.1750 },
   ],
   centered: [
-    { model: 'Llama 3.1 8B', engMax: 0.8902, engMean: 0.7365, arMax: 0.9033, arMean: 0.7435, deMax: 0.8990, deMean: 0.7556, frMax: 0.8984, frMean: 0.7578 },
-    { model: 'Mistral 7B v0.3', engMax: 0.7264, engMean: 0.5578, arMax: 0.7250, arMean: 0.5545, deMax: 0.7418, deMean: 0.5962, frMax: 0.7404, frMean: 0.5941 },
-    { model: 'Qwen3.5 9B Base', engMax: 0.9564, engMean: 0.8442, arMax: 0.9485, arMean: 0.8228, deMax: 0.9547, deMean: 0.8415, frMax: 0.9462, frMean: 0.8351 },
-    { model: 'Qwen3 8B Base', engMax: 0.8429, engMean: 0.6584, arMax: 0.8467, arMean: 0.6646, deMax: 0.8566, deMean: 0.6908, frMax: 0.8483, frMean: 0.6883 },
-    { model: 'Qwen3 4B', engMax: 0.7469, engMean: 0.5443, arMax: 0.7798, arMean: 0.5753, deMax: 0.7800, deMean: 0.5994, frMax: 0.7696, frMean: 0.6059 },
+    { model: 'Llama 3.1 8B', engMax: 0.8902, engMean: 0.7365, arMax: 0.9033, arMean: 0.7435, deMax: 0.8990, deMean: 0.7556, frMax: 0.8984, frMean: 0.7578, basMax: 0.8797, basMean: 0.6945, zhoMax: 0.8788, zhoMean: 0.7202 },
+    { model: 'Mistral 7B v0.3', engMax: 0.7264, engMean: 0.5578, arMax: 0.7250, arMean: 0.5545, deMax: 0.7418, deMean: 0.5962, frMax: 0.7404, frMean: 0.5941, basMax: 0.5085, basMean: 0.3683, zhoMax: 0.7100, zhoMean: 0.5451 },
+    { model: 'Qwen3.5 9B Base', engMax: 0.9564, engMean: 0.8442, arMax: 0.9485, arMean: 0.8228, deMax: 0.9547, deMean: 0.8415, frMax: 0.9462, frMean: 0.8351, basMax: 0.9444, basMean: 0.7957, zhoMax: 0.9443, zhoMean: 0.8118 },
+    { model: 'Qwen3 8B Base', engMax: 0.8429, engMean: 0.6584, arMax: 0.8467, arMean: 0.6646, deMax: 0.8566, deMean: 0.6908, frMax: 0.8483, frMean: 0.6883, basMax: 0.8066, basMean: 0.5872, zhoMax: 0.8077, zhoMean: 0.5852 },
+    { model: 'Qwen3 4B', engMax: 0.7469, engMean: 0.5443, arMax: 0.7798, arMean: 0.5753, deMax: 0.7800, deMean: 0.5994, frMax: 0.7696, frMean: 0.6059, basMax: 0.6552, basMean: 0.4534, zhoMax: 0.6641, zhoMean: 0.4376 },
   ],
 };
 
@@ -111,11 +113,13 @@ function fmtVal(mode: NormMode, val: number): string {
 function parseCSV(text: string, maxColName: string, meanColName: string): Record<string, LangRow> {
   const lines = text.trim().split('\n');
   if (lines.length < 2) return {};
-  
+
   const headers = lines[0].split(',');
   const maxIdx = headers.indexOf(maxColName);
   const meanIdx = headers.indexOf(meanColName);
-  
+  // Not a scores CSV (e.g. a 404/HTML response for a not-yet-computed pivot)
+  if (maxIdx === -1 && meanIdx === -1) return {};
+
   const result: Record<string, LangRow> = {};
   for (let i = 1; i < lines.length; i++) {
     const cols = lines[i].split(',');
@@ -135,13 +139,25 @@ export default function PivotComparison() {
   const [normMode, setNormMode] = useState<NormMode>('raw');
   const [swapSelf, setSwapSelf] = useState<boolean>(true);
   const [scoring, setScoring] = useState<'standard' | 'centered'>('standard');
-  const [selectedPivots, setSelectedPivots] = useState<string[]>(['english', 'arabic', 'german', 'french']);
+  const [selectedPivots, setSelectedPivots] = useState<string[]>(['english', 'arabic', 'german', 'french', 'basque', 'chinese']);
   const [activeLangs, setActiveLangs] = useState<string[]>(['arb_Arab', 'heb_Hebr', 'fra_Latn', 'hin_Deva', 'pes_Arab']);
   const [searchTerm, setSearchTerm] = useState('');
   const [languageNames, setLanguageNames] = useState<Record<string, string>>({});
   
   const [pivotData, setPivotData] = useState<Record<string, Record<string, LangRow>>>({});
   const [loading, setLoading] = useState(true);
+  const [spearman, setSpearman] = useState<{
+    pivots: string[];
+    models: Record<string, { label: string; nLangs: number; rho: Record<string, Record<string, number>> }>;
+  } | null>(null);
+
+  // Spearman rank correlations across pivots (precomputed, standard scoring, max-pooled)
+  useEffect(() => {
+    fetch('/data/spearman_flores_table1_100.json')
+      .then((r) => (r.ok ? r.json() : null))
+      .then(setSpearman)
+      .catch((err) => console.error('Failed to load spearman data:', err));
+  }, []);
 
   // Fetch language names
   useEffect(() => {
@@ -168,19 +184,24 @@ export default function PivotComparison() {
       // cosine, removing the per-pivot compression that makes raw scores
       // incomparable across pivots. Files carry a `centered_` name segment.
       const seg = scoring === 'centered' ? 'centered_' : '';
+      const grab = (url: string) => fetch(url).then(r => (r.ok ? r.text() : ''));
       try {
-        const [engText, arText, deText, frText] = await Promise.all([
-          fetch(`/data/flores_table1_100_${model.csvSuffix}_${seg}results.csv`).then(r => r.text()),
-          fetch(`/data/flores_table1_100_${model.csvSuffix}_arabic_pivot_${seg}results.csv`).then(r => r.text()),
-          fetch(`/data/flores_table1_100_${model.csvSuffix}_german_pivot_${seg}results.csv`).then(r => r.text()),
-          fetch(`/data/flores_table1_100_${model.csvSuffix}_french_pivot_${seg}results.csv`).then(r => r.text())
+        const [engText, arText, deText, frText, basText, zhoText] = await Promise.all([
+          grab(`/data/flores_table1_100_${model.csvSuffix}_${seg}results.csv`),
+          grab(`/data/flores_table1_100_${model.csvSuffix}_arabic_pivot_${seg}results.csv`),
+          grab(`/data/flores_table1_100_${model.csvSuffix}_german_pivot_${seg}results.csv`),
+          grab(`/data/flores_table1_100_${model.csvSuffix}_french_pivot_${seg}results.csv`),
+          grab(`/data/flores_table1_100_${model.csvSuffix}_basque_pivot_${seg}results.csv`),
+          grab(`/data/flores_table1_100_${model.csvSuffix}_chinese_pivot_${seg}results.csv`)
         ]);
 
         setPivotData({
           english: parseCSV(engText, model.maxCol, model.meanCol),
           arabic: parseCSV(arText, model.maxCol, model.meanCol),
           german: parseCSV(deText, model.maxCol, model.meanCol),
-          french: parseCSV(frText, model.maxCol, model.meanCol)
+          french: parseCSV(frText, model.maxCol, model.meanCol),
+          basque: parseCSV(basText, model.maxCol, model.meanCol),
+          chinese: parseCSV(zhoText, model.maxCol, model.meanCol)
         });
       } catch (err) {
         console.error('Failed to load pivot comparison data:', err);
@@ -412,35 +433,47 @@ export default function PivotComparison() {
           <span className="text-xs font-mono font-bold text-purple-600">{fmtVal(normMode, val || 0)}</span>
         </div>
       )
+    },
+    {
+      key: 'basque',
+      label: 'Basque Pivot',
+      align: 'center' as const,
+      sortable: true,
+      render: (val: any) => (
+        <div className="flex items-center justify-center gap-2">
+          <div className="w-12 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+            <div className="h-full bg-rose-500 rounded-full" style={{ width: `${barFraction(normMode, val) * 100}%` }} />
+          </div>
+          <span className="text-xs font-mono font-bold text-rose-600">{fmtVal(normMode, val || 0)}</span>
+        </div>
+      )
+    },
+    {
+      key: 'chinese',
+      label: 'Chinese Pivot',
+      align: 'center' as const,
+      sortable: true,
+      render: (val: any) => (
+        <div className="flex items-center justify-center gap-2">
+          <div className="w-12 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+            <div className="h-full bg-cyan-600 rounded-full" style={{ width: `${barFraction(normMode, val) * 100}%` }} />
+          </div>
+          <span className="text-xs font-mono font-bold text-cyan-600">{fmtVal(normMode, val || 0)}</span>
+        </div>
+      )
     }
   ], [languageNames, normMode]);
 
   // DataTable rows mapping
   const tableData = useMemo(() => {
     const items = availableLangs.map((lang) => {
-      const engData = effectivePivotData['english'] || {};
-      const arData = effectivePivotData['arabic'] || {};
-      const deData = effectivePivotData['german'] || {};
-      const frData = effectivePivotData['french'] || {};
-      
-      const engRow = engData[lang.code];
-      const arRow = arData[lang.code];
-      const deRow = deData[lang.code];
-      const frRow = frData[lang.code];
-      
-      const engRaw = engRow ? (selectedMetric === 'max' ? engRow.maxScore : engRow.meanScore) : 0;
-      const arRaw = arRow ? (selectedMetric === 'max' ? arRow.maxScore : arRow.meanScore) : 0;
-      const deRaw = deRow ? (selectedMetric === 'max' ? deRow.maxScore : deRow.meanScore) : 0;
-      const frRaw = frRow ? (selectedMetric === 'max' ? frRow.maxScore : frRow.meanScore) : 0;
-
-      return {
-        code: lang.code,
-        name: lang.name,
-        english: transform('english', engRaw),
-        arabic: transform('arabic', arRaw),
-        german: transform('german', deRaw),
-        french: transform('french', frRaw)
-      };
+      const row: any = { code: lang.code, name: lang.name };
+      PIVOT_LANGUAGES.forEach(p => {
+        const pRow = (effectivePivotData[p.key] || {})[lang.code];
+        const raw = pRow ? (selectedMetric === 'max' ? pRow.maxScore : pRow.meanScore) : 0;
+        row[p.key] = transform(p.key, raw);
+      });
+      return row;
     });
 
     // Sort by english desc
@@ -482,7 +515,7 @@ export default function PivotComparison() {
             </span>
           </h3>
           <p className="text-xs text-on-surface-variant font-body leading-relaxed">
-            Comparing the overall model alignment scores on <strong>FLORES Table 1 (100 sentences)</strong> when changing the pivot language from <strong>English (eng_Latn)</strong> to <strong>Arabic (arb_Arab)</strong>, <strong>German (deu_Latn)</strong>, and <strong>French (fra_Latn)</strong>.{' '}
+            Comparing the overall model alignment scores on <strong>FLORES Table 1 (100 sentences)</strong> when changing the pivot language from <strong>English (eng_Latn)</strong> to <strong>Arabic (arb_Arab)</strong>, <strong>German (deu_Latn)</strong>, <strong>French (fra_Latn)</strong>, <strong>Basque (eus_Latn)</strong> — a language isolate, included as a maximally peripheral pivot — and <strong>Chinese (zho_Hans)</strong> — high-resource but non-Latin script, separating resource level from script effects.{' '}
             {scoring === 'standard'
               ? <>Under standard scoring, non-English pivots yield systematically <strong>higher</strong> means — not better alignment, but an easier discrimination test: each pivot's own representational geometry sets the difficulty (see the Margin Analysis page).</>
               : <>Under centered scoring (embeddings mean-centered per language before cosine), the cross-pivot offset largely disappears and the means become nearly equal — confirming the standard-scoring gap is a geometry artifact, at the cost of scores saturating toward 1.0.</>}
@@ -523,8 +556,24 @@ export default function PivotComparison() {
                 >
                   French Pivot (fra_Latn)
                 </th>
+                <th
+                  colSpan={2}
+                  className="text-center text-[10px] font-bold uppercase tracking-widest text-rose-600 px-4 pt-3 pb-1 border-l border-outline-variant/20"
+                >
+                  Basque Pivot (eus_Latn)
+                </th>
+                <th
+                  colSpan={2}
+                  className="text-center text-[10px] font-bold uppercase tracking-widest text-cyan-600 px-4 pt-3 pb-1 border-l border-outline-variant/20"
+                >
+                  Chinese Pivot (zho_Hans)
+                </th>
               </tr>
               <tr className="border-b border-outline-variant/30">
+                <th className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2 border-l border-outline-variant/20">µ_Max</th>
+                <th className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2">µ_Mean</th>
+                <th className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2 border-l border-outline-variant/20">µ_Max</th>
+                <th className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2">µ_Mean</th>
                 <th className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2 border-l border-outline-variant/20">µ_Max</th>
                 <th className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2">µ_Mean</th>
                 <th className="text-right text-[10px] font-semibold tracking-wider text-on-surface-variant px-3 py-2 border-l border-outline-variant/20">µ_Max</th>
@@ -570,6 +619,18 @@ export default function PivotComparison() {
                     </td>
                     <td className="text-right font-mono tabular-nums text-base px-3 py-3 font-bold text-purple-600">
                       {row.frMean.toFixed(4)}
+                    </td>
+                    <td className="text-right font-mono tabular-nums text-base px-3 py-3 border-l border-outline-variant/20 font-bold text-rose-600">
+                      {row.basMax != null ? row.basMax.toFixed(4) : '—'}
+                    </td>
+                    <td className="text-right font-mono tabular-nums text-base px-3 py-3 font-bold text-rose-600">
+                      {row.basMean != null ? row.basMean.toFixed(4) : '—'}
+                    </td>
+                    <td className="text-right font-mono tabular-nums text-base px-3 py-3 border-l border-outline-variant/20 font-bold text-cyan-600">
+                      {row.zhoMax != null ? row.zhoMax.toFixed(4) : '—'}
+                    </td>
+                    <td className="text-right font-mono tabular-nums text-base px-3 py-3 font-bold text-cyan-600">
+                      {row.zhoMean != null ? row.zhoMean.toFixed(4) : '—'}
                     </td>
                   </tr>
                 );
@@ -706,6 +767,73 @@ export default function PivotComparison() {
           </div>
         </div>
       </div>
+
+      {/* Spearman rank-correlation matrix */}
+      {spearman && spearman.models[activeModel.csvSuffix] && (
+        <section className="bg-surface-container-low rounded-2xl p-8 border border-outline-variant/10">
+          <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider mb-2">
+            Ranking Stability · Spearman ρ between Pivots
+          </h3>
+          <p className="text-xs text-on-surface-variant font-body leading-relaxed max-w-3xl mb-6">
+            Spearman rank correlation of the per-language score ranking between every pair of pivots
+            ({activeModel.label}, standard scoring, max-pooled, {spearman.models[activeModel.csvSuffix].nLangs} languages —
+            the six pivot languages are excluded from the ranking set). High ρ means pivot choice barely changes
+            <em> which</em> languages rank as well-aligned, even where absolute score levels differ.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="border-collapse">
+              <thead>
+                <tr>
+                  <th className="px-3 py-2" />
+                  {PIVOT_LANGUAGES.map((p) => (
+                    <th key={p.key} className="px-3 py-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">
+                      <span className="inline-flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full" style={{ backgroundColor: p.color }} />
+                        {p.code.split('_')[0]}
+                      </span>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {PIVOT_LANGUAGES.map((rowP) => {
+                  const rho = spearman.models[activeModel.csvSuffix].rho;
+                  return (
+                    <tr key={rowP.key}>
+                      <td className="px-3 py-2 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant text-right">
+                        <span className="inline-flex items-center gap-1.5">
+                          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: rowP.color }} />
+                          {rowP.code.split('_')[0]}
+                        </span>
+                      </td>
+                      {PIVOT_LANGUAGES.map((colP) => {
+                        const v = rho[rowP.code]?.[colP.code];
+                        if (v == null) return <td key={colP.key} className="px-3 py-2 text-center text-xs text-on-surface-variant/40">—</td>;
+                        const diag = rowP.code === colP.code;
+                        const alpha = diag ? 0 : Math.max(0, Math.min(0.4, ((v - 0.65) / 0.35) * 0.4));
+                        return (
+                          <td
+                            key={colP.key}
+                            className={`px-3 py-2 text-center font-mono text-xs tabular-nums ${diag ? 'text-on-surface-variant/40' : 'font-bold text-on-surface'}`}
+                            style={{ backgroundColor: `rgba(59, 130, 246, ${alpha})` }}
+                          >
+                            {v.toFixed(3)}
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-[11px] text-on-surface-variant/70 font-body mt-4 max-w-3xl">
+            Across all five models, high-resource pivots correlate with English at ρ ≈ 0.91–0.98 — pivot choice is
+            nearly ranking-invariant. Basque is the exception (ρ as low as 0.73 for Mistral and Qwen3 4B): when the
+            model barely represents the pivot itself, even the <em>ranking</em> degrades, not just the score level.
+          </p>
+        </section>
+      )}
 
       {loading ? (
         <div className="w-full h-[300px] flex flex-col items-center justify-center gap-4 text-on-surface-variant/40">
