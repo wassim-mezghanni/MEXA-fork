@@ -276,6 +276,69 @@ export default function PivotComparison() {
     };
   }, [normMode, pivotStats]);
 
+  // Compute best and worst aligned target languages for each pivot
+  const pivotExtremes = useMemo(() => {
+    const extremes: Record<string, {
+      best: { code: string; name: string; score: number; rawScore: number } | null;
+      worst: { code: string; name: string; score: number; rawScore: number } | null;
+    }> = {};
+
+    PIVOT_LANGUAGES.forEach(p => {
+      const data = effectivePivotData[p.key];
+      if (!data) {
+        extremes[p.key] = { best: null, worst: null };
+        return;
+      }
+
+      // Filter out the pivot language itself to find the best/worst other languages
+      const entries = Object.entries(data).filter(([code]) => code !== p.code);
+      if (entries.length === 0) {
+        extremes[p.key] = { best: null, worst: null };
+        return;
+      }
+
+      let bestEntry: [string, LangRow] | null = null;
+      let worstEntry: [string, LangRow] | null = null;
+      let bestVal = -Infinity;
+      let worstVal = Infinity;
+
+      entries.forEach(([code, row]) => {
+        const val = selectedMetric === 'max' ? row.maxScore : row.meanScore;
+        if (val > bestVal) {
+          bestVal = val;
+          bestEntry = [code, row];
+        }
+        if (val < worstVal) {
+          worstVal = val;
+          worstEntry = [code, row];
+        }
+      });
+
+      const getLangName = (code: string) => {
+        const iso = code.split('_')[0];
+        return languageNames[iso] || code;
+      };
+
+      extremes[p.key] = {
+        best: bestEntry ? {
+          code: bestEntry[0],
+          name: getLangName(bestEntry[0]),
+          score: transform(p.key, bestVal),
+          rawScore: bestVal
+        } : null,
+        worst: worstEntry ? {
+          code: worstEntry[0],
+          name: getLangName(worstEntry[0]),
+          score: transform(p.key, worstVal),
+          rawScore: worstVal
+        } : null
+      };
+    });
+
+    return extremes;
+  }, [effectivePivotData, selectedMetric, languageNames, transform]);
+
+
   // Available Languages list based on English pivot keys
   const availableLangs = useMemo(() => {
     const engData = effectivePivotData['english'] || {};
@@ -638,6 +701,39 @@ export default function PivotComparison() {
             </tbody>
           </table>
         </div>
+
+        {/* Analytical Insights under Table */}
+        <div className="mt-6 pt-6 border-t border-outline-variant/15 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-surface-container-lowest/60 rounded-xl p-4 border border-outline-variant/10">
+            <div className="flex items-center gap-2 text-xs font-bold font-headline text-primary uppercase tracking-wider mb-2">
+              <span className="material-symbols-outlined text-sm text-blue-500">analytics</span>
+              Cross-Pivot Level Shift
+            </div>
+            <p className="text-[11px] text-on-surface-variant font-body leading-relaxed">
+              Under standard scoring, non-English pivots (Arabic, German, French) yield systematically higher means than English across all models. This is a representational geometry artifact (hubness/compression), which largely disappears under centered scoring.
+            </p>
+          </div>
+
+          <div className="bg-surface-container-lowest/60 rounded-xl p-4 border border-outline-variant/10">
+            <div className="flex items-center gap-2 text-xs font-bold font-headline text-rose-600 uppercase tracking-wider mb-2">
+              <span className="material-symbols-outlined text-sm text-rose-500">warning</span>
+              Peripheral Pivot Collapse (Basque)
+            </div>
+            <p className="text-[11px] text-on-surface-variant font-body leading-relaxed">
+              For models with weak Basque pretraining (e.g. Mistral 7B: <span className="font-mono font-bold text-rose-600">0.2158</span>), Basque pivot scores drop dramatically. When a model cannot represent the pivot language itself, the reference anchor collapses.
+            </p>
+          </div>
+
+          <div className="bg-surface-container-lowest/60 rounded-xl p-4 border border-outline-variant/10">
+            <div className="flex items-center gap-2 text-xs font-bold font-headline text-emerald-600 uppercase tracking-wider mb-2">
+              <span className="material-symbols-outlined text-sm text-emerald-500">verified</span>
+              Multilingual Robustness (Qwen 3.5)
+            </div>
+            <p className="text-[11px] text-on-surface-variant font-body leading-relaxed">
+              Heavily multilingual models like Qwen 3.5 9B maintain high scores across all pivots (<span className="font-mono font-bold text-emerald-600">~0.79-0.80</span>), demonstrating that extensive multilingual pretraining stabilizes cross-lingual geometry regardless of pivot choice.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* Controls panel */}
@@ -842,8 +938,76 @@ export default function PivotComparison() {
         </div>
       ) : (
         <>
+          {/* Extreme Alignments per Pivot */}
+          <section className="bg-surface-container-low rounded-2xl p-8 border border-outline-variant/10 space-y-6">
+            <div>
+              <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider mb-2 flex items-center gap-3">
+                <span className="material-symbols-outlined text-primary/70">trending_up</span>
+                Extreme Alignments per Pivot
+              </h3>
+              <p className="text-xs text-on-surface-variant font-body leading-relaxed max-w-3xl">
+                The best and worst performing target languages (excluding the pivot language itself) for each reference pivot, showing how alignment quality shifts depending on the reference language chosen.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4">
+              {PIVOT_LANGUAGES.map(p => {
+                const extremes = pivotExtremes[p.key];
+                if (!extremes || !extremes.best || !extremes.worst) return null;
+                return (
+                  <div key={p.key} className="bg-surface-container-lowest rounded-xl p-4 border border-outline-variant/10 flex flex-col justify-between hover:border-primary/30 hover:shadow-md transition-all duration-300">
+                    <div>
+                      {/* Pivot Header */}
+                      <div className="flex items-center gap-2 mb-3 pb-2 border-b border-outline-variant/5">
+                        <div className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: p.color }} />
+                        <span className="font-headline font-bold text-xs text-on-surface truncate" title={p.label}>{p.label.split(' ')[0]}</span>
+                      </div>
+
+                      {/* Best Language */}
+                      <div className="mb-4">
+                        <div className="flex items-center gap-1 text-[9px] font-bold text-emerald-600 uppercase tracking-wider mb-1">
+                          <span className="material-symbols-outlined text-[10px]">thumb_up</span>
+                          Best Target
+                        </div>
+                        <div className="font-headline font-bold text-xs text-on-surface truncate" title={extremes.best.name}>
+                          {extremes.best.name}
+                        </div>
+                        <div className="font-mono text-[9px] text-on-surface-variant mb-1">{extremes.best.code}</div>
+                        <div className="flex items-baseline gap-1 flex-wrap">
+                          <span className="font-mono font-bold text-xs text-emerald-600">{fmtVal(normMode, extremes.best.score)}</span>
+                          {normMode !== 'raw' && (
+                            <span className="font-mono text-[9px] text-on-surface-variant">({extremes.best.rawScore.toFixed(3)})</span>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Worst Language */}
+                      <div>
+                        <div className="flex items-center gap-1 text-[9px] font-bold text-rose-600 uppercase tracking-wider mb-1">
+                          <span className="material-symbols-outlined text-[10px]">thumb_down</span>
+                          Worst Target
+                        </div>
+                        <div className="font-headline font-bold text-xs text-on-surface truncate" title={extremes.worst.name}>
+                          {extremes.worst.name}
+                        </div>
+                        <div className="font-mono text-[9px] text-on-surface-variant mb-1">{extremes.worst.code}</div>
+                        <div className="flex items-baseline gap-1 flex-wrap">
+                          <span className="font-mono font-bold text-xs text-rose-600">{fmtVal(normMode, extremes.worst.score)}</span>
+                          {normMode !== 'raw' && (
+                            <span className="font-mono text-[9px] text-on-surface-variant">({extremes.worst.rawScore.toFixed(3)})</span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+
           <div className="bg-surface-container-low p-10 rounded-2xl relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 group">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6 relative z-10">
+
             <div>
               <h3 className="text-xl font-headline font-extrabold text-primary mb-1 uppercase tracking-widest flex items-center gap-3">
                 <span className="icon text-primary/70">compare_arrows</span>
