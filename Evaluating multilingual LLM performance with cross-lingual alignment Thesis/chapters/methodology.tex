@@ -64,7 +64,7 @@ pairs; all off-diagonal entries are non-parallel distractors.
 
 \paragraph{Stage 3: Alignment score.}
 As discussed in Section~\ref{subsec:alignment-challenges}, absolute cosine
-values are unreliable in anisotropic LLM embedding spaces \citep{rajaee2022isotropy,hammerl2023anisotropy}.
+values are unreliable in anisotropic LLM embedding spaces, where representations are confined to a narrow cone and dominated by language-specific centroids \citep{ethayarajh2019contextualized,rajaee2022isotropy,hammerl2023anisotropy}.
 MEXA therefore scores alignment with a \emph{bidirectional retrieval} (precision-at-1)
 criterion: a sentence pair counts as aligned only if its true similarity
 strictly exceeds every distractor in both its row and its column,
