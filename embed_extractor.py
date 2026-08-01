@@ -143,7 +143,12 @@ def main():
         # Bidirectional encoders (XLM-RoBERTa, LaBSE) expose hidden states via AutoModel.
         model = AutoModel.from_pretrained(model_name, device_map=device_map, cache_dir=args.cache_dir, token=token, trust_remote_code=True, **quantization_kwargs)
     else:
-        model = AutoModelForCausalLM.from_pretrained(model_name, device_map=device_map, cache_dir=args.cache_dir, token=token, trust_remote_code=True, **quantization_kwargs)
+        try:
+            model = AutoModelForCausalLM.from_pretrained(model_name, device_map=device_map, cache_dir=args.cache_dir, token=token, trust_remote_code=True, **quantization_kwargs)
+        except Exception as e:
+            print(f"AutoModelForCausalLM load failed ({type(e).__name__}: {e}); falling back to AutoModel.")
+            model = AutoModel.from_pretrained(model_name, device_map=device_map, cache_dir=args.cache_dir, token=token, trust_remote_code=True, **quantization_kwargs)
+
     
     # Ensure rotary embeddings are on the correct device (accelerate sometimes leaves them on CPU for quantized models)
     if device != 'cpu':

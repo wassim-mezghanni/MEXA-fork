@@ -123,6 +123,22 @@ export const MEXA_SCORES: ModelRow[] = [
     },
   },
   {
+    model: 'Apertus 1.5 8B',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.4292, mean: 0.2106 },
+      'bible-table1': { max: 0.3886, mean: 0.1915 },
+    },
+  },
+  {
+    model: 'Apertus 1.5 70B',
+    scores: {
+      ...blank(),
+      'flores-table1': { max: 0.3190, mean: 0.1013 },
+      'bible-table1': { max: 0.5036, mean: 0.1538 },
+    },
+  },
+  {
     model: 'Apertus 4B (v1.1)',
     scores: {
       'flores-table1': { max: 0.5840, mean: 0.3191 },
@@ -315,7 +331,7 @@ export const MISTRAL_VS_MIXTRAL_SCORES: ModelRow[] = [
       'flores-table1-2000': { max: 0.4087, mean: 0.2267 },
       'bible-table1': { max: 0.2716, mean: 0.1465 },
       'flores-full': { max: null, mean: null },
-      'bible-full': { max: 0.0126, mean: 0.0009 },
+      'bible-full': { max: 0.0430, mean: 0.0188 },
     },
   },
   {

@@ -1,0 +1,5 @@
+=== USER & ACCOUNT INFO ===
+uid=2139(course_00489) gid=1280(summerschool-course2026-cscs) groups=1280(summerschool-course2026-cscs)
+summerschool-course2026-cscs
+User|Account|Def Acct|QOS|
+course_00489||root||

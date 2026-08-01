@@ -1,0 +1,115 @@
+MPICH_GPU_SUPPORT_ENABLED=1
+HOSTTYPE=aarch64
+SCRATCH_NEW=/ritom/scratch/cscs/course_00489
+SSH_CONNECTION=148.187.1.11 51044 172.28.20.16 22
+LESSCLOSE=lessclose.sh %s %s
+XKEYSYMDB=/usr/X11R6/lib/X11/XKeysymDB
+LANG=C.UTF-8
+UENV_WARN_MIGRATE=1
+WINDOWMANAGER=/usr/bin/gnome
+LESS=-M -I -R
+HOSTNAME=daint-ln002
+INFRANAME=alps
+APPS=/capstor/apps/cscs/daint
+CSHEDIT=emacs
+GPG_TTY=not a tty
+LESS_ADVANCED_PREPROCESSOR=no
+COLORTERM=1
+SQUEUE_SORT=t,-e,-p
+JAVA_HOME=/usr/lib64/jvm/java-11-openjdk-11
+SQUEUE_FORMAT=%.8i %8u %7a %.14j %.9B%.3t %.10r %.12S %.12e %.10L %.5D %.10Q
+MACHTYPE=aarch64-suse-linux
+MINICOM=-c on
+QT_SYSTEM_DIR=/usr/share/desktop-data
+OSTYPE=linux
+XDG_SESSION_ID=104690
+USER=course_00489
+PAGER=less
+__LMOD_REF_COUNT_MODULEPATH=/usr/share/lmod/modulefiles:1
+MORE=-sl
+PWD=/users/course_00489/cscs_info
+HOME=/users/course_00489
+STORE=/capstor/store/cscs/*/summerschool-course2026-cscs
+LMOD_COLORIZE=no
+HOST=daint-ln002
+SSH_CLIENT=148.187.1.11 51044 22
+LMOD_VERSION=8.7.34
+SINFO_FORMAT=%9P %5a %8s %.10l %.6c %.6z %.7D %10T %N
+XNLSPATH=/usr/X11R6/lib/X11/nls
+LMOD_SETTARG_CMD=:
+XDG_SESSION_TYPE=tty
+SDK_HOME=/usr/lib64/jvm/java-11-openjdk-11
+BASH_ENV=/usr/share/lmod/8.7.34/init/bash
+XDG_DATA_DIRS=/usr/share
+CUDA_CACHE_PATH=/dev/shm/course_00489/cuda_cache
+PROJECT=/capstor/store/cscs/*/summerschool-course2026-cscs
+LIBGL_DEBUG=quiet
+JDK_HOME=/usr/lib64/jvm/java-11-openjdk-11
+PROFILEREAD=true
+_ModuleTable001_=X01vZHVsZVRhYmxlXyA9IHsKTVR2ZXJzaW9uID0gMywKY19yZWJ1aWxkVGltZSA9IGZhbHNlLApjX3Nob3J0VGltZSA9IGZhbHNlLApkZXB0aFQgPSB7fSwKZmFtaWx5ID0ge30sCm1UID0ge30sCm1wYXRoQSA9IHsKIi91c3Ivc2hhcmUvbG1vZC9tb2R1bGVmaWxlcyIsCn0sCnN5c3RlbUJhc2VNUEFUSCA9ICIvdXNyL3NoYXJlL2xtb2QvbW9kdWxlZmlsZXMiLAp9Cg==
+LUSTRE_JOB_ID=daint_course_0_daint-ln002
+SCRATCH=/capstor/scratch/cscs/course_00489
+LMOD_ROOT=/usr/share/lmod
+MOTD_SHOWN=pam
+MAIL=/var/spool/mail/course_00489
+LESSKEY=/etc/lesskey.bin
+SHELL=/usr/local/bin/bash
+DOCKER_HOST=unix:///run/user/2139/podman/podman.sock
+XDG_SESSION_CLASS=user
+_ModuleTable_Sz_=1
+XCURSOR_THEME=DMZ
+SLURM_TIME_FORMAT=relative
+SHLVL=1
+MANPATH=/usr/local/man:/usr/local/share/man:/usr/share/man
+LMOD_PREPEND_BLOCK=normal
+MODULEPATH=/usr/share/lmod/modulefiles
+LOGNAME=course_00489
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/2139/bus
+XDG_RUNTIME_DIR=/run/user/2139
+JRE_HOME=/usr/lib64/jvm/java-11-openjdk-11
+XDG_CONFIG_DIRS=/etc/xdg
+PATH=/users/course_00489/bin:/usr/local/bin:/usr/bin:/bin:/usr/lib/mit/bin
+JAVA_BINDIR=/usr/lib64/jvm/java-11-openjdk-11/bin
+PS1=[\[\e[31m\]daint\[\e[m\]][\u@\h \W]$ 
+MODULESHOME=/usr/share/lmod/lmod
+LMOD_SETTARG_FULL_SUPPORT=no
+G_BROKEN_FILENAMES=1
+HISTSIZE=1000
+LMOD_PKG=/usr/share/lmod/lmod
+CLUSTER_NAME=daint
+CPU=aarch64
+SSH_SENDS_LOCALE=yes
+LMOD_CMD=/usr/share/lmod/lmod/libexec/lmod
+LESSOPEN=lessopen.sh %s
+LMOD_FULL_SETTARG_SUPPORT=no
+LMOD_DIR=/usr/share/lmod/lmod/libexec
+BASH_FUNC_module%%=() {  if [ -z "${LMOD_SH_DBG_ON+x}" ]; then
+ case "$-" in 
+ *v*x*)
+ __lmod_sh_dbg='vx'
+ ;;
+ *v*)
+ __lmod_sh_dbg='v'
+ ;;
+ *x*)
+ __lmod_sh_dbg='x'
+ ;;
+ esac;
+ fi;
+ if [ -n "${__lmod_sh_dbg:-}" ]; then
+ set +$__lmod_sh_dbg;
+ echo "Shell debugging temporarily silenced: export LMOD_SH_DBG_ON=1 for Lmod's output" 1>&2;
+ fi;
+ eval "$($LMOD_CMD shell "$@")" && eval "$(${LMOD_SETTARG_CMD:-:} -s sh)";
+ __lmod_my_status=$?;
+ if [ -n "${__lmod_sh_dbg:-}" ]; then
+ echo "Shell debugging restarted" 1>&2;
+ set -$__lmod_sh_dbg;
+ fi;
+ unset __lmod_sh_dbg;
+ return $__lmod_my_status
+}
+BASH_FUNC_ml%%=() {  eval "$($LMOD_DIR/ml_cmd "$@")"
+}
+_=/usr/bin/env
+OLDPWD=/users/course_00489

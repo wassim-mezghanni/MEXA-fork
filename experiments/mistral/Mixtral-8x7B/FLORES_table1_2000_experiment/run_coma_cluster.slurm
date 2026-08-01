@@ -3,8 +3,11 @@
 #SBATCH --output=mixtral_8x7b_flores_table1_2000_output.log
 #SBATCH --error=mixtral_8x7b_flores_table1_2000_error.log
 #SBATCH --gres=gpu:nvidia:2
+#SBATCH --mem=120G
 #SBATCH --time=24:00:00
 #SBATCH --partition=compute
+#SBATCH --exclude=gpu-nvidia-h200-3
+
 
 # ──────────────────────────────────────────────────────────────
 # MEXA — Mixtral-8x7B (Sparse MoE) on FLORES Table 1 (116 langs, 2000 sents)
@@ -22,7 +25,7 @@ HF_TOKEN="${HF_TOKEN:-}"
 
 MODEL_NAME="mistralai/Mixtral-8x7B-v0.1"
 DATA_DIR="../../../../data/flores200_dataset/devtest"
-SAVE_EMBD_DIR="./embeddings"
+SAVE_EMBD_DIR="$HOME/nobackup/mexa_embeddings/mixtral_8x7b_flores_table1_2000"
 SAVE_SCORE_DIR="./scores"
 LANG_LIST="../../../../shared/flores_table1_116.json"
 CSV_OUTPUT_PATH="../../../../dashboard/public/data/flores_table1_2000_mixtral_8x7b_results.csv"

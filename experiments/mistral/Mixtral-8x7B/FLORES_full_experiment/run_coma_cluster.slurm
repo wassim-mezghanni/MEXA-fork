@@ -3,8 +3,11 @@
 #SBATCH --output=mixtral_8x7b_flores_full_output.log
 #SBATCH --error=mixtral_8x7b_flores_full_error.log
 #SBATCH --gres=gpu:nvidia:2
+#SBATCH --mem=120G
 #SBATCH --time=24:00:00
 #SBATCH --partition=compute
+#SBATCH --exclude=gpu-nvidia-h200-3
+
 
 # ──────────────────────────────────────────────────────────────
 # MEXA — Mixtral-8x7B (Sparse MoE) on FLORES Full (204 langs, 2000 sents)
@@ -22,7 +25,7 @@ HF_TOKEN="${HF_TOKEN:-}"
 
 MODEL_NAME="mistralai/Mixtral-8x7B-v0.1"
 DATA_DIR="../../../../data/flores200_dataset/devtest"
-SAVE_EMBD_DIR="./embeddings"
+SAVE_EMBD_DIR="$HOME/nobackup/mexa_embeddings/mixtral_8x7b_flores_full"
 SAVE_SCORE_DIR="./scores"
 CSV_OUTPUT_PATH="../../../../dashboard/public/data/full_flores_mixtral_8x7b_results.csv"
 
@@ -50,7 +53,7 @@ echo "  Model:   $MODEL_NAME"
 echo "============================================"
 
 echo "1. Extracting Embeddings..."
-python3 ../../../../../../embed_extractor.py \
+python3 ../../../../embed_extractor.py \
     --model_name "$MODEL_NAME" \
     --model_type causal \
     --data_path "$DATA_DIR" \
@@ -61,7 +64,7 @@ python3 ../../../../../../embed_extractor.py \
     --token "$HF_TOKEN"
 
 echo "2. Computing MEXA alignments..."
-python3 ../../../../../../compute_mexa.py \
+python3 ../../../../compute_mexa.py \
     --embedding_path "$SAVE_EMBD_DIR" \
     --save_path "$SAVE_SCORE_DIR" \
     --num_sents 2000 \
@@ -70,12 +73,12 @@ python3 ../../../../../../compute_mexa.py \
     --file_ext .pkl
 
 echo "3. Formatting Results for the Dashboard..."
-python3 ../../../../../../shared/format_results.py --model_name "$MODEL_NAME" \
+python3 ../../../../shared/format_results.py --model_name "$MODEL_NAME" \
     --scores_dir "$SAVE_SCORE_DIR" \
     --output_csv "$CSV_OUTPUT_PATH"
 
 echo "4. Computing 2D Projections..."
-python3 ../../../../../../compute_projections.py \
+python3 ../../../../compute_projections.py \
     --embedding_path "$SAVE_EMBD_DIR" \
     --output_json "../../../../dashboard/public/data/projections_full_flores_mixtral_8x7b.json" \
     --embedding_type embd_weighted \

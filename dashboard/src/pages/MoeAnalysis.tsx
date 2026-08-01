@@ -267,13 +267,14 @@ export default function MoeAnalysis() {
               ),
             },
             {
-              title: 'On the lowest-resource languages, the small MoE actively collapses…',
+              title: 'On the lowest-resource languages, the MoE slightly underperforms its dense sibling.',
               body: (
                 <>
-                  On Bible Full, Mixtral 8x7B drops to 0.0126 µ_Max vs. Mistral's 0.0465 — a ~4×
-                  degradation. A plausible mechanism: for languages barely seen in training, the
-                  router lacks stable expert assignments, so parallel sentences scatter across
-                  divergent expert paths and hidden states fail to align.
+                  On Bible Full, Mixtral 8x7B scores 0.0430 µ_Max vs. Mistral's 0.0465 — a modest
+                  gap that is much smaller than earlier partial runs suggested. With the full
+                  1401-language Bible corpus, the MoE's routing doesn't catastrophically fragment
+                  low-resource representations, but nor does the extra capacity help:
+                  the dense baseline still edges ahead.
                 </>
               ),
             },
@@ -303,8 +304,10 @@ export default function MoeAnalysis() {
           <p className="text-xs text-on-surface-variant font-body leading-relaxed">
             The two families falsify the simple hypothesis that "MoE routing fragments
             cross-lingual alignment." Mixtral 8x7B (coarse 2-of-8 routing, no shared expert,
-            2023-era data mix) shows the collapse pattern — and Mixtral 8x22B shows that
-            scaling the same recipe 3× does not fix it (0.5184 µ_Max at 141B total, still ~0.37
+            2023-era data mix) shows a stagnation pattern — matching but never exceeding its
+            dense sibling on high-resource languages, and slightly trailing on the full
+            1401-language Bible corpus (0.0430 vs. 0.0465). Mixtral 8x22B shows that scaling
+            the same recipe 3× does not change this (0.5184 µ_Max at 141B total, still ~0.37
             below a 2B-effective Gemma). Meanwhile Gemma 4 26B-A4B (fine-grained 8-of-128
             routing <em>plus a shared expert</em> that every token passes through, and a
             heavily multilingual recipe) outperforms every causal LM outside its own family

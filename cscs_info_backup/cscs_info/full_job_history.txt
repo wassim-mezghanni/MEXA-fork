@@ -1,0 +1,151 @@
+=== FULL JOB HISTORY ===
+JobID           JobName  Partition  AllocCPUS    Elapsed      State ExitCode     MaxRSS        NodeList              Submit               Start                 End 
+------------ ---------- ---------- ---------- ---------- ---------- -------- ---------- --------------- ------------------- ------------------- ------------------- 
+4276822      spawner-j+ jupyterhub        288   00:32:24 CANCELLED+      0:0                  nid006450        26 Jul 10:32        26 Jul 10:32        26 Jul 11:04 
+4276822.int+ interacti+                   288   00:32:27  COMPLETED      0:0        72M       nid006450        26 Jul 10:32        26 Jul 10:32        26 Jul 11:04 
+4276822.bat+      batch                   288   00:32:27  COMPLETED      0:0        36M       nid006450        26 Jul 10:32        26 Jul 10:32        26 Jul 11:04 
+4276822.ext+     extern                   288   00:32:27  COMPLETED      0:0                  nid006450        26 Jul 10:32        26 Jul 10:32        26 Jul 11:04 
+4277592      ach-pyhpc+     normal        288   09:59:17  COMPLETED      0:0                  nid006443        26 Jul 13:28        26 Jul 13:28        26 Jul 23:27 
+4277592.bat+      batch                   288   09:59:17  COMPLETED      0:0        36M       nid006443        26 Jul 13:28        26 Jul 13:28        26 Jul 23:27 
+4277592.ext+     extern                   288   09:59:18  COMPLETED      0:0          0       nid006443        26 Jul 13:28        26 Jul 13:28        26 Jul 23:27 
+4279836      ach-pyhpc+     normal        288   09:58:57  COMPLETED      0:0                  nid005698        27 Jul 10:08        27 Jul 10:08        27 Jul 20:07 
+4279836.bat+      batch                   288   09:58:57  COMPLETED      0:0        36M       nid005698        27 Jul 10:08        27 Jul 10:08        27 Jul 20:07 
+4279836.ext+     extern                   288   09:58:57  COMPLETED      0:0          0       nid005698        27 Jul 10:08        27 Jul 10:08        27 Jul 20:07 
+4283210      ach-pyhpc+     normal        288   09:59:02  COMPLETED      0:0                  nid005569        27 Jul 20:40        27 Jul 20:40        28 Jul 06:39 
+4283210.bat+      batch                   288   09:59:02  COMPLETED      0:0        36M       nid005569        27 Jul 20:40        27 Jul 20:40        28 Jul 06:39 
+4283210.ext+     extern                   288   09:59:02  COMPLETED      0:0          0       nid005569        27 Jul 20:40        27 Jul 20:40        28 Jul 06:39 
+4283224      nvidia-smi      debug        288   00:00:08  COMPLETED      0:0                  nid006544        27 Jul 20:44        27 Jul 20:44        27 Jul 20:44 
+4283224.ext+     extern                   288   00:00:08  COMPLETED      0:0                  nid006544        27 Jul 20:44        27 Jul 20:44        27 Jul 20:44 
+4283224.0    nvidia-smi                   288   00:00:01  COMPLETED      0:0        36M       nid006544        27 Jul 20:44        27 Jul 20:44        27 Jul 20:44 
+4290318      ach-pyhpc+     normal        288   09:59:23  COMPLETED      0:0                  nid005920        28 Jul 18:48        28 Jul 18:48        29 Jul 04:47 
+4290318.bat+      batch                   288   09:59:23  COMPLETED      0:0        36M       nid005920        28 Jul 18:48        28 Jul 18:48        29 Jul 04:47 
+4290318.ext+     extern                   288   09:59:23  COMPLETED      0:0          0       nid005920        28 Jul 18:48        28 Jul 18:48        29 Jul 04:47 
+4305051      ach-pyhpc+     normal        288   09:59:10  COMPLETED      0:0                  nid005741        30 Jul 11:10        30 Jul 11:10        30 Jul 21:10 
+4305051.bat+      batch                   288   09:59:10  COMPLETED      0:0        36M       nid005741        30 Jul 11:10        30 Jul 11:10        30 Jul 21:10 
+4305051.ext+     extern                   288   09:59:10  COMPLETED      0:0          0       nid005741        30 Jul 11:10        30 Jul 11:10        30 Jul 21:10 
+4309105      mexa-aper+     normal        288   00:00:08  COMPLETED      0:0                  nid006500        30 Jul 21:47        30 Jul 21:51        30 Jul 21:51 
+4309105.bat+      batch                   288   00:00:08  COMPLETED      0:0        36M       nid006500        30 Jul 21:51        30 Jul 21:51        30 Jul 21:51 
+4309105.ext+     extern                   288   00:00:08  COMPLETED      0:0                  nid006500        30 Jul 21:51        30 Jul 21:51        30 Jul 21:51 
+4309106      mexa-aper+     normal        288   00:00:10  COMPLETED      0:0                  nid005728        30 Jul 21:47        30 Jul 21:51        30 Jul 21:51 
+4309106.bat+      batch                   288   00:00:10  COMPLETED      0:0        36M       nid005728        30 Jul 21:51        30 Jul 21:51        30 Jul 21:51 
+4309106.ext+     extern                   288   00:00:10  COMPLETED      0:0                  nid005728        30 Jul 21:51        30 Jul 21:51        30 Jul 21:51 
+4309107      mexa-aper+     normal        288   00:00:08  COMPLETED      0:0                  nid005863        30 Jul 21:47        30 Jul 21:51        30 Jul 21:51 
+4309107.bat+      batch                   288   00:00:08  COMPLETED      0:0        36M       nid005863        30 Jul 21:51        30 Jul 21:51        30 Jul 21:51 
+4309107.ext+     extern                   288   00:00:09  COMPLETED      0:0                  nid005863        30 Jul 21:51        30 Jul 21:51        30 Jul 21:51 
+4309108      mexa-aper+     normal        288   00:00:08  COMPLETED      0:0                  nid006500        30 Jul 21:47        30 Jul 21:51        30 Jul 21:51 
+4309108.bat+      batch                   288   00:00:08  COMPLETED      0:0        36M       nid006500        30 Jul 21:51        30 Jul 21:51        30 Jul 21:51 
+4309108.ext+     extern                   288   00:00:08  COMPLETED      0:0                  nid006500        30 Jul 21:51        30 Jul 21:51        30 Jul 21:51 
+4311197      mexa-aper+     normal        288   00:00:19  COMPLETED      0:0                  nid005310        Ystday 09:32        Ystday 09:32        Ystday 09:33 
+4311197.bat+      batch                   288   00:00:19  COMPLETED      0:0        36M       nid005310        Ystday 09:32        Ystday 09:32        Ystday 09:33 
+4311197.ext+     extern                   288   00:00:19  COMPLETED      0:0                  nid005310        Ystday 09:32        Ystday 09:32        Ystday 09:33 
+4311198      mexa-aper+     normal        288   00:00:19  COMPLETED      0:0                  nid005782        Ystday 09:32        Ystday 09:32        Ystday 09:33 
+4311198.bat+      batch                   288   00:00:19  COMPLETED      0:0        36M       nid005782        Ystday 09:32        Ystday 09:32        Ystday 09:33 
+4311198.ext+     extern                   288   00:00:19  COMPLETED      0:0                  nid005782        Ystday 09:32        Ystday 09:32        Ystday 09:33 
+4311199      mexa-aper+     normal        288   00:00:18  COMPLETED      0:0                  nid005822        Ystday 09:32        Ystday 09:32        Ystday 09:33 
+4311199.bat+      batch                   288   00:00:18  COMPLETED      0:0        36M       nid005822        Ystday 09:32        Ystday 09:32        Ystday 09:33 
+4311199.ext+     extern                   288   00:00:18  COMPLETED      0:0                  nid005822        Ystday 09:32        Ystday 09:32        Ystday 09:33 
+4311200      mexa-aper+     normal        288   00:00:19  COMPLETED      0:0                  nid005827        Ystday 09:32        Ystday 09:32        Ystday 09:33 
+4311200.bat+      batch                   288   00:00:19  COMPLETED      0:0        36M       nid005827        Ystday 09:32        Ystday 09:32        Ystday 09:33 
+4311200.ext+     extern                   288   00:00:19  COMPLETED      0:0                  nid005827        Ystday 09:32        Ystday 09:32        Ystday 09:33 
+4311210      mexa-aper+     normal        288   00:00:16  COMPLETED      0:0                  nid006013        Ystday 09:37        Ystday 09:37        Ystday 09:37 
+4311210.bat+      batch                   288   00:00:16  COMPLETED      0:0        36M       nid006013        Ystday 09:37        Ystday 09:37        Ystday 09:37 
+4311210.ext+     extern                   288   00:00:16  COMPLETED      0:0                  nid006013        Ystday 09:37        Ystday 09:37        Ystday 09:37 
+4311211      mexa-aper+     normal        288   00:00:16  COMPLETED      0:0                  nid006016        Ystday 09:37        Ystday 09:37        Ystday 09:37 
+4311211.bat+      batch                   288   00:00:16  COMPLETED      0:0        36M       nid006016        Ystday 09:37        Ystday 09:37        Ystday 09:37 
+4311211.ext+     extern                   288   00:00:16  COMPLETED      0:0                  nid006016        Ystday 09:37        Ystday 09:37        Ystday 09:37 
+4311212      mexa-aper+     normal        288   00:00:17  COMPLETED      0:0                  nid006024        Ystday 09:37        Ystday 09:37        Ystday 09:37 
+4311212.bat+      batch                   288   00:00:17  COMPLETED      0:0        36M       nid006024        Ystday 09:37        Ystday 09:37        Ystday 09:37 
+4311212.ext+     extern                   288   00:00:17  COMPLETED      0:0                  nid006024        Ystday 09:37        Ystday 09:37        Ystday 09:37 
+4311213      mexa-aper+     normal        288   00:00:15  COMPLETED      0:0                  nid005351        Ystday 09:37        Ystday 09:37        Ystday 09:37 
+4311213.bat+      batch                   288   00:00:15  COMPLETED      0:0        36M       nid005351        Ystday 09:37        Ystday 09:37        Ystday 09:37 
+4311213.ext+     extern                   288   00:00:15  COMPLETED      0:0                  nid005351        Ystday 09:37        Ystday 09:37        Ystday 09:37 
+4311222      mexa-aper+     normal        288   00:00:23  COMPLETED      0:0                  nid006013        Ystday 09:39        Ystday 09:39        Ystday 09:39 
+4311222.bat+      batch                   288   00:00:23  COMPLETED      0:0        36M       nid006013        Ystday 09:39        Ystday 09:39        Ystday 09:39 
+4311222.ext+     extern                   288   00:00:23  COMPLETED      0:0                  nid006013        Ystday 09:39        Ystday 09:39        Ystday 09:39 
+4311223      mexa-aper+     normal        288   00:00:21  COMPLETED      0:0                  nid006016        Ystday 09:39        Ystday 09:39        Ystday 09:39 
+4311223.bat+      batch                   288   00:00:21  COMPLETED      0:0        36M       nid006016        Ystday 09:39        Ystday 09:39        Ystday 09:39 
+4311223.ext+     extern                   288   00:00:21  COMPLETED      0:0                  nid006016        Ystday 09:39        Ystday 09:39        Ystday 09:39 
+4311224      mexa-aper+     normal        288   00:00:22  COMPLETED      0:0                  nid006024        Ystday 09:39        Ystday 09:39        Ystday 09:39 
+4311224.bat+      batch                   288   00:00:22  COMPLETED      0:0        36M       nid006024        Ystday 09:39        Ystday 09:39        Ystday 09:39 
+4311224.ext+     extern                   288   00:00:22  COMPLETED      0:0                  nid006024        Ystday 09:39        Ystday 09:39        Ystday 09:39 
+4311225      mexa-aper+     normal        288   00:00:22  COMPLETED      0:0                  nid006353        Ystday 09:39        Ystday 09:39        Ystday 09:39 
+4311225.bat+      batch                   288   00:00:22  COMPLETED      0:0        36M       nid006353        Ystday 09:39        Ystday 09:39        Ystday 09:39 
+4311225.ext+     extern                   288   00:00:22  COMPLETED      0:0                  nid006353        Ystday 09:39        Ystday 09:39        Ystday 09:39 
+4311234      mexa-aper+     normal        288   00:00:38  COMPLETED      0:0                  nid006353        Ystday 09:42        Ystday 09:42        Ystday 09:42 
+4311234.bat+      batch                   288   00:00:38  COMPLETED      0:0        36M       nid006353        Ystday 09:42        Ystday 09:42        Ystday 09:42 
+4311234.ext+     extern                   288   00:00:38  COMPLETED      0:0                  nid006353        Ystday 09:42        Ystday 09:42        Ystday 09:42 
+4311235      mexa-aper+     normal        288   00:00:37  COMPLETED      0:0                  nid006356        Ystday 09:42        Ystday 09:42        Ystday 09:42 
+4311235.bat+      batch                   288   00:00:37  COMPLETED      0:0        36M       nid006356        Ystday 09:42        Ystday 09:42        Ystday 09:42 
+4311235.ext+     extern                   288   00:00:38  COMPLETED      0:0                  nid006356        Ystday 09:42        Ystday 09:42        Ystday 09:42 
+4311236      mexa-aper+     normal        288   00:00:36  COMPLETED      0:0                  nid005411        Ystday 09:42        Ystday 09:42        Ystday 09:42 
+4311236.bat+      batch                   288   00:00:36  COMPLETED      0:0        36M       nid005411        Ystday 09:42        Ystday 09:42        Ystday 09:42 
+4311236.ext+     extern                   288   00:00:36  COMPLETED      0:0                  nid005411        Ystday 09:42        Ystday 09:42        Ystday 09:42 
+4311237      mexa-aper+     normal        288   00:00:38  COMPLETED      0:0                  nid006436        Ystday 09:42        Ystday 09:42        Ystday 09:42 
+4311237.bat+      batch                   288   00:00:38  COMPLETED      0:0        36M       nid006436        Ystday 09:42        Ystday 09:42        Ystday 09:42 
+4311237.ext+     extern                   288   00:00:38  COMPLETED      0:0                  nid006436        Ystday 09:42        Ystday 09:42        Ystday 09:42 
+4311321            bash     normal        288   01:00:18    TIMEOUT      0:0                  nid005898        Ystday 09:55        Ystday 09:55        Ystday 10:55 
+4311321.ext+     extern                   288   01:00:19  COMPLETED      0:0                  nid005898        Ystday 09:55        Ystday 09:55        Ystday 10:55 
+4311321.0          bash                   288   01:00:12  CANCELLED     0:15        36M       nid005898        Ystday 09:55        Ystday 09:55        Ystday 10:55 
+4311351      mexa-aper+     normal        288   00:01:04  COMPLETED      0:0                  nid005450        Ystday 10:01        Ystday 10:01        Ystday 10:02 
+4311351.bat+      batch                   288   00:01:04  COMPLETED      0:0       360M       nid005450        Ystday 10:01        Ystday 10:01        Ystday 10:02 
+4311351.ext+     extern                   288   00:01:04  COMPLETED      0:0                  nid005450        Ystday 10:01        Ystday 10:01        Ystday 10:02 
+4311352      mexa-aper+     normal        288   00:01:03  COMPLETED      0:0                  nid005451        Ystday 10:01        Ystday 10:01        Ystday 10:02 
+4311352.bat+      batch                   288   00:01:03  COMPLETED      0:0       432M       nid005451        Ystday 10:01        Ystday 10:01        Ystday 10:02 
+4311352.ext+     extern                   288   00:01:03  COMPLETED      0:0                  nid005451        Ystday 10:01        Ystday 10:01        Ystday 10:02 
+4311353      mexa-aper+     normal        288   00:01:03  COMPLETED      0:0                  nid005454        Ystday 10:01        Ystday 10:01        Ystday 10:02 
+4311353.bat+      batch                   288   00:01:03  COMPLETED      0:0       324M       nid005454        Ystday 10:01        Ystday 10:01        Ystday 10:02 
+4311353.ext+     extern                   288   00:01:03  COMPLETED      0:0                  nid005454        Ystday 10:01        Ystday 10:01        Ystday 10:02 
+4311354      mexa-aper+     normal        288   00:01:03  COMPLETED      0:0                  nid005455        Ystday 10:01        Ystday 10:01        Ystday 10:02 
+4311354.bat+      batch                   288   00:01:03  COMPLETED      0:0       288M       nid005455        Ystday 10:01        Ystday 10:01        Ystday 10:02 
+4311354.ext+     extern                   288   00:01:03  COMPLETED      0:0                  nid005455        Ystday 10:01        Ystday 10:01        Ystday 10:02 
+4311438      mexa-aper+     normal        288   06:00:09    TIMEOUT      0:0                  nid005956        Ystday 10:20        Ystday 10:20        Ystday 16:20 
+4311438.bat+      batch                   288   06:00:10  CANCELLED     0:15   2738048K       nid005956        Ystday 10:20        Ystday 10:20        Ystday 16:20 
+4311438.ext+     extern                   288   06:00:10  COMPLETED      0:0                  nid005956        Ystday 10:20        Ystday 10:20        Ystday 16:20 
+4311439      mexa-aper+     normal        288   00:01:54     FAILED      1:0                  nid005973        Ystday 10:20        Ystday 10:20        Ystday 10:22 
+4311439.bat+      batch                   288   00:01:54     FAILED      1:0   3436096K       nid005973        Ystday 10:20        Ystday 10:20        Ystday 10:22 
+4311439.ext+     extern                   288   00:01:55  COMPLETED      0:0                  nid005973        Ystday 10:20        Ystday 10:20        Ystday 10:22 
+4311440      mexa-aper+     normal        288   00:01:56  COMPLETED      0:0                  nid005809        Ystday 10:20        Ystday 10:20        Ystday 10:22 
+4311440.bat+      batch                   288   00:01:56  COMPLETED      0:0   1683392K       nid005809        Ystday 10:20        Ystday 10:20        Ystday 10:22 
+4311440.ext+     extern                   288   00:01:56  COMPLETED      0:0                  nid005809        Ystday 10:20        Ystday 10:20        Ystday 10:22 
+4311441      mexa-aper+     normal        288   00:01:57  COMPLETED      0:0                  nid005868        Ystday 10:20        Ystday 10:20        Ystday 10:22 
+4311441.bat+      batch                   288   00:01:57  COMPLETED      0:0   2044992K       nid005868        Ystday 10:20        Ystday 10:20        Ystday 10:22 
+4311441.ext+     extern                   288   00:01:58  COMPLETED      0:0                  nid005868        Ystday 10:20        Ystday 10:20        Ystday 10:22 
+4311451      mexa-aper+     normal        288   00:25:40  COMPLETED      0:0                  nid005973        Ystday 10:25        Ystday 10:25        Ystday 10:51 
+4311451.bat+      batch                   288   00:25:40  COMPLETED      0:0     12420M       nid005973        Ystday 10:25        Ystday 10:25        Ystday 10:51 
+4311451.ext+     extern                   288   00:25:40  COMPLETED      0:0                  nid005973        Ystday 10:25        Ystday 10:25        Ystday 10:51 
+4311453      mexa-aper+     normal        288   00:06:40  COMPLETED      0:0                  nid005807        Ystday 10:25        Ystday 10:25        Ystday 10:32 
+4311453.bat+      batch                   288   00:06:40  COMPLETED      0:0  13184448K       nid005807        Ystday 10:25        Ystday 10:25        Ystday 10:32 
+4311453.ext+     extern                   288   00:06:40  COMPLETED      0:0                  nid005807        Ystday 10:25        Ystday 10:25        Ystday 10:32 
+4311454      mexa-aper+     normal        288   00:50:53     FAILED      1:0                  nid005868        Ystday 10:25        Ystday 10:25        Ystday 11:16 
+4311454.bat+      batch                   288   00:50:53     FAILED      1:0 135077696K       nid005868        Ystday 10:25        Ystday 10:25        Ystday 11:16 
+4311454.ext+     extern                   288   00:50:53  COMPLETED      0:0                  nid005868        Ystday 10:25        Ystday 10:25        Ystday 11:16 
+4311455      mexa-aper+     normal        288   00:28:28  COMPLETED      0:0                  nid005889        Ystday 10:25        Ystday 10:25        Ystday 10:53 
+4311455.bat+      batch                   288   00:28:28  COMPLETED      0:0    134712M       nid005889        Ystday 10:25        Ystday 10:25        Ystday 10:53 
+4311455.ext+     extern                   288   00:28:28  COMPLETED      0:0                  nid005889        Ystday 10:25        Ystday 10:25        Ystday 10:53 
+4311588            bash     normal        288   00:00:11  COMPLETED      0:0                  nid005654        Ystday 11:03        Ystday 11:03        Ystday 11:03 
+4311588.ext+     extern                   288   00:00:11  COMPLETED      0:0                  nid005654        Ystday 11:03        Ystday 11:03        Ystday 11:03 
+4311588.0          bash                   288   00:00:04  COMPLETED      0:0        36M       nid005654        Ystday 11:03        Ystday 11:03        Ystday 11:03 
+4311602      mexa-aper+     normal        288   00:00:09     FAILED     0:53                  nid005745        Ystday 11:07        Ystday 11:08        Ystday 11:08 
+4311602.bat+      batch                   288   00:00:09  CANCELLED     0:53                  nid005745        Ystday 11:08        Ystday 11:08        Ystday 11:08 
+4311602.ext+     extern                   288   00:00:09  COMPLETED      0:0                  nid005745        Ystday 11:08        Ystday 11:08        Ystday 11:08 
+4311603      mexa-aper+     normal        288   00:00:09     FAILED     0:53                  nid005745        Ystday 11:07        Ystday 11:08        Ystday 11:08 
+4311603.bat+      batch                   288   00:00:09  CANCELLED     0:53                  nid005745        Ystday 11:08        Ystday 11:08        Ystday 11:08 
+4311603.ext+     extern                   288   00:00:09  COMPLETED      0:0                  nid005745        Ystday 11:08        Ystday 11:08        Ystday 11:08 
+4311604      mexa-aper+     normal        288   00:00:10     FAILED     0:53                  nid005932        Ystday 11:07        Ystday 11:08        Ystday 11:08 
+4311604.bat+      batch                   288   00:00:10  CANCELLED     0:53                  nid005932        Ystday 11:08        Ystday 11:08        Ystday 11:08 
+4311604.ext+     extern                   288   00:00:10  COMPLETED      0:0                  nid005932        Ystday 11:08        Ystday 11:08        Ystday 11:08 
+4311605      mexa-aper+     normal        288   00:00:10     FAILED     0:53                  nid006438        Ystday 11:07        Ystday 11:08        Ystday 11:08 
+4311605.bat+      batch                   288   00:00:10  CANCELLED     0:53                  nid006438        Ystday 11:08        Ystday 11:08        Ystday 11:08 
+4311605.ext+     extern                   288   00:00:10  COMPLETED      0:0                  nid006438        Ystday 11:08        Ystday 11:08        Ystday 11:08 
+4311655      mexa-aper+     normal        288   00:23:18  COMPLETED      0:0                  nid006411        Ystday 11:22        Ystday 11:22        Ystday 11:45 
+4311655.bat+      batch                   288   00:23:18  COMPLETED      0:0     16920M       nid006411        Ystday 11:22        Ystday 11:22        Ystday 11:45 
+4311655.ext+     extern                   288   00:23:18  COMPLETED      0:0                  nid006411        Ystday 11:22        Ystday 11:22        Ystday 11:45 
+4311656      mexa-aper+     normal        288   00:44:44     FAILED      1:0                  nid006416        Ystday 11:22        Ystday 11:22        Ystday 12:07 
+4311656.bat+      batch                   288   00:44:44     FAILED      1:0    134856M       nid006416        Ystday 11:22        Ystday 11:22        Ystday 12:07 
+4311656.ext+     extern                   288   00:44:44  COMPLETED      0:0                  nid006416        Ystday 11:22        Ystday 11:22        Ystday 12:07 
+4315361      mexa-aper+     normal        288   01:16:11  COMPLETED      0:0                  nid005945            09:36:43            09:36:44            10:52:55 
+4315361.bat+      batch                   288   01:16:11  COMPLETED      0:0    132516M       nid005945            09:36:44            09:36:44            10:52:55 
+4315361.ext+     extern                   288   01:16:11  COMPLETED      0:0                  nid005945            09:36:44            09:36:44            10:52:55 
+4315362      mexa-aper+     normal        288   01:13:00  COMPLETED      0:0                  nid005949            09:36:47            09:36:48            10:49:48 
+4315362.bat+      batch                   288   01:13:00  COMPLETED      0:0    132948M       nid005949            09:36:48            09:36:48            10:49:48 
+4315362.ext+     extern                   288   01:13:00  COMPLETED      0:0                  nid005949            09:36:48            09:36:48            10:49:48 

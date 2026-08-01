@@ -1,0 +1,12 @@
+bash: cscs-quota: command not found
+Usage: quota [options]
+
+The output of quota is a table with the list of user and project folders (rows)
+and the corresponding usage (columns), with absolute value and percentage of
+limit:
+- the quota occupied by the current user and by the whole project are shown
+  together with the relevant quota limit in the first 5 columns;
+- the inodes occupied by the current user and by the whole project are shown
+  together with the relevant inodes limit in the last 5 columns.
+
+quota: error: no such option: -s

@@ -1,0 +1,59 @@
+=== SLURM CLUSTER TOPOLOGY & PARTITIONS ===
+PARTITION AVAIL  TIMELIMIT   NODES(A/I/O/T) NODELIST
+debug        up      30:00        1/22/1/24 nid[006544-006567]
+low          up 1-00:00:00    669/250/3/922 nid[005310-005393,005400-005419,005426-005447,005449-005507,005510-005671,005673-005783,005785-006003,006008-006028,006317-006343,006345-006455,006458-006543]
+normal*      up 1-00:00:00    669/250/3/922 nid[005310-005393,005400-005419,005426-005447,005449-005507,005510-005671,005673-005783,005785-006003,006008-006028,006317-006343,006345-006455,006458-006543]
+xfer         up 1-00:00:00          0/2/0/2 nid[001153,001305]
+PartitionName=debug
+   AllowGroups=ALL AllowAccounts=ALL AllowQos=normal,stop
+   AllocNodes=ALL Default=NO QoS=debug
+   DefaultTime=00:30:00 DisableRootJobs=NO ExclusiveUser=NO ExclusiveTopo=NO GraceTime=0 Hidden=NO
+   MaxNodes=10 MaxTime=00:30:00 MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED
+   Nodes=nid[006544-006567]
+   PriorityJobFactor=30 PriorityTier=30 RootOnly=NO ReqResv=NO OverSubscribe=EXCLUSIVE
+   OverTimeLimit=NONE PreemptMode=OFF
+   State=UP TotalCPUs=6912 TotalNodes=24 SelectTypeParameters=NONE
+   JobDefaults=(null)
+   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
+   TRES=cpu=6912,mem=20880000M,node=24,billing=6912,gres/gpu=96
+
+PartitionName=low
+   AllowGroups=ALL AllowAccounts=ALL AllowQos=slowdown,stop
+   AllocNodes=ALL Default=NO QoS=N/A
+   DefaultTime=01:00:00 DisableRootJobs=NO ExclusiveUser=NO ExclusiveTopo=NO GraceTime=0 Hidden=NO
+   MaxNodes=UNLIMITED MaxTime=1-00:00:00 MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED
+   Nodes=nid[005310-005393,005400-005419,005426-005447,005449-005507,005510-005671,005673-005783,005785-006003,006008-006028,006317-006343,006345-006455,006458-006543]
+   PriorityJobFactor=1 PriorityTier=10 RootOnly=NO ReqResv=NO OverSubscribe=EXCLUSIVE
+   OverTimeLimit=NONE PreemptMode=OFF
+   State=UP TotalCPUs=265536 TotalNodes=922 SelectTypeParameters=NONE
+   JobDefaults=(null)
+   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
+   TRES=cpu=265536,mem=802140000M,node=922,billing=265536,gres/gpu=3688
+
+PartitionName=normal
+   AllowGroups=ALL AllowAccounts=ALL AllowQos=normal,stop
+   AllocNodes=ALL Default=YES QoS=N/A
+   DefaultTime=01:00:00 DisableRootJobs=NO ExclusiveUser=NO ExclusiveTopo=NO GraceTime=0 Hidden=NO
+   MaxNodes=UNLIMITED MaxTime=1-00:00:00 MinNodes=0 LLN=NO MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED
+   Nodes=nid[005310-005393,005400-005419,005426-005447,005449-005507,005510-005671,005673-005783,005785-006003,006008-006028,006317-006343,006345-006455,006458-006543]
+   PriorityJobFactor=10 PriorityTier=20 RootOnly=NO ReqResv=NO OverSubscribe=EXCLUSIVE
+   OverTimeLimit=NONE PreemptMode=OFF
+   State=UP TotalCPUs=265536 TotalNodes=922 SelectTypeParameters=NONE
+   JobDefaults=(null)
+   DefMemPerNode=UNLIMITED MaxMemPerNode=UNLIMITED
+   TRES=cpu=265536,mem=802140000M,node=922,billing=265536,gres/gpu=3688
+
+PartitionName=xfer
+   AllowGroups=ALL AllowAccounts=ALL AllowQos=ALL
+   AllocNodes=ALL Default=NO QoS=N/A
+   DefaultTime=06:00:00 DisableRootJobs=NO ExclusiveUser=NO ExclusiveTopo=NO GraceTime=0 Hidden=NO
+   MaxNodes=1 MaxTime=1-00:00:00 MinNodes=0 LLN=YES MaxCPUsPerNode=UNLIMITED MaxCPUsPerSocket=UNLIMITED
+   Nodes=nid[001153,001305]
+   PriorityJobFactor=20 PriorityTier=30 RootOnly=NO ReqResv=NO OverSubscribe=FORCE:10
+   OverTimeLimit=NONE PreemptMode=OFF
+   State=UP TotalCPUs=256 TotalNodes=2 SelectTypeParameters=NONE
+   JobDefaults=(null)
+   DefMemPerCPU=10000 MaxMemPerCPU=30000
+   TRES=cpu=256,mem=500000M,node=2
+   TRESBillingWeights=cpu=0,mem=0,node=0,billing=0
+
