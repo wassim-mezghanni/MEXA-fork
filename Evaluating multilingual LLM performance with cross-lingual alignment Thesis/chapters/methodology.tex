@@ -93,32 +93,43 @@ The layer-wise scores are summarized into two model-level statistics:
     \mu_{\text{Mean}}(L_1) = \frac{1}{L} \sum_{l=1}^{L} \mu C(L_1, L_2, m, l).
 \end{equation}
 $\mu_{\text{Max}}$ captures the peak alignment a model achieves anywhere
-in its depth --- typically in the middle-to-late layers, consistent with
-the pivot hypothesis --- while $\mu_{\text{Mean}}$ rewards models that
-sustain alignment across many layers. Model-level scores reported in
-Chapter~4 average these quantities over all evaluated languages.
+in its depth in the middle-to-late layers, which is consistent with
+the pivot hypothesis and $\mu_{\text{Mean}}$ rewards models that
+sustain alignment across many layers. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/fig_mexa_pipeline_diagram.pdf}
+\caption{\textbf{Schematic Overview of the MEXA Evaluation Pipeline}. The 4-stage pipeline extracts layer-wise hidden states, pools them with position weighting, computes the target-to-pivot similarity matrix $C^{(l)}$, applies bidirectional retrieval (P@1) filtering, and aggregates layer-wise scores into $\mu_{\text{Max}}$ and $\mu_{\text{Mean}}$.}
+\label{fig:mexa-pipeline-diagram}
+\end{figure}
 
 \paragraph{Extension: mean-centered scoring.}
-To separate semantic alignment from the language-identity signal
-(Section~\ref{subsec:alignment-challenges}), we additionally compute a
-\emph{centered} variant of Equation~\eqref{eq:mexa}: before building the
-similarity matrix at layer $l$, each language's embeddings are shifted by
-their own mean,
+To separate semantic alignment from the language identity signal
+(Section~\ref{subsec:alignment-challenges}), we additionally compute a centered variant of Equation~\eqref{eq:mexa}: before building the similarity matrix at layer $l$, each language's embeddings are shifted by
+their own mean
 \begin{equation}
     \tilde{e}_i^{(l)} \;=\; e_i^{(l)} - \frac{1}{n}\sum_{k=1}^{n} e_k^{(l)},
 \end{equation}
-applied independently to the target and pivot sides. Centering removes the
-dominant direction shared by all sentences of a language and typically
+applied  to the target and pivot sides. Centering removes the
+dominant direction shared by all sentences of a language and 
 sharpens retrieval; comparing centered and uncentered scores quantifies
 how much measured alignment is carried by language-mean offsets rather
 than sentence-level semantics.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\textwidth]{figures/fig_meancentering_geometry.pdf}
+\caption{\textbf{Vector Space Geometry of Mean-Centering}. (a) Uncentered sentence embeddings are offset into distinct language clusters by a dominant language-identity vector $\bar{e}_{L}$. (b) Subtracting language means centers both manifolds at the origin, eliminating language-identity bias and isolating semantic alignment.}
+\label{fig:meancentering-geometry}
+\end{figure}
+
 \paragraph{Extension: non-English pivots.}
 Equation~\eqref{eq:mexa} does not privilege English mathematically; the
-pivot $L_2$ is a free parameter. We exploit this to test the pivot
+pivot $L_2$ is a parameter that we can change. We exploit this to test the pivot
 hypothesis directly, recomputing all alignment scores with French, German,
-Arabic, Chinese, and Basque as pivot languages --- spanning high-resource
-Latin-script, non-Latin-script, and a language isolate --- in both the
+Arabic, Chinese and Basque as pivot languages spanning high-resource
+Latin-script, non-Latin-script, and a language isolate in both the
 standard and centered variants.
 
 % ------------------------------------------------------------
@@ -131,6 +142,39 @@ All models are obtained from the Hugging Face Hub and evaluated without
 any fine-tuning; base (non-instruction-tuned) variants are used where
 available so that scores reflect pre-training rather than post-training.
 
+\begin{table}[H]
+\centering
+\caption{\textbf{Comprehensive Taxonomy of Evaluated Language Models}. Models are grouped by architectural category, detailing parameter scale, vocabulary size, and primary training objective.}
+\label{tab:evaluated-models-spec}
+\small
+\begin{tabular}{lllll}
+\toprule
+\textbf{Category} & \textbf{Model Checkpoint} & \textbf{Parameters} & \textbf{Vocab Size} & \textbf{Training Objective / Focus} \\
+\midrule
+\textbf{Reproduction}
+  & Llama 3.1 8B & 8.0B & 128,256 & Causal LM (Next-token pred.) \\
+  & Mistral 7B v0.3 & 7.2B & 32,768 & Causal LM (Sliding window att.) \\
+\midrule
+\textbf{New Decoders}
+  & Qwen 3 (0.6B / 1.7B / 4B / 8B) & 0.6B--8.0B & 151,646 & Multilingual Causal LM \\
+  & Qwen 3.5 9B & 9.0B & 151,646 & Advanced Multilingual Causal LM \\
+  & Apertus 8B / Apertus 1.5 8B & 8.0B & 32,000 & Open Swiss AI Multilingual LM \\
+  & Apertus 1.5 70B & 70.0B & 32,000 & High-capacity Multilingual LM \\
+\midrule
+\textbf{Mixture-of-Experts}
+  & Mixtral 8x7B / 8x22B & 46.7B / 141B & 32,000 & Sparse MoE (Top-2 routing) \\
+  & Gemma 4 26B-A4B & 26.0B (4B act.) & 256,000 & Sparse MoE Causal LM \\
+\midrule
+\textbf{Encoders \& Embeddings}
+  & XLM-RoBERTa (Base / Large) & 270M / 550M & 250,000 & Masked LM (Bidirectional) \\
+  & Glot500 & 270M & 250,000 & Extended MLM (500+ languages) \\
+  & LaBSE & 471M & 501,152 & Dual-Encoder Contrastive \\
+  & mE5-base & 278M & 250,000 & Multilingual Text Embedding \\
+  & Qwen 3 Embedding (0.6B--8B) & 0.6B--8.0B & 151,646 & Decoder-based Contrastive \\
+\bottomrule
+\end{tabular}
+\end{table}
+
 % ..............................................
 \subsection{Reproduction Models}
 \label{subsec:reproduction-models}
@@ -140,7 +184,7 @@ re-evaluate two models with published reference scores:
 \textbf{Llama~3.1~8B} \citep{dubey2024llama3}, the primary English-centric
 decoder studied in the original paper, and \textbf{Mistral~7B~v0.3}
 \citep{jiang2023mistral}. Agreement with the published
-$\mu_{\text{Max}}$/$\mu_{\text{Mean}}$ values on the Table-1
+$\mu_{\text{Max}}$/$\mu_{\text{Mean}}$ values on the reference benchmark
 configurations (Section~\ref{sec:datasets}) establishes that our
 embedding-extraction and scoring code reproduces the original pipeline,
 and anchors all subsequent extensions.
@@ -153,15 +197,15 @@ The first extension applies MEXA to decoder families released after the
 original study, covering different data mixtures and scales:
 
 \begin{itemize}
-    \item \textbf{Qwen3} \citep{yang2025qwen3} at 0.6B, 1.7B, 4B, and 8B
-    parameters --- a family trained with a substantially more multilingual
-    data mixture than Llama, whose within-family size sweep isolates the
-    effect of scale under a fixed recipe;
-    \item \textbf{Qwen3.5~9B}, the successor generation, to measure
-    recipe-level progress at approximately constant parameter count;
+    \item \textbf{Qwen3} \citep{yang2025qwen3} : at 0.6B, 1.7B, 4B, and 8B
+    parameters a family trained with a  more multilingual
+    data mixture than Llama, in this family the size sweep isolates the
+    effect of scale 
+    \item \textbf{Qwen3.5~9B}: the successor generation, to measure
+    recipe-level progress at approximately constant parameter count
     \item \textbf{Apertus~8B} and \textbf{Apertus-Mini~4B}, openly trained
     models with an explicitly multilingual, compliance-focused data
-    policy, providing a counterpoint to English-centric training;
+    policy, providing a counterpoint to English-centric training
     \item \textbf{Gemma~4} in five variants (E2B, E4B, 12B, 31B, and the
     sparse 26B-A4B), Google's current open-weight family, spanning
     efficient edge-scale to 31B-parameter models.
@@ -179,15 +223,13 @@ Apertus~8B).
 
 Sparse mixture-of-experts (MoE) architectures route each token through a
 small subset of expert feed-forward networks, decoupling parameter count
-from per-token compute \citep{jiang2024mixtral}. Whether expert routing
-helps or hurts cross-lingual alignment is an open question: experts could
-specialize by language (fragmenting the shared space) or by function
-(leaving alignment intact). We evaluate \textbf{Mixtral~8x7B} and
-\textbf{Mixtral~8x22B} \citep{jiang2024mixtral}, comparing them against
-their dense sibling Mistral~7B~v0.3, and \textbf{Gemma~4~26B-A4B},
+from per-token compute \citep{jiang2024mixtral}. Whether expert routing helps or hurts cross-lingual alignment is an open question: 
+experts could specialize by language (fragmenting the shared space) or by function (leaving alignment intact). 
+
+We evaluate \textbf{Mixtral~8x7B} and \textbf{Mixtral~8x22B} \citep{jiang2024mixtral}, comparing them against
+the dense  Mistral~7B~v0.3, and \textbf{Gemma~4~26B-A4B},
 comparing it against dense Gemma~4 variants. In all cases the MEXA
-pipeline applies unchanged, since it only consumes the post-layer hidden
-states.
+pipeline applies unchanged, since it only consumes the post-layer hidden states.
 
 % ..............................................
 \subsection{Encoder and Embedding Models}
@@ -201,15 +243,15 @@ training objective rather than a by-product:
 \begin{itemize}
     \item \textbf{Masked-LM encoders:} XLM-R base and large
     \citep{conneau2020xlmr}, Glot500 \citep{imani2023glot500} (an XLM-R
-    variant extended to 500+ languages, particularly relevant for the
-    Bible corpus tail), and mmBERT-base;
+    variant extended to 500+ languages, relevant for the
+    Bible corpus tail) and mmBERT-base;
     \item \textbf{Contrastively trained sentence encoders:} LaBSE
     \citep{feng2022labse} and multilingual-E5-base
     \citep{wang2024multilingual}, both explicitly optimized so that
-    translations are nearest neighbors;
+    translations are nearest neighbors
     \item \textbf{Decoder-based embedding models:} Qwen3-Embedding at
-    0.6B, 4B, and 8B, which share the Qwen3 backbone but are fine-tuned
-    for retrieval --- allowing a controlled comparison of the same
+    0.6B, 4B, and 8B, which share the Qwen3 architecture but are fine-tuned
+    for retrieval allowing a controlled comparison of the same
     architecture before and after embedding-specific training.
 \end{itemize}
 
@@ -219,38 +261,55 @@ training objective rather than a by-product:
 
 All experiments draw on the two parallel corpora introduced in
 Section~\ref{sec:parallel-corpora}, in configurations chosen to match the
-original paper where reproduction is intended and to extend coverage
-elsewhere.
+original paper where reproduction is intended and to extend teh experiments.
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Overview of Parallel Evaluation Corpora and Subsets}. Specifies language coverage, sample size ($n$), parallel sentence domain, and experimental role in the thesis.}
+\label{tab:evaluation-datasets-overview}
+\small
+\begin{tabular}{lcsll}
+\toprule
+\textbf{Corpus \& Subset} & \textbf{Languages} & \textbf{Sample Size ($n$)} & \textbf{Domain} & \textbf{Primary Thesis Purpose} \\
+\midrule
+\textbf{FLORES Benchmark} & 116 & 100 sentences & Wikipedia & Primary model ranking \& reproduction \\
+\textbf{FLORES (1012)} & 116 & 1,012 sentences & Wikipedia & Distractor scaling ablation ($n$) \\
+\textbf{FLORES Full} & 203 & 1,012 sentences & Wikipedia & Maximal high-quality coverage \\
+\midrule
+\textbf{Bible Benchmark} & 101 & 103 verses & Religious & Cross-domain stability check \\
+\textbf{Bible Full} & >1,400 & Full text & Religious & Extremely low-resource tail \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \paragraph{FLORES-200.}
 From the FLORES-200 devtest split \citep{nllbteam2022} we use:
 \begin{itemize}
-    \item \textbf{FLORES Table-1 subset:} the 116 languages overlapping
-    with Belebele, with $n = 100$ parallel sentences per language ---
-    the exact configuration of Table~1 in \citet{kargaran2025mexa}, used
+    \item \textbf{FLORES benchmark subset:} the 116 languages overlapping
+    with Belebele, with $n = 100$ parallel sentences per language
+    the exact benchmark configuration in \citet{kargaran2025mexa}, used
     for reproduction and for all model-family comparisons;
-    \item \textbf{FLORES Table-1 (2000):} the same 116 languages with all
-    $n = 2{,}000$ devtest sentences, to quantify the effect of sample
+    \item \textbf{FLORES (1012):} the same 116 languages with all
+    $n = 1{,}012$ devtest sentences, to quantify the effect of sample
     size on the retrieval criterion (larger $n$ means more distractors
     and therefore a strictly harder task);
-    \item \textbf{FLORES Full:} all 204 language--script pairs, for
+    \item \textbf{FLORES Full:} all 203 language script pairs, for
     maximal high-quality coverage.
 \end{itemize}
 
 \paragraph{Parallel Bible Corpus (sPBC).}
 From the super-parallel Bible corpus \citep{mayer2014bible} we use:
 \begin{itemize}
-    \item \textbf{Bible Table-1 subset:} 101 languages with $n = 103$
-    parallel verses, matching the original paper's Bible configuration;
+    \item \textbf{Bible benchmark subset:} 101 languages with $n = 103$
+    parallel sentences , matching the original paper's Bible configuration;
     \item \textbf{Bible Full:} the complete corpus of more than 1{,}400
-    language--script pairs, which extends evaluation far into the
-    low-resource tail where no downstream benchmark exists.
+    language script pairs, which extends evaluation far into the
+    low-resource .
 \end{itemize}
 
 English (\texttt{eng\_Latn}) serves as the pivot in all standard runs; the
 pivot-substitution runs of Section~\ref{sec:mexa-pipeline} use the FLORES
-Table-1 subset. Language identifiers follow the FLORES-200 convention of
-ISO~639-3 code plus script (e.g.\ \texttt{shn\_Mymr}).
+benchmark subset.
 
 % ------------------------------------------------------------
 \section{Experimental Settings}
@@ -262,16 +321,15 @@ ISO~639-3 code plus script (e.g.\ \texttt{shn\_Mymr}).
 
 Unless stated otherwise, reported scores use position-weighted average
 embeddings (Equation~\eqref{eq:weighted-avg}) and are given as
-$\mu_{\text{Max}}$ and $\mu_{\text{Mean}}$ per model--dataset
-configuration; last-token embeddings and the centered variant are reported
-as ablations. The analysis proceeds on four levels:
+$\mu_{\text{Max}}$ and $\mu_{\text{Mean}}$ per model dataset
+configuration; last-token embeddings and the centered variant are reported as ablations. The analysis is  on four levels:
 
 \begin{itemize}
     \item \textbf{Model level:} scores averaged over all languages of a
-    configuration, enabling family- and scale-comparisons and the
+    configuration, enabling family and scale comparisons and the
     reproduction check against published values;
     \item \textbf{Language level:} per-language scores, ranked and grouped
-    by script and by resource level, and cross-referenced with tokenizer
+    by script and by resource level and cross-referenced with tokenizer
     fertility (computed on both corpora) to separate tokenization effects
     from representational effects;
     \item \textbf{Layer level:} full layer-wise alignment profiles
@@ -281,14 +339,12 @@ as ablations. The analysis proceeds on four levels:
     \item \textbf{Validity level:} Pearson correlations between MEXA
     scores and downstream accuracy on Belebele
     \citep{bandarkar2024belebele} and m-ARC \citep{lai2023okapi} over the
-    languages both cover, testing whether alignment is a faithful proxy
-    for task performance; cross-model Pearson correlations of per-language
-    score profiles additionally measure how consistent alignment
+    languages both cover, testing whether alignment is enhacing
+    task performance; cross-model Pearson correlations of per-language score profiles  measure how consistent alignment
     structure is across architectures.
 \end{itemize}
 
-For qualitative inspection, sentence embeddings are also projected to two
-and three dimensions with PCA and t-SNE, colored by language and script,
+For qualitative inspection, sentence embeddings are also projected to two and three dimensions with PCA and t-SNE, colored by language and script,
 to visualize the clustering behavior that the retrieval score summarizes
 numerically.
 
@@ -300,21 +356,14 @@ The pipeline is implemented in Python with PyTorch and Hugging Face
 Transformers. \texttt{embed\_extractor.py} loads each checkpoint via
 \texttt{AutoModelForCausalLM} (or \texttt{AutoModel} for encoders) with
 output of all hidden states enabled, tokenizes each sentence with the
-model's own tokenizer, and stores per-layer sentence embeddings as
+model's own tokenizer and stores per-layer sentence embeddings as
 serialized NumPy arrays, one file per language.
 \texttt{compute\_mexa.py} then builds the layer-wise cosine similarity
-matrices in float64 and evaluates Equation~\eqref{eq:mexa}; because
-scoring operates on cached embeddings, ablations over pooling strategies,
-pivots, and centering re-use a single (expensive) extraction pass per
-model--corpus pair. Formatted per-language and per-layer scores are
-exported to CSV/JSON and explored in an interactive React dashboard
-developed for this thesis.
+matrices in  and evaluates Equation~\eqref{eq:mexa}; 
+
+Formatted per-language and per-layer scores are
+exported to CSV/JSON and explored in an interactive React dashboard developed for this thesis.
 
 Small models were run locally; all large-scale extraction jobs (8B and
-above, MoE, and full-corpus sweeps) were executed on the CIT-TUM-HN
-SLURM cluster at TUM Campus Heilbronn on NVIDIA data-center GPUs, with
-models loaded in reduced precision (bfloat16, with quantized loading for
-the largest MoE checkpoints) and embeddings cast to float32 before
-storage. Random effects play no role in the pipeline --- extraction and
-scoring are deterministic given a checkpoint and corpus --- so no seed
-averaging is required.
+above, MoE and full-corpus sweeps) were executed on the CIT-TUM-HN
+SLURM cluster at TUM Campus Heilbronn on NVIDIA data-center GPUs, 
