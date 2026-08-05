@@ -215,9 +215,7 @@ training objective rather than a by-product. We evaluate three sub-categories. F
 \section{Datasets}
 \label{sec:datasets}
 
-All experiments draw on the two parallel corpora introduced in
-Section~\ref{sec:parallel-corpora}, in configurations chosen to match the
-original paper where reproduction is intended and to extend teh experiments.
+All experiments draw on the two parallel corpora introduced in Section~\ref{sec:parallel-corpora}, in configurations chosen to match the original paper where reproduction is intended and to extend the experiments. These two datasets contrast fundamentally in their domain, vocabulary characteristics, and script distributions, providing a robust multi-dimensional testbed.
 
 \begin{table}[H]
 \centering
@@ -239,14 +237,16 @@ original paper where reproduction is intended and to extend teh experiments.
 \end{table}
 
 \paragraph{FLORES-200.}
-From the FLORES-200 devtest split \citep{nllbteam2022} we use three main configurations: first, the FLORES benchmark subset, containing the 116 languages overlapping with Belebele, with $n = 100$ parallel sentences per language (the exact benchmark configuration in \citet{kargaran2025mexa}, used for reproduction and for all model-family comparisons); second, FLORES (1012), which uses the same 116 languages with all $n = 1{,}012$ devtest sentences to quantify the effect of sample size on the retrieval criterion (larger $n$ means more distractors and therefore a strictly harder task); and third, FLORES Full, which includes all 203 language script pairs for maximal high-quality coverage.
+From the FLORES-200 devtest split \citep{nllbteam2022} we use three main configurations: first, the FLORES benchmark subset, containing the 116 languages overlapping with Belebele, with $n = 100$ parallel sentences per language (the exact benchmark configuration in \citet{kargaran2025mexa}, used for reproduction and for all model-family comparisons); second, FLORES (1012), which uses the same 116 languages with all $n = 1{,}012$ devtest sentences to quantify the effect of sample size on the retrieval criterion (larger $n$ means more distractors and therefore a harder task) and third, FLORES Full, which includes all 203 language script pairs for maximal high-quality coverage. 
+
+FLORES-200 is characterized by its rigorous, standardized tagging of language-script pairs (e.g., simplified Chinese \texttt{zho\_Hans}, traditional Chinese \texttt{zho\_Hant}, Arabic \texttt{arb\_Arab}, Cyrillic Russian \texttt{rus\_Cyrl}, and Devanagari Hindi \texttt{hin\_Deva}). This allows us to isolate script effects from language identity (such as Serbian written in Cyrillic \texttt{srp\_Cyrl} vs. Latin \texttt{srp\_Latn}). The domain consists of contemporary, formal Wikipedia articles covering geography, history, and science, which results in a rich vocabulary containing modern terminology and complex syntactic structures.
 
 \paragraph{Parallel Bible Corpus (sPBC).}
-From the super-parallel Bible corpus \citep{mayer2014bible} we use two main configurations: first, the Bible benchmark subset, containing 101 languages with $n = 103$ parallel sentences, matching the original paper's Bible configuration; and second, the Bible Full dataset, covering the complete corpus of more than 1{,}400 language script pairs, which extends evaluation far into the low-resource tail.
+From the super-parallel Bible corpus \citep{mayer2014bible} we use two main configurations: first, the Bible benchmark subset, containing 101 languages with $n = 103$ parallel sentences, matching the original paper's Bible configuration and second the Bible Full dataset, covering the complete corpus of more than 1{,}400 language script pairs which extends evaluation far into the low-resource tail.
 
-English (\texttt{eng\_Latn}) serves as the pivot in all standard runs; the
-pivot-substitution runs of Section~\ref{sec:mexa-pipeline} use the FLORES
-benchmark subset.
+In contrast to the modern encyclopedic prose of FLORES, the sPBC belongs entirely to the historical, religious domain. It features unique grammatical constructs, repetitive semantic motifs, and archaic vocabulary. However, it is the most widely translated text in existence, spanning scripts that are absent from typical modern benchmarks, such as Ge'ez (Ethiopic) script for Amharic and Tigrinya, Hebrew, Greek, and minor regional scripts. It provides the only viable means of evaluating representation alignment for hundreds of low-resource languages that lack any digital crawl footprint or Wikipedia presence.
+
+English (\texttt{eng\_Latn}) serves as the pivot in all standard runs, the pivot-substitution runs of Section~\ref{sec:mexa-pipeline} use the FLORES benchmark subset.
 
 % ------------------------------------------------------------
 \section{Experimental Settings}
