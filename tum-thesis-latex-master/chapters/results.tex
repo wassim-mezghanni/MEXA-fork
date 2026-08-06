@@ -1,7 +1,7 @@
 \chapter{Results and Discussion}
 \label{ch:results}
 
-This chapter presents the empirical findings of our cross-lingual alignment evaluation across expanded model families, parallel corpora, architectural paradigms, and pivot languages. Section~\ref{sec:results-mexa} provides the primary MEXA alignment score results, beginning with our reproduction of reference benchmarks, followed by an evaluation of modern causal decoders, and a comparative study with bi-directional encoders and specialized sentence embedding models. Section~\ref{sec:results-moe} investigates Mixture-of-Experts (MoE) architectures and router alignment dynamics. Section~\ref{sec:results-non-english-pivots} explores cross-lingual representations under non-English pivot languages. Section~\ref{sec:results-cross-experiment} conducts a linguistic analysis across language families, scripts, and tokenization fertility. Finally, Section~\ref{sec:results-validity} evaluates the downstream predictive validity of MEXA against established multilingual benchmarks.
+This chapter presents the empirical findings of our cross-lingual alignment evaluation across expanded model families, parallel corpora, architectural paradigms, and pivot languages. Section~\ref{sec:results-mexa} provides the primary MEXA alignment score results, beginning with our reproduction of reference benchmarks, followed by an evaluation of modern causal decoders, and a comparative study with bi-directional encoders and specialized sentence embedding models. Section~\ref{sec:results-moe} investigates Mixture-of-Experts (MoE) architectures and router alignment dynamics. Section~\ref{sec:results-non-english-pivots} explores cross-lingual representations under non-English pivot languages. Section~\ref{sec:results-cross-experiment} conducts a linguistic analysis across language families, scripts, and tokenization fertility. Finally, Section~\ref{sec:results-validity} evaluates the validity of MEXA against established multilingual benchmarks.
 
 % ------------------------------------------------------------
 \section{MEXA Score Results}
@@ -172,7 +172,7 @@ Comparing dense decoders against their sparse MoE counterparts reveals consisten
 \end{figure}
 
 \paragraph{Routing dynamics and representation integrity.}
-Our empirical alignment scores support the theoretical consensus in Mixture-of-Experts literature: top-2 expert gating does not isolate languages into segregated expert sub-networks. Analysis of router distributions in MoE architectures \citep{jiang2024mixtral} shows that gating functions operate at the token level, distributing tokens across experts based on syntactic and semantic roles rather than language identity tags (Figure~\ref{fig:moe-router-distributions}). Consequently, intermediate hidden states in MoE architectures maintain strong cross-lingual alignment trajectories comparable to dense transformers, demonstrating that sparse capacity scaling improves multilingual alignment without separating the languages in vector space.
+The empirical alignment scores support the theoretical consensus in Mixture-of-Experts literature: top-2 expert gating does not isolate languages into segregated expert sub-networks. Analysis of router distributions in MoE architectures \citep{jiang2024mixtral} shows that gating functions operate at the token level, distributing tokens across experts based on syntactic and semantic roles rather than language identity tags (Figure~\ref{fig:moe-router-distributions}). Consequently, intermediate hidden states in MoE architectures maintain strong cross-lingual alignment trajectories comparable to dense transformers, demonstrating that sparse capacity scaling improves multilingual alignment without separating the languages in vector space.
 
 \begin{figure}[H]
 \centering
@@ -191,7 +191,7 @@ The standard MEXA protocol measures cross-lingual alignment against an English p
 Under standard uncentered scoring, substituting the pivot language maintains high cross-lingual retrieval performance across major high-resource anchors. On Llama 3.1 8B, measuring alignment against a French pivot yields $\mu_{\text{Max}} = 0.7266$ ($\mu_{\text{Mean}} = 0.4822$), German yields $\mu_{\text{Max}} = 0.7315$ ($\mu_{\text{Mean}} = 0.4852$), and Arabic yields $\mu_{\text{Max}} = 0.7335$ ($\mu_{\text{Mean}} = 0.4638$). For \textbf{Qwen 3.5 9B}, alignment remains consistently high across anchors: French ($\mu_{\text{Max}} = 0.8034$), German ($\mu_{\text{Max}} = 0.7949$), Arabic ($\mu_{\text{Max}} = 0.7986$), Basque ($\mu_{\text{Max}} = 0.7995$), and Chinese ($\mu_{\text{Max}} = 0.7286$).
 
 \paragraph{Centering eliminates pivot variance.}
-When mean-centering (Equation~\ref{eq:mexa}) is applied to eliminate language-identity centroid offsets, alignment scores across all pivot languages rise sharply and converge to near-identical peak values. For Qwen 3.5 9B, centered alignment reaches $\mu_{\text{Max}} = 0.9547$ under a German pivot, $\mu_{\text{Max}} = 0.9462$ under French, $\mu_{\text{Max}} = 0.9485$ under Arabic, $\mu_{\text{Max}} = 0.9443$ under Chinese, and $\mu_{\text{Max}} = 0.9444$ under Basque. Similarly, Llama 3.1 8B reaches $\mu_{\text{Max}} = 0.8990$ (German-centered), $0.8984$ (French-centered), and $0.9033$ (Arabic-centered). This uniform convergence demonstrates that the underlying semantic representation space is intrinsically multilingual and invariant to pivot choice once language-specific centroid shifts are removed.
+When mean-centering (Equation~\ref{eq:mexa}) is applied to eliminate language identity centroid offsets, alignment scores across all pivot languages rise sharply and converge to close identical peak values. For Qwen 3.5 9B, centered alignment reaches $\mu_{\text{Max}} = 0.9547$ under a German pivot, $\mu_{\text{Max}} = 0.9462$ under French, $\mu_{\text{Max}} = 0.9485$ under Arabic, $\mu_{\text{Max}} = 0.9443$ under Chinese, and $\mu_{\text{Max}} = 0.9444$ under Basque. Similarly, Llama 3.1 8B reaches $\mu_{\text{Max}} = 0.8990$ (German-centered), $0.8984$ (French-centered), and $0.9033$ (Arabic-centered). This uniform convergence demonstrates that the semantic representation space is multilingual and invariant to pivot choice once language-specific centroid shifts are removed.
 
 % ------------------------------------------------------------
 \section{Cross-Experiment Language Analysis}
@@ -207,14 +207,14 @@ This happens because of how position-weighted pooling (Equation~\ref{eq:weighted
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\textwidth]{figures/fig_fertility_alignment.pdf}
+\includegraphics[width=0.65\textwidth]{figures/fig_fertility_alignment.pdf}
 \caption{\textbf{Impact of Tokenizer Fertility on Cross-Lingual Alignment}. Correlation between average subword tokenizer fertility (tokens per sentence) and average MEXA alignment score ($\mu_{\text{Max}}$) across languages in the FLORES-200 corpus. Languages are colored by script family, showing that higher fertility is strongly associated with degraded semantic alignment.}
 \label{fig:fertility-vs-alignment}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{figures/fig_tokenization_comparison.pdf}
+\includegraphics[width=0.75\textwidth]{figures/fig_tokenization_comparison.pdf}
 \caption{\textbf{Tokenization Fragmentation and Fertility Tax Example}. Visual tokenization of the same parallel sentence (FLORES-200 sentence 1) using the Qwen3 tokenizer. Under-represented language-script combinations (e.g. Minangkabau in Arabic script) are split into character-level pieces, multiplying sequence length and diluting semantic context.}
 \label{fig:tokenization-comparison}
 \end{figure}
@@ -226,10 +226,25 @@ This happens because of how position-weighted pooling (Equation~\ref{eq:weighted
 \section{Validity of MEXA}
 \label{sec:results-validity}
 
-To confirm that internal representational alignment measured by MEXA reflects actual functional capability, we validate MEXA scores against established downstream multilingual benchmarks.
+To confirm that internal representational alignment measured by MEXA reflects actual functional capability, we validate MEXA scores against established downstream multilingual benchmarks at both the model level (Figure~\ref{fig:validity-model-level}) and the language level (Figure~\ref{fig:validity-language-level}).
+
 
 \paragraph{Correlation with Belebele reading comprehension.}
 We correlate model-level MEXA alignment scores on FLORES against downstream accuracy on the \textbf{Belebele} parallel reading comprehension benchmark \citep{bandarkar2024belebele}. Across all evaluated models, peak MEXA alignment $\mu_{\text{Max}}$ exhibits a strong positive Spearman rank correlation with Belebele accuracy ($\rho = 0.8420$, $p < 10^{-5}$). Models with higher internal representation alignment consistently achieve superior zero-shot passage comprehension.
 
 \paragraph{Correlation with m-ARC reasoning.}
-Similarly, correlating MEXA alignment against the \textbf{m-ARC} (multilingual AI2 Reasoning Challenge) benchmark \citep{lai2023okapi} yields a Spearman rank correlation of $\rho = 0.8105$ ($p < 10^{-4}$). This strong predictive relationship establishes that MEXA's reference-free, task-independent retrieval criterion serves as a highly reliable and computationally efficient proxy for downstream multilingual reasoning performance.
+Similarly, correlating MEXA alignment against the \textbf{m-ARC} (multilingual AI2 Reasoning Challenge) benchmark \citep{lai2023okapi} yields a Spearman rank correlation of $\rho = 0.8105$ ($p < 10^{-4}$). This strong predictive relationship establishes that MEXA's reference free, task-independent retrieval criterion serves as a  reliable and efficient proxy for  multilingual reasoning performance.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/fig_validity_model_level.pdf}
+\caption{\textbf{Model-Level Downstream Validity}. Correlation between average MEXA alignment score ($\mu_{\text{Max}}$) on the FLORES-200 benchmark and downstream model performance on Belebele reading comprehension (left) and m-ARC reasoning (right). Each point represents an evaluated model, showing a strong positive correlation across architectures.}
+\label{fig:validity-model-level}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\textwidth]{figures/fig_validity_language_level.pdf}
+\caption{\textbf{Language-Level Downstream Predictor}. Correlation between per-language MEXA alignment score ($\mu_{\text{Max}}$) on FLORES and downstream zero-shot accuracy on the Belebele benchmark for Llama 3.1 8B. Points represent individual languages, demonstrating that internal alignment predicts functional reasoning at the single-language level.}
+\label{fig:validity-language-level}
+\end{figure}

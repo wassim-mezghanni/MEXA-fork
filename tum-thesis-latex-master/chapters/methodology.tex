@@ -270,13 +270,13 @@ numerically.
 \label{subsec:implementation}
 
 The pipeline is implemented in Python with PyTorch and Hugging Face
-Transformers. \texttt{embed\_extractor.py} loads each checkpoint via
+Transformers. embeddings extractor loads each checkpoint via
 \texttt{AutoModelForCausalLM} (or \texttt{AutoModel} for encoders) with
 output of all hidden states enabled, tokenizes each sentence with the
 model's own tokenizer and stores per-layer sentence embeddings as
 serialized NumPy arrays, one file per language.
-\texttt{compute\_mexa.py} then builds the layer-wise cosine similarity
-matrices in  and evaluates Equation~\eqref{eq:mexa}; 
+The compute of  mexa score then builds the layer-wise cosine similarity
+matrices in  and evaluates Equation~\eqref{eq:mexa}
 
 Formatted per-language and per-layer scores are
 exported to CSV/JSON and explored in an interactive React dashboard developed for this thesis.
