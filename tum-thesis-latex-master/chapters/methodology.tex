@@ -259,7 +259,7 @@ English (\texttt{eng\_Latn}) serves as the pivot in all standard runs, the pivot
 Unless stated otherwise, reported scores use position-weighted average
 embeddings (Equation~\eqref{eq:weighted-avg}) and are given as
 $\mu_{\text{Max}}$ and $\mu_{\text{Mean}}$ per model dataset
-configuration; last-token embeddings and the centered variant are reported as ablations. The analysis is conducted on four levels. First, at the model level, scores are averaged over all languages of a configuration, enabling family and scale comparisons and the reproduction check against published values. Second, at the language level, per-language scores are ranked and grouped by script and by resource level, and cross-referenced with tokenizer fertility (computed on both corpora) to separate tokenization effects from representational effects. Third, at the layer level, full layer-wise alignment profiles $\mu C(\cdot, l)$ are analyzed to locate where in the network alignment peaks and to test the intermediate-layer prediction of the pivot hypothesis. Fourth, at the validity level, Pearson correlations between MEXA scores and downstream accuracy on Belebele \citep{bandarkar2024belebele} and m-ARC \citep{lai2023okapi} over the languages both cover are evaluated to test whether alignment enhances task performance, alongside cross-model correlations measuring consistency across architectures.
+configuration; last-token embeddings and the centered variant are reported as ablations. The analysis is conducted on four levels. \textbf{First}, at the model level, scores are averaged over all languages of a configuration, enabling family and scale comparisons and the reproduction check against published values. \textbf{Second}, at the language level, per-language scores are ranked and grouped by script and by resource level, and cross-referenced with tokenizer fertility (computed on both corpora) to separate tokenization effects from representational effects. \textbf{Third}, at the layer level, full layer-wise alignment profiles $\mu C(\cdot, l)$ are analyzed to locate where in the network alignment peaks and to test the intermediate-layer prediction of the pivot hypothesis. \textbf{Fourth}, at the validity level, Pearson correlations between MEXA scores and downstream accuracy on Belebele \citep{bandarkar2024belebele} and m-ARC \citep{lai2023okapi} over the languages both cover are evaluated to test whether alignment enhances task performance, alongside cross-model correlations measuring consistency across architectures.
 
 For qualitative inspection, sentence embeddings are also projected to two and three dimensions with PCA and t-SNE, colored by language and script,
 to visualize the clustering behavior that the retrieval score summarizes
@@ -281,6 +281,6 @@ matrices in  and evaluates Equation~\eqref{eq:mexa}
 Formatted per-language and per-layer scores are
 exported to CSV/JSON and explored in an interactive React dashboard developed for this thesis.
 
-Small models were run locally; all large-scale extraction jobs (8B and
+Small models and large-scale extraction jobs (8B and
 above, MoE and full-corpus sweeps) were executed on the CIT-TUM-HN
-SLURM cluster at TUM Campus Heilbronn on NVIDIA data-center GPUs, 
+SLURM cluster at TUM Campus Heilbronn on NVIDIA GPUs.

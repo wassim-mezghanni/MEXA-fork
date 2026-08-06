@@ -85,9 +85,17 @@ Across all model families, we observe a pronounced hierarchy in cross-lingual re
 \subsection{Reproduction of the Original Results}
 \label{subsec:results-reproduction}
 
-To have a verified baseline for our extended evaluations, we first reproduced the reference experiments reported by Kargaran et al.~(2025) across both the FLORES-200 and Bible parallel datasets under identical token weighted position pooling and retrieval settings.
+For a verified baseline for the extended evaluations, we reproduced the reference experiments reported by Kargaran et al.~(2025) across both the FLORES-200 and Bible parallel datasets under identical token weighted position pooling and retrieval settings.
 
-As shown in Table~\ref{tab:mexa-flores-table1}, the reproduction of Llama~3.1~8B yields an average peak alignment of $\mu_{\text{Max}} = 0.6706$ and a layer-mean alignment of $\mu_{\text{Mean}} = 0.4143$ across the 116 FLORES languages. Mistral~7B~v0.3 achieves $\mu_{\text{Max}} = 0.4934$ and $\mu_{\text{Mean}} = 0.2813$. For bi-directional encoders, XLM-RoBERTa Large obtains $\mu_{\text{Max}} = 0.6441$ ($\mu_{\text{Mean}} = 0.4256$), while Glot500 reaches $\mu_{\text{Max}} = 0.5889$ ($\mu_{\text{Mean}} = 0.3893$). Finally, LaBSE confirms its high sentence-level cross-lingual mapping with $\mu_{\text{Max}} = 0.9510$ and $\mu_{\text{Mean}} = 0.7230$.
+As shown in Table~\ref{tab:mexa-flores-table1}, the reproduction of Llama~3.1~8B yields an average peak alignment of $\mu_{\text{Max}} = 0.6706$ and a layer-mean alignment of $\mu_{\text{Mean}} = 0.4143$ across the 116 FLORES languages. Mistral~7B~v0.3 achieves $\mu_{\text{Max}} = 0.4934$ and $\mu_{\text{Mean}} = 0.2813$. For bi-directional encoders, XLM-RoBERTa Large obtains $\mu_{\text{Max}} = 0.6441$ ($\mu_{\text{Mean}} = 0.4256$), while Glot500 reaches $\mu_{\text{Max}} = 0.5889$ ($\mu_{\text{Mean}} = 0.3893$). Finally, LaBSE confirms its high sentence level cross-lingual $\mu_{\text{Max}} = 0.9510$ and $\mu_{\text{Mean}} = 0.7230$. This representation is illustrated in  Figure~\ref{fig:embedding-projections}, which visualizes the t-SNE embedding projections at early, middle, and final layers.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.75\textwidth]{figures/fig_embedding_projections.pdf}
+\caption{\textbf{t-SNE Embedding Projections across Llama 3.1 8B Layers}. The 2D t-SNE projections of parallel sentences from the FLORES-200 corpus at Layer 0 (left), Layer 16 (center) and Layer 32 (right), colored by language script. At Layer 0, representations are  segregated by surface script. By Layer 16, the representation space converges into a unified semantic manifold where parallel sentences overlap perfectly regardless of script. By Layer 32, vocabulary-specific prediction demands force representations to segregate.}
+\label{fig:embedding-projections}
+\end{figure}
+
 
 Comparing score metrics (Figure~\ref{fig:max-vs-mean}), we observe strong rank correlation between peak ($\mu_{\text{Max}}$) and layer-mean ($\mu_{\text{Mean}}$) performance. Across all 16 evaluated models on FLORES, the Spearman rank correlation between $\mu_{\text{Max}}$ and $\mu_{\text{Mean}}$ reaches $\rho = 0.9500$ ($p < 10^{-7}$). Within the decoder-only subset, rank ordering between peak and mean alignment is virtually identical ($\rho = 0.9762$, $p < 10^{-4}$), confirming that a model's peak alignment strongly predicts its overall cross-lingual coherence across intermediate layers.
 
