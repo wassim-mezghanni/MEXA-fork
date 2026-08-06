@@ -165,7 +165,7 @@ A critical architectural trend in contemporary LLMs is the deployment of sparse 
 Comparing dense decoders against their sparse MoE counterparts reveals consistent alignment improvements. Dense \textbf{Mistral 7B v0.3} obtains a peak score of $\mu_{\text{Max}} = 0.4934$ ($\mu_{\text{Mean}} = 0.2813$) on FLORES. In contrast, \textbf{Mixtral 8x7B} (which activates ~13B parameters per token) achieves $\mu_{\text{Max}} = 0.5385$ ($\mu_{\text{Mean}} = 0.3214$), yielding a $+4.51$ percentage point increase in peak alignment. Scaling further to \textbf{Mixtral 8x22B} (activating ~39B parameters per token) raises peak alignment to $\mu_{\text{Max}} = 0.6120$ ($\mu_{\text{Mean}} = 0.3950$), outperforming Llama 3.1 8B's mean alignment while maintaining sparse execution efficiency.
 
 \paragraph{Routing dynamics and representation integrity.}
-Our empirical findings confirm that top-2 expert gating does not isolate languages into segregated expert sub-networks. Because gating functions operate at the token level, tokens across diverse typological families share expert capacity based on syntactic and semantic roles rather than language identity tags. Consequently, intermediate hidden states in MoE architectures maintain strong cross-lingual alignment trajectories comparable to dense transformers, demonstrating that sparse capacity scaling enhances multilingual representation strength without incurring representational fragmentation.
+Our empirical alignment scores support the theoretical consensus in Mixture-of-Experts literature: top-2 expert gating does not isolate languages into segregated expert sub-networks. Analysis of router distributions in MoE architectures \citep{jiang2024mixtral} shows that gating functions operate at the token level, distributing tokens across experts based on syntactic and semantic roles rather than language identity tags. Consequently, intermediate hidden states in MoE architectures maintain strong cross-lingual alignment trajectories comparable to dense transformers, demonstrating that sparse capacity scaling improves multilingual alignment without separating the languages in vector space.
 
 % ------------------------------------------------------------
 \section{Non-English Pivots}
@@ -187,7 +187,26 @@ When mean-centering (Equation~\ref{eq:mexa}) is applied to eliminate language-id
 Cross-lingual alignment scores vary substantially across script families and resource tiers. Across all evaluated decoders, high-resource Romance and Germanic languages in the Latin script (e.g., French, Spanish, German) achieve the highest alignment scores ($\mu_{\text{Max}} \ge 0.75$). Non-Latin high-resource scripts (Cyrillic, Devanagari, Arabic, Han) achieve moderate-to-high alignment ($\mu_{\text{Max}} \approx 0.60 - 0.75$). In contrast, low-resource non-Latin scripts (e.g., Ge'ez for Amharic, Myanmar script for Burmese, Khmer, and Cherokee) exhibit the lowest raw alignment scores ($\mu_{\text{Max}} \approx 0.25 - 0.45$).
 
 \paragraph{The tokenizer fertility tax.}
-A primary factor driving low-resource alignment degradation is subword tokenization fertility $F_L$ (the average number of tokens produced per word). We observe a strong negative correlation between tokenizer fertility and peak MEXA alignment score across languages ($r = -0.68$, $p < 10^{-6}$). High fertility shatters words into fine-grained byte sequences, diluting contextual representations per token position and forcing the model to reconstruct lexical semantics across longer token sequences.
+A major cause of low-resource alignment drop is subword tokenization fertility $F_L$ (the average tokens per word). We find a strong negative correlation between fertility and alignment scores ($r \in [-0.46, -0.62]$ depending on the model, $p < 10^{-6}$).
+
+This happens because of how position-weighted pooling (Equation~\ref{eq:weighted-avg}) works. When a word is split into many small tokens, the sentence length $T$ increases. This spreads the semantic information thin, diluting the weight $w_t$ of each token. Under causal attention, these fragmented tokens carry weaker semantic meaning than the clean tokens of the pivot language. The resulting sentence embedding $e^{(l)}$ becomes noisy, which drops the similarity diagonal $c_{ii}(l)$. Once $c_{ii}(l)$ falls below the off-diagonal distractor values ($c_{ij}$ or $c_{ji}$), the matching condition in Equation~\ref{eq:mexa} fails.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/fig_fertility_alignment.pdf}
+\caption{\textbf{Impact of Tokenizer Fertility on Cross-Lingual Alignment}. Correlation between average subword tokenizer fertility (tokens per sentence) and average MEXA alignment score ($\mu_{\text{Max}}$) across languages in the FLORES-200 corpus. Languages are colored by script family, showing that higher fertility is strongly associated with degraded semantic alignment.}
+\label{fig:fertility-vs-alignment}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig_tokenization_comparison.pdf}
+\caption{\textbf{Tokenization Fragmentation and Fertility Tax Example}. Visual tokenization of the same parallel sentence (FLORES-200 sentence 1) using the Qwen3 tokenizer. Under-represented language-script combinations (e.g. Minangkabau in Arabic script) are split into character-level pieces, multiplying sequence length and diluting semantic context.}
+\label{fig:tokenization-comparison}
+\end{figure}
+
+
+
 
 % ------------------------------------------------------------
 \section{Validity of MEXA}
