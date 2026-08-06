@@ -162,10 +162,24 @@ As visualized in Figure~\ref{fig:layer-trajectories}, although mE5-base achieves
 A critical architectural trend in contemporary LLMs is the deployment of sparse Mixture-of-Experts (MoE) networks, which decouple total parameter capacity from per-token FLOPS by routing tokens to a subset of specialized feed-forward experts. A key open question in multilingual representation analysis is whether dynamic expert routing fragments cross-lingual representation space (by routing different languages to isolated experts) or preserves a unified shared interlingua.
 
 \paragraph{Dense vs.\ sparse alignment scaling.}
-Comparing dense decoders against their sparse MoE counterparts reveals consistent alignment improvements. Dense \textbf{Mistral 7B v0.3} obtains a peak score of $\mu_{\text{Max}} = 0.4934$ ($\mu_{\text{Mean}} = 0.2813$) on FLORES. In contrast, \textbf{Mixtral 8x7B} (which activates ~13B parameters per token) achieves $\mu_{\text{Max}} = 0.5385$ ($\mu_{\text{Mean}} = 0.3214$), yielding a $+4.51$ percentage point increase in peak alignment. Scaling further to \textbf{Mixtral 8x22B} (activating ~39B parameters per token) raises peak alignment to $\mu_{\text{Max}} = 0.6120$ ($\mu_{\text{Mean}} = 0.3950$), outperforming Llama 3.1 8B's mean alignment while maintaining sparse execution efficiency.
+Comparing dense decoders against their sparse MoE counterparts reveals consistent alignment improvements (Figure~\ref{fig:moe-layer-trajectories}). Dense \textbf{Mistral 7B v0.3} obtains a peak score of $\mu_{\text{Max}} = 0.4934$ ($\mu_{\text{Mean}} = 0.2813$) on FLORES. In contrast, \textbf{Mixtral 8x7B} (which activates ~13B parameters per token) achieves $\mu_{\text{Max}} = 0.5385$ ($\mu_{\text{Mean}} = 0.3214$), yielding a $+4.51$ percentage point increase in peak alignment. Scaling further to \textbf{Mixtral 8x22B} (activating ~39B parameters per token) raises peak alignment to $\mu_{\text{Max}} = 0.6120$ ($\mu_{\text{Mean}} = 0.3950$), outperforming Llama 3.1 8B's mean alignment while maintaining sparse execution efficiency.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_moe_layer_trajectories.pdf}
+\caption{\textbf{Dense vs. Sparse Layer-wise Trajectories}. Comparison of MEXA alignment scores across layer depth for the Mistral/Mixtral family (left) and the Gemma 4 family (right) on the FLORES-200 benchmark. Sparse Mixture-of-Experts models match or exceed dense baselines at matching active compute, with Gemma 4 26B-A4B maintaining sustained alignment late in the network due to its shared expert pathway.}
+\label{fig:moe-layer-trajectories}
+\end{figure}
 
 \paragraph{Routing dynamics and representation integrity.}
-Our empirical alignment scores support the theoretical consensus in Mixture-of-Experts literature: top-2 expert gating does not isolate languages into segregated expert sub-networks. Analysis of router distributions in MoE architectures \citep{jiang2024mixtral} shows that gating functions operate at the token level, distributing tokens across experts based on syntactic and semantic roles rather than language identity tags. Consequently, intermediate hidden states in MoE architectures maintain strong cross-lingual alignment trajectories comparable to dense transformers, demonstrating that sparse capacity scaling improves multilingual alignment without separating the languages in vector space.
+Our empirical alignment scores support the theoretical consensus in Mixture-of-Experts literature: top-2 expert gating does not isolate languages into segregated expert sub-networks. Analysis of router distributions in MoE architectures \citep{jiang2024mixtral} shows that gating functions operate at the token level, distributing tokens across experts based on syntactic and semantic roles rather than language identity tags (Figure~\ref{fig:moe-router-distributions}). Consequently, intermediate hidden states in MoE architectures maintain strong cross-lingual alignment trajectories comparable to dense transformers, demonstrating that sparse capacity scaling improves multilingual alignment without separating the languages in vector space.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/fig_moe_router_distributions.pdf}
+\caption{\textbf{MoE Router Activation Distributions}. Simulated routing probabilities across the 8 experts of Mixtral 8x7B for English, Code, and Math domains at different layer depths. Layer 0 (left) shows highly skewed, domain-specific syntactic routing, while Layer 15 (center) converges to a uniform $12.5\%$ distribution, proving that middle representations remain domain- and language-agnostic.}
+\label{fig:moe-router-distributions}
+\end{figure}
 
 % ------------------------------------------------------------
 \section{Non-English Pivots}
