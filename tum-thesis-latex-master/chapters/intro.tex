@@ -1,24 +1,83 @@
 \chapter{Introduction}
 \label{ch:introduction}
 
-This is the introduction of the thesis.
+Large language models (LLMs) have become the dominant paradigm in natural language processing, achieving strong performance across a wide range of tasks from question answering to code generation \citep{brown2020gpt3}. A growing share of these models---Llama~3.1 \citep{dubey2024llama3}, Qwen~3 \citep{yang2025qwen3}, Mistral \citep{jiang2023mistral}---are trained on multilingual web-scale corpora and exhibit zero-shot cross-lingual transfer: the ability to perform tasks in languages that were never seen in supervised training data. Yet this multilingual capability is unevenly distributed. Models that appear fluent in French or German may fail on Amharic or Burmese, and the mechanisms that enable---or prevent---transfer across the world's 7,000+ languages remain poorly understood.
 
+A central theoretical claim is the \emph{pivot hypothesis}: during pre-training, multilingual transformers develop a shared, language-agnostic representation space (an \emph{interlingua}) in their intermediate hidden layers, where semantically equivalent sentences from different languages are mapped to nearby points \citep{wendler2024llamas}. If this hypothesis holds, internal representational alignment should predict a model's cross-lingual downstream performance without requiring any task-specific evaluation. Testing this claim, however, requires a metric that can probe internal representations directly, across hundreds of languages, at every layer of a deep network.
+
+MEXA (Multilingual Evaluation via Cross-Lingual Alignment) \citep{kargaran2025mexa} provides exactly such a metric. Given parallel sentences in a target language and a pivot language, MEXA extracts layer-wise hidden states, computes cosine similarity matrices, and applies a bidirectional precision-at-1 retrieval criterion that is robust to the severe anisotropy of LLM embedding spaces \citep{ethayarajh2019contextualized, hammerl2023anisotropy}. The result is a single score per language per layer---no generation, no fine-tuning, no reference translations required.
+
+This thesis reproduces the original MEXA evaluation and extends it substantially along four axes: new decoder families and scales, sparse mixture-of-experts architectures, encoder and embedding models, and non-English pivot languages. The goal is to provide a comprehensive empirical map of where, how, and for whom modern LLMs achieve cross-lingual alignment.
+
+
+% ============================================================
 \section{Motivation}
 \label{sec:intro-motivation}
 
-% TODO: Write the motivation for evaluating multilingual LLM performance with cross-lingual alignment.
+Three converging trends motivate this work.
 
+\paragraph{The multilingual promise and its gaps.}
+Contemporary LLMs are increasingly deployed in multilingual settings---from machine translation to multilingual search and document understanding. Yet standard evaluation benchmarks cover only a fraction of the world's languages and scripts \citep{bandarkar2024belebele, lai2023okapi}. Languages written in non-Latin scripts or lacking large digital corpora are systematically under-served: their tokenizers fragment words into character-level pieces (the \emph{fertility tax}), their representations are poorly aligned with the English-centric core, and their downstream performance lags far behind \citep{nllbteam2022}. Understanding where this gap originates---at the tokenizer, in the representation space, or in the training data---requires tools that can diagnose model internals rather than merely measure task output.
+
+\paragraph{The need for reference-free, task-agnostic evaluation.}
+Traditional multilingual evaluation relies on downstream benchmarks that conflate representation quality with generation capabilities, prompt sensitivity, and task-specific confounds. A model may score well on a translated reading comprehension test not because it has aligned representations, but because it memorized surface patterns. Conversely, a model with strong internal alignment may underperform due to poor decoding. Reference-free metrics like MEXA decouple these factors by directly probing the hidden-state geometry, offering a cleaner signal for comparing architectures, training recipes, and scaling laws.
+
+\paragraph{Rapid architectural evolution.}
+The LLM landscape evolves rapidly. Since the publication of MEXA, several major model families have been released---Qwen~3 and~3.5 \citep{yang2025qwen3}, Mixtral \citep{jiang2024mixtral}, Gemma~4---each with different training data compositions, vocabulary sizes, and architectural innovations such as sparse mixture-of-experts routing. Whether these advances improve or degrade multilingual alignment is an empirical question that the original study could not address. This thesis fills that gap.
+
+
+% ============================================================
 \section{Research Questions}
 \label{sec:intro-research-questions}
 
-% TODO: Define the primary research questions of this thesis.
+This thesis investigates the following research questions, each corresponding to one of the four experimental axes:
 
+\begin{description}
+    \item[RQ1 (Scale \& Recipe)] \emph{How does cross-lingual alignment scale with model parameters and pre-training recipe?} \\
+    We evaluate decoder families across parameter sweeps (Qwen~3 at 0.6B--8B, Gemma~4 at 2B--31B) and compare alignment across families at matched scale (Llama~3.1~8B vs.\ Qwen~3~8B vs.\ Apertus~8B) to isolate the effects of scale, vocabulary design, and multilingual data composition.
+
+    \item[RQ2 (Sparse Architectures)] \emph{Does sparse mixture-of-experts routing fragment or preserve the shared interlingua?} \\
+    By comparing dense models against their MoE counterparts (Mistral~7B vs.\ Mixtral~8x7B and~8x22B; dense Gemma~4 vs.\ Gemma~4~26B-A4B), we test whether expert specialization leads to language-specific routing that degrades the shared representation space.
+
+    \item[RQ3 (Pivot Independence)] \emph{Is the interlingua English-centric or genuinely language-agnostic?} \\
+    We substitute the English pivot with French, German, Arabic, Chinese, and Basque---spanning high-resource Latin-script, non-Latin-script, and a language isolate---and apply mean-centering to remove language-identity offsets, testing whether alignment scores are invariant to pivot choice.
+
+    \item[RQ4 (Predictive Validity)] \emph{Does internal representational alignment predict downstream multilingual task performance?} \\
+    We correlate MEXA scores against Belebele reading comprehension \citep{bandarkar2024belebele} and m-ARC reasoning \citep{lai2023okapi} at both the model level and the language level to validate MEXA as a reliable proxy for functional multilingual capability.
+\end{description}
+
+
+% ============================================================
 \section{Contributions}
 \label{sec:intro-contributions}
 
-% TODO: Outline the main contributions of this work.
+The main contributions of this thesis are:
 
+\begin{enumerate}
+    \item \textbf{Reproduction and validation.} We reproduce the original MEXA evaluation on Llama~3.1~8B and Mistral~7B~v0.3 with matching configurations, confirming pipeline correctness and establishing a verified baseline for all extensions.
+
+    \item \textbf{Extended model coverage.} We apply MEXA to 25+ models spanning four architectural categories---causal decoders (Qwen~3, Qwen~3.5, Apertus, Gemma~4), sparse MoE models (Mixtral~8x7B/8x22B, Gemma~4~26B-A4B), masked-LM encoders (XLM-RoBERTa, Glot500 \citep{imani2023glot500}), and contrastive sentence encoders (LaBSE \citep{feng2022labse}, mE5 \citep{wang2024multilingual})---providing the most comprehensive cross-architectural alignment comparison to date.
+
+    \item \textbf{Non-English pivot analysis.} We demonstrate that MEXA alignment is not an artifact of English centricity: substituting five diverse pivot languages yields consistent scores, and mean-centering achieves near-perfect alignment ($\mu_{\text{Max}} \ge 0.89$) across all pivots, confirming a genuinely multilingual interlingua.
+
+    \item \textbf{Tokenizer fertility and script analysis.} We quantify the fertility tax across all evaluated models and corpora, establishing strong negative correlations ($r \in [-0.46, -0.62]$) between subword fragmentation and alignment, and identifying script family as the primary grouping variable for per-language performance.
+
+    \item \textbf{Open tooling and visualization.} We develop an interactive React dashboard for exploring alignment scores, layer trajectories, fertility correlations, and embedding projections across all models, languages, and configurations, enabling transparent inspection of all results presented in this thesis.
+\end{enumerate}
+
+
+% ============================================================
 \section{Thesis Outline}
 \label{sec:intro-thesis-outline}
 
-% TODO: Describe the outline of the subsequent chapters of this thesis.
+The remainder of this thesis is structured as follows:
+
+\begin{description}
+    \item[Chapter~\ref{ch:background}: Background] provides the theoretical foundations, reviewing multilingual transformer architectures, the tokenization bottleneck, cross-lingual transfer mechanisms, the English pivot assumption, evaluation paradigms (reference-based vs.\ reference-free), alignment challenges such as anisotropy, and the parallel corpora used in this work (FLORES-200 and the Parallel Bible Corpus).
+
+    \item[Chapter~\ref{ch:methodology}: Methodology] formalizes the four-stage MEXA pipeline (embedding extraction, similarity computation, bidirectional retrieval scoring, layer-wise aggregation) and its extensions (mean-centering, non-English pivots). It then specifies the 25+ evaluated models grouped by architectural category, the dataset configurations, the analysis methods at model, language, layer, and validity levels, and the compute infrastructure.
+
+    \item[Chapter~\ref{ch:results}: Results and Discussion] presents the empirical findings. It begins with the reproduction check and model-family comparisons, then reports scaling laws within decoder families, MoE alignment dynamics and router analysis, non-English pivot experiments, the cross-experiment language analysis including the tokenizer fertility tax, and finally the downstream validity correlations against Belebele and m-ARC.
+
+    \item[Chapter~\ref{ch:conclusion}: Conclusion] summarizes the key findings, discusses limitations of the current study, and proposes directions for future research.
+\end{description}
