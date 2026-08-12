@@ -1,35 +1,75 @@
 \chapter{Background}
 \label{ch:background}
 
-This chapter provides the theoretical foundation for evaluating multilingual large language models (LLMs) via cross-lingual alignment. Section~\ref{sec:multilingual-lm} reviews transformer-based multilingual architectures, tokenization challenges, cross-lingual transfer mechanisms, and the role of English as a pivot language. Section~\ref{sec:multilingual-evaluation} discusses evaluation paradigms, contrasting reference-based vs.\ reference-free metrics and detailing alignment challenges. Section~\ref{sec:parallel-corpora} introduces the parallel corpora utilized in this work and examines linguistic typology and resource disparity.
+This chapter covers the ideas needed to follow the experiments in Chapters~\ref{ch:methodology} and~\ref{ch:results}. Section~\ref{sec:multilingual-lm} reviews transformer-based multilingual architectures, the tokenization bottleneck, cross-lingual transfer, and the role of English as a pivot language. Section~\ref{sec:multilingual-evaluation} discusses evaluation paradigms, contrasting reference-based and reference-free metrics and explaining why alignment measurement is hard. Section~\ref{sec:parallel-corpora} introduces the two parallel corpora used in this work.
 
 % ------------------------------------------------------------
 \section{Multilingual Language Models}
 \label{sec:multilingual-lm}
 
-\subsection{Architectures and Pre-training}
+\subsection{Transformer Architectures}
 \label{subsec:architectures-pretraining}
 
-Multilingual language models extend single-language representations by joint pre-training on text corpora spanning dozens to hundreds of languages. Contemporary architectures fall into three primary classes. First, Masked Language Models (MLMs), such as XLM-RoBERTa \citep{conneau2020xlmr} and Glot500 \citep{imani2023glot500}, are bidirectional encoder models trained via masked token prediction. Second, Causal Decoders, including autoregressive models like Llama 3.1 \citep{dubey2024llama3}, Qwen 3 \citep{yang2025qwen3}, and Apertus \citep{alhafni2025apertus}, are trained via next-token prediction on large web-scale multilingual mixtures. Third, Contrastive Sentence Encoders, such as LaBSE \citep{feng2022labse} and mE5-base \citep{wang2024multilingual}, are dual-encoder architectures explicitly fine-tuned via contrastive loss to map parallel sentences into shared vector spaces.
+All models evaluated in this thesis are built on the transformer architecture \citep{vaswani2017attention}. A transformer stacks $L$ identical layers, each consisting of a multi-head self-attention block followed by a position-wise feed-forward network. The input to the model is a sequence of tokens, each mapped to a $d$-dimensional vector by an embedding table (layer 0). At every subsequent layer $l$, the self-attention mechanism lets each token attend to other tokens in the sequence, and the resulting hidden states $h_t^{(l)}$ encode progressively more abstract representations of meaning. The MEXA pipeline (Chapter~\ref{ch:methodology}) extracts exactly these per-layer hidden states.
 
+What differs between model families is the \emph{attention mask}, which determines which tokens can attend to which. This distinction gives rise to three broad classes of multilingual models (Figure~\ref{fig:transformer-schematic}).
+
+\paragraph{Masked language models (MLMs).}
+Bidirectional encoders such as XLM-RoBERTa \citep{conneau2020xlmr} and Glot500 \citep{imani2023glot500} use full (bidirectional) attention: every token can attend to every other token in the sequence. They are trained by masking a fraction of input tokens and predicting the masked ones from context. Because attention is bidirectional, each hidden state $h_t^{(l)}$ reflects the full sentence, regardless of position.
+
+\paragraph{Causal decoders.}
+Autoregressive models such as Llama 3.1 \citep{dubey2024llama3}, Qwen 3 \citep{yang2025qwen3}, and Apertus \citep{apertus2025} apply a causal attention mask: token $t$ can only attend to tokens at positions $\le t$. They are trained to predict the next token given all preceding tokens. This means early tokens in a sentence carry little context, while the final token has seen the entire sequence. The asymmetry matters for how we pool hidden states into sentence embeddings (Section~\ref{sec:mexa-pipeline}).
+
+\paragraph{Contrastive sentence encoders.}
+Models such as LaBSE \citep{feng2022labse} and mE5-base \citep{wang2024multilingual} start from a pretrained encoder or decoder but are then fine-tuned with a contrastive loss: parallel sentences (translations) are pulled together in vector space, while non-parallel sentences are pushed apart. The result is an embedding space where cosine similarity between translations is high by design. These models set an upper bound on what alignment looks like when it is an explicit training objective.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/fig_transformer_schematic.pdf}
+\caption{\textbf{Encoder vs.\ decoder transformer architectures}. Left: a bidirectional encoder (e.g., XLM-R) where every token attends to every other token. Right: a causal decoder (e.g., Llama 3.1) where each token attends only to preceding tokens. Both produce layer-wise hidden states $h^{(l)}$ that the MEXA pipeline extracts.}
+\label{fig:transformer-schematic}
+\end{figure}
+
+% ..............................................
+\subsection{Sparse Mixture-of-Experts}
+\label{subsec:moe-background}
+
+A recent trend in scaling language models is sparse mixture-of-experts (MoE) \citep{jiang2024mixtral}. In a standard (dense) transformer, every token passes through the same feed-forward network at each layer. In an MoE transformer, the feed-forward block is replaced by $E$ parallel expert networks, and a learned router selects a small subset (typically 2 out of 8) for each token. The total parameter count is much larger than in a dense model, but the per-token compute stays roughly constant.
+
+For multilingual alignment, MoE raises a specific question: does the router send tokens from different languages to different experts, or do experts specialize by syntactic or semantic function regardless of language? If experts are language-specific, the shared representation space could fragment. If they are function-specific, alignment should be preserved. We test this empirically in Section~\ref{sec:results-moe}.
+
+% ..............................................
 \subsection{The Tokenization Bottleneck}
 \label{subsec:tokenization-bottleneck}
 
-A primary bottleneck in multilingual modeling is subword tokenization. Standard Byte-Pair Encoding (BPE) or WordPiece tokenizers allocate vocabulary slots based on pre-training corpus frequencies. Because high-resource languages dominate pre-training corpora, low-resource and non-Latin script languages suffer from excessive subword fragmentation—a phenomenon known as the \emph{fertility tax}. High fertility shatters words into fine-grained byte sequences, increasing sequence length and degrading representation quality.
+Before any text reaches the transformer, it must be split into subword tokens. The standard approach is Byte-Pair Encoding (BPE) \citep{sennrich2016bpe}: starting from individual bytes or characters, the algorithm iteratively merges the most frequent adjacent pair into a new token until a fixed vocabulary size is reached. Because the merge statistics are computed over the training corpus, languages that are well-represented get longer, more meaningful tokens (e.g., ``scientist'' stays as one token in English), while under-represented languages are split into short, often meaningless fragments (e.g., an Amharic word may become 8+ byte-level tokens).
 
-\subsection{Cross-lingual Transfer}
+The ratio of tokens to words is called \emph{fertility} ($F_L$). High fertility has two consequences for cross-lingual alignment \citep{petrov2023tokenizer}. First, the sequence gets longer, so each token's weight in a pooled sentence embedding is diluted. Second, the individual token representations carry less semantic information, because each fragment sees less meaningful context under causal attention. Section~\ref{sec:results-cross-experiment} quantifies this effect.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\textwidth]{figures/fig_bpe_example.pdf}
+\caption{\textbf{BPE tokenization across languages}. The same sentence tokenized in English (6 tokens), German (10 tokens), and Amharic (13 tokens). Under-represented languages are fragmented into more subword pieces, increasing fertility $F$ and diluting semantic content per token.}
+\label{fig:bpe-example}
+\end{figure}
+
+% ..............................................
+\subsection{Cross-Lingual Transfer}
 \label{subsec:crosslingual-transfer}
 
-Cross-lingual transfer refers to a model's ability to perform tasks in a target language $L_1$ after receiving instruction or training primarily in a source/pivot language $L_2$ (typically English). Cross-lingual transfer relies on the emergence of a shared, language-agnostic representation space (an \emph{interlingua}) in the intermediate hidden layers of deep transformers.
+Cross-lingual transfer is the ability of a model to perform a task in a target language $L_1$ after being trained primarily in a source language $L_2$ (typically English). For this to work, the model's internal representations must be similar for sentences with the same meaning, regardless of language.
 
+The \emph{pivot hypothesis} \citep{wendler2024llamas} offers an explanation: multilingual transformers develop a shared, language-agnostic representation space (an \emph{interlingua}) in their intermediate hidden layers. Sentences with the same meaning in different languages are mapped to nearby points in this space. The hypothesis predicts a specific pattern across layers: early layers encode surface features (script, word order), middle layers converge into a shared semantic space, and late layers diverge again as the model prepares language-specific predictions (next token or masked token). The t-SNE projections in Figure~\ref{fig:embedding-projections} (Chapter~\ref{ch:results}) confirm this pattern empirically.
+
+Whether the interlingua is truly language-agnostic or merely English-centric is one of the questions this thesis investigates (RQ3, Section~\ref{sec:intro-research-questions}).
+
+% ..............................................
 \subsection{English as a Pivot Language}
 \label{subsec:english-pivot}
 
-\paragraph{Pivot translation and alignment.}
-Due to the vast abundance of parallel data paired with English, English is overwhelmingly used as the default pivot language ($L_2$) for machine translation and cross-lingual representation evaluation.
+English dominates both the pre-training data and the parallel data used for evaluation. Most multilingual benchmarks measure performance relative to English, and most alignment metrics (including MEXA in its default configuration) use English as the pivot language $L_2$.
 
-\paragraph{English centricity and bias.}
-However, heavy reliance on an English pivot risks inheriting English-centric inductive biases. Evaluating alignment against alternative non-English pivots (e.g., French, German, Arabic, Chinese, or Basque) is essential to determine whether intermediate representations represent a true, universal interlingua or an English-anchored space.
+This raises a concern: if alignment is only measured against English, we cannot tell whether the model has a true interlingua or just a good English--to--everything mapping. Evaluating with alternative pivots (French, German, Arabic, Chinese, Basque) is one way to test this. If alignment scores remain stable across pivots, the space is genuinely multilingual. If they drop for non-English pivots, the model's representations may be organized around English. We run this test in Section~\ref{sec:results-non-english-pivots}.
 
 % ------------------------------------------------------------
 \section{Multilingual Evaluation}
@@ -38,28 +78,56 @@ However, heavy reliance on an English pivot risks inheriting English-centric ind
 \subsection{Standard Benchmarks}
 \label{subsec:standard-benchmarks}
 
-Conventional multilingual evaluation relies on downstream task accuracy across translated benchmarks, such as Belebele \citep{bandarkar2024belebele} for reading comprehension and m-ARC \citep{lai2023okapi} for reasoning. However, downstream task performance mixes representation quality with task-specific generation and prompt sensitivities.
+Conventional multilingual evaluation measures downstream task accuracy on translated benchmarks, such as Belebele \citep{bandarkar2024belebele} for reading comprehension and m-ARC \citep{lai2023okapi} for reasoning. These benchmarks are useful for ranking models on functional performance, but they mix several factors: the quality of the model's internal representations, its generation ability, its sensitivity to prompt wording, and task-specific confounds. A model might score well not because its representations are aligned, but because it memorized surface patterns. Conversely, a model with strong internal alignment might underperform because of poor decoding.
 
 \subsection{Reference-Based vs.\ Reference-Free Metrics}
 \label{sec:ref-free-metrics}
 
-Reference-based metrics (such as BLEU or chrF) evaluate generated translations against human references, requiring external target outputs. In contrast, reference-free internal representation metrics (such as MEXA) inspect raw transformer hidden states directly from parallel sentence pairs, evaluating representation alignment without requiring task fine-tuning or text generation.
+Reference-based metrics (BLEU, chrF) evaluate generated translations against human references. They require external target outputs and only measure surface-level output quality. Reference-free metrics such as MEXA take a different approach: they inspect the transformer's hidden states directly from parallel sentence pairs, measuring how well the model's internal representations align across languages. No generation, fine-tuning, or reference translations are needed. This makes reference-free metrics faster to compute and easier to scale across hundreds of languages.
 
-\subsection{Challenges in Cross-lingual Alignment Evaluation}
+\subsection{Challenges in Alignment Evaluation}
 \label{subsec:alignment-challenges}
 
-Evaluating hidden state alignment presents major challenges due to representation \emph{anisotropy}—the tendency of LLM embeddings to occupy a narrow cone in vector space. Raw cosine similarity in anisotropic spaces is dominated by high-frequency language-identity offset vectors. Methods like MEXA overcome anisotropy by combining bidirectional precision-at-1 retrieval filtering with mean-centering.
+Measuring alignment from hidden states is not straightforward. The main obstacle is representation \emph{anisotropy}: LLM embeddings tend to cluster in a narrow cone in vector space rather than spreading uniformly across all directions \citep{ethayarajh2019contextualized, hammerl2023anisotropy}. Figure~\ref{fig:anisotropy-illustration} illustrates the difference.
+
+In an isotropic space, cosine similarity between unrelated sentence pairs is close to zero, so a high similarity between two sentences is a meaningful signal. In an anisotropic space, \emph{all} pairs have high cosine similarity simply because all vectors point in roughly the same direction. The similarity between a true translation pair may be 0.95, but the similarity between two unrelated sentences may also be 0.92. Raw cosine similarity cannot distinguish the two.
+
+On top of anisotropy, each language has its own mean embedding offset (a ``language-identity vector''). Sentences in French cluster together and sentences in German cluster together, regardless of content. This offset inflates within-language similarity and makes cross-language similarity harder to interpret.
+
+MEXA addresses both problems. The bidirectional retrieval criterion (Section~\ref{sec:mexa-pipeline}) does not rely on absolute cosine values; it only asks whether the true pair's similarity exceeds all distractors, which is a relative comparison unaffected by uniform shifts. The optional mean-centering step removes language-identity offsets entirely, isolating the semantic component of alignment.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\textwidth]{figures/fig_anisotropy_illustration.pdf}
+\caption{\textbf{Isotropic vs.\ anisotropic embedding spaces}. (a) In an isotropic space, embeddings spread across all directions; cosine similarity between random pairs is low. (b) In an anisotropic space, all embeddings cluster in a narrow cone; cosine similarity between random pairs is high, making it unreliable for measuring true semantic alignment.}
+\label{fig:anisotropy-illustration}
+\end{figure}
 
 % ------------------------------------------------------------
 \section{Parallel Corpora}
 \label{sec:parallel-corpora}
 
-\subsection{Sources and Typology}
+\subsection{Sources}
 \label{subsec:parallel-sources}
 
-Parallel evaluation relies on high-quality multi-parallel sentence datasets. We utilize two primary sources: FLORES-200, a high-quality benchmark dataset \citep{nllbteam2022} derived from Wikipedia articles across 200+ languages, and the Super-Parallel Bible Corpus (sPBC), which contains verse-aligned translations \citep{mayer2014bible} spanning over 1,400+ languages and scripts.
+All experiments in this thesis use two multi-parallel sentence datasets.
+
+\paragraph{FLORES-200} \citep{nllbteam2022} is a high-quality benchmark derived from Wikipedia articles. It covers 200+ language-script pairs with professionally translated sentences on topics in geography, history, and science. The vocabulary is modern and syntactically varied, making it a good proxy for the kind of text LLMs encounter in their training data.
+
+\paragraph{Super-Parallel Bible Corpus (sPBC)} \citep{mayer2014bible} contains verse-aligned Bible translations spanning over 1,400 language-script pairs. The text is historical and religious, with archaic vocabulary, repetitive semantic motifs, and unusual syntax. Despite its narrow domain, the Bible corpus is often the only parallel text available for extremely low-resource languages, including languages written in scripts absent from modern benchmarks (Ge'ez, Hebrew, various regional scripts).
+
+The two corpora are complementary. FLORES tests alignment on modern, diverse prose; the Bible tests alignment on archaic, domain-restricted text. If a model's alignment rankings are consistent across both, the metric is measuring something stable about the model rather than something specific to the domain.
 
 \subsection{Resource Disparity}
 \label{subsec:resource-disparity}
 
-Languages exhibit severe resource disparities across high-resource (Latin-script European), medium-resource (Cyrillic, Devanagari, Arabic, Han), and low-resource tiers (Ge'ez, Myanmar, Khmer, Cherokee). Evaluating alignment across both FLORES and Bible benchmarks provides comprehensive coverage across the entire typological spectrum.
+Languages vary enormously in how much digital text exists for them. High-resource languages (English, French, German) have billions of tokens of web text and well-optimized tokenizers. Medium-resource languages (Russian, Hindi, Arabic, Chinese) have substantial but smaller corpora and less efficient tokenization. Low-resource languages (Amharic, Burmese, Khmer, Cherokee) may have only a few million tokens, leading to poor tokenizer coverage and high fertility.
+
+Figure~\ref{fig:resource-disparity} shows the distribution of languages by script family across the two evaluation corpora. FLORES is dominated by Latin-script languages, while the Bible corpus extends much deeper into under-represented scripts. Using both corpora together gives evaluation coverage across the full resource spectrum.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/fig_resource_disparity.pdf}
+\caption{\textbf{Language-script distribution across evaluation corpora}. Number of languages per script family in FLORES-200 and the Bible corpus (sPBC). The Bible corpus extends coverage deep into low-resource, non-Latin scripts that FLORES does not reach.}
+\label{fig:resource-disparity}
+\end{figure}

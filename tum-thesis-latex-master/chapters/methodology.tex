@@ -7,25 +7,51 @@ This chapter describes the experimental setup. We first formalize the MEXA pipel
 \section{The MEXA Pipeline}
 \label{sec:mexa-pipeline}
 
-MEXA (Multilingual Evaluation via Cross-Lingual Alignment) estimates the multilingual coverage of a language model $m$ from parallel sentences alone, in four stages: sentence-embedding extraction, layer-wise similarity computation, alignment scoring, and aggregation.
+MEXA (Multilingual Evaluation via Cross-Lingual Alignment) estimates the multilingual coverage of a language model~$m$ from parallel sentences alone. We first describe the baseline four-stage evaluation pipeline as introduced by \citet{kargaran2025mexa} (Section~\ref{subsec:original-pipeline}), and then detail our proposed methodology extensions (Section~\ref{subsec:pipeline-extensions}).
+
+% ..............................................
+\subsection{Standard MEXA Pipeline}
+\label{subsec:original-pipeline}
+
+The reference MEXA framework operates in four sequential stages: sentence-embedding extraction, layer-wise similarity computation, alignment scoring, and aggregation, as schematically overviewed in Figure~\ref{fig:mexa-pipeline-diagram}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\textwidth]{figures/fig_mexa_pipeline_diagram.pdf}
+\caption{\textbf{Schematic Overview of the MEXA Evaluation Pipeline}. The 4-stage pipeline extracts layer-wise hidden states, pools them with position weighting, computes the target-to-pivot similarity matrix $C^{(l)}$, applies bidirectional retrieval (P@1) filtering, and aggregates layer-wise scores into $\mu_{\text{Max}}$ and $\mu_{\text{Mean}}$.}
+\label{fig:mexa-pipeline-diagram}
+\end{figure}
 
 \paragraph{Stage 1: Layer-wise sentence embeddings.}
-Let $\mathcal{S} = \{s_1, \dots, s_n\}$ be a set of $n$ parallel sentences available in a target language $L_1$ and a pivot language $L_2$ (English by default, but configurable). Each sentence is passed through the model, and hidden states $h_t^{(l)}$ are collected for every token $t$ at every layer $l \in \{1, \dots, L\}$, including the embedding layer. Token states are reduced to a single sentence embedding $e^{(l)}$ per layer using one of two strategies. The first is a position-weighted average, where tokens receive weights proportional to their position index. This accounts for the fact that early tokens under causal attention see little context, while late tokens see all of it:
+Let $\mathcal{S} = \{s_1, \dots, s_n\}$ be a set of $n$ parallel sentences available in a target language $L_1$ and a pivot language $L_2$ (English by default, but configurable). Each sentence $s_i$ is passed through the model, and hidden states $h_{i,t}^{(l)}$ are collected for every token $t \in \{1, \dots, T\}$ at each layer $l \in \{0, \dots, L\}$ (where $l=0$ represents the input embedding layer). For a given layer $l$, the token hidden states $\{h_{i,t}^{(l)}\}_{t=1}^T$ are reduced to a single sentence embedding $e_i^{(l)}$ using one of two strategies. The first is a position-weighted average, where tokens receive weights linearly proportional to their position index $t$—so that later tokens in the sequence receive larger weights than earlier ones—as shown in Equation~\eqref{eq:weighted-avg}:
 \begin{equation}
-    e^{(l)} \;=\; \sum_{t=1}^{T} w_t\, h_t^{(l)},
+    e_i^{(l)} \;=\; \sum_{t=1}^{T} w_t\, h_{i,t}^{(l)},
     \qquad
     w_t \;=\; \frac{t}{\sum_{k=1}^{T} k},
     \label{eq:weighted-avg}
 \end{equation}
-where $T$ is the number of non-padding tokens. This is the primary setting in all reported results. The second is last-token pooling, which uses the hidden state of the final non-padding token, $e^{(l)} = h_T^{(l)}$. This position has attended to the entire sentence under causal attention, and is used as a robustness check.
+where $T$ is the number of non-padding tokens. This is the primary setting in all reported results. The second is last-token pooling, which uses the hidden state of the final non-padding token at layer $l$, $e_i^{(l)} = h_{i,T}^{(l)}$. This position has attended to the entire sentence under causal attention, and is used as a robustness check. \citet{kargaran2025mexa} found that position-weighted average pooling consistently yields higher and more stable alignment scores than last-token pooling across causal decoders, as aggregating across all tokens mitigates sensitivity to single-token noise while preserving causal context accumulation.
 
-For encoder-only models (Section~\ref{subsec:encoder-models}), whose attention is bidirectional, the same two reductions apply to the encoder hidden states, so the pipeline is architecture-agnostic. Embeddings are stored per language and per layer; scoring is decoupled from (and far cheaper than) extraction.
+For encoder-only models (Section~\ref{subsec:encoder-models}), whose attention is bidirectional, the same two reductions apply to the encoder hidden states, ensuring the pipeline is architecture-agnostic. Extracted embeddings are saved per language and per layer; consequently, alignment scoring (lightweight matrix calculations) is decoupled from embedding extraction (expensive GPU forward passes), enabling efficient re-evaluation of scoring variants without re-running model inference.
 
 \paragraph{Stage 2: Similarity matrix.}
-For each layer $l$, a cosine similarity matrix $C(L_1, L_2, m, l) \in \mathbb{R}^{n \times n}$ is computed between the $n$ target-language embeddings and the $n$ pivot-language embeddings: $c_{ij}(l)$ is the cosine similarity between target sentence $i$ and pivot sentence $j$. The diagonal entries $c_{ii}(l)$ correspond to true parallel pairs; all off-diagonal entries are non-parallel distractors.
+For each layer~$l \in \{0, \dots, L\}$ of language model~$m$, a pairwise cosine similarity matrix $C^{(l)} \equiv C(L_1, L_2, m, l) \in \mathbb{R}^{n \times n}$ is constructed across the full corpus of $n$ parallel sentences between target language $L_1$ and pivot language $L_2$, as shown in Equation~\eqref{eq:similarity-matrix}:
+\begin{equation}
+    C^{(l)} \;=\;
+    \begin{pmatrix}
+        c_{11}(l) & c_{12}(l) & \dots & c_{1n}(l) \\
+        c_{21}(l) & c_{22}(l) & \dots & c_{2n}(l) \\
+        \vdots    & \vdots    & \ddots & \vdots    \\
+        c_{n1}(l) & c_{n2}(l) & \dots & c_{nn}(l)
+    \end{pmatrix},
+    \qquad
+    c_{ij}(l) \;=\; \cos\!\left(e_{i, L_1}^{(l)},\, e_{j, L_2}^{(l)}\right),
+    \label{eq:similarity-matrix}
+\end{equation}
+where entry $c_{ij}(l)$ denotes the cosine similarity between target sentence~$i \in L_1$ and pivot sentence~$j \in L_2$. The diagonal entries $c_{ii}(l)$ correspond to true parallel sentence pairs, while all off-diagonal entries $c_{ij}(l)$ ($i \neq j$) represent non-parallel distractors.
 
 \paragraph{Stage 3: Alignment score.}
-As discussed in Section~\ref{subsec:alignment-challenges}, absolute cosine values are unreliable in anisotropic LLM embedding spaces. MEXA therefore scores alignment with a \emph{bidirectional retrieval} (precision-at-1) criterion: a sentence pair counts as aligned only if its true similarity strictly exceeds every distractor in both its row and its column,
+As discussed in Section~\ref{subsec:alignment-challenges}, absolute cosine values are unreliable in anisotropic LLM embedding spaces. MEXA therefore scores alignment with a \emph{bidirectional retrieval} (precision-at-1) criterion, as defined in Equation~\eqref{eq:mexa}: a parallel sentence pair~$(i, i)$ counts as aligned at layer~$l$ only if its true parallel similarity $c_{ii}(l)$ strictly exceeds every distractor entry in both its row ($c_{ij}(l)$, $j \neq i$) and its column ($c_{ji}(l)$, $j \neq i$),
 
 \begin{equation}
     \mu C(L_1, L_2, m, l)
@@ -41,37 +67,40 @@ As discussed in Section~\ref{subsec:alignment-challenges}, absolute cosine value
 The score lies in $[0, 1]$. The expected value under random embeddings is approximately $1/n^2$ per pair (both the row and the column condition must hold by chance), so with $n = 100$ sentences a random baseline scores essentially zero. This validates the use of small parallel samples.
 
 \paragraph{Stage 4: Aggregation across layers.}
-The layer-wise scores are summarized into two model-level statistics:
+The layer-wise scores are summarized into two model-level statistics, as shown in Equation~\eqref{eq:mexa-aggregation}:
 \begin{equation}
     \mu_{\text{Max}}(L_1) = \max_{l} \; \mu C(L_1, L_2, m, l),
     \qquad
     \mu_{\text{Mean}}(L_1) = \frac{1}{L} \sum_{l=1}^{L} \mu C(L_1, L_2, m, l).
+    \label{eq:mexa-aggregation}
 \end{equation}
 $\mu_{\text{Max}}$ captures the best alignment a model reaches at any depth, typically in the middle-to-late layers, consistent with the pivot hypothesis. $\mu_{\text{Mean}}$ rewards models that sustain alignment across many layers.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.98\textwidth]{figures/fig_mexa_pipeline_diagram.pdf}
-\caption{\textbf{Schematic Overview of the MEXA Evaluation Pipeline}. The 4-stage pipeline extracts layer-wise hidden states, pools them with position weighting, computes the target-to-pivot similarity matrix $C^{(l)}$, applies bidirectional retrieval (P@1) filtering, and aggregates layer-wise scores into $\mu_{\text{Max}}$ and $\mu_{\text{Mean}}$.}
-\label{fig:mexa-pipeline-diagram}
-\end{figure}
+% ..............................................
+\subsection{Proposed Pipeline Extensions}
+\label{subsec:pipeline-extensions}
 
-\paragraph{Extension: mean-centered scoring.}
-To separate semantic alignment from the language identity signal (Section~\ref{subsec:alignment-challenges}), we also compute a centered variant of Equation~\eqref{eq:mexa}. Before building the similarity matrix at layer $l$, each language's embeddings are shifted by their own mean:
+To extend the baseline MEXA framework, we introduce two methodological extensions designed to isolate representation geometry and test structural pivot assumptions.
+
+\paragraph{Mean-centered alignment scoring.}
+To separate semantic alignment from the language identity signal (Section~\ref{subsec:alignment-challenges}), we propose a centered variant of Equation~\eqref{eq:mexa}. This extension is inspired by \citet{schuster2019crosslingual}, who demonstrated that multilingual contextual representations contain a dominant language-specific centroid offset that can artificially separate language clusters at the expense of semantic alignment.
+
+Before building the similarity matrix at layer~$l$, each language's embeddings are shifted by their sample mean vector, yielding the centered sentence embedding $\tilde{e}_i^{(l)}$ defined in Equation~\eqref{eq:mean-centering}:
 \begin{equation}
     \tilde{e}_i^{(l)} \;=\; e_i^{(l)} - \frac{1}{n}\sum_{k=1}^{n} e_k^{(l)},
+    \label{eq:mean-centering}
 \end{equation}
-applied independently to the target and pivot sides. Centering removes the dominant direction shared by all sentences of a language and sharpens retrieval. Comparing centered and uncentered scores quantifies how much of the measured alignment is carried by language-mean offsets rather than sentence-level semantics.
+applied independently to the target language $L_1$ and pivot language $L_2$. As illustrated geometrically in Figure~\ref{fig:meancentering-geometry} via a two-dimensional Principal Component Analysis (PCA) projection of the sentence embedding space, subtracting language-specific means centers both vector manifolds at the origin, eliminating the dominant language-identity vector $\bar{e}_{L}$ shared by all sentences of a language and sharpening semantic retrieval. Comparing centered alignment scores computed via Equation~\eqref{eq:mean-centering} against uncentered scores from Equation~\eqref{eq:mexa} quantifies how much of the measured alignment is carried by language-mean offsets rather than sentence-level semantics.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.88\textwidth]{figures/fig_meancentering_geometry.pdf}
-\caption{\textbf{Vector Space Geometry of Mean Centering}. (a) Uncentered sentence embeddings are offset into distinct language clusters by a dominant language-identity vector $\bar{e}_{L}$. (b) Subtracting language means centers both manifolds at the origin, eliminating language identity bias and isolating semantic alignment.}
+\caption{\textbf{Vector Space Geometry of Mean Centering}. 2D Principal Component Analysis (PCA) projection of high-dimensional sentence embeddings. (a) Uncentered sentence embeddings projected onto the first two principal components (PC1, PC2) are offset into distinct language clusters by a dominant language-identity vector $\bar{e}_{L}$. (b) Subtracting language means centers both manifolds at the origin, eliminating language identity bias and isolating semantic alignment.}
 \label{fig:meancentering-geometry}
 \end{figure}
 
-\paragraph{Extension: non-English pivots.}
-Equation~\eqref{eq:mexa} does not privilege English mathematically; the pivot $L_2$ is simply a parameter. We use this to test the pivot hypothesis directly by recomputing all alignment scores with French, German, Arabic, Chinese, and Basque as pivot languages. These span high-resource Latin-script, non-Latin-script, and a language isolate. Both standard and centered variants are evaluated.
+\paragraph{Non-English pivot substitution.}
+Equation~\eqref{eq:mexa} does not privilege English mathematically; the pivot $L_2$ is simply a parameter. We propose extending the pipeline to test the pivot hypothesis directly by recomputing all alignment scores across five diverse non-English pivot languages: high-resource Latin-script (French, German), non-Latin-script (Arabic, Chinese), and a language isolate (Basque). Both standard and centered variants are evaluated.
 
 % ------------------------------------------------------------
 \section{Models}

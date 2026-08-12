@@ -4,8 +4,12 @@ import matplotlib.patches as patches
 import numpy as np
 
 base_dir = "/Users/wassim/MEXA-fork"
-output_dir = os.path.join(base_dir, "Evaluating multilingual LLM performance with cross-lingual alignment Thesis/figures")
-os.makedirs(output_dir, exist_ok=True)
+output_dirs = [
+    os.path.join(base_dir, "tum-thesis-latex-master/figures"),
+    os.path.join(base_dir, "Evaluating multilingual LLM performance with cross-lingual alignment Thesis/figures")
+]
+for d in output_dirs:
+    os.makedirs(d, exist_ok=True)
 
 plt.style.use('seaborn-v0_8-paper' if 'seaborn-v0_8-paper' in plt.style.available else 'default')
 
@@ -14,42 +18,49 @@ plt.style.use('seaborn-v0_8-paper' if 'seaborn-v0_8-paper' in plt.style.availabl
 # ==============================================================================
 print("Generating Methodology Figure 3.1: MEXA Pipeline Schematic...")
 
-fig = plt.figure(figsize=(10, 3.8), dpi=300)
-ax = fig.add_axes([0, 0.35, 1, 0.6])
+fig = plt.figure(figsize=(11.5, 4.4), dpi=300)
+ax = fig.add_axes([0.01, 0.38, 0.98, 0.58])
 ax.axis('off')
 
 # Stage 1: Input & Embeddings
-box_style_blue = dict(boxstyle="round,pad=0.5", fc="#e6f0fa", ec="#1f77b4", lw=1.5)
-box_style_green = dict(boxstyle="round,pad=0.5", fc="#eaf7ed", ec="#2ca02c", lw=1.5)
-box_style_red = dict(boxstyle="round,pad=0.5", fc="#fdeaea", ec="#d62728", lw=1.5)
-box_style_purple = dict(boxstyle="round,pad=0.5", fc="#f3eefa", ec="#9467bd", lw=1.5)
+box_style_blue = dict(boxstyle="round,pad=0.55", fc="#e6f0fa", ec="#1f77b4", lw=1.8)
+box_style_green = dict(boxstyle="round,pad=0.55", fc="#eaf7ed", ec="#2ca02c", lw=1.8)
+box_style_red = dict(boxstyle="round,pad=0.55", fc="#fdeaea", ec="#d62728", lw=1.8)
+box_style_purple = dict(boxstyle="round,pad=0.55", fc="#f3eefa", ec="#9467bd", lw=1.8)
 
-ax.text(0.10, 0.6, "Stage 1: Hidden States\n& Weighted Pooling\n$e^{(l)} = \\sum w_t h_t^{(l)}$", 
-        ha='center', va='center', fontsize=8.5, fontweight='bold', bbox=box_style_blue)
+ax.text(0.09, 0.55, "Stage 1: Hidden States\n& Weighted Pooling\n$e_i^{(l)} = \\sum w_t h_{i,t}^{(l)}$", 
+        ha='center', va='center', fontsize=10.5, fontweight='bold', bbox=box_style_blue)
 
-ax.annotate("", xy=(0.23, 0.6), xytext=(0.18, 0.6),
-            arrowprops=dict(arrowstyle="->", lw=1.5, color="#333333"))
+# Clean connecting arrow 1 -> 2
+ax.annotate("", xy=(0.265, 0.55), xytext=(0.188, 0.55),
+            arrowprops=dict(arrowstyle="-|>", mutation_scale=14, lw=2.0, color="#222222", shrinkA=4, shrinkB=4))
 
 # Stage 2: Cosine Similarity Matrix
-ax.text(0.36, 0.6, "Stage 2: Similarity Matrix\n$C^{(l)} \\in \\mathbb{R}^{n \\times n}$\n$c_{ij} = \\cos(e_i^{L_1}, e_j^{L_2})$", 
-        ha='center', va='center', fontsize=8.5, fontweight='bold', bbox=box_style_green)
+ax.text(0.36, 0.55, "Stage 2: Similarity Matrix\n$C^{(l)} \\in \\mathbb{R}^{n \\times n}$\n$c_{ij}(l) = \\cos(e_{i,L_1}^{(l)}, e_{j,L_2}^{(l)})$", 
+        ha='center', va='center', fontsize=10.5, fontweight='bold', bbox=box_style_green)
 
-ax.annotate("", xy=(0.49, 0.6), xytext=(0.44, 0.6),
-            arrowprops=dict(arrowstyle="->", lw=1.5, color="#333333"))
+# Clean connecting arrow 2 -> 3
+ax.annotate("", xy=(0.535, 0.55), xytext=(0.458, 0.55),
+            arrowprops=dict(arrowstyle="-|>", mutation_scale=14, lw=2.0, color="#222222", shrinkA=4, shrinkB=4))
 
 # Stage 3: Bidirectional Retrieval
-ax.text(0.63, 0.6, "Stage 3: Bidirectional P@1\nFilter Match Condition:\n$c_{ii} > \\max(c_{ij}, c_{ji})$", 
-        ha='center', va='center', fontsize=8.5, fontweight='bold', bbox=box_style_red)
+ax.text(0.63, 0.55, "Stage 3: Bidirectional P@1\nFilter Match Condition:\n$c_{ii} > \\max(c_{ij}, c_{ji})$", 
+        ha='center', va='center', fontsize=10.5, fontweight='bold', bbox=box_style_red)
 
-ax.annotate("", xy=(0.77, 0.6), xytext=(0.72, 0.6),
-            arrowprops=dict(arrowstyle="->", lw=1.5, color="#333333"))
+# Clean connecting arrow 3 -> 4
+ax.annotate("", xy=(0.805, 0.55), xytext=(0.728, 0.55),
+            arrowprops=dict(arrowstyle="-|>", mutation_scale=14, lw=2.0, color="#222222", shrinkA=4, shrinkB=4))
 
 # Stage 4: Layer Score & Aggregation
-ax.text(0.90, 0.6, "Stage 4: Aggregation\n$\\mu C(l)$ per layer\n$\\mu_{\\mathrm{Max}}$ & $\\mu_{\\mathrm{Mean}}$", 
-        ha='center', va='center', fontsize=8.5, fontweight='bold', bbox=box_style_purple)
+ax.text(0.90, 0.55, "Stage 4: Aggregation\n$\\mu C(l)$ per layer\n$\\mu_{\\mathrm{Max}}$ & $\\mu_{\\mathrm{Mean}}$", 
+        ha='center', va='center', fontsize=10.5, fontweight='bold', bbox=box_style_purple)
+
+# Connecting arrow down from Stage 2 to Matrix thumbnail
+ax.annotate("", xy=(0.36, 0.37), xytext=(0.36, 0.43),
+            arrowprops=dict(arrowstyle="-|>", mutation_scale=12, lw=1.6, color="#2ca02c", linestyle="--", shrinkA=3, shrinkB=3))
 
 # Matrix thumbnail
-matrix_ax = fig.add_axes([0.31, 0.05, 0.12, 0.32])
+matrix_ax = fig.add_axes([0.30, 0.03, 0.14, 0.35])
 matrix_data = np.array([
     [0.92, 0.21, 0.15],
     [0.18, 0.88, 0.25],
@@ -58,18 +69,25 @@ matrix_data = np.array([
 im = matrix_ax.imshow(matrix_data, cmap='Blues', vmin=0, vmax=1)
 matrix_ax.set_xticks([0, 1, 2])
 matrix_ax.set_yticks([0, 1, 2])
-matrix_ax.set_xticklabels(['$p_1$', '$p_2$', '$p_3$'], fontsize=7)
-matrix_ax.set_yticklabels(['$s_1$', '$s_2$', '$s_3$'], fontsize=7)
-matrix_ax.set_title("Matrix $C^{(l)}$", fontsize=8, fontweight='bold')
+matrix_ax.set_xticklabels(['$p_1$', '$p_2$', '$p_3$'], fontsize=10, fontweight='bold')
+matrix_ax.set_yticklabels(['$s_1$', '$s_2$', '$s_3$'], fontsize=10, fontweight='bold')
+matrix_ax.set_title("Matrix $C^{(l)}$", fontsize=11, fontweight='bold', pad=4)
 
-rect = patches.Rectangle((-0.4, -0.4), 0.8, 0.8, linewidth=1.5, edgecolor='red', facecolor='none')
+# Add cell values for high readability
+for i in range(3):
+    for j in range(3):
+        color = 'white' if matrix_data[i, j] > 0.5 else 'black'
+        matrix_ax.text(j, i, f"{matrix_data[i, j]:.2f}", ha='center', va='center', color=color, fontsize=9, fontweight='bold')
+
+rect = patches.Rectangle((-0.45, -0.45), 0.9, 0.9, linewidth=1.8, edgecolor='red', facecolor='none')
 matrix_ax.add_patch(rect)
 
-fig1_path = os.path.join(output_dir, "fig_mexa_pipeline_diagram.pdf")
-plt.savefig(fig1_path, bbox_inches='tight')
-plt.savefig(fig1_path.replace('.pdf', '.png'), bbox_inches='tight')
+for d in output_dirs:
+    fig1_path = os.path.join(d, "fig_mexa_pipeline_diagram.pdf")
+    plt.savefig(fig1_path, bbox_inches='tight')
+    plt.savefig(fig1_path.replace('.pdf', '.png'), bbox_inches='tight')
+    print("Saved:", fig1_path)
 plt.close()
-print("Saved:", fig1_path)
 
 
 # ==============================================================================
@@ -97,9 +115,9 @@ mean_l2 = np.mean(l2_cluster, axis=0)
 m1 = ax1.scatter(mean_l1[0], mean_l1[1], color='#0d3b66', marker='X', s=130, label='Language Mean $\\bar{e}_{L_1}$', zorder=5, edgecolors='black')
 m2 = ax1.scatter(mean_l2[0], mean_l2[1], color='#6b0504', marker='X', s=130, label='Language Mean $\\bar{e}_{L_2}$', zorder=5, edgecolors='black')
 
-ax1.set_title("(a) Uncentered Vector Space\n(Dominated by Language-Identity Offsets)", fontsize=10, fontweight='bold', pad=10)
-ax1.set_xlabel("Dimension 1", fontsize=9, fontweight='bold')
-ax1.set_ylabel("Dimension 2", fontsize=9, fontweight='bold')
+ax1.set_title("(a) Uncentered 2D PCA Space\n(Dominated by Language-Identity Offsets)", fontsize=10, fontweight='bold', pad=10)
+ax1.set_xlabel("PCA Dimension 1 (PC1)", fontsize=9.5, fontweight='bold')
+ax1.set_ylabel("PCA Dimension 2 (PC2)", fontsize=9.5, fontweight='bold')
 ax1.set_xlim(0.8, 6.8)
 ax1.set_ylim(0.5, 5.5)
 ax1.grid(True)
@@ -120,9 +138,9 @@ for i in range(5):
 
 m3 = ax2.scatter(0, 0, color='black', marker='X', s=130, label='Shared Origin $(0,0)$', zorder=5, edgecolors='white')
 
-ax2.set_title("(b) Mean-Centered Vector Space\n(Offset Removed $\\rightarrow$ Pure Semantic Alignment)", fontsize=10, fontweight='bold', pad=10)
-ax2.set_xlabel("Dimension 1", fontsize=9, fontweight='bold')
-ax2.set_ylabel("Dimension 2", fontsize=9, fontweight='bold')
+ax2.set_title("(b) Mean-Centered 2D PCA Space\n(Offset Removed $\\rightarrow$ Pure Semantic Alignment)", fontsize=10, fontweight='bold', pad=10)
+ax2.set_xlabel("PCA Dimension 1 (PC1)", fontsize=9.5, fontweight='bold')
+ax2.set_ylabel("PCA Dimension 2 (PC2)", fontsize=9.5, fontweight='bold')
 ax2.set_xlim(-1.8, 2.5)
 ax2.set_ylim(-2.2, 1.8)
 ax2.grid(True)
@@ -131,10 +149,11 @@ ax2.grid(True)
 ax2.legend(handles=[p3, p4, m3], fontsize=8, loc='upper right', frameon=True, facecolor='white', framealpha=0.95)
 
 plt.tight_layout()
-fig2_path = os.path.join(output_dir, "fig_meancentering_geometry.pdf")
-plt.savefig(fig2_path)
-plt.savefig(fig2_path.replace('.pdf', '.png'))
+for d in output_dirs:
+    fig2_path = os.path.join(d, "fig_meancentering_geometry.pdf")
+    plt.savefig(fig2_path)
+    plt.savefig(fig2_path.replace('.pdf', '.png'))
+    print("Saved:", fig2_path)
 plt.close()
-print("Saved:", fig2_path)
 
 print("All methodology figures generated and saved cleanly!")

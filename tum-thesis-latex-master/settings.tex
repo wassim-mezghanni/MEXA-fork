@@ -9,13 +9,15 @@
 \usepackage[%
   backend=biber,
   url=false,
-  style=numeric,
+  style=authoryear,
   natbib=true,
-  maxnames=4,
-  minnames=3,
+  maxcitenames=2,
+  mincitenames=1,
   maxbibnames=99,
   giveninits,
-  uniquename=init]{biblatex} % adapted for natbib (\citep and \citet) compatibility
+  uniquelist=false,
+  uniquename=init]{biblatex} % ACL-style author-year citations
+\DeclareDelimFormat{nameyeardelim}{\addcomma\space}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{subcaption}
@@ -32,8 +34,14 @@
 \usepackage[printonlyused]{acronym}
 \usepackage{ifthen}
 
-
-\hypersetup{hidelinks} % removes colored boxes around references and links
+% ACL-style dark blue hyperlinks for references, citations, and URLs
+\definecolor{darkblue}{rgb}{0, 0, 0.5}
+\hypersetup{%
+  colorlinks=true,
+  citecolor=darkblue,
+  linkcolor=darkblue,
+  urlcolor=darkblue
+}
 
 % for fachschaft_print.pdf
 \makeatletter
