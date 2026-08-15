@@ -34,7 +34,14 @@ Models such as LaBSE \citep{feng2022labse} and mE5-base \citep{wang2024multiling
 \subsection{Sparse Mixture-of-Experts}
 \label{subsec:moe-background}
 
-A recent trend in scaling language models is sparse mixture-of-experts (MoE) \citep{jiang2024mixtral}. In a standard (dense) transformer, every token passes through the same feed-forward network at each layer. In an MoE transformer, the feed-forward block is replaced by $E$ parallel expert networks, and a learned router selects a small subset (typically 2 out of 8) for each token. The total parameter count is much larger than in a dense model, but the per-token compute stays roughly constant.
+A recent trend in scaling language models is sparse mixture-of-experts (MoE) \citep{jiang2024mixtral}. In a standard (dense) transformer, every token passes through the same feed-forward network at each layer. In an MoE transformer, the feed-forward block is replaced by $E$ parallel expert networks, and a learned router selects a small subset (typically 2 out of 8) for each token (Figure~\ref{fig:moe-architecture}). The total parameter count is much larger than in a dense model, but the per-token compute stays roughly constant.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/fig_moe_architecture.pdf}
+\caption{\textbf{Sparse Mixture-of-Experts (MoE) transformer architecture}. Left: stacked transformer blocks alternating between multi-head self-attention and MoE layers. Right: internal structure of an MoE layer, where a learned router dynamically directs token representations to top-$k$ routed experts (out of $E$ total), combining their outputs alongside optional shared experts.}
+\label{fig:moe-architecture}
+\end{figure}
 
 For multilingual alignment, MoE raises a specific question: does the router send tokens from different languages to different experts, or do experts specialize by syntactic or semantic function regardless of language? If experts are language-specific, the shared representation space could fragment. If they are function-specific, alignment should be preserved. We test this empirically in Section~\ref{sec:results-moe}.
 
@@ -69,7 +76,7 @@ Whether the interlingua is truly language-agnostic or merely English-centric is 
 
 English dominates both the pre-training data and the parallel data used for evaluation. Most multilingual benchmarks measure performance relative to English, and most alignment metrics (including MEXA in its default configuration) use English as the pivot language $L_2$.
 
-This raises a concern: if alignment is only measured against English, we cannot tell whether the model has a true interlingua or just a good English--to--everything mapping. Evaluating with alternative pivots (French, German, Arabic, Chinese, Basque) is one way to test this. If alignment scores remain stable across pivots, the space is genuinely multilingual. If they drop for non-English pivots, the model's representations may be organized around English. We run this test in Section~\ref{sec:results-non-english-pivots}.
+This raises a concern: if alignment is only measured against English, we cannot tell whether the model has a true interlingua or just a good English to everything mapping. Evaluating with alternative pivots (French, German, Arabic, Chinese, Basque) is one way to test this. If alignment scores remain stable across pivots, the space is genuinely multilingual. If they drop for non-English pivots, the model's representations may be organized around English. We run this test in Section~\ref{sec:results-non-english-pivots}.
 
 % ------------------------------------------------------------
 \section{Multilingual Evaluation}
@@ -83,7 +90,7 @@ Conventional multilingual evaluation measures downstream task accuracy on transl
 \subsection{Reference-Based vs.\ Reference-Free Metrics}
 \label{sec:ref-free-metrics}
 
-Reference-based metrics (BLEU, chrF) evaluate generated translations against human references. They require external target outputs and only measure surface-level output quality. Reference-free metrics such as MEXA take a different approach: they inspect the transformer's hidden states directly from parallel sentence pairs, measuring how well the model's internal representations align across languages. No generation, fine-tuning, or reference translations are needed. This makes reference-free metrics faster to compute and easier to scale across hundreds of languages.
+Reference-based metrics (BLEU, chrF) evaluate generated translations against human references. They require external target outputs and only measure surface-level output quality. Reference-free metrics such as MEXA take a different approach: they inspect the transformer's hidden states directly from parallel sentence pairs, measuring how well the model's internal representations align across languages. It requires no text generation, task-specific fine-tuning or reference translations. This makes reference-free metrics faster to compute and easier to scale across hundreds of languages.
 
 \subsection{Challenges in Alignment Evaluation}
 \label{subsec:alignment-challenges}
@@ -99,7 +106,7 @@ MEXA addresses both problems. The bidirectional retrieval criterion (Section~\re
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.88\textwidth]{figures/fig_anisotropy_illustration.pdf}
-\caption{\textbf{Isotropic vs.\ anisotropic embedding spaces}. (a) In an isotropic space, embeddings spread across all directions; cosine similarity between random pairs is low. (b) In an anisotropic space, all embeddings cluster in a narrow cone; cosine similarity between random pairs is high, making it unreliable for measuring true semantic alignment.}
+\caption{\textbf{Isotropic vs.\ anisotropic embedding spaces}. Dimensions 1 and 2 depict a 2D projection (e.g., via principal components or latent coordinates $z_1, z_2$) of the high-dimensional representation space $\mathbb{R}^d$. (a) In an isotropic space, sentence embeddings disperse uniformly across directions, yielding near-zero cosine similarity for random sentence pairs. (b) In an anisotropic space (characteristic of deep LLMs), representations cluster within a narrow cone, causing high similarity across all pairs regardless of semantic alignment.}
 \label{fig:anisotropy-illustration}
 \end{figure}
 
