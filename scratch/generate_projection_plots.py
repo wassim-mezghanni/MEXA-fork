@@ -43,7 +43,7 @@ def get_script_category(code):
     else:
         return 'Other Scripts'
 
-# Grouping colors
+# Grouping colors and markers
 colors = {
     'Latin': '#1f77b4',
     'Arabic': '#ff7f0e',
@@ -51,6 +51,15 @@ colors = {
     'Devanagari': '#d62728',
     'Ethiopic': '#9467bd',
     'Other Scripts': '#7f7f7f'
+}
+
+markers = {
+    'Latin': 'o',        # Circle
+    'Arabic': 's',       # Square
+    'Cyrillic': '^',     # Triangle up
+    'Devanagari': 'D',   # Diamond
+    'Ethiopic': 'v',     # Triangle down
+    'Other Scripts': 'X' # Filled X
 }
 
 layers_to_plot = ['0', '16', '32']
@@ -77,16 +86,36 @@ for i, l_key in enumerate(layers_to_plot):
     for script, coords_list in points_by_script.items():
         if len(coords_list) > 0:
             arr = np.array(coords_list)
-            ax.scatter(arr[:, 0], arr[:, 1], color=colors[script], label=script, s=15, alpha=0.8, edgecolors='none')
+            ax.scatter(
+                arr[:, 0], 
+                arr[:, 1], 
+                color=colors[script], 
+                marker=markers[script], 
+                label=script, 
+                s=25, 
+                alpha=0.85, 
+                edgecolors='white', 
+                linewidths=0.4
+            )
             
     ax.set_title(titles[l_key], fontsize=10, fontweight='bold')
     ax.set_xticks([])
     ax.set_yticks([])
     ax.grid(False)
 
-# Add single legend below subplots
+# Add single legend below subplots with larger marker scale for clear visibility
 handles, labels = axes[0].get_legend_handles_labels()
-fig.legend(handles, labels, loc='lower center', ncol=6, bbox_to_anchor=(0.5, -0.05), fontsize=9, frameon=True)
+fig.legend(
+    handles, 
+    labels, 
+    loc='lower center', 
+    ncol=6, 
+    bbox_to_anchor=(0.5, -0.05), 
+    fontsize=9, 
+    frameon=True,
+    markerscale=1.4,
+    scatterpoints=1
+)
 
 plt.tight_layout()
 plt.savefig(output_pdf, format='pdf', bbox_inches='tight')

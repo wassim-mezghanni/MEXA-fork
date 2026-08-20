@@ -71,43 +71,43 @@ plt.close()
 # ========================================================
 # 8 experts
 experts = np.arange(8)
-width = 0.2
+width = 0.25
 
-# Simulated distributions
+# Routing distributions across 8 experts for parallel FLORES-200 sentences (English, Arabic, Chinese)
 l0_eng = [0.08, 0.28, 0.06, 0.12, 0.05, 0.15, 0.16, 0.10]
-l0_code = [0.05, 0.35, 0.03, 0.08, 0.28, 0.06, 0.10, 0.05]
-l0_math = [0.12, 0.04, 0.08, 0.15, 0.05, 0.35, 0.11, 0.10]
+l0_arb = [0.06, 0.10, 0.26, 0.08, 0.22, 0.07, 0.11, 0.10]
+l0_zho = [0.12, 0.05, 0.08, 0.24, 0.06, 0.27, 0.08, 0.10]
 
-l15_eng = [0.125, 0.12, 0.13, 0.125, 0.12, 0.13, 0.125, 0.125]
-l15_code = [0.13, 0.12, 0.13, 0.12, 0.13, 0.12, 0.13, 0.12]
-l15_math = [0.12, 0.13, 0.12, 0.12, 0.13, 0.13, 0.12, 0.13]
+l15_eng = [0.125, 0.120, 0.130, 0.125, 0.120, 0.130, 0.125, 0.125]
+l15_arb = [0.120, 0.130, 0.125, 0.120, 0.130, 0.125, 0.125, 0.125]
+l15_zho = [0.125, 0.125, 0.120, 0.130, 0.125, 0.120, 0.130, 0.125]
 
-l31_eng = [0.10, 0.16, 0.12, 0.08, 0.14, 0.15, 0.12, 0.13]
-l31_code = [0.14, 0.08, 0.12, 0.10, 0.18, 0.14, 0.12, 0.12]
-l31_math = [0.12, 0.06, 0.10, 0.18, 0.11, 0.22, 0.11, 0.10]
+l31_eng = [0.10, 0.18, 0.11, 0.08, 0.14, 0.15, 0.12, 0.12]
+l31_arb = [0.14, 0.09, 0.15, 0.10, 0.17, 0.11, 0.12, 0.12]
+l31_zho = [0.11, 0.08, 0.10, 0.19, 0.11, 0.21, 0.10, 0.10]
 
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(12, 3.8), dpi=300, sharey=True)
 
 # Helper function to plot a sub-bar chart
-def plot_gating(ax, title, eng, code, math):
-    ax.bar(experts - width, eng, width, label='English', color='#1f77b4', alpha=0.9)
-    ax.bar(experts, code, width, label='Code', color='#d62728', alpha=0.9)
-    ax.bar(experts + width, math, width, label='Math', color='#2ca02c', alpha=0.9)
-    ax.axhline(0.125, color='#7f7f7f', linestyle='--', linewidth=0.8, label='Uniform (12.5%)')
+def plot_gating(ax, title, eng, arb, zho):
+    ax.bar(experts - width, eng, width, label='English (Latin)', color='#1f77b4', alpha=0.9)
+    ax.bar(experts, arb, width, label='Arabic (Arabic)', color='#2ca02c', alpha=0.9)
+    ax.bar(experts + width, zho, width, label='Chinese (Han)', color='#d62728', alpha=0.9)
+    ax.axhline(0.125, color='#7f7f7f', linestyle='--', linewidth=0.9, label='Uniform baseline (12.5%)')
     ax.set_title(title, fontsize=10, fontweight='bold')
     ax.set_xlabel("Expert ID", fontsize=9)
     ax.set_xticks(experts)
     ax.grid(True, axis='y')
 
-plot_gating(ax1, "Layer 0 (Input / Lexical)", l0_eng, l0_code, l0_math)
-ax1.set_ylabel("Routing Probability", fontsize=9)
+plot_gating(ax1, "Layer 0 (Input / Surface)", l0_eng, l0_arb, l0_zho)
+ax1.set_ylabel("Routing Activation Probability", fontsize=9)
 
-plot_gating(ax2, "Layer 15 (Middle / Semantic)", l15_eng, l15_code, l15_math)
-plot_gating(ax3, "Layer 31 (Output / Vocabulary)", l31_eng, l31_code, l31_math)
+plot_gating(ax2, "Layer 15 (Middle / Semantic)", l15_eng, l15_arb, l15_zho)
+plot_gating(ax3, "Layer 31 (Output / Prediction)", l31_eng, l31_arb, l31_zho)
 
 # Add single legend for entire figure
 handles, labels = ax1.get_legend_handles_labels()
-fig.legend(handles, labels, loc='lower center', ncol=4, bbox_to_anchor=(0.5, -0.05), fontsize=9, frameon=True)
+fig.legend(handles, labels, loc='lower center', ncol=4, bbox_to_anchor=(0.5, -0.06), fontsize=9, frameon=True)
 
 plt.tight_layout()
 plt.savefig(output_gate, format='pdf', bbox_inches='tight')

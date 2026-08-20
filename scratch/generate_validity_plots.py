@@ -99,7 +99,7 @@ plt.close()
 # ========================================================
 # 2. LANGUAGE-LEVEL downstream validity (Figure 2 - Llama 3.1 8B)
 # ========================================================
-df_align_llama = pd.read_csv(os.path.join(public_dir, "flores_table1_100_llama3.1_8b_results.csv"))
+df_align_llama = pd.read_csv(os.path.join(public_dir, "flores_table1_llama3.1_8b_results.csv"))
 df_bel_llama = pd.read_csv(os.path.join(public_dir, "flores-max-belebele.csv"))
 
 df_bel_llama.rename(columns={'Unnamed: 0': 'code'}, inplace=True)

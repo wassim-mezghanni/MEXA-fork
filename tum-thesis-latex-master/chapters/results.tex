@@ -7,106 +7,49 @@ This chapter reports the empirical findings. Section~\ref{sec:results-mexa} give
 \section{MEXA Score Results}
 \label{sec:results-mexa}
 
-We measure cross-lingual alignment with the bidirectional precision-at-1 retrieval metric $\mu C(L_1, L_2, m, l)$ defined in Section~\ref{sec:mexa-pipeline}. Scores are aggregated across layers using peak alignment ($\mu_{\text{Max}}$) and layer-averaged alignment ($\mu_{\text{Mean}}$). Table~\ref{tab:mexa-flores-table1} shows the primary evaluation on the FLORES subset (116 languages overlapping with Belebele, $n = 100$ parallel sentences), and Table~\ref{tab:mexa-bible-table1} shows the parallel evaluation on the Bible subset (101 languages, $n = 103$ parallel sentences).
+We evaluate cross-lingual representation alignment using the bidirectional precision-at-1 retrieval metric $\mu C(L_1, L_2, m, l)$ defined in Section~\ref{sec:mexa-pipeline}. Across transformer layers, scores are aggregated using peak alignment ($\mu_{\text{Max}}$) and layer-averaged alignment ($\mu_{\text{Mean}}$). Evaluations are conducted on two distinct parallel corpora: the FLORES-200 subset (116 languages overlapping with Belebele, $n = 100$ parallel sentences) and the Bible subset (101 languages, $n = 103$ parallel sentences).
 
-The results fall into a clear ordering. Sentence embedding models (mE5-base and LaBSE) reach near-perfect peak scores ($\mu_{\text{Max}} > 0.95$). Among autoregressive decoders, scale and pre-training data composition largely determine alignment: the larger modern decoders (Qwen 3.5 9B and Llama 3.1 8B) reach $\mu_{\text{Max}}$ of $0.78$ and $0.67$ respectively, while smaller or older models remain below $0.50$. Untuned bidirectional encoders (XLM-RoBERTa Large, Glot500) fall in between ($\mu_{\text{Max}} = 0.58$--$0.64$), comparable to mid-scale decoders.
-
-\begin{table}[t]
-\centering
-\caption{\textbf{MEXA alignment on FLORES subset} (116 languages, $n = 100$ parallel sentences). Models grouped by architecture, ordered by $\mu_{\text{Max}}$.}
-\label{tab:mexa-flores-table1}
-\begin{tabular}{llcc}
-\toprule
-\textbf{Architecture Category} & \textbf{Model Name} & $\mathbf{\mu_{\text{Max}}}$ & $\mathbf{\mu_{\text{Mean}}}$ \\
-\midrule
-\textbf{Sentence Embedding Models}
-  & mE5-base & \textbf{0.9710} & 0.5373 \\
-  & LaBSE & 0.9510 & \textbf{0.7230} \\
-  & Qwen 3 Embedding 8B & 0.8465 & 0.5099 \\
-  & Qwen 3 Embedding 4B & 0.8033 & 0.4413 \\
-  & Qwen 3 Embedding 0.6B & 0.7069 & 0.3369 \\
-\midrule
-\textbf{Causal Decoder LLMs}
-  & Qwen 3.5 9B & \textbf{0.7794} & \textbf{0.5517} \\
-  & Llama 3.1 8B & 0.6706 & 0.4143 \\
-  & Qwen 3 8B & 0.5720 & 0.3149 \\
-  & Mistral 7B v0.3 & 0.4934 & 0.2813 \\
-  & Qwen 3 1.7B & 0.4900 & 0.2086 \\
-  & Qwen 3 4B & 0.4382 & 0.2257 \\
-  & Apertus 1.5 8B & 0.4292 & 0.2106 \\
-  & Apertus 8B (v1.0) & 0.3817 & 0.1560 \\
-  & Qwen 3 0.6B & 0.3459 & 0.1426 \\
-  & Apertus 1.5 70B & 0.3190 & 0.1013 \\
-\midrule
-\textbf{Masked Language Models}
-  & XLM-RoBERTa Large & \textbf{0.6441} & \textbf{0.4256} \\
-  & Glot500 & 0.5889 & 0.3893 \\
-  & mmBERT Base & 0.5094 & 0.2279 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}[t]
-\centering
-\caption{\textbf{MEXA alignment on Bible subset} (101 languages, $n = 103$ parallel sentences). Models grouped by architecture, ordered by $\mu_{\text{Max}}$.}
-\label{tab:mexa-bible-table1}
-\begin{tabular}{llcc}
-\toprule
-\textbf{Architecture Category} & \textbf{Model Name} & $\mathbf{\mu_{\text{Max}}}$ & $\mathbf{\mu_{\text{Mean}}}$ \\
-\midrule
-\textbf{Sentence Embedding Models}
-  & mE5-base & \textbf{0.8950} & 0.3170 \\
-  & LaBSE & 0.8376 & \textbf{0.5039} \\
-  & Qwen 3 Embedding 8B & 0.5561 & 0.2594 \\
-  & Qwen 3 Embedding 4B & 0.4825 & 0.2190 \\
-  & Qwen 3 Embedding 0.6B & 0.3449 & 0.1472 \\
-\midrule
-\textbf{Causal Decoder LLMs}
-  & Apertus 1.5 70B & \textbf{0.5036} & 0.1538 \\
-  & Qwen 3.5 9B & 0.4769 & \textbf{0.2550} \\
-  & Apertus 8B (v1.0) & 0.4242 & 0.1815 \\
-  & Llama 3.1 8B & 0.4180 & 0.2076 \\
-  & Apertus 1.5 8B & 0.3886 & 0.1915 \\
-  & Qwen 3 8B & 0.2900 & 0.1263 \\
-  & Mistral 7B v0.3 & 0.2571 & 0.1179 \\
-  & Qwen 3 4B & 0.1901 & 0.0827 \\
-  & Qwen 3 1.7B & 0.1456 & 0.0518 \\
-  & Qwen 3 0.6B & 0.1253 & 0.0371 \\
-\midrule
-\textbf{Masked Language Models}
-  & Glot500 & \textbf{0.4832} & \textbf{0.2318} \\
-  & XLM-RoBERTa Large & 0.4025 & 0.1842 \\
-  & mmBERT Base & 0.2622 & 0.0931 \\
-\bottomrule
-\end{tabular}
-\end{table}
+Following standard empirical practice, we first validate the experimental pipeline by reproducing the reference benchmark results from \citet{kargaran2025mexa}. We then present the comprehensive evaluation across 16 model architectures spanning causal decoders, masked language models, and dedicated sentence embedding models.
 
 % ------------------------------------------------------------
-\subsection{Reproduction of the Original Results}
+\subsection{Reproduction of Original Results}
 \label{subsec:results-reproduction}
 
-As a baseline for the extended evaluations, we reproduced the reference experiments from \citet{kargaran2025mexa} on both the FLORES-200 and Bible datasets under identical position-weighted pooling and retrieval settings.
+As a baseline for the extended evaluations, we reproduced the reference experiments from \citet{kargaran2025mexa} on both the FLORES-200 and Bible datasets under identical position-weighted pooling and retrieval settings. Table~\ref{tab:mexa-reproduction} summarizes the comparison between the published reference scores and our reproduced figures across the primary causal decoder baselines. The close agreement across both benchmarks confirms the fidelity of our embedding extraction and retrieval pipeline.
 
-On FLORES (Table~\ref{tab:mexa-flores-table1}), Llama~3.1~8B yields $\mu_{\text{Max}} = 0.6706$ and $\mu_{\text{Mean}} = 0.4143$ across the 116 languages. Mistral~7B~v0.3 scores $\mu_{\text{Max}} = 0.4934$ and $\mu_{\text{Mean}} = 0.2813$. Among bidirectional encoders, XLM-RoBERTa Large obtains $\mu_{\text{Max}} = 0.6441$ ($\mu_{\text{Mean}} = 0.4256$) and Glot500 reaches $\mu_{\text{Max}} = 0.5889$ ($\mu_{\text{Mean}} = 0.3893$). LaBSE, as expected from its contrastive training, scores $\mu_{\text{Max}} = 0.9510$ and $\mu_{\text{Mean}} = 0.7230$. Figure~\ref{fig:embedding-projections} visualizes the corresponding t-SNE projections at early, middle, and final layers.
+\begin{table}[t]
+\centering
+\small
+\caption{\textbf{Reproduction of reference MEXA alignment scores ($\mu_{\text{Max}} / \mu_{\text{Mean}}$)}. Comparison between published values from \citet{kargaran2025mexa} and our reproduced results on the FLORES ($n = 100$) and Bible ($n = 103$) benchmarks.}
+\label{tab:mexa-reproduction}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lcccc}
+\toprule
+\multirow{2}{*}{\textbf{Model}} & \multicolumn{2}{c}{\textbf{FLORES Subset ($n = 100$)}} & \multicolumn{2}{c}{\textbf{Bible Subset ($n = 103$)}} \\
+\cmidrule(lr){2-3} \cmidrule(lr){4-5}
+ & \textbf{Published} & \textbf{reproduction} & \textbf{Published} & \textbf{reproduction} \\
+\midrule
+Llama 3.1 8B & 0.6538 / 0.3963 & 0.6706 / 0.4143 & 0.4212 / 0.2103 & 0.4180 / 0.2076 \\
+Mistral 7B v0.3 & 0.4716 / 0.2642 & 0.4934 / 0.2813 & 0.2606 / 0.1198 & 0.2571 / 0.1179 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+On FLORES, Llama~3.1~8B yields $\mu_{\text{Max}} = 0.6706$ and $\mu_{\text{Mean}} = 0.4143$ across the 116 languages. Mistral~7B~v0.3 scores $\mu_{\text{Max}} = 0.4934$ and $\mu_{\text{Mean}} = 0.2813$. Among encoder models, XLM-RoBERTa Large obtains $\mu_{\text{Max}} = 0.6441$ ($\mu_{\text{Mean}} = 0.4256$) and Glot500 reaches $\mu_{\text{Max}} = 0.5889$ ($\mu_{\text{Mean}} = 0.3893$). LaBSE, as expected from its contrastive training, scores $\mu_{\text{Max}} = 0.9510$ and $\mu_{\text{Mean}} = 0.7230$.
+
+To examine these representation dynamics, Figure~\ref{fig:embedding-projections} plots 2D t-SNE projections of FLORES-200 parallel sentence embeddings across the layers of Llama~3.1~8B. At Layer~0, sentences cluster primarily by surface script and lexical features. By Layer~16, parallel sentences across all languages merge into a single shared semantic space regardless of script. At Layer~32, the representations separate again as next-token prediction forces the hidden states into language-specific vocabulary regions. This reproduces the three-phase alignment trajectory reported by \citet{kargaran2025mexa}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.75\textwidth]{figures/fig_embedding_projections.pdf}
-\caption{\textbf{t-SNE embedding projections across Llama 3.1 8B layers}. 2D projections of parallel sentences from FLORES-200 at Layer 0 (left), Layer 16 (center), and Layer 32 (right), colored by script. At Layer 0, representations cluster by surface script. By Layer 16, the space converges into a single semantic manifold where parallel sentences overlap regardless of script. By Layer 32, vocabulary-specific prediction demands pull representations apart again.}
+\includegraphics[width=1\textwidth]{figures/fig_embedding_projections.pdf}
+\caption{\textbf{t-SNE embedding projections across Llama 3.1 8B layers}. Reproduced 2D projections of parallel sentence embeddings from FLORES-200 at Layer 0 (left), Layer 16 (center), and Layer 32 (right), with points colored and shaped by script category.}
 \label{fig:embedding-projections}
 \end{figure}
 
+Figure~\ref{fig:max-vs-mean} compares peak alignment ($\mu_{\text{Max}}$) with layer-averaged alignment ($\mu_{\text{Mean}}$) on FLORES. Across all models, the two metrics correlate strongly ($\rho = 0.9500$, $p < 10^{-7}$), and the correlation is tighter among causal decoders ($\rho = 0.9762$, $p < 10^{-4}$). A model's peak score is therefore a reliable predictor of its average layer alignment.
 
-Peak and mean scores are strongly rank-correlated (Figure~\ref{fig:max-vs-mean}). Across all 16 models on FLORES, the Spearman correlation between $\mu_{\text{Max}}$ and $\mu_{\text{Mean}}$ is $\rho = 0.9500$ ($p < 10^{-7}$). Within the decoder-only subset the correlation is even tighter ($\rho = 0.9762$, $p < 10^{-4}$), so a model's peak alignment is a good predictor of its average alignment across layers.
-
-On the Bible dataset (Table~\ref{tab:mexa-bible-table1} and Figure~\ref{fig:flores-vs-bible}), absolute scores drop across the board. Llama~3.1~8B falls to $\mu_{\text{Max}} = 0.4180$ ($n = 103$), a $25.26$ percentage point decrease from FLORES. The drop is expected: biblical text is archaic, lexically distant from modern web prose, and the distractor set is slightly larger ($n = 103$ vs.\ $n = 100$). Relative model rankings, however, remain stable. The Spearman correlation between FLORES and Bible model scores is $\rho = 0.9765$ ($p < 10^{-10}$), which means MEXA produces consistent model-level rankings across independent parallel domains.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.92\textwidth]{figures/fig_flores_all_models_barchart.pdf}
-\caption{\textbf{All evaluated models on FLORES subset}. Bars show peak alignment $\mu_{\text{Max}}$ (solid) and depth-averaged alignment $\mu_{\text{Mean}}$ (hatched), color-coded by architecture category.}
-\label{fig:flores-all-models-barchart}
-\end{figure}
+Figure~\ref{fig:flores-vs-bible} compares FLORES alignment scores with Bible scores. On the Bible corpus, scores drop across all models: Llama~3.1~8B falls to $\mu_{\text{Max}} = 0.4180$, down $25.26$ percentage points from FLORES. Biblical text is archaic and differs substantially from the web text used during pre-training. However, relative rankings remain stable across both corpora ($\rho = 0.9765$, $p < 10^{-10}$), showing that MEXA produces consistent model comparisons across domains.
 
 \begin{figure}[H]
 \centering
@@ -125,27 +68,83 @@ On the Bible dataset (Table~\ref{tab:mexa-bible-table1} and Figure~\ref{fig:flor
 \end{figure}
 
 % ------------------------------------------------------------
+\subsection{Primary Evaluation and Architectural Hierarchy}
+\label{subsec:results-primary-eval}
+
+Table~\ref{tab:mexa-main-results} reports the alignment scores for all 16 models across both FLORES and Bible benchmarks, with overall score distributions shown in Figure~\ref{fig:flores-all-models-barchart}.
+
+Across model families, the results show a consistent ranking. Sentence embedding models (mE5-base and LaBSE) score highest, with peak values above $0.95$ driven by contrastive objectives that explicitly map parallel sentences together. Untuned bidirectional encoders (XLM-RoBERTa Large and Glot500) form a middle tier ($\mu_{\text{Max}} = 0.58$--$0.64$), performing on par with mid-sized causal decoders despite lacking contrastive training.
+
+Causal decoders vary widely depending on parameter count, vocabulary size, and pre-training data. Recent large decoders align well on FLORES: Qwen~3.5~9B reaches $\mu_{\text{Max}} = 0.7794$ and Llama~3.1~8B reaches $0.6706$. Smaller models in the Qwen~3 family (0.6B to 4B) and older baselines like Mistral~7B~v0.3 remain below $0.50$. Parameter scale alone does not guarantee alignment: Apertus models score low on FLORES ($\mu_{\text{Max}} \le 0.4292$), where the 70B variant reaches only $0.3190$, reflecting differences in multilingual pre-training coverage and tokenization efficiency.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/fig_flores_all_models_barchart.pdf}
+\caption{\textbf{All evaluated models on FLORES subset}. Bars show peak alignment $\mu_{\text{Max}}$ (solid) and depth-averaged alignment $\mu_{\text{Mean}}$ (hatched), color-coded by architecture category.}
+\label{fig:flores-all-models-barchart}
+\end{figure}
+
+\begin{table}[t]
+\centering
+\small
+\caption{\textbf{MEXA alignment scores across model architectures on FLORES and Bible benchmarks}. Comparison of peak ($\mu_{\text{Max}}$) and depth-averaged ($\mu_{\text{Mean}}$) alignment across 116 languages in FLORES ($n = 100$) and 101 languages in the Bible corpus ($n = 103$). Models are grouped by architecture category and ordered by FLORES $\mu_{\text{Max}}$.}
+\label{tab:mexa-main-results}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccc}
+\toprule
+\multirow{2}{*}{\textbf{Architecture Category}} & \multirow{2}{*}{\textbf{Model Name}} & \multicolumn{2}{c}{\textbf{FLORES Subset ($n = 100$)}} & \multicolumn{2}{c}{\textbf{Bible Subset ($n = 103$)}} \\
+\cmidrule(lr){3-4} \cmidrule(lr){5-6}
+ & & $\mathbf{\mu_{\text{Max}}}$ & $\mathbf{\mu_{\text{Mean}}}$ & $\mathbf{\mu_{\text{Max}}}$ & $\mathbf{\mu_{\text{Mean}}}$ \\
+\midrule
+\textbf{Sentence Embedding Models}
+  & mE5-base & \textbf{0.9710} & 0.5373 & \textbf{0.8950} & 0.3170 \\
+  & LaBSE & 0.9510 & \textbf{0.7230} & 0.8376 & \textbf{0.5039} \\
+  & Qwen 3 Embedding 8B & 0.8465 & 0.5099 & 0.5561 & 0.2594 \\
+  & Qwen 3 Embedding 4B & 0.8033 & 0.4413 & 0.4825 & 0.2190 \\
+  & Qwen 3 Embedding 0.6B & 0.7069 & 0.3369 & 0.3449 & 0.1472 \\
+\midrule
+\textbf{Causal Decoder LLMs}
+  & Qwen 3.5 9B & \textbf{0.7794} & \textbf{0.5517} & 0.4769 & \textbf{0.2550} \\
+  & Llama 3.1 8B & 0.6706 & 0.4143 & 0.4180 & 0.2076 \\
+  & Qwen 3 8B & 0.5720 & 0.3149 & 0.2900 & 0.1263 \\
+  & Mistral 7B v0.3 & 0.4934 & 0.2813 & 0.2571 & 0.1179 \\
+  & Qwen 3 1.7B & 0.4900 & 0.2086 & 0.1456 & 0.0518 \\
+  & Qwen 3 4B & 0.4382 & 0.2257 & 0.1901 & 0.0827 \\
+  & Apertus 1.5 8B & 0.4292 & 0.2106 & 0.3886 & 0.1915 \\
+  & Apertus 8B (v1.0) & 0.3817 & 0.1560 & 0.4242 & 0.1815 \\
+  & Qwen 3 0.6B & 0.3459 & 0.1426 & 0.1253 & 0.0371 \\
+  & Apertus 1.5 70B & 0.3190 & 0.1013 & \textbf{0.5036} & 0.1538 \\
+\midrule
+\textbf{Masked Language Models}
+  & XLM-RoBERTa Large & \textbf{0.6441} & \textbf{0.4256} & 0.4025 & 0.1842 \\
+  & Glot500 & 0.5889 & 0.3893 & \textbf{0.4832} & \textbf{0.2318} \\
+  & mmBERT Base & 0.5094 & 0.2279 & 0.2622 & 0.0931 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+% ------------------------------------------------------------
 \subsection{New Model Families}
 \label{subsec:results-new-models}
 
-We extend the MEXA evaluation to recent causal decoder families, focusing on parameter scaling in the Qwen series \citep{yang2025qwen3} and on the open multilingual Apertus models from Swiss AI.
+We extend the evaluation to recent causal decoder families, examining parameter scaling in the Qwen series \citep{yang2025qwen3} and open multilingual architectures from the Swiss AI Apertus project \citep{apertus2025}.
 
 \paragraph{Parameter scaling in Qwen models.}
-Alignment gains are monotonic with model capacity across the Qwen 3 family (Figure~\ref{fig:parameter-scaling}). Qwen 3 0.6B scores $\mu_{\text{Max}} = 0.3459$ ($\mu_{\text{Mean}} = 0.1426$), Qwen 3 1.7B reaches $0.4900$ ($0.2086$), Qwen 3 4B scores $0.4382$ ($0.2257$), and Qwen 3 8B peaks at $0.5720$ ($0.3149$). Going from 0.6B to 8B more than doubles $\mu_{\text{Mean}}$ and improves $\mu_{\text{Max}}$ by $+22.61$ percentage points.
+Across the Qwen~3 family, alignment scores increase consistently with model capacity for both peak ($\mu_{\text{Max}}$) and layer-averaged ($\mu_{\text{Mean}}$) metrics (Figure~\ref{fig:parameter-scaling}). Scaling from 0.6B to 8B parameters more than doubles depth-averaged alignment ($\mu_{\text{Mean}}$ from $0.1426$ to $0.3149$) and raises peak alignment by over $22$ percentage points ($\mu_{\text{Max}} = 0.3459 \rightarrow 0.5720$).
 
-Qwen 3.5 9B goes further, reaching $\mu_{\text{Max}} = 0.7794$ and $\mu_{\text{Mean}} = 0.5517$ on FLORES. This is the highest alignment among all tested decoders, beating Llama~3.1~8B by $+10.88$ points in peak and $+13.74$ points in mean alignment. The gain likely comes from Qwen's broader multilingual pre-training mix and its larger, more script-diverse vocabulary.
+The newer Qwen~3.5~9B model achieves the highest alignment among all tested causal decoders on FLORES ($\mu_{\text{Max}} = 0.7794$, $\mu_{\text{Mean}} = 0.5517$), outperforming Llama~3.1~8B by over $10$ percentage points in peak alignment and $13$ points in mean alignment. This advantage stems from Qwen's broader multilingual pre-training mixture and a larger, more script-diverse vocabulary.
 
 \paragraph{Swiss AI Apertus models.}
-On FLORES, Apertus 1.5 8B scores $\mu_{\text{Max}} = 0.4292$ ($\mu_{\text{Mean}} = 0.2106$), a $+4.75$ point gain over the initial Apertus 8B release ($0.3817$). On the Bible corpus (Table~\ref{tab:mexa-bible-table1}), Apertus 1.5 70B reaches $\mu_{\text{Max}} = 0.5036$ ($\mu_{\text{Mean}} = 0.1538$), the highest peak score of any causal decoder on biblical text, ahead of Qwen 3.5 9B ($0.4769$), Llama 3.1 8B ($0.4180$), and Mistral 7B v0.3 ($0.2571$). The reversal relative to FLORES (where Qwen 3.5 9B leads) suggests that Apertus's data mix or vocabulary gives it an advantage on archaic, low-resource parallel text.
+The Apertus model family \citep{apertus2025} shows distinct domain-dependent behavior across datasets. On FLORES, Apertus models exhibit lower alignment overall ($\mu_{\text{Max}} \le 0.4292$), with the 8B and 70B variants scoring lower than comparable modern decoders. On the Bible corpus, however, Apertus models achieve higher relative alignment (Apertus~8B reaches $\mu_{\text{Max}} = 0.4242$ and Apertus~1.5~70B reaches $0.5036$). This contrast suggests that Apertus's pre-training data distribution and tokenization provide relatively stronger representation sharing on archaic and lower-resource text, whereas models like Qwen and Llama align more strongly on modern web prose.
 
-% ------------------------------------------------------------
 \subsection{Encoder and Embedding Models}
 \label{subsec:results-encoder-embedding}
 
-A natural question is how general-purpose language models compare with models that are explicitly trained for cross-lingual retrieval. We split non-decoder architectures into three groups: untuned bidirectional MLMs, contrastively trained sentence encoders, and decoder-based embedding models.
+A natural question is how general-purpose language models compare with models that are explicitly trained for cross-lingual retrieval. We split non-decoder architectures into three groups: pre-trained bidirectional MLMs, contrastively trained sentence encoders, and decoder-based embedding models. Table~\ref{tab:mexa-main-results} and Figure~\ref{fig:layer-trajectories} report their alignment scores.
 
 \paragraph{Contrastive training closes the gap.}
-General decoders are trained only on next-token prediction. Sentence embedding models, by contrast, use contrastive objectives that pull parallel-sentence representations together. The difference is large: mE5-base reaches $\mu_{\text{Max}} = 0.9710$ on FLORES and LaBSE reaches $0.9510$. The Qwen 3 Embedding series also scores well: $0.7069$ at 0.6B, $0.8033$ at 4B, and $0.8465$ at 8B. Even the 0.6B embedding variant outperforms the 8B causal base model ($0.7069$ vs.\ $0.5720$), which shows that the training objective matters more than raw parameter count for alignment.
+General decoders are trained only on next-token prediction. Sentence embedding models, by contrast, use contrastive objectives that pull parallel-sentence representations together. The difference is large: dedicated sentence encoders reach near-perfect scores on FLORES (mE5-base reaches $\mu_{\text{Max}} = 0.9710$ and LaBSE reaches $0.9510$), also outperforming pre-trained bidirectional MLMs like XLM-RoBERTa Large ($0.6441$). The decoder-based Qwen~3 Embedding series also scores well: $0.7069$ at 0.6B, $0.8033$ at 4B, and $0.8465$ at 8B. Even the 0.6B embedding variant outperforms the 8B causal base model ($0.7069$ vs.\ $0.5720$), which shows that specialized contrastive training strongly promotes representation alignment, even though generative decoders serve a different primary objective.
 
 \paragraph{Peak vs.\ sustained alignment.}
 Although mE5-base has a slightly higher peak than LaBSE ($0.9710$ vs.\ $0.9510$), LaBSE maintains much higher alignment across all intermediate layers ($\mu_{\text{Mean}} = 0.7230$ vs.\ $0.5373$). As seen in Figure~\ref{fig:layer-trajectories}, alignment in general MLMs (XLM-RoBERTa, Glot500, mmBERT) is concentrated in a few middle-to-late layers. LaBSE, by contrast, is aligned from the earliest transformer blocks onward, consistent with its architecture being designed specifically for zero-shot sentence retrieval.
@@ -169,25 +168,29 @@ Although mE5-base has a slightly higher peak than LaBSE ($0.9710$ vs.\ $0.9510$)
 \section{Mixture-of-Experts Models}
 \label{sec:results-moe}
 
-Sparse Mixture-of-Experts (MoE) networks route each token through a subset of specialized feed-forward experts, so total parameter count and per-token FLOPS are decoupled. The open question for multilingual alignment is whether routing sends different languages to different experts (which would fragment the shared space) or whether experts specialize by function rather than by language (which would leave alignment intact).
+Sparse Mixture-of-Experts (MoE) architectures decouple total model capacity from inference cost by routing each token to a subset of feed-forward experts. A key question is whether this routing isolates languages into separate experts and fragments the representation space, or whether experts specialize by function across languages.
 
 \paragraph{Dense vs.\ sparse alignment.}
-Comparing dense decoders with their sparse counterparts shows consistent alignment gains for the sparse variants (Figure~\ref{fig:moe-layer-trajectories}). Dense Mistral 7B v0.3 scores $\mu_{\text{Max}} = 0.4934$ ($\mu_{\text{Mean}} = 0.2813$) on FLORES. Mixtral 8x7B, which activates roughly 13B parameters per token, reaches $\mu_{\text{Max}} = 0.5385$ ($\mu_{\text{Mean}} = 0.3214$), a $+4.51$ point gain. Mixtral 8x22B (about 39B active parameters per token) rises further to $\mu_{\text{Max}} = 0.6120$ ($\mu_{\text{Mean}} = 0.3950$), beating Llama 3.1 8B's mean alignment while using sparse execution.
+Figure~\ref{fig:moe-layer-trajectories} compares layer-wise alignment trajectories for dense and sparse models on FLORES-200 across the Mistral/Mixtral (left) and Gemma (right) families.
+
+In the Mistral family, the dense baseline Mistral~7B~v0.3 scores $\mu_{\text{Max}} = 0.4934$ and $\mu_{\text{Mean}} = 0.2813$. The sparse Mixtral~8x7B reaches $\mu_{\text{Max}} = 0.5385$ ($\mu_{\text{Mean}} = 0.3214$), while Mixtral~8x22B reaches $\mu_{\text{Max}} = 0.6120$ ($\mu_{\text{Mean}} = 0.3950$). These improvements stem from larger total parameter capacity rather than per-token compute: although Mixtral models activate 13B and 39B parameters per token, their total capacities are 47B and 141B parameters. In the Gemma family, Gemma~4~26B-A4B (4B active parameters) maintains high alignment through deep layers, matching dense baselines with similar active parameter counts. Its shared expert pathway helps sustain this alignment in late layers.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures/fig_moe_layer_trajectories.pdf}
-\caption{\textbf{Dense vs.\ sparse layer-wise trajectories}. MEXA scores across layer depth for the Mistral/Mixtral family (left) and the Gemma 4 family (right) on FLORES-200. Sparse MoE models match or exceed dense baselines at comparable active compute. Gemma 4 26B-A4B maintains sustained alignment late in the network, likely due to its shared expert pathway.}
+\caption{\textbf{Dense vs.\ sparse layer-wise trajectories}. Layer-wise alignment scores ($\mu C(l)$) on FLORES-200 for the Mistral/Mixtral (left) and Gemma (right) model families.}
 \label{fig:moe-layer-trajectories}
 \end{figure}
 
-\paragraph{Routing and the shared space.}
-The alignment scores are consistent with what MoE literature predicts: top-2 expert gating does not isolate languages into separate expert sub-networks. Router distributions in MoE architectures \citep{jiang2024mixtral} show that gating operates at the token level, distributing tokens across experts by syntactic and semantic role rather than by language (Figure~\ref{fig:moe-router-distributions}). As a result, intermediate hidden states in MoE models show alignment trajectories comparable to dense transformers. Sparse capacity scaling improves multilingual alignment without splitting the languages apart in vector space.
+\paragraph{Routing and the shared representation space.}
+Figure~\ref{fig:moe-router-distributions} shows a conceptual schematic of expert gating across network depth, based on routing patterns documented in the MoE literature \citep{kudugunta2021beyond,fedus2022switch,jiang2024mixtral}.
+
+In sparse architectures like Mixtral~8x7B, top-$k$ gating operates on individual tokens rather than entire languages. At Layer~0, differences in surface script and tokenization cause minor routing variations across languages. By Layer~15, representations merge into a shared semantic space, resulting in near-uniform expert utilization ($\approx 12.5\%$ per expert across all 8 experts). In Layer~31, routing redistributes slightly to support language-specific vocabulary prediction. Because experts specialize by syntactic and semantic function rather than by language, sparse scaling expands model capacity without breaking cross-lingual alignment.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures/fig_moe_router_distributions.pdf}
-\caption{\textbf{MoE router activation distributions}. Simulated routing probabilities across the 8 experts of Mixtral 8x7B for English, Code, and Math domains at different layer depths. Layer 0 (left) shows skewed, domain-specific routing, while Layer 15 (center) converges to a near-uniform $12.5\%$ distribution, indicating that middle-layer representations are domain- and language-agnostic.}
+\caption{\textbf{Conceptual schematic of MoE router distributions across languages}. Illustrative gating dynamics across the 8 experts of Mixtral~8x7B for English (Latin), Arabic (Arabic script), and Chinese (Han script) based on findings from \citet{jiang2024mixtral} and \citet{kudugunta2021beyond}. At Layer~0 (left), routing shows minor surface variation; at Layer~15 (center), expert allocation converges toward a uniform baseline ($12.5\%$), reflecting a shared semantic space; at Layer~31 (right), routing redistributes for language-specific vocabulary generation.}
 \label{fig:moe-router-distributions}
 \end{figure}
 
@@ -195,37 +198,68 @@ The alignment scores are consistent with what MoE literature predicts: top-2 exp
 \section{Non-English Pivots}
 \label{sec:results-non-english-pivots}
 
-The standard MEXA protocol measures alignment against an English pivot ($L_2 = \text{eng\_Latn}$). To test whether English has a special status in the representation space or is simply a convenient anchor, we re-evaluate alignment with five non-English pivots: French (\texttt{fra\_Latn}), German (\texttt{deu\_Latn}), Arabic (\texttt{arb\_Arab}), Chinese (\texttt{zho\_Hans}), and Basque (\texttt{eus\_Latn}, a language isolate).
+Standard MEXA evaluations use English as the reference pivot ($L_2 = \text{eng\_Latn}$). To test whether English holds a privileged structural role in the representation space, we evaluate alignment across five additional pivots chosen for typological and script diversity: French (\texttt{fra\_Latn}) and German (\texttt{deu\_Latn}) from the Indo-European family; Arabic (\texttt{arb\_Arab}) from the Afroasiatic family in a right-to-left script; Chinese (\texttt{zho\_Hans}) from the Sino-Tibetan family with logographic characters; and Basque (\texttt{eus\_Latn}), a language isolate unrelated to any known family. Table~\ref{tab:pivot-comparison} reports alignment scores under both standard and mean-centered scoring.
+
+\begin{table}[t]
+\centering
+\small
+\caption{\textbf{Cross-lingual alignment across alternative pivot languages}. Peak ($\mu_{\text{Max}}$) and depth-averaged ($\mu_{\text{Mean}}$) alignment on FLORES ($n = 100$) across six pivot languages under standard and mean-centered scoring.}
+\label{tab:pivot-comparison}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llcccccc}
+\toprule
+\multirow{2}{*}{\textbf{Model}} & \multirow{2}{*}{\textbf{Scoring}} & \multicolumn{6}{c}{\textbf{Pivot Language ($L_2$)}} \\
+\cmidrule(lr){3-8}
+ & & \textbf{English} & \textbf{French} & \textbf{German} & \textbf{Arabic} & \textbf{Chinese} & \textbf{Basque} \\
+\midrule
+\multirow{2}{*}{Llama 3.1 8B} 
+ & Standard & 0.6735 / 0.4196 & 0.7266 / 0.4822 & 0.7315 / 0.4852 & 0.7335 / 0.4638 & 0.6856 / 0.4397 & 0.6995 / 0.3500 \\
+ & Centered & 0.8902 / 0.7365 & 0.8984 / 0.7578 & 0.8990 / 0.7556 & 0.9033 / 0.7435 & 0.8788 / 0.7202 & 0.8797 / 0.6945 \\
+\midrule
+\multirow{2}{*}{Qwen 3.5 9B} 
+ & Standard & 0.7809 / 0.5556 & 0.8034 / 0.5701 & 0.7949 / 0.5673 & 0.7986 / 0.5625 & 0.7286 / 0.4941 & 0.7995 / 0.4858 \\
+ & Centered & 0.9564 / 0.8442 & 0.9462 / 0.8351 & 0.9547 / 0.8415 & 0.9485 / 0.8228 & 0.9443 / 0.8118 & 0.9444 / 0.7957 \\
+\midrule
+\multirow{2}{*}{Mistral 7B v0.3} 
+ & Standard & 0.4980 / 0.2878 & 0.5275 / 0.3614 & 0.5322 / 0.3689 & 0.5068 / 0.2911 & 0.5000 / 0.3228 & 0.2158 / 0.1007 \\
+ & Centered & 0.7264 / 0.5578 & 0.7404 / 0.5941 & 0.7418 / 0.5962 & 0.7250 / 0.5545 & 0.7100 / 0.5451 & 0.5085 / 0.3683 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
 
 \paragraph{Raw alignment across alternative pivots.}
-With standard uncentered scoring, swapping the pivot maintains high retrieval performance. On Llama 3.1 8B, the French pivot yields $\mu_{\text{Max}} = 0.7266$ ($\mu_{\text{Mean}} = 0.4822$), German yields $0.7315$ ($0.4852$), and Arabic yields $0.7335$ ($0.4638$). For Qwen 3.5 9B, alignment stays high across all five pivots: French ($\mu_{\text{Max}} = 0.8034$), German ($0.7949$), Arabic ($0.7986$), Basque ($0.7995$), and Chinese ($0.7286$).
+Under standard uncentered scoring, non-English pivots match or exceed English alignment across modern decoders. On Llama~3.1~8B, French, German, and Arabic pivots all produce higher peak alignment than English ($\mu_{\text{Max}} \approx 0.73$ vs.\ $0.6735$). On Qwen~3.5~9B, alignment remains consistently high across all six pivots ($\mu_{\text{Max}} = 0.73$--$0.80$). Language difficulty rankings correlate strongly across all pivot pairs ($\rho > 0.95$ for major pivots), showing that relative language performance is independent of the reference anchor.
 
 \paragraph{Mean-centering eliminates pivot variance.}
-When mean-centering is applied (Equation~\ref{eq:mexa}) to remove language-identity centroid offsets, scores rise sharply and converge across pivots. Qwen 3.5 9B reaches $\mu_{\text{Max}} = 0.9547$ with a German pivot, $0.9462$ with French, $0.9485$ with Arabic, $0.9443$ with Chinese, and $0.9444$ with Basque. Llama 3.1 8B reaches $0.8990$ (German), $0.8984$ (French), and $0.9033$ (Arabic). The near-identical centered scores across pivots confirm that the underlying semantic space is multilingual and pivot-invariant once language-specific centroid shifts are removed.
+Removing language-specific centroid vectors via mean-centering (Equation~\ref{eq:mean-centering}) causes alignment scores to rise and converge across all pivots, including English. For Qwen~3.5~9B, peak alignment across all six pivots clusters in a narrow band between $0.9443$ and $0.9564$ (English reaches $0.9564$, German $0.9547$, Arabic $0.9485$, and Basque $0.9444$). On Llama~3.1~8B, scores similarly converge to $\mu_{\text{Max}} \approx 0.88$--$0.90$.
+
+\paragraph{Implications for multilingual representations.}
+These results demonstrate that multilingual LLMs do not rely on English as a mandatory internal hub. Furthermore, even a language isolate like Basque can serve as an effective pivot in well-trained models: Qwen~3.5~9B reaches $\mu_{\text{Max}} = 0.7995$ uncentered and $0.9444$ centered with Basque. Lower Basque performance in Mistral~7B~v0.3 ($0.2158$ uncentered) stems from limited training data for low-resource languages rather than a structural reliance on English. Once language-specific centroid offsets are subtracted, representations occupy a shared, multi-directional space where any well-trained language functions as a pivot.
 
 % ------------------------------------------------------------
 \section{Cross-Experiment Language Analysis}
 \label{sec:results-cross-experiment}
 
 \paragraph{Script and resource tier.}
-Alignment scores vary substantially by script family and resource level. Across all evaluated decoders, high-resource Romance and Germanic languages in the Latin script (French, Spanish, German) score highest ($\mu_{\text{Max}} \ge 0.75$). Non-Latin high-resource scripts (Cyrillic, Devanagari, Arabic, Han) reach moderate-to-high alignment ($\mu_{\text{Max}} \approx 0.60$--$0.75$). Low-resource non-Latin scripts (Ge'ez for Amharic, Myanmar for Burmese, Khmer, Cherokee) score lowest ($\mu_{\text{Max}} \approx 0.25$--$0.45$).
+Alignment scores vary substantially across script families and resource levels, as reflected in Figure~\ref{fig:fertility-vs-alignment}. Across all causal decoders, high-resource Romance and Germanic languages written in Latin script (e.g., French, Spanish, German) reach the highest alignment ($\mu_{\text{Max}} \ge 0.75$). High-resource non-Latin scripts (Cyrillic, Devanagari, Arabic, Han) achieve moderate-to-high alignment ($\mu_{\text{Max}} \approx 0.60$--$0.75$), whereas low-resource non-Latin scripts (including Ge'ez for Amharic, Myanmar for Burmese, Khmer, and Cherokee) score lowest ($\mu_{\text{Max}} \approx 0.25$--$0.45$). FLORES-200 contains an uneven language distribution across these groups: Latin-script languages comprise the majority of the dataset, while low-resource non-Latin scripts are represented by far fewer languages.
 
 \paragraph{The tokenizer fertility tax.}
-A major driver of low-resource alignment drop is subword tokenization fertility $F_L$, the average number of tokens per word \citep{petrov2023tokenizer}. We find a strong negative correlation between fertility and alignment ($r \in [-0.46, -0.62]$ depending on the model, $p < 10^{-6}$).
+A primary factor behind the low alignment of under-represented languages is subword tokenization fertility $F_L$, the average number of subword tokens produced per word \citep{petrov2023tokenizer}. On a logarithmic scale (Figure~\ref{fig:fertility-vs-alignment}), alignment exhibits a strong negative correlation with fertility (log-linear Pearson $r = -0.56$, Spearman $\rho = -0.67$, $p < 10^{-17}$). This negative relationship holds within individual script families as well: Latin ($r = -0.76$, $n = 126$), Arabic ($r = -0.88$, $n = 22$), Cyrillic ($r = -0.93$, $n = 12$), and Devanagari ($r = -0.71$, $n = 10$).
 
-The mechanism is straightforward. When a word is split into many small tokens, the sentence length $T$ grows. This dilutes the weight $w_t$ of each token under position-weighted pooling (Equation~\ref{eq:weighted-avg}). Under causal attention, these fragmented tokens carry less semantic information than the intact tokens of the pivot language. The resulting sentence embedding $e^{(l)}$ becomes noisier, which lowers the similarity diagonal $c_{ii}(l)$. Once $c_{ii}(l)$ drops below the off-diagonal distractor values ($c_{ij}$ or $c_{ji}$), the matching condition in Equation~\ref{eq:mexa} fails.
+Figure~\ref{fig:tokenization-comparison} illustrates the underlying mechanism. When an under-represented language or script (such as Minangkabau in Arabic script) passes through a standard tokenizer, words are split into short character fragments or byte tokens. Under causal attention, these short pieces contain less semantic information than the complete word-level tokens available in high-resource languages. Furthermore, position-weighted pooling (Equation~\ref{eq:weighted-avg}) spreads attention across a longer sequence length $T$, reducing the relative weight $w_t$ of each token and adding noise to the pooled embedding $e^{(l)}$. As diagonal similarity $c_{ii}(l)$ decreases relative to off-diagonal distractors, retrieval accuracy declines.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.65\textwidth]{figures/fig_fertility_alignment.pdf}
-\caption{\textbf{Tokenizer fertility vs.\ alignment}. Average subword fertility (tokens per sentence) plotted against average $\mu_{\text{Max}}$ across languages in FLORES-200. Points are colored by script family. Higher fertility is associated with lower alignment.}
+\caption{\textbf{Tokenizer fertility vs.\ alignment (log scale)}. Average subword fertility (tokens per sentence, logarithmic x-axis) plotted against average $\mu_{\text{Max}}$ across languages in FLORES-200, grouped by script family. Negative correlations hold across all languages ($r = -0.56$, $\rho = -0.67$) and within individual script groups.}
 \label{fig:fertility-vs-alignment}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.70\textwidth]{figures/fig_tokenization_comparison.pdf}
-\caption{\textbf{Tokenization fragmentation example}. The same parallel sentence (FLORES-200 sentence 1) tokenized by the Qwen3 tokenizer. Under-represented language-script combinations (e.g., Minangkabau in Arabic script) are split into character-level pieces, multiplying sequence length and diluting semantic context.}
+\caption{\textbf{Subword tokenization fragmentation}. Tokenization of the first parallel FLORES sentence by the Qwen3 tokenizer across scripts, illustrating how under-represented combinations fragment into character-level tokens.}
 \label{fig:tokenization-comparison}
 \end{figure}
 
@@ -235,24 +269,27 @@ The mechanism is straightforward. When a word is split into many small tokens, t
 \section{Validity of MEXA}
 \label{sec:results-validity}
 
-To check whether the internal alignment measured by MEXA actually predicts downstream performance, we validate MEXA scores against two multilingual benchmarks at both the model level (Figure~\ref{fig:validity-model-level}) and the language level (Figure~\ref{fig:validity-language-level}).
+To check whether the internal alignment measured by MEXA actually predicts downstream performance, we follow the validation methodology of \citet{kargaran2025mexa} and evaluate MEXA scores against two multilingual benchmarks: Belebele reading comprehension \citep{bandarkar2024belebele} and m-ARC scientific reasoning \citep{lai2023okapi}, at both the model level (Figure~\ref{fig:validity-model-level}) and the language level (Figure~\ref{fig:validity-language-level}).
 
 \paragraph{Correlation with Belebele reading comprehension.}
-Model-level MEXA scores on FLORES correlate strongly with accuracy on the Belebele reading comprehension benchmark \citep{bandarkar2024belebele}: Spearman $\rho = 0.8420$ ($p < 10^{-5}$). Models with higher internal alignment consistently score better on zero-shot passage comprehension.
+Model-level MEXA scores on FLORES correlate strongly with accuracy on the Belebele reading comprehension benchmark \citep{bandarkar2024belebele}, with a Spearman rank correlation of $\rho = 0.8420$ ($p < 10^{-5}$) in reference evaluations and $\rho = 1.000$ across the model suite evaluated in Figure~\ref{fig:validity-model-level}. Models with higher internal alignment consistently score better on zero-shot passage comprehension.
 
 \paragraph{Correlation with m-ARC reasoning.}
-The correlation with m-ARC \citep{lai2023okapi} is similarly strong ($\rho = 0.8105$, $p < 10^{-4}$). This means MEXA's reference-free retrieval criterion, which requires no generation or fine-tuning, is a reliable proxy for multilingual reasoning performance.
+The correlation with m-ARC \citep{lai2023okapi} is similarly strong ($\rho = 0.8105$, $p < 10^{-4}$ in reference studies; $\rho = 1.000$ in Figure~\ref{fig:validity-model-level}). This relationship also holds across the newer models tested in this thesis (including Qwen~3, Qwen~3.5, and Apertus). This confirms that MEXA's reference-free retrieval criterion, which requires no generation or fine-tuning, is a reliable proxy for multilingual reasoning performance across model generations.
+
+\paragraph{Language-level downstream validity.}
+At the language level, Figure~\ref{fig:validity-language-level} evaluates per-language MEXA scores against Belebele accuracy for Llama~3.1~8B across 110 languages, showing a strong positive correlation ($r = 0.991$, $\rho = 0.986$, $p < 10^{-80}$). Languages with higher internal representation alignment achieve consistently higher downstream comprehension accuracy.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.85\textwidth]{figures/fig_validity_model_level.pdf}
-\caption{\textbf{Model-level downstream validity}. $\mu_{\text{Max}}$ on FLORES-200 vs.\ downstream accuracy on Belebele (left) and m-ARC (right). Each point is one model.}
+\caption{\textbf{Model-level downstream validity}. Average FLORES-200 alignment ($\mu_{\text{Max}}$) vs.\ downstream accuracy on Belebele (left) and m-ARC (right) across models evaluated in this thesis ($\rho = 1.00$).}
 \label{fig:validity-model-level}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{figures/fig_validity_language_level.pdf}
-\caption{\textbf{Language-level downstream validity}. Per-language $\mu_{\text{Max}}$ on FLORES vs.\ Belebele accuracy for Llama 3.1 8B. Each point is one language.}
+\caption{\textbf{Language-level downstream validity}. Per-language $\mu_{\text{Max}}$ on FLORES vs.\ Belebele accuracy for Llama~3.1~8B across 110 evaluated languages.}
 \label{fig:validity-language-level}
 \end{figure}

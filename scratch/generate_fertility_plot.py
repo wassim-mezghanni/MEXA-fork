@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-from scipy.stats import pearsonr
+from scipy.stats import pearsonr, spearmanr
 
 # Set academic publication style settings
 plt.style.use('seaborn-v0_8-paper' if 'seaborn-v0_8-paper' in plt.style.available else 'default')
@@ -75,29 +75,37 @@ for g in groups:
     plt.scatter(
         subset['fertility'], 
         subset['alignment'],
-        label=g,
+        label=f"{g} (n={len(subset)})",
         color=colors[g],
         marker=markers[g],
-        alpha=0.85,
+        alpha=0.80,
         edgecolors='none' if markers[g] == 'x' else 'w',
         linewidths=0.5,
-        s=40
+        s=38
     )
 
-# Fit trendline
-z = np.polyfit(df['fertility'], df['alignment'], 1)
+# Fit log-linear trendline
+log_fert = np.log(df['fertility'])
+z = np.polyfit(log_fert, df['alignment'], 1)
 p = np.poly1d(z)
-x_trend = np.linspace(df['fertility'].min(), df['fertility'].max(), 100)
-plt.plot(x_trend, p(x_trend), color='#333333', linestyle=':', linewidth=1.5, label=f'Trendline (r = {r_val:.2f})')
+x_trend = np.geomspace(df['fertility'].min(), df['fertility'].max(), 100)
+r_log, _ = pearsonr(log_fert, df['alignment'])
+rho_spear, _ = spearmanr(df['fertility'], df['alignment'])
 
+plt.plot(x_trend, p(np.log(x_trend)), color='#222222', linestyle='--', linewidth=1.5, 
+         label=f'Log-fit ($r={r_log:.2f}$, $\\rho={rho_spear:.2f}$)')
+
+plt.xscale('log')
+plt.xticks([20, 30, 50, 75, 100, 150, 200], ['20', '30', '50', '75', '100', '150', '200'])
 plt.title("Tokenizer Fertility vs. MEXA Alignment (FLORES-200)", fontsize=11, fontweight='bold', pad=10)
-plt.xlabel("Tokenizer Fertility (average tokens / sentence)", fontsize=9)
+plt.xlabel("Tokenizer Fertility (tokens / sentence, log scale)", fontsize=9)
 plt.ylabel("Cross-Model Average MEXA score ($\mu_{Max}$)", fontsize=9)
-plt.grid(True)
-plt.legend(loc='lower left', frameon=True, facecolor='white', edgecolor='#e5e5e5', fontsize=8)
+plt.grid(True, which='both', linestyle='--', alpha=0.5)
+plt.legend(loc='lower left', frameon=True, facecolor='white', edgecolor='#e5e5e5', fontsize=7.5)
 plt.tight_layout()
 
 # Save
 plt.savefig(output_pdf, format='pdf', bbox_inches='tight')
 plt.savefig(output_png, format='png', bbox_inches='tight')
-print("Plots generated successfully!")
+print(f"Log-scale fertility plots generated successfully! r_log={r_log:.4f}, rho={rho_spear:.4f}")
+
