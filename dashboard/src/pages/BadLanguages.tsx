@@ -49,9 +49,9 @@ function classify(avg: number, spread: number): 'universal' | 'fixable' | 'ok' {
   return spread >= SPREAD_SPLIT ? 'fixable' : 'universal';
 }
 const CLASS_COLOR: Record<string, string> = {
-  universal: '#dc2626', // red — hard for everyone
-  fixable: '#d97706',   // amber — some model already cracks it
-  ok: '#94a3b8',        // grey — not in the bad set
+  universal: '#dc2626', // red, hard for everyone
+  fixable: '#d97706',   // amber, some model already cracks it
+  ok: '#94a3b8',        // grey, not in the bad set
 };
 
 export default function BadLanguages() {
@@ -158,7 +158,7 @@ export default function BadLanguages() {
         <div>
           <h1 className="text-3xl font-headline font-bold text-primary tracking-tight">Bad Languages Analysis</h1>
           <p className="text-sm text-on-surface-variant font-body mt-2 max-w-3xl">
-            Which languages does cross-lingual alignment fail on — and is the failure <em>universal</em> (no model
+            Which languages does cross-lingual alignment fail on, and is the failure <em>universal</em> (no model
             handles it, a genuinely hard language) or <em>model-specific</em> (some model already cracks it, so it is
             fixable)? Aggregated over all {active.num_models} models &amp; experiments. Score = MEXA max-pool alignment
             to the English pivot.
@@ -243,7 +243,7 @@ export default function BadLanguages() {
       {/* Leaderboard table */}
       <div className="mb-8">
         <DataTable<LangRow>
-          title="Worst-aligned languages — leaderboard"
+          title="Worst-aligned languages (leaderboard)"
           subtitle={`All ${langs.length} languages, sorted by mean alignment (worst first). 'Spread' and '# ≥0.5' reveal whether any model succeeds.`}
           columns={columns}
           data={langs}

@@ -230,10 +230,10 @@ export default function MarginAnalysis() {
           Pivot Margin Analysis
         </h2>
         <p className="text-on-surface-variant font-body leading-relaxed max-w-3xl italic">
-          Why does English — the presumed hub language — score <em>lower</em> as a pivot than Arabic, German, or French?
+          Why does English, the presumed hub language, score <em>lower</em> as a pivot than Arabic, German, or French?
           MEXA counts, per sentence, whether the true parallel pair beats every distractor. The quantity it thresholds
           on is the <strong>margin</strong>: true-pair similarity minus the best distractor. This page measures that
-          margin directly, showing that English imposes the <em>strictest</em> test — its margins are the largest for
+          margin directly, showing that English imposes the <em>strictest</em> test, its margins are the largest for
           well-aligned languages, while its lower average score comes from low-resource languages whose margins hover
           at zero. Basque (eus_Latn), a language isolate, is included as a maximally peripheral pivot to probe the
           opposite extreme.
@@ -253,9 +253,9 @@ export default function MarginAnalysis() {
               Compression tracks training exposure, not script
             </h4>
             <p className="text-xs text-on-surface-variant font-body leading-relaxed">
-              Within-language similarity rises monotonically as a pivot's resource level falls — for Llama 3.1 8B:
+              Within-language similarity rises monotonically as a pivot's resource level falls, for Llama 3.1 8B:
               English 0.612 &lt; German 0.653 &lt; French 0.658 &lt; <strong>Chinese 0.666</strong> &lt; Arabic 0.692
-              &lt; <strong>Basque 0.729</strong>. Chinese — high-resource but non-Latin script — lands with the
+              &lt; <strong>Basque 0.729</strong>. Chinese, high-resource but non-Latin script, lands with the
               high-resource Latin pivots, not with Arabic: it is <em>resource level</em>, not script, that drives
               compression. Raw MEXA difficulty is therefore pivot-dependent by construction.
             </p>
@@ -267,10 +267,10 @@ export default function MarginAnalysis() {
             </h4>
             <p className="text-xs text-on-surface-variant font-body leading-relaxed">
               Languages whose margin is negative under English but positive under a compressed pivot drive the
-              apparent "English is worse" effect — for Llama 3.1 8B: 7 languages flip under Arabic and{' '}
+              apparent "English is worse" effect, for Llama 3.1 8B: 7 languages flip under Arabic and{' '}
               <strong>9 under Basque</strong> (shaded region in the scatter below). The blurrier the pivot's space,
               the more near-zero-signal languages sneak past the distractor floor. English's margins remain the
-              largest for well-aligned languages — it is the sharpest grader, not the weakest hub.
+              largest for well-aligned languages, it is the sharpest grader, not the weakest hub.
             </p>
           </div>
           <div className="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10">
@@ -283,7 +283,7 @@ export default function MarginAnalysis() {
               representation quality. Mistral 7B v0.3 barely differentiates Basque (within-language sim{' '}
               <strong>0.864</strong> vs 0.511 for English) and its Basque-pivot mean collapses to{' '}
               <strong>0.216</strong> vs 0.498 with English. Well-represented peripheral pivots inflate; poorly
-              represented ones deflate — English is the only pivot that is both well-represented <em>and</em> the
+              represented ones deflate, English is the only pivot that is both well-represented <em>and</em> the
               model's internal hub.
             </p>
           </div>
@@ -296,7 +296,7 @@ export default function MarginAnalysis() {
               For Qwen3.5 9B (a Chinese-lab model), Chinese's space is as sharp as English's (within-language sim{' '}
               <strong>0.892 vs 0.891</strong>) and Chinese-as-pivot grades as strictly as English does. For Llama and
               Mistral, Chinese is clearly more compressed than English (0.666 vs 0.612; 0.652 vs 0.511). The hub is
-              not English per se — it is whatever dominated the model's training distribution.
+              not English per se, it is whatever dominated the model's training distribution.
             </p>
           </div>
         </div>
@@ -361,7 +361,7 @@ export default function MarginAnalysis() {
             </h3>
             <p className="text-xs text-on-surface-variant font-body leading-relaxed max-w-3xl mb-6">
               <strong>Within-language similarity</strong> is the mean cosine between different sentences of the pivot
-              itself — higher means a more compressed, less differentiated space. <strong>Distractor floor</strong> is the
+              itself, higher means a more compressed, less differentiated space. <strong>Distractor floor</strong> is the
               mean similarity of pivot sentences to non-parallel sentences of other languages. English has the most
               spread-out space and the lowest floor: it is the sharpest grader.
             </p>
@@ -399,8 +399,8 @@ export default function MarginAnalysis() {
             <p className="text-xs text-on-surface-variant font-body leading-relaxed max-w-3xl mb-6">
               Each dot is a language, placed by its mean margin (true pair − best distractor, at each pivot's best
               layer). Dots above the diagonal have an easier test under the {altConf.label} pivot. The shaded region
-              marks languages whose margin is negative under English but positive under {altConf.label} — currently{' '}
-              <strong>{flipped.length}</strong> language{flipped.length === 1 ? '' : 's'} — these drive the apparent
+              marks languages whose margin is negative under English but positive under {altConf.label}, currently{' '}
+              <strong>{flipped.length}</strong> language{flipped.length === 1 ? '' : 's'}, these drive the apparent
               "English is worse" effect. Click a dot to inspect its layer curve below.
             </p>
             <ResponsiveContainer width="100%" height={440}>
@@ -449,8 +449,7 @@ export default function MarginAnalysis() {
             </h3>
             <p className="text-xs text-on-surface-variant font-body leading-relaxed max-w-3xl mb-6">
               Mean margin at every layer, one line per pivot. Where a line sits above zero, the true parallel pair
-              typically beats all distractors and MEXA counts a win. Max-pooling over layers picks each line's peak —
-              for near-zero curves, small geometric differences between pivots decide the final score.
+              typically beats all distractors and MEXA counts a win. Max-pooling over layers picks each line's peak, for near-zero curves, small geometric differences between pivots decide the final score.
             </p>
             <ResponsiveContainer width="100%" height={380}>
               <LineChart data={layerData} margin={{ top: 10, right: 50, bottom: 10, left: 10 }}>
@@ -487,7 +486,7 @@ export default function MarginAnalysis() {
           <div className="bg-surface-container-low p-10 rounded-2xl border border-outline-variant/10">
             <DataTable
               title="Margins and MEXA Scores by Pivot"
-              subtitle={`${MODELS.find((m) => m.key === selectedModel)?.label} / FLORES Table 1 (100 sents) — each cell: margin · MEXA at the pivot's best layer; sorted by English margin ascending`}
+              subtitle={`${MODELS.find((m) => m.key === selectedModel)?.label} / FLORES Table 1 (100 sents), each cell: margin · MEXA at the pivot's best layer; sorted by English margin ascending`}
               columns={tableColumns}
               data={tableData}
               rowsPerPage={15}

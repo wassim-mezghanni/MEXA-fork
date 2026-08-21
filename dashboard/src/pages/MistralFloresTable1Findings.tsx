@@ -3,7 +3,7 @@ import ExperimentFindings from '../components/ExperimentFindings';
 export default function MistralFloresTable1Findings() {
   return (
     <ExperimentFindings
-      title="Mistral 7B v0.3 — FLORES Table 1 Reproduction"
+      title="Mistral 7B v0.3 (FLORES Table 1 Reproduction)"
       description="Exact reproduction of the MEXA paper's Table 1 results for Mistral 7B v0.3 on FLORES. This subset contains the 116 languages that overlap with the Belebele benchmark, evaluated using the full devtest (1012 sentences)."
       badge="Table 1 Reproduction"
       icon="table_chart"

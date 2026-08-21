@@ -498,7 +498,7 @@ export default function MexaFindings() {
                 Cross-Lingual Alignment Heatmap
               </h3>
               <p className="text-xs text-on-surface-variant font-label">
-                MEXA scores per language and model — ranked by average score (top {Math.min(heatmapCount, activeData.length)} of {activeData.length})
+                MEXA scores per language and model, ranked by average score (top {Math.min(heatmapCount, activeData.length)} of {activeData.length})
               </p>
             </div>
             <div className="flex items-center gap-3">

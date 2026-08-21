@@ -451,7 +451,7 @@ export default function MoeAnalysis() {
       <section className="bg-surface-container-low rounded-2xl p-6 lg:p-8 border border-outline-variant/10">
         <div className="mb-6 max-w-5xl">
           <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider mb-2">
-            Gemma 4 Family — MoE vs. Dense at Matched Active & Total Parameters
+            Gemma 4 Family: MoE vs. Dense at Matched Active & Total Parameters
           </h3>
           <p className="text-xs text-on-surface-variant font-body leading-relaxed">
             The Gemma 4 release spans dense models (E2B, E4B, 12B, 31B) around the sparse
@@ -471,7 +471,7 @@ export default function MoeAnalysis() {
               title: 'At matched active parameters (E4B vs. 26B-A4B), the MoE wins.',
               body: (
                 <>
-                  0.8840 vs. 0.8719 µ_Max on FLORES Table 1 — and dramatically so on µ_Mean
+                  0.8840 vs. 0.8719 µ_Max on FLORES Table 1, and dramatically so on µ_Mean
                   (0.6291 vs. 0.4995). Expert routing doesn't fragment cross-lingual alignment
                   here; it seems to <em>help</em> per unit of compute.
                 </>
@@ -481,19 +481,19 @@ export default function MoeAnalysis() {
               title: 'At matched total parameters (31B vs. 26B-A4B), dense wins on peak alignment.',
               body: (
                 <>
-                  0.9189 vs. 0.8840 µ_Max — but the MoE still holds the family's best µ_Mean
+                  0.9189 vs. 0.8840 µ_Max, but the MoE still holds the family's best µ_Mean
                   (0.6291 vs. 0.5782): its alignment is sustained across many layers rather
                   than concentrated at one peak.
                 </>
               ),
             },
             {
-              title: 'On low-resource languages, the same two contrasts hold — amplified.',
+              title: 'On low-resource languages, the same two contrasts hold, amplified.',
               body: (
                 <>
                   On Bible Table 1 the MoE again beats its active-param match (0.7140 vs. E4B's
                   0.6591, and +62% on µ_Mean: 0.3500 vs. 0.2158), while dense 31B again wins the
-                  peak at matched total params (0.8293 vs. 0.7140) — yet their µ_Mean is a dead
+                  peak at matched total params (0.8293 vs. 0.7140), yet their µ_Mean is a dead
                   heat (0.3502 vs. 0.3500), so per active parameter the MoE remains far more
                   efficient. The whole family dominates this benchmark: even E2B (0.6335)
                   clears every non-Gemma causal LM (Qwen3.5 9B: 0.4821, Llama 3.1 8B: 0.4180),
@@ -509,13 +509,13 @@ export default function MoeAnalysis() {
       <section className="bg-surface-container-low rounded-2xl p-6 lg:p-8 border border-outline-variant/10">
         <div className="mb-6 max-w-5xl">
           <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider mb-2">
-            Mistral Family — Dense 7B vs. Mixtral 8x7B & 8x22B (Sparse MoE)
+            Mistral Family: Dense 7B vs. Mixtral 8x7B & 8x22B (Sparse MoE)
           </h3>
           <p className="text-xs text-on-surface-variant font-body leading-relaxed">
             <strong>Mixtral 8x7B</strong> (~47B total, ~12.9B active per token via 2-of-8
             routing) and <strong>Mixtral 8x22B</strong> (~141B total, ~39B active) are built
             directly on the dense <strong>Mistral 7B</strong> architecture, making this the
-            classic dense-vs-MoE comparison — an earlier-generation design without a shared
+            classic dense-vs-MoE comparison, an earlier-generation design without a shared
             expert and with far coarser routing (8 large experts vs. Gemma's 128 fine-grained
             ones). The 8x22B adds a second axis: what does a 3× scale-up of the same MoE
             recipe buy?
@@ -530,8 +530,8 @@ export default function MoeAnalysis() {
               title: 'Capacity without alignment gains: 6.7× the parameters, same MEXA score.',
               body: (
                 <>
-                  Mixtral (0.4831 µ_Max, FLORES Table 1) performs on par with — even slightly
-                  below — its dense 7B sibling (0.4980), despite nearly double the active compute
+                  Mixtral (0.4831 µ_Max, FLORES Table 1) performs on par with, even slightly
+                  below, its dense 7B sibling (0.4980), despite nearly double the active compute
                   and 6.7× the total capacity. The extra expert capacity does not translate into
                   a better shared cross-lingual space.
                 </>
@@ -541,7 +541,7 @@ export default function MoeAnalysis() {
               title: 'Scaling the MoE 3× barely moves high-resource alignment.',
               body: (
                 <>
-                  Mixtral 8x22B — 141B total parameters, 20× the dense baseline — reaches just
+                  Mixtral 8x22B, 141B total parameters, 20× the dense baseline, reaches just
                   0.5184 µ_Max on FLORES Table 1, a marginal +0.02 over dense Mistral 7B. For
                   perspective, Gemma 4 E2B achieves 0.8574 with ~2B effective parameters:
                   within the Mixtral recipe, cross-lingual alignment is essentially
@@ -554,7 +554,7 @@ export default function MoeAnalysis() {
               body: (
                 <>
                   µ_Mean is flat-to-declining across the family (0.2878 dense → 0.2787 8x7B →
-                  0.2686 8x22B) — unlike Gemma 4's MoE, Mixtral's routing never produces
+                  0.2686 8x22B), unlike Gemma 4's MoE, Mixtral's routing never produces
                   sustained multi-layer alignment, no matter how large the experts grow.
                 </>
               ),
@@ -563,7 +563,7 @@ export default function MoeAnalysis() {
               title: 'On the lowest-resource languages, the MoE slightly underperforms its dense sibling.',
               body: (
                 <>
-                  On Bible Full, Mixtral 8x7B scores 0.0430 µ_Max vs. Mistral's 0.0465 — a modest
+                  On Bible Full, Mixtral 8x7B scores 0.0430 µ_Max vs. Mistral's 0.0465, a modest
                   gap that is much smaller than earlier partial runs suggested. With the full
                   1401-language Bible corpus, the MoE's routing doesn't catastrophically fragment
                   low-resource representations, but nor does the extra capacity help:
@@ -575,11 +575,11 @@ export default function MoeAnalysis() {
               title: '…but scale rescues exactly this low-resource regime.',
               body: (
                 <>
-                  Bible Table 1 jumps from 0.2716 (8x7B) to 0.4403 (8x22B) — a +62% gain that
+                  Bible Table 1 jumps from 0.2716 (8x7B) to 0.4403 (8x22B), a +62% gain that
                   overtakes Llama 3.1 8B (0.4180) and approaches Qwen3.5 9B (0.4821), even
                   though high-resource FLORES barely improved. With the same 8-expert routing,
                   the extra per-expert capacity appears to stabilize representations for rare
-                  languages — suggesting the 8x7B collapse was a capacity bottleneck inside
+                  languages, suggesting the 8x7B collapse was a capacity bottleneck inside
                   experts, not routing fragmentation alone.
                 </>
               ),
@@ -592,19 +592,19 @@ export default function MoeAnalysis() {
       <section className="bg-surface-container-low rounded-2xl p-6 lg:p-8 border border-outline-variant/10">
         <div className="max-w-5xl">
           <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider mb-3">
-            Synthesis — Routing Design Decides, Not Sparsity Itself
+            Synthesis: Routing Design Decides, Not Sparsity Itself
           </h3>
           <p className="text-xs text-on-surface-variant font-body leading-relaxed">
             The two families falsify the simple hypothesis that "MoE routing fragments
             cross-lingual alignment." Mixtral 8x7B (coarse 2-of-8 routing, no shared expert,
-            2023-era data mix) shows a stagnation pattern — matching but never exceeding its
+            2023-era data mix) shows a stagnation pattern, matching but never exceeding its
             dense sibling on high-resource languages, and slightly trailing on the full
             1401-language Bible corpus (0.0430 vs. 0.0465). Mixtral 8x22B shows that scaling
             the same recipe 3× does not change this (0.5184 µ_Max at 141B total, still ~0.37
             below a 2B-effective Gemma). Meanwhile Gemma 4 26B-A4B (fine-grained 8-of-128
             routing <em>plus a shared expert</em> that every token passes through, and a
             heavily multilingual recipe) outperforms every causal LM outside its own family
-            and every dense Gemma at matched active compute — only dense Gemma 4 models with
+            and every dense Gemma at matched active compute, only dense Gemma 4 models with
             several times its active parameters score higher.
             The shared expert is the architectural suspect worth highlighting in the thesis: it
             guarantees a common representational pathway for all languages regardless of routing

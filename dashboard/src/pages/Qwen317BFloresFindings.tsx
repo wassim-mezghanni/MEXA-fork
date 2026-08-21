@@ -3,8 +3,8 @@ import ExperimentFindings from '../components/ExperimentFindings';
 export default function Qwen317BFloresFindings() {
   return (
     <ExperimentFindings
-      title="Qwen3 1.7B — FLORES Full"
-      description="MEXA evaluation of Qwen3 1.7B on the full FLORES-200 devtest — 204 languages evaluated on 1012 parallel sentences. Token-weighted embeddings with max and mean pooling across layers."
+      title="Qwen3 1.7B (FLORES Full)"
+      description="MEXA evaluation of Qwen3 1.7B on the full FLORES-200 devtest, 204 languages evaluated on 1012 parallel sentences. Token-weighted embeddings with max and mean pooling across layers."
       badge="204 langs · 1012 sents"
       icon="local_florist"
       csvPath="/data/full_flores_qwen3_1.7b_results.csv"

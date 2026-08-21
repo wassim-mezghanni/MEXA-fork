@@ -3,7 +3,7 @@ import ExperimentFindings from '../components/ExperimentFindings';
 export default function Qwen35BibleTable1Findings() {
   return (
     <ExperimentFindings
-      title="Qwen3.5 9B Base — Bible Table 1"
+      title="Qwen3.5 9B Base (Bible Table 1)"
       description="Reproduction of the MEXA paper's Table 1 setup for Qwen3.5 9B Base on the Bible (sPBC) dataset. Restricted to the 101 languages overlapping with Belebele. Token-weighted embeddings, Max + Mean pooling."
       badge="Table 1 (Bible)"
       icon="auto_stories"

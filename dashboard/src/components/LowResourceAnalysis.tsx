@@ -149,7 +149,7 @@ export default function LowResourceAnalysis({ floresData, bibleData = [] }: LowR
               {scriptDataset === 'bible'
                 ? ' across the full Bible corpus (1,401 languages, 17 models).'
                 : ' across full FLORES-200 (204 languages, 14 models).'}{' '}
-              Use “Min langs” to hide single-language scripts — most exotic scripts have only 1–2 languages, so
+              Use “Min langs” to hide single-language scripts, most exotic scripts have only 1, 2 languages, so
               their bars are individual data points, not robust script averages (count shown in the tooltip).
             </p>
           </div>
@@ -286,7 +286,7 @@ export default function LowResourceAnalysis({ floresData, bibleData = [] }: LowR
           </p>
           <p className="leading-relaxed opacity-90 mt-2 pt-2 border-t border-on-primary-container/15">
             <strong>Next step:</strong> plotting <strong>tokenizer fertility</strong> (tokens per sentence) for
-            each script variant should place the Arabic versions as the high-fertility outliers — turning this
+            each script variant should place the Arabic versions as the high-fertility outliers, turning this
             visual observation into a quantified mechanism.
           </p>
         </div>

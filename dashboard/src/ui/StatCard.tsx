@@ -13,7 +13,7 @@ export interface StatCardProps {
 /**
  * Compact stat display with a left accent border.
  * Used for metrics like Standard Deviation, Kurtosis, etc.
- * Lighter than KPICard — no icon, no trend, just label + big number.
+ * Lighter than KPICard, no icon, no trend, just label + big number.
  */
 export const StatCard: React.FC<StatCardProps> = ({
   label,

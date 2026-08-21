@@ -3,7 +3,7 @@ import ExperimentFindings from '../components/ExperimentFindings';
 export default function Mixtral8x7BFloresTable1_2000Findings() {
   return (
     <ExperimentFindings
-      title="Mixtral 8x7B — FLORES Table 1 (1012 sents)"
+      title="Mixtral 8x7B (FLORES Table 1 (1012 sents))"
       description="Evaluation of Mixtral 8x7B MoE on the 116 Table 1 languages using the full FLORES devtest (1012 sentences)."
       badge="Table 1 Reproduction"
       icon="format_list_numbered"

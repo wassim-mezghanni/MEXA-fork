@@ -193,7 +193,7 @@ export default function ScriptAnalysis() {
               <Tooltip content={<CustomTooltip />} cursor={{ strokeDasharray: '3 3' }} />
               {(['Other', 'Latin', 'Arabic'] as const).map((g) => (
                 <Scatter key={g} data={byGroup[g]} fill={GROUP_COLOR[g]} fillOpacity={0.55} stroke={GROUP_COLOR[g]} strokeOpacity={0.9}>
-                  {/* Labels only when uncrowded — otherwise they collide; raise the threshold to reveal */}
+                  {/* Labels only when uncrowded, otherwise they collide; raise the threshold to reveal */}
                   {points.length <= 14 && (
                     <LabelList dataKey="name" position="top" style={{ fill: '#414942', fontSize: 9, fontWeight: 600 }} />
                   )}

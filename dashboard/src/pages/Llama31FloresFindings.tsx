@@ -3,7 +3,7 @@ import ExperimentFindings from '../components/ExperimentFindings';
 export default function Llama31FloresFindings() {
   return (
     <ExperimentFindings
-      title="Llama 3.1 8B — FLORES-200"
+      title="Llama 3.1 8B (FLORES-200)"
       description="MEXA evaluation of Meta's Llama 3.1 8B model across 205 languages using the FLORES-200 parallel corpus (100 sentences). Token-weighted embeddings with max and mean pooling across layers."
       badge="FLORES-200"
       icon="experiment"

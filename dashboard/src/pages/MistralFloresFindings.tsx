@@ -3,7 +3,7 @@ import ExperimentFindings from '../components/ExperimentFindings';
 export default function MistralFloresFindings() {
   return (
     <ExperimentFindings
-      title="Mistral 7B v0.3 — FLORES-200"
+      title="Mistral 7B v0.3 (FLORES-200)"
       description="MEXA evaluation of Mistral AI's Mistral 7B v0.3 model across languages using the FLORES-200 parallel corpus (100 sentences). Token-weighted embeddings with max and mean pooling across layers."
       badge="FLORES-200"
       icon="experiment"

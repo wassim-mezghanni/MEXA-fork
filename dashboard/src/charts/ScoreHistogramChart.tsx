@@ -50,8 +50,8 @@ interface BinData {
   meanModels: { model: string; score: number }[];
 }
 
-const MAX_COLOR = '#004655';   // primary teal — µ_Max
-const MEAN_COLOR = '#d97706';  // amber — µ_Mean
+const MAX_COLOR = '#004655';   // primary teal, µ_Max
+const MEAN_COLOR = '#d97706';  // amber, µ_Mean
 
 export function ScoreHistogramChart({
   title,
@@ -199,7 +199,7 @@ export function ScoreHistogramChart({
               onChange={(e) => setVariantKey(e.target.value)}
               options={variants.map((v) => ({
                 value: v.key,
-                label: v.subtitle ? `${v.label} — ${v.subtitle}` : v.label,
+                label: v.subtitle ? `${v.label}, ${v.subtitle}` : v.label,
               }))}
             />
           </div>

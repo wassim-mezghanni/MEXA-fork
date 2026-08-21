@@ -19,7 +19,7 @@ export interface SizeChartVariant {
 export interface SizeChartRow {
   /** Display name, e.g. "Qwen3 8B Base". */
   model: string;
-  /** Model size in billions of parameters — plotted on the X axis. */
+  /** Model size in billions of parameters, plotted on the X axis. */
   sizeB: number;
   /** MEXA scores keyed by experiment variant. */
   scores: Record<string, { max: Score; mean: Score }>;
@@ -38,8 +38,8 @@ export interface ScoreVsSizeChartProps {
   height?: number;
 }
 
-const MAX_COLOR = '#004655';   // primary teal — µ_Max
-const MEAN_COLOR = '#d97706';  // amber — µ_Mean
+const MAX_COLOR = '#004655';   // primary teal, µ_Max
+const MEAN_COLOR = '#d97706';  // amber, µ_Mean
 
 const fmt = (v: number) => v.toFixed(3);
 
@@ -116,7 +116,7 @@ export function ScoreVsSizeChart({
             onChange={(e) => setVariantKey(e.target.value)}
             options={variants.map((v) => ({
               value: v.key,
-              label: v.subtitle ? `${v.label} — ${v.subtitle}` : v.label,
+              label: v.subtitle ? `${v.label}, ${v.subtitle}` : v.label,
             }))}
           />
         </div>

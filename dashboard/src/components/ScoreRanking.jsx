@@ -57,7 +57,7 @@ export default function ScoreRanking({ data, languageNames, models }) {
       <div className="section-header">
         <h3 className="flex items-center gap-2">
           <Trophy size={20} className="text-blue-400" />
-          Language Rankings — {selectedModel}
+          Language Rankings, {selectedModel}
         </h3>
         <div className="controls-row">
           <div className="search-box">

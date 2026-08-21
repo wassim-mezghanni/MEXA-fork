@@ -27,7 +27,7 @@ function parseCSV(text) {
 
 /* ── MEXA Score Comparison Table ──
    Edit MEXA_SCORES below to add results as experiments complete.
-   Use `null` for entries you don't have yet — they render as "—". */
+   Use `null` for entries you don't have yet, they render as "—". */
 export type Score = number | null;
 export type Variant = 'flores-table1' | 'flores-table1-2000' | 'bible-table1' | 'flores-full' | 'bible-full';
 export type ModelRow = {
@@ -357,7 +357,7 @@ export const GEMMA_SCORES: ModelRow[] = [
   },
   {
     model: 'Gemma 4 E4B',
-    note: 'dense (MatFormer) · ~4B effective — active-param match for the 26B-A4B MoE',
+    note: 'dense (MatFormer) · ~4B effective, active-param match for the 26B-A4B MoE',
     scores: {
       ...blank(),
       'flores-table1': { max: 0.8719, mean: 0.4995 },
@@ -384,7 +384,7 @@ export const GEMMA_SCORES: ModelRow[] = [
   },
   {
     model: 'Gemma 4 31B',
-    note: 'dense · 31B — total-param match for the 26B-A4B MoE',
+    note: 'dense · 31B, total-param match for the 26B-A4B MoE',
     scores: {
       ...blank(),
       'flores-table1': { max: 0.9189, mean: 0.5782 },
@@ -452,8 +452,8 @@ const ALL_INDIVIDUAL_MODELS = [
 
 /* ── Experiment timeline mock ── */
 const EXPERIMENT_ENTRIES = [
-  { id: 'exp-007', title: 'FLORES-200 Full Sweep — 32 layers', timestamp: '2 Apr 2026, 18:42', status: 'completed', model: 'Llama 3.1 8B', dataset: 'FLORES-200', score: 0.847, duration: '4h 12m' },
-  { id: 'exp-006', title: 'Bible Corpus — Max Pooling', timestamp: '1 Apr 2026, 09:15', status: 'completed', model: 'Llama 3.1 8B', dataset: 'Bible', score: 0.791, duration: '3h 08m' },
+  { id: 'exp-007', title: 'FLORES-200 Full Sweep, 32 layers', timestamp: '2 Apr 2026, 18:42', status: 'completed', model: 'Llama 3.1 8B', dataset: 'FLORES-200', score: 0.847, duration: '4h 12m' },
+  { id: 'exp-006', title: 'Bible Corpus, Max Pooling', timestamp: '1 Apr 2026, 09:15', status: 'completed', model: 'Llama 3.1 8B', dataset: 'Bible', score: 0.791, duration: '3h 08m' },
   { id: 'exp-005', title: 'Mistral Comparison Baseline', timestamp: '31 Mar 2026, 14:30', status: 'running', model: 'Mistral 7B', dataset: 'FLORES-200', duration: '1h 52m' },
   { id: 'exp-004', title: 'Low-Resource Lang Subset (15 langs)', timestamp: '30 Mar 2026, 11:00', status: 'failed', model: 'Gemma 2B', dataset: 'FLORES-200', duration: '0h 34m' },
   { id: 'exp-003', title: 'Phi-3 Layer-wise Analysis', timestamp: '28 Mar 2026, 16:20', status: 'completed', model: 'Phi-3', dataset: 'FLORES-200', score: 0.723, duration: '2h 45m' },
@@ -538,7 +538,7 @@ export default function Overview() {
             as the pivot, alignment computed via cosine-similarity matrices, and final scores
             aggregated by <strong>max-pool</strong> (µ_Max) and <strong>mean-pool</strong>
             (µ_Mean) across all hidden layers. The table below tracks our own runs across these
-            and the full-coverage variants — values are filled in as experiments complete
+            and the full-coverage variants, values are filled in as experiments complete
             (entries marked <code className="text-on-surface">—</code> are still pending).
           </p>
         </div>
@@ -745,7 +745,7 @@ export default function Overview() {
           </h3>
           <p className="text-xs text-on-surface-variant font-body leading-relaxed">
             Dedicated multilingual encoders evaluated with the same MEXA pipeline. Unlike the
-            English-centric causal LMs above, these are bidirectional encoders — XLM-RoBERTa
+            English-centric causal LMs above, these are bidirectional encoders, XLM-RoBERTa
             (masked-LM), LaBSE (a sentence-transformer trained for cross-lingual alignment),
             Multilingual E5 (dual-encoder), and mmBERT.
           </p>
@@ -1051,7 +1051,7 @@ export default function Overview() {
       <section className="bg-surface-container-low rounded-xl p-8">
         <div className="mb-6 max-w-5xl">
           <h3 className="text-lg font-headline font-bold text-primary uppercase tracking-wider mb-3">
-            Gemma 4 Family — Scaling & Dense vs. MoE
+            Gemma 4 Family: Scaling & Dense vs. MoE
           </h3>
           <p className="text-xs text-on-surface-variant font-body leading-relaxed">
             The Gemma 4 family evaluated with the same MEXA pipeline on the LRZ AI Systems
@@ -1159,10 +1159,10 @@ export default function Overview() {
       </section>
 
 
-      {/* MEXA score vs model size — scaling charts */}
+      {/* MEXA score vs model size, scaling charts */}
       <div className="grid grid-cols-12 gap-8">
         <ScoreHistogramChart
-          title="MEXA Score Distribution — All Models"
+          title="MEXA Score Distribution (All Models)"
           subtitle="Count of models in each score range; select an experiment and toggle bin resolution."
           rows={ALL_MODEL_SIZE_ROWS}
           variants={VARIANT_COLUMNS}
@@ -1178,7 +1178,7 @@ export default function Overview() {
           className="col-span-12"
         />
         <ScoreVsSizeChart
-          title="MEXA Score vs Model Size — Qwen3 Scaling"
+          title="MEXA Score vs Model Size (Qwen3 Scaling)"
           subtitle="Qwen3 family (0.6B → 9B). The trend line shows how alignment scales with size within one model family."
           rows={QWEN3_SIZE_ROWS}
           variants={VARIANT_COLUMNS}

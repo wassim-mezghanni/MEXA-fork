@@ -3,7 +3,7 @@ import ExperimentFindings from '../components/ExperimentFindings';
 export default function ApertusBibleFindings() {
   return (
     <ExperimentFindings
-      title="Apertus 8B — Bible (sPBC)"
+      title="Apertus 8B (Bible (sPBC))"
       description="MEXA evaluation of Swiss AI's Apertus 8B model (1,811 natively supported languages) across ~1,400 languages using the Bible (sPBC) parallel corpus (103 sentences). Token-weighted embeddings with max and mean pooling across layers."
       badge="Bible (sPBC)"
       icon="auto_stories"

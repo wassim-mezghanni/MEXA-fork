@@ -3,7 +3,7 @@ import ExperimentFindings from '../components/ExperimentFindings';
 export default function ApertusMini4BBibleFindings() {
   return (
     <ExperimentFindings
-      title="Apertus 4B (v1.1) — Bible (sPBC)"
+      title="Apertus 4B (v1.1) (Bible (sPBC))"
       description="MEXA evaluation of Swiss AI's Apertus-v1.1-4B (Apertus-mini) base model across ~1,400 languages using the Bible (sPBC) parallel corpus (103 sentences). Token-weighted embeddings with max and mean pooling across layers."
       badge="Bible (sPBC)"
       icon="auto_stories"

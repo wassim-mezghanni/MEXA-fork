@@ -17,7 +17,7 @@ export interface RadarScoreItem {
 
 export interface FeatureRadarProps {
   title?: string;
-  /** Axis labels — placed N, E, S, W around the chart */
+  /** Axis labels, placed N, E, S, W around the chart */
   axes?: string[];
   datasets: RadarDataset[];
   /** Optional score rows shown below the chart */
@@ -61,7 +61,7 @@ export const FeatureRadar: React.FC<FeatureRadarProps> = ({
       .join(' ');
   }
 
-  // Axis label positions — N/E/S/W style
+  // Axis label positions, N/E/S/W style
   const labelPositions: Record<number, string> = {
     0: 'absolute top-0 left-1/2 -translate-x-1/2',
     1: 'absolute right-0 top-1/2 -translate-y-1/2 rotate-90',

@@ -132,7 +132,7 @@ export default function TokenizationDemo() {
             How Tokenization Drives Fertility
           </h3>
           <p className="text-xs text-on-surface-variant font-body mt-1">
-            The <strong>same sentence</strong>, same meaning, in three forms — tokenized by{' '}
+            The <strong>same sentence</strong>, same meaning, in three forms, tokenized by{' '}
             <code className="text-on-surface">{data?.tokenizer}</code>. Watch how many tokens the model spends as
             the language and script change: clean whole words in English, fragments in Minangkabau-Latin, and
             near-single characters in Minangkabau-Arabic. That count, per sentence, <em>is</em> fertility.
@@ -168,7 +168,7 @@ export default function TokenizationDemo() {
             <p className="leading-relaxed opacity-90">
               Same information, but the model spends <strong>{data.forms.map((f) => f.count).join(' vs ')} tokens</strong>{' '}
               depending only on language and script. Each Arabic-script fragment carries almost no standalone
-              meaning, so the sentence embedding never forms cleanly — which is exactly why the Arabic variants
+              meaning, so the sentence embedding never forms cleanly, which is exactly why the Arabic variants
               collapse in the alignment scatter above.
             </p>
           </div>

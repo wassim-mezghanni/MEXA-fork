@@ -3,7 +3,7 @@ import ExperimentFindings from '../components/ExperimentFindings';
 export default function Mixtral8x7BBibleTable1Findings() {
   return (
     <ExperimentFindings
-      title="Mixtral 8x7B — Bible Table 1"
+      title="Mixtral 8x7B (Bible Table 1)"
       description="Evaluation of Mixtral 8x7B MoE on the Bible dataset (103 sentences) for the 101 Table 1 languages."
       badge="Table 1"
       icon="table_view"

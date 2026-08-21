@@ -3,7 +3,7 @@ import ExperimentFindings from '../components/ExperimentFindings';
 export default function Qwen3FloresFindings() {
   return (
     <ExperimentFindings
-      title="Qwen3 8B Base — FLORES-200"
+      title="Qwen3 8B Base (FLORES-200)"
       description="MEXA evaluation of Qwen3 8B Base model (pretrained on 36T tokens across 119 languages) using the FLORES-200 parallel corpus (100 sentences). Token-weighted embeddings with max and mean pooling across layers."
       badge="FLORES-200"
       icon="experiment"

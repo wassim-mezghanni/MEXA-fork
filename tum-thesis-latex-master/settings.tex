@@ -9,15 +9,14 @@
 \usepackage[%
   backend=biber,
   url=false,
-  style=authoryear,
+  style=numeric,
   natbib=true,
   maxcitenames=2,
   mincitenames=1,
   maxbibnames=99,
-  giveninits,
+  giveninits=true,
   uniquelist=false,
-  uniquename=init]{biblatex} % ACL-style author-year citations
-\DeclareDelimFormat{nameyeardelim}{\addcomma\space}
+  uniquename=init]{biblatex} % Numeric bibliography style with brackets [1]
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{subcaption}

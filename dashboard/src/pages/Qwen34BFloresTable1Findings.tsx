@@ -3,7 +3,7 @@ import ExperimentFindings from '../components/ExperimentFindings';
 export default function Qwen34BFloresTable1Findings() {
   return (
     <ExperimentFindings
-      title="Qwen3 4B — FLORES Table 1 Reproduction"
+      title="Qwen3 4B (FLORES Table 1 Reproduction)"
       description="Reproduction of the MEXA paper's Table 1 setup for Qwen3 4B on FLORES. This subset contains the 116 languages overlapping with the Belebele benchmark, evaluated on 100 parallel sentences. Token-weighted embeddings, Max + Mean pooling."
       badge="Table 1 Reproduction"
       icon="table_chart"

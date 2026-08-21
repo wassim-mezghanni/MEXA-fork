@@ -3,7 +3,7 @@ import ExperimentFindings from '../components/ExperimentFindings';
 export default function Mixtral8x7BFloresFindings() {
   return (
     <ExperimentFindings
-      title="Mixtral 8x7B — FLORES Full Evaluation"
+      title="Mixtral 8x7B (FLORES Full Evaluation)"
       description="Evaluation of Mixtral 8x7B MoE on the full FLORES-200 dataset (1012 sentences per language) across all available languages."
       badge="Full Dataset"
       icon="local_florist"

@@ -225,7 +225,7 @@ export default function PivotComparison() {
     PIVOT_LANGUAGES.forEach(p => {
       const data = pivotData[p.key];
       if (!data) return;
-      // English pivot's self-cell is eng↔eng — genuinely trivial, leave as-is.
+      // English pivot's self-cell is eng↔eng, genuinely trivial, leave as-is.
       const engRow = data['eng_Latn'];
       if (p.code === 'eng_Latn' || !engRow || !data[p.code]) {
         out[p.key] = data;
@@ -578,10 +578,10 @@ export default function PivotComparison() {
             </span>
           </h3>
           <p className="text-xs text-on-surface-variant font-body leading-relaxed">
-            Comparing the overall model alignment scores on <strong>FLORES Table 1 (100 sentences)</strong> when changing the pivot language from <strong>English (eng_Latn)</strong> to <strong>Arabic (arb_Arab)</strong>, <strong>German (deu_Latn)</strong>, <strong>French (fra_Latn)</strong>, <strong>Basque (eus_Latn)</strong> — a language isolate, included as a maximally peripheral pivot — and <strong>Chinese (zho_Hans)</strong> — high-resource but non-Latin script, separating resource level from script effects.{' '}
+            Comparing the overall model alignment scores on <strong>FLORES Table 1 (100 sentences)</strong> when changing the pivot language from <strong>English (eng_Latn)</strong> to <strong>Arabic (arb_Arab)</strong>, <strong>German (deu_Latn)</strong>, <strong>French (fra_Latn)</strong>, <strong>Basque (eus_Latn)</strong>, a language isolate, included as a maximally peripheral pivot, and <strong>Chinese (zho_Hans)</strong>, high-resource but non-Latin script, separating resource level from script effects.{' '}
             {scoring === 'standard'
-              ? <>Under standard scoring, non-English pivots yield systematically <strong>higher</strong> means — not better alignment, but an easier discrimination test: each pivot's own representational geometry sets the difficulty (see the Margin Analysis page).</>
-              : <>Under centered scoring (embeddings mean-centered per language before cosine), the cross-pivot offset largely disappears and the means become nearly equal — confirming the standard-scoring gap is a geometry artifact, at the cost of scores saturating toward 1.0.</>}
+              ? <>Under standard scoring, non-English pivots yield systematically <strong>higher</strong> means, not better alignment, but an easier discrimination test: each pivot's own representational geometry sets the difficulty (see the Margin Analysis page).</>
+              : <>Under centered scoring (embeddings mean-centered per language before cosine), the cross-pivot offset largely disappears and the means become nearly equal, confirming the standard-scoring gap is a geometry artifact, at the cost of scores saturating toward 1.0.</>}
           </p>
         </div>
 
@@ -788,7 +788,7 @@ export default function PivotComparison() {
                 key={m}
                 onClick={() => setScoring(m)}
                 title={m === 'centered'
-                  ? 'Embeddings mean-centered per language before cosine — removes the per-pivot hubness offset, but scores saturate toward 1.0.'
+                  ? 'Embeddings mean-centered per language before cosine, removes the per-pivot hubness offset, but scores saturate toward 1.0.'
                   : 'Standard MEXA on raw embeddings.'}
                 className={`px-4 py-1.5 rounded-lg text-xs font-headline font-bold transition-all capitalize ${
                   scoring === m
@@ -872,8 +872,7 @@ export default function PivotComparison() {
           </h3>
           <p className="text-xs text-on-surface-variant font-body leading-relaxed max-w-3xl mb-6">
             Spearman rank correlation of the per-language score ranking between every pair of pivots
-            ({activeModel.label}, standard scoring, max-pooled, {spearman.models[activeModel.csvSuffix].nLangs} languages —
-            the six pivot languages are excluded from the ranking set). High ρ means pivot choice barely changes
+            ({activeModel.label}, standard scoring, max-pooled, {spearman.models[activeModel.csvSuffix].nLangs} languages, the six pivot languages are excluded from the ranking set). High ρ means pivot choice barely changes
             <em> which</em> languages rank as well-aligned, even where absolute score levels differ.
           </p>
           <div className="overflow-x-auto">
@@ -924,7 +923,7 @@ export default function PivotComparison() {
             </table>
           </div>
           <p className="text-[11px] text-on-surface-variant/70 font-body mt-4 max-w-3xl">
-            Across all five models, high-resource pivots correlate with English at ρ ≈ 0.91–0.98 — pivot choice is
+            Across all five models, high-resource pivots correlate with English at ρ ≈ 0.91, 0.98, pivot choice is
             nearly ranking-invariant. Basque is the exception (ρ as low as 0.73 for Mistral and Qwen3 4B): when the
             model barely represents the pivot itself, even the <em>ranking</em> degrades, not just the score level.
           </p>
@@ -1020,12 +1019,12 @@ export default function PivotComparison() {
                 <p className="text-[11px] text-primary/80 font-body mt-2 max-w-xl normal-case tracking-normal">
                   {normMode === 'zscore'
                     ? 'Z-Score: each pivot’s scores are standardized (mean 0, std 1) using that pivot’s own distribution, so values are comparable across pivots. The pivot’s trivial self-score is excluded from the baseline.'
-                    : 'Percentile: each score is its rank within its own pivot’s distribution (0–100%), removing the systematic level offset between pivots. The pivot’s trivial self-score is excluded from the baseline.'}
+                    : 'Percentile: each score is its rank within its own pivot’s distribution (0, 100%), removing the systematic level offset between pivots. The pivot’s trivial self-score is excluded from the baseline.'}
                 </p>
               )}
               {swapSelf && (
                 <p className="text-[11px] text-primary/80 font-body mt-1 max-w-xl normal-case tracking-normal">
-                  Self-score swap: each non-English pivot’s own row shows its alignment to English — MEXA(eng, pivot) — instead of the trivial 1.0 self-similarity.
+                  Self-score swap: each non-English pivot’s own row shows its alignment to English, MEXA(eng, pivot), instead of the trivial 1.0 self-similarity.
                 </p>
               )}
               {scoring === 'centered' && (

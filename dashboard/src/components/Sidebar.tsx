@@ -149,6 +149,7 @@ interface TopNavItem {
 }
 
 const TOP_NAV: TopNavItem[] = [
+  { icon: 'school', label: 'Thesis Purpose', path: '/thesis-purpose' },
   { icon: 'dashboard', label: 'Overview', path: '/' },
 ];
 
@@ -305,17 +306,17 @@ export default function Sidebar() {
   return (
     <nav className="h-screen w-80 fixed left-0 bg-surface-container-low flex flex-col p-4 space-y-1 z-50 overflow-y-auto">
       {/* Logo */}
-      <div className="flex items-center gap-3 px-2 py-4 mb-4">
-        <div className="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-white font-headline font-bold">
-          M
+      <NavLink to="/thesis-purpose" className="flex items-center gap-3 px-2 py-4 mb-2 hover:opacity-90 transition-opacity">
+        <div className="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-white font-headline font-bold shadow-sm">
+          TUM
         </div>
         <div>
-          <h1 className="font-headline font-bold text-primary leading-tight">Thesis</h1>
-          <p className="text-[10px] uppercase tracking-widest text-on-secondary-container opacity-70">
-            LLM Cross-lingual Evaluation
+          <h1 className="font-headline font-bold text-primary leading-tight text-base">Thesis Research</h1>
+          <p className="text-[10px] uppercase tracking-widest text-on-secondary-container opacity-80">
+            Multilingual LLM Alignment
           </p>
         </div>
-      </div>
+      </NavLink>
 
       {/* Top nav */}
       <div className="space-y-1 mb-2">
@@ -395,23 +396,6 @@ export default function Sidebar() {
             <span className="material-symbols-outlined text-xl">{item.icon}</span>
             <span className="font-body text-sm tracking-wide">{item.label}</span>
           </NavLink>
-        ))}
-      </div>
-
-      {/* Footer links */}
-      <div className="mt-auto pt-4 space-y-1 border-t border-outline-variant/10">
-        {[
-          { icon: 'history', label: 'Archive' },
-          { icon: 'help_outline', label: 'Support' },
-        ].map(link => (
-          <a
-            key={link.label}
-            href="#"
-            className="flex items-center gap-3 px-3 py-2 text-on-secondary-container hover:text-primary text-xs uppercase tracking-widest transition-colors"
-          >
-            <span className="material-symbols-outlined text-lg">{link.icon}</span>
-            <span>{link.label}</span>
-          </a>
         ))}
       </div>
     </nav>

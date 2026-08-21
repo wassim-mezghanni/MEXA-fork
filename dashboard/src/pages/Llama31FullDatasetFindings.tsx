@@ -3,7 +3,7 @@ import ExperimentFindings from '../components/ExperimentFindings';
 export default function Llama31FullDatasetFindings() {
   return (
     <ExperimentFindings
-      title="Llama 3.1 8B — Full Dataset (FLORES-200)"
+      title="Llama 3.1 8B (Full Dataset (FLORES-200))"
       description="Evaluation of Llama 3.1 8B on the full FLORES-200 dataset (204 languages) using the maximum available sentence count (1012 sentences) for highest precision. Token-weighted embeddings, Max + Mean pooling."
       badge="Full Dataset (1012 sents)"
       icon="science"

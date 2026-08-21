@@ -158,7 +158,7 @@ export default function FertilityScatter() {
         <p className="font-semibold text-on-surface mb-2">Tokenizer Fertility vs. Alignment</p>
         <p className="leading-relaxed">
           No fertility data found. Generate it by running{' '}
-          <code className="text-on-surface">python scratch/build_fertility_data.py</code> — it tokenizes the
+          <code className="text-on-surface">python scratch/build_fertility_data.py</code>, it tokenizes the
           FLORES sentences for each language and writes <code className="text-on-surface">fertility_flores.csv</code>.
         </p>
       </div>
@@ -191,7 +191,7 @@ export default function FertilityScatter() {
         <p className="text-xs text-on-surface-variant font-body mt-1">
           Each point is a {active === 'bible' ? 'Bible-corpus' : 'FLORES'} language ({rows.length} shown): x ={' '}
           {METRIC_META[metric].axis.toLowerCase()} (over {numTok || 'N'} tokenizers), y = cross-model MEXA alignment.
-          The red regression line and the downward trend quantify the mechanism behind the script gap — the more a
+          The red regression line and the downward trend quantify the mechanism behind the script gap, the more a
           script is fragmented into sub-word tokens, the less it aligns to the English pivot.
         </p>
         <div className="mt-3 inline-flex flex-wrap items-center gap-x-2 gap-y-1 bg-surface-container-lowest/70 px-3 py-2 rounded-lg">
@@ -218,7 +218,7 @@ export default function FertilityScatter() {
               </span>
               <span className="text-xl font-headline font-extrabold text-primary">{r.toFixed(3)}</span>
               <span className="text-[10px] text-on-surface-variant/70 italic">
-                {r < -0.5 ? 'strong negative — fertility predicts alignment collapse' : 'negative trend'}
+                {r < -0.5 ? 'strong negative, fertility predicts alignment collapse' : 'negative trend'}
               </span>
             </div>
             {/* Fertility metric selector */}
@@ -291,14 +291,14 @@ export default function FertilityScatter() {
                 high-fertility / low-alignment corner. Because the orthography pairs (e.g. Minangkabau
                 <code className="mx-1">min_Latn</code>↔<code className="mx-1">min_Arab</code>) carry identical meaning,
                 the only thing separating the amber points from their Latin twins is how many tokens the tokenizer
-                spends — turning the visual script gap into a measured, mechanistic cause.
+                spends, turning the visual script gap into a measured, mechanistic cause.
               </p>
             </div>
           ) : (
             <div className="mt-4 p-4 rounded-xl bg-surface-container-lowest/70 border border-outline-variant/15 text-on-surface text-xs">
               <p className="leading-relaxed opacity-90">
                 Across <strong>{rows.length} Bible languages</strong>, the same negative trend holds far beyond
-                FLORES's ~200 — high-fertility scripts collapse in alignment, confirming the mechanism generalizes.
+                FLORES's ~200, high-fertility scripts collapse in alignment, confirming the mechanism generalizes.
                 The Bible corpus has no matched dual-script pairs, so the controlled orthography comparison
                 (amber Arabic outliers vs. their Latin twins) lives only on the FLORES tab.
               </p>

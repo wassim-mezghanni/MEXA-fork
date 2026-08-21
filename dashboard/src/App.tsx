@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, NavLink } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
+import ThesisPurpose from './pages/ThesisPurpose';
 import Overview from './pages/Overview';
 import MexaFindings from './pages/MexaFindings';
 import RankingValidation from './pages/RankingValidation';
@@ -103,46 +104,51 @@ function parseCSV(text) {
 /* ── Top App Bar ── */
 function TopAppBar() {
   return (
-    <header className="w-full sticky top-0 bg-surface z-40 flex justify-between items-center px-12 h-16">
-      <div className="flex items-center gap-8">
-        <span className="text-xl font-headline font-bold tracking-tighter text-primary">
-          The Scholarly Lens
-        </span>
-        <nav className="hidden md:flex items-center gap-6">
-          {['Analysis', 'Models', 'Datasets', 'Reports'].map((item, i) => (
-            <a
-              key={item}
-              href="#"
-              className={`font-headline tracking-tight font-semibold text-sm transition-colors ${
-                i === 0
-                  ? 'text-primary border-b-2 border-primary pb-1'
-                  : 'text-on-surface-variant hover:text-primary'
-              }`}
-            >
-              {item}
-            </a>
-          ))}
-        </nav>
-      </div>
+    <header className="w-full sticky top-0 bg-surface/90 backdrop-blur-md z-40 flex justify-between items-center px-8 md:px-12 h-16 border-b border-outline-variant/15">
       <div className="flex items-center gap-4">
-        <div className="relative">
-          <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">
-            search
+        <div className="flex items-center gap-2.5">
+          <span className="px-2.5 py-1 bg-primary/10 text-primary border border-primary/20 rounded-md text-[11px] font-headline font-bold uppercase tracking-wider">
+            TUM CIT
           </span>
-          <input
-            type="text"
-            placeholder="Search experiments..."
-            className="pl-10 pr-4 py-1.5 bg-surface-container-low border-none rounded-full text-xs w-64 focus:ring-1 focus:ring-primary focus:outline-none"
-          />
+          <span className="text-sm font-headline font-bold text-on-surface hidden sm:inline">
+            Evaluating Multilingual LLMs with Cross-Lingual Alignment
+          </span>
         </div>
-        <button className="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">
-          notifications
-        </button>
-        <button className="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">
-          settings
-        </button>
-        <div className="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30 bg-primary-container flex items-center justify-center">
-          <span className="text-white text-xs font-bold">W</span>
+      </div>
+
+      <div className="flex items-center gap-3">
+        <NavLink
+          to="/thesis-purpose"
+          className={({ isActive }) =>
+            `px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all flex items-center gap-1.5 ${
+              isActive
+                ? 'bg-primary text-white shadow-sm'
+                : 'text-on-surface-variant hover:bg-surface-container-high hover:text-primary'
+            }`
+          }
+        >
+          <span className="material-symbols-outlined text-sm">school</span>
+          <span>Thesis Purpose</span>
+        </NavLink>
+
+        <NavLink
+          to="/"
+          end
+          className={({ isActive }) =>
+            `px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all flex items-center gap-1.5 ${
+              isActive
+                ? 'bg-primary text-white shadow-sm'
+                : 'text-on-surface-variant hover:bg-surface-container-high hover:text-primary'
+            }`
+          }
+        >
+          <span className="material-symbols-outlined text-sm">dashboard</span>
+          <span>Overview Dashboard</span>
+        </NavLink>
+
+        <div className="hidden lg:flex items-center gap-2 pl-3 border-l border-outline-variant/20 text-[11px] text-on-surface-variant/70">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span>CIT-TUM-HN Cluster</span>
         </div>
       </div>
     </header>
@@ -152,26 +158,26 @@ function TopAppBar() {
 /* ── Footer ── */
 function Footer() {
   return (
-    <footer className="w-full py-8 bg-surface flex flex-col md:flex-row justify-between items-center gap-4 px-12 mt-auto border-t border-outline-variant/10">
+    <footer className="w-full py-6 bg-surface flex flex-col md:flex-row justify-between items-center gap-4 px-8 md:px-12 mt-auto border-t border-outline-variant/15 text-on-surface-variant/70 text-xs">
       <div className="flex items-center gap-2">
-        <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-        <p className="text-on-secondary-container font-body text-[10px] uppercase tracking-widest">
-          © 2024 Project MEXA Research Lab. High-Precision LLM Evaluation.
+        <span className="w-2 h-2 rounded-full bg-primary" />
+        <p className="font-body text-[11px]">
+          <strong className="text-on-surface font-semibold">TUM CIT B.Sc. Thesis</strong> · Evaluating Multilingual LLM Performance with Cross-Lingual Alignment
         </p>
       </div>
-      <div className="text-on-secondary-container/60 font-body text-[9px] uppercase tracking-wider text-center max-w-xl">
-        Experiments presented in this work were carried out using the CIT-TUM-HN cluster at TUM Campus Heilbronn.
+      <div className="text-[10px] text-center max-w-xl text-on-surface-variant/60">
+        Supervised by Prof. Dr. Alexander Fraser & Shu Okabe · Technical University of Munich · CIT-TUM-HN Cluster
       </div>
-      <div className="flex gap-8">
-        {['Methodology', 'Whitepaper', 'Ethics Statement'].map((link) => (
-          <a
-            key={link}
-            href="#"
-            className="text-on-secondary-container hover:text-primary font-body text-[10px] uppercase tracking-widest transition-colors"
-          >
-            {link}
-          </a>
-        ))}
+      <div className="flex gap-4 text-[11px]">
+        <NavLink to="/thesis-purpose" className="hover:text-primary transition-colors">
+          Thesis Purpose
+        </NavLink>
+        <NavLink to="/datasets/flores" className="hover:text-primary transition-colors">
+          FLORES-200
+        </NavLink>
+        <NavLink to="/datasets/bible" className="hover:text-primary transition-colors">
+          Bible (sPBC)
+        </NavLink>
       </div>
     </footer>
   );
@@ -239,6 +245,7 @@ function App() {
             {!loading ? (
               <Routes>
                 {/* General */}
+                <Route path="/thesis-purpose" element={<ThesisPurpose />} />
                 <Route path="/" element={<Overview />} />
                 <Route path="/findings" element={<MexaFindings />} />
                 <Route path="/validation" element={<RankingValidation />} />

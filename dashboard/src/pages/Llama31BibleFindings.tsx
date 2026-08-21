@@ -3,7 +3,7 @@ import ExperimentFindings from '../components/ExperimentFindings';
 export default function Llama31BibleFindings() {
   return (
     <ExperimentFindings
-      title="Llama 3.1 8B — Bible (sPBC)"
+      title="Llama 3.1 8B (Bible (sPBC))"
       description="MEXA evaluation of Meta's Llama 3.1 8B model across ~1,400 languages using the Bible (sPBC) parallel corpus (103 sentences). Token-weighted embeddings with max and mean pooling across layers."
       badge="Bible (sPBC)"
       icon="auto_stories"

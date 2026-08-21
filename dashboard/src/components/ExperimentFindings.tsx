@@ -9,7 +9,7 @@ import { EmbeddingProjection } from '../charts/EmbeddingProjection';
 
 /* ── Types ── */
 interface ExperimentFindingsProps {
-  /** Page title, e.g. "Llama 3.1 8B — My Results" */
+  /** Page title, e.g. "Llama 3.1 8B, My Results" */
   title: string;
   /** Short description shown below the title */
   description: string;
@@ -390,7 +390,7 @@ export default function ExperimentFindings({
             icon="star"
             description={
               <span>
-                Score of <strong>{getAvg(stats.topLang).toFixed(3)}</strong> — strongest alignment
+                Score of <strong>{getAvg(stats.topLang).toFixed(3)}</strong>, strongest alignment
               </span>
             }
           />
@@ -400,7 +400,7 @@ export default function ExperimentFindings({
             icon="warning"
             description={
               <span>
-                Score of <strong>{getAvg(stats.bottomLang).toFixed(3)}</strong> — weakest alignment
+                Score of <strong>{getAvg(stats.bottomLang).toFixed(3)}</strong>, weakest alignment
               </span>
             }
           />
@@ -468,7 +468,7 @@ export default function ExperimentFindings({
               languageNames={languageNames}
               scores={scoresMap}
               title="Embedding Projection"
-              subtitle={`Language embeddings projected to 2D — colored by writing system or MEXA score`}
+              subtitle={`Language embeddings projected to 2D, colored by writing system or MEXA score`}
             />
           </div>
         )}
@@ -481,7 +481,7 @@ export default function ExperimentFindings({
                 Language Alignment Scores
               </h3>
               <p className="text-xs text-on-surface-variant font-label">
-                MEXA scores ranked by alignment — top {Math.min(heatmapCount, data.length)} of {data.length} languages
+                MEXA scores ranked by alignment, top {Math.min(heatmapCount, data.length)} of {data.length} languages
               </p>
             </div>
             <div className="flex items-center gap-3">
@@ -558,7 +558,7 @@ export default function ExperimentFindings({
         {/* ── Full Data Table ── */}
         <div className="col-span-12">
           <DataTable
-            title={`Complete MEXA Scores — ${title}`}
+            title={`Complete MEXA Scores, ${title}`}
             subtitle={`${datasetName} / ${poolingMethod}`}
             columns={tableColumns}
             data={tableData}
