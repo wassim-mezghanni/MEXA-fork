@@ -1,7 +1,7 @@
 \chapter{Background}
 \label{ch:background}
 
-This chapter covers the ideas needed to follow the experiments in Chapters~\ref{ch:methodology} and~\ref{ch:results}. Section~\ref{sec:multilingual-lm} reviews transformer-based multilingual architectures, the tokenization bottleneck, cross-lingual transfer, and the role of English as a pivot language. Section~\ref{sec:multilingual-evaluation} discusses evaluation paradigms, contrasting reference-based and reference-free metrics and explaining why alignment measurement is challenging. Section~\ref{sec:parallel-corpora} introduces the two parallel corpora used in this work.
+This chapter covers the ideas needed to follow the experiments in Chapters~\ref{ch:methodology} and~\ref{ch:results}. Section~\ref{sec:multilingual-lm} reviews transformer-based multilingual architectures, the tokenization bottleneck, cross-lingual transfer, and the role of English as a pivot language. Section~\ref{sec:multilingual-evaluation} discusses evaluation paradigms, examining standard downstream benchmarks and explaining why internal alignment measurement is challenging. Section~\ref{sec:parallel-corpora} introduces the two parallel corpora used in this work.
 
 % ------------------------------------------------------------
 \section{Multilingual Language Models}
@@ -85,23 +85,15 @@ This raises a concern: if alignment is only measured against English, we cannot 
 \subsection{Standard Benchmarks}
 \label{subsec:standard-benchmarks}
 
-Conventional multilingual evaluation measures downstream task accuracy on translated benchmarks, such as Belebele \citep{bandarkar2024belebele} for reading comprehension and m-ARC \citep{lai2023okapi} for reasoning. These benchmarks are useful for ranking models on functional performance, but they mix several factors: the quality of the model's internal representations, its generation ability, its sensitivity to prompt wording, and task-specific confounds. A model might score well not because its representations are aligned, but because it memorized surface patterns. Conversely, a model with strong internal alignment might underperform because of poor decoding.
+Conventional multilingual evaluation measures downstream accuracy on translated task benchmarks. In particular, \citet{kargaran2025mexa} use two primary benchmarks to validate alignment scores against downstream performance: Belebele \citep{bandarkar2024belebele} and m-ARC \citep{lai2023okapi}. Belebele is a parallel multiple-choice reading comprehension dataset covering 122 language variants based on FLORES-200 passages. m-ARC adapts the AI2 Reasoning Challenge to evaluate grade-school science questions across multiple languages, as detailed further in Section~\ref{sec:results-validity}.
 
-\subsection{Reference-Based vs.\ Reference-Free Metrics}
-\label{sec:ref-free-metrics}
+While useful for ranking functional capabilities, these benchmarks mix several factors: representation quality, generation ability, prompt formatting sensitivity, and task-specific heuristics. A model might score well by memorizing surface patterns or fitting a specific prompt template, rather than having well-aligned representations. Conversely, a model with strong internal alignment might underperform simply because of poor decoding choices.
 
-Reference-based metrics (BLEU, chrF) evaluate generated translations against human references. They require external target outputs and only measure surface-level output quality. Reference-free metrics such as MEXA take a different approach: they inspect the transformer's hidden states directly from parallel sentence pairs, measuring how well the model's internal representations align across languages. It requires no text generation, task-specific fine-tuning or reference translations. This makes reference-free metrics faster to compute and easier to scale across hundreds of languages.
 
 \subsection{Challenges in Alignment Evaluation}
 \label{subsec:alignment-challenges}
 
 Measuring alignment from hidden states is not straightforward. The main obstacle is representation \emph{anisotropy}: LLM embeddings tend to cluster in a narrow cone in vector space rather than spreading uniformly across all directions \citep{ethayarajh2019contextualized, hammerl2023anisotropy}. Figure~\ref{fig:anisotropy-illustration} illustrates the difference.
-
-In an isotropic space, cosine similarity between unrelated sentence pairs is close to zero, so a high similarity between two sentences is a meaningful signal. In an anisotropic space, \emph{all} pairs have high cosine similarity simply because all vectors point in roughly the same direction. The similarity between a true translation pair may be 0.95, but the similarity between two unrelated sentences may also be 0.92. Raw cosine similarity cannot distinguish the two.
-
-On top of anisotropy, each language has its own mean embedding offset (a ``language-identity vector''). Sentences in French cluster together and sentences in German cluster together, regardless of content. This offset inflates within-language similarity and makes cross-language similarity harder to interpret.
-
-MEXA addresses both problems. The bidirectional retrieval criterion (Section~\ref{sec:mexa-pipeline}) does not rely on absolute cosine values; it only asks whether the true pair's similarity exceeds all distractors, which is a relative comparison unaffected by uniform shifts. The optional mean-centering step removes language-identity offsets entirely, isolating the semantic component of alignment.
 
 \begin{figure}[H]
 \centering
@@ -110,8 +102,14 @@ MEXA addresses both problems. The bidirectional retrieval criterion (Section~\re
 \label{fig:anisotropy-illustration}
 \end{figure}
 
+In an isotropic space, cosine similarity between unrelated sentence pairs is close to zero, so a high similarity between two sentences is a meaningful signal. In an anisotropic space, \emph{all} pairs have high cosine similarity simply because all vectors point in roughly the same direction. The similarity between a true translation pair may be 0.95, but the similarity between two unrelated sentences may also be 0.92. Raw cosine similarity cannot distinguish the two.
+
+In general language models, pooled hidden states also develop language-specific centroid shifts (a ``language-identity vector'') \citep{hammerl2023anisotropy}. Sentences in the same language tend to cluster together regardless of their meaning. Dedicated sentence encoders avoid this by training on parallel sentence pairs, but in causal decoders and standard MLMs, these shifts artificially boost within-language similarity and weaken cross-lingual alignment.
+
+MEXA addresses both challenges. Its bidirectional retrieval criterion (Section~\ref{sec:mexa-pipeline}) avoids relying on raw cosine values, checking only whether true translation pairs outrank distractors. In addition, mean-centering \citep{schuster2019crosslingual} can be applied as a pipeline extension (Section~\ref{subsec:pipeline-extensions}) to subtract each language's centroid, stripping away language-identity offsets to isolate underlying semantic similarity.
+
 % ------------------------------------------------------------
-\section{Parallel Corpora}
+\section{Multilingual Corpora}
 \label{sec:parallel-corpora}
 
 \subsection{Sources}
@@ -121,20 +119,20 @@ All experiments in this thesis use two multi-parallel sentence datasets.
 
 \paragraph{FLORES-200} \citep{nllbteam2022} is a high-quality benchmark derived from Wikipedia articles. It covers 200+ language-script pairs with professionally translated sentences on topics in geography, history, and science. The vocabulary is modern and syntactically varied, making it a good proxy for the kind of text LLMs encounter in their training data.
 
-\paragraph{Super-Parallel Bible Corpus (sPBC)} \citep{mayer2014bible} contains verse-aligned Bible translations spanning over 1,400 language-script pairs. The text is historical and religious, with archaic vocabulary, repetitive semantic motifs, and unusual syntax. Despite its narrow domain, the Bible corpus is often the only parallel text available for extremely low-resource languages, including languages written in scripts absent from modern benchmarks (Ge'ez, Hebrew, various regional scripts).
+\paragraph{Super-Parallel Bible Corpus (sPBC)} \citep{mayer2014bible} contains verse-aligned Bible translations spanning over 1,400 language-script pairs. The text is historical and religious, with archaic vocabulary, repetitive semantic motifs, and distinctive syntax. Despite its narrow domain, the Bible corpus is often the only parallel resource available for hundreds of extremely low-resource languages, including rare regional scripts and indigenous writing systems absent from modern benchmarks (such as Syriac, Coptic, and diverse local orthographies).
 
-The two corpora are complementary. FLORES tests alignment on modern, diverse prose; the Bible tests alignment on archaic, domain-restricted text. If a model's alignment rankings are consistent across both, the metric is measuring something stable about the model rather than something specific to the domain.
+The two corpora are complementary: FLORES tests alignment on modern, diverse prose across 200+ language varieties, while the Bible corpus covers a much wider pool of over 1,400 languages, albeit on archaic, domain-restricted text. If a model's alignment rankings are consistent across both, the metric reflects an intrinsic property of the representations rather than an artifact of a particular domain.
 
 \subsection{Resource Disparity}
 \label{subsec:resource-disparity}
 
-Languages vary enormously in how much digital text exists for them. High-resource languages (English, French, German) have billions of tokens of web text and well-optimized tokenizers. Medium-resource languages (Russian, Hindi, Arabic, Chinese) have substantial but smaller corpora and less efficient tokenization. Low-resource languages (Amharic, Burmese, Khmer, Cherokee) may have only a few million tokens, leading to poor tokenizer coverage and high fertility.
+The availability of digital text varies by several orders of magnitude across languages. High-resource languages (such as English, French, German, and Chinese) benefit from billions of tokens of web data and well-optimized tokenizers. Medium-resource languages (such as Russian, Hindi, and Arabic) have substantial yet smaller corpora and less efficient tokenization. Low-resource languages (such as Amharic, Burmese, Khmer, and Cherokee) often have only a few million tokens, leading to poor tokenizer coverage and high fertility. Crucially, script family does not directly dictate resource level: while CJK scripts represent well-resourced languages, Latin and Cyrillic writing systems encompass hundreds of low-resource indigenous and regional languages.
 
-Figure~\ref{fig:resource-disparity} shows the distribution of languages by script family across the two evaluation corpora. FLORES is dominated by Latin-script languages, while the Bible corpus extends much deeper into under-represented scripts. Using both corpora together gives evaluation coverage across the full resource spectrum.
+Figure~\ref{fig:resource-disparity} shows the breakdown of language varieties by script family across both evaluation corpora (204 pairs in FLORES-200 and 1{,}401 pairs in the Bible corpus). While FLORES-200 is heavily Latin-weighted, the Bible corpus provides much broader coverage across regional and indigenous scripts. Combining both datasets allows evaluating models across diverse scripts as well as a wide resource spectrum.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.85\textwidth]{figures/fig_resource_disparity.pdf}
-\caption{\textbf{Language-script distribution across evaluation corpora}. Number of languages per script family in FLORES-200 and the Bible corpus (sPBC). The Bible corpus extends coverage deep into low-resource, non-Latin scripts that FLORES does not reach.}
+\caption{\textbf{Language-script distribution across evaluation corpora}. Number of language-script pairs per script family in FLORES-200 (204 pairs) and the full Super-Parallel Bible Corpus (sPBC, 1{,}401 pairs).}
 \label{fig:resource-disparity}
 \end{figure}

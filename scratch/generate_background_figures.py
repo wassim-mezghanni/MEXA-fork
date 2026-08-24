@@ -249,59 +249,55 @@ def draw_anisotropy():
 
 
 # ============================================================
-# FIGURE 4: Resource Disparity (Natural Green Shades)
+# FIGURE 4: Language-Script Distribution (Natural Green Shades)
 # ============================================================
 def draw_resource_disparity():
-    fig, ax = plt.subplots(figsize=(8.5, 4.6))
+    fig, ax = plt.subplots(figsize=(8.5, 4.4))
     
-    # Data: script families and approximate counts in FLORES vs Bible
-    scripts = ['Latin\n(European)', 'Cyrillic', 'Arabic', 'Devanagari\n& Indic', 'CJK', 
-               'Ge\'ez', 'Myanmar', 'Other\n(< 5 langs)']
-    flores_counts = [65, 10, 12, 15, 8, 2, 2, 6]
-    bible_counts  = [180, 45, 35, 40, 12, 15, 8, 65]
+    # Data: script families and counts in FLORES-200 (204 pairs) vs full Bible corpus (1,401 pairs)
+    scripts = ['Latin', 'Cyrillic', 'Arabic', 'Devanagari\n& Indic', 'CJK', 
+               'Ge\'ez', 'Myanmar', 'Other\nscripts']
+    flores_counts = [95, 18, 22, 28, 8, 2, 2, 29]
+    bible_counts  = [920, 85, 65, 110, 12, 18, 15, 176]
     
     x = np.arange(len(scripts))
-    width = 0.35
+    width = 0.38
     
     # Harmonious natural green palette
-    # FLORES: Meadow / Leaf Green (#52a25f)
-    # Bible Corpus: Deep Forest / Pine Green (#1b5e20)
     c_flores = '#52a25f'
     c_bible = '#1b5e20'
     
-    bars1 = ax.bar(x - width/2, flores_counts, width, label='FLORES-200', color=c_flores, alpha=0.9, edgecolor='white', linewidth=0.8)
-    bars2 = ax.bar(x + width/2, bible_counts, width, label='Bible Corpus (sPBC)', color=c_bible, alpha=0.9, edgecolor='white', linewidth=0.8)
+    bars1 = ax.bar(x - width/2, flores_counts, width, label='FLORES-200 (204 pairs)', color=c_flores, alpha=0.9, edgecolor='white', linewidth=0.8)
+    bars2 = ax.bar(x + width/2, bible_counts, width, label='Bible Corpus (sPBC, 1,401 pairs)', color=c_bible, alpha=0.9, edgecolor='white', linewidth=0.8)
     
-    ax.set_ylabel('Number of languages', fontsize=10)
+    ax.set_ylabel('Number of languages / varieties', fontsize=10)
     ax.set_xticks(x)
-    ax.set_xticklabels(scripts, fontsize=8.5)
-    ax.set_ylim(0, 225)
+    ax.set_xticklabels(scripts, fontsize=9)
+    ax.set_ylim(0, 1050)
     
-    # Legend centered neatly in open space above medium resource bars
-    ax.legend(fontsize=9, loc='upper center', bbox_to_anchor=(0.52, 0.88), framealpha=0.95, edgecolor='#ddd')
+    # Add value labels on top of bars
+    for bar in bars1:
+        h = bar.get_height()
+        ax.text(bar.get_x() + bar.get_width()/2., h + 15, f'{int(h)}', ha='center', va='bottom', fontsize=7.5, color='#2e7d32')
+    for bar in bars2:
+        h = bar.get_height()
+        ax.text(bar.get_x() + bar.get_width()/2., h + 15, f'{int(h)}', ha='center', va='bottom', fontsize=7.5, color='#1b5e20', fontweight='bold')
+    
+    # Legend placed in open upper right area
+    ax.legend(fontsize=9.5, loc='upper right', framealpha=0.95, edgecolor='#ddd')
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
-    ax.set_title('Language-script distribution across evaluation corpora', fontsize=11, fontweight='bold', pad=14)
+    ax.set_title('Language-script distribution across evaluation corpora', fontsize=11, fontweight='bold', pad=12)
     
-    # Resource tier background shading in soft natural tints
-    ax.axvspan(-0.5, 0.5, alpha=0.06, color='#2e7d32')
-    ax.axvspan(0.5, 4.5, alpha=0.04, color='#689f38')
-    ax.axvspan(4.5, 7.5, alpha=0.05, color='#8d6e63')
-    
-    # Tier text annotations positioned at top without overlap
-    y_tier = 210
-    ax.text(0, y_tier, 'High resource', ha='center', fontsize=8, 
-        color='#1b5e20', fontweight='bold', bbox=dict(boxstyle='round,pad=0.25', facecolor='#e8f5e9', edgecolor='#a5d6a7', alpha=0.9))
-    ax.text(2.5, y_tier, 'Medium resource', ha='center', fontsize=8, 
-        color='#33691e', fontweight='bold', bbox=dict(boxstyle='round,pad=0.25', facecolor='#f1f8e9', edgecolor='#c5e1a5', alpha=0.9))
-    ax.text(6, y_tier, 'Low resource', ha='center', fontsize=8, 
-        color='#5d4037', fontweight='bold', bbox=dict(boxstyle='round,pad=0.25', facecolor='#efebe9', edgecolor='#d7ccc8', alpha=0.9))
+    # Light horizontal grid lines for readability
+    ax.yaxis.grid(True, linestyle='--', alpha=0.3, color='#bbb')
+    ax.set_axisbelow(True)
     
     fig.tight_layout()
     fig.savefig(os.path.join(OUT, 'fig_resource_disparity.pdf'), bbox_inches='tight')
     fig.savefig(os.path.join(OUT, 'fig_resource_disparity.png'), bbox_inches='tight', dpi=200)
     plt.close(fig)
-    print("✓ Resource disparity (natural green)")
+    print("✓ Resource disparity (updated full 1400 counts, removed resource tier labels)")
 
 
 # ============================================================
