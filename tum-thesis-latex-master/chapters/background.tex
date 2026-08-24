@@ -12,16 +12,16 @@ This chapter covers the ideas needed to follow the experiments in Chapters~\ref{
 
 All models evaluated in this thesis are built on the transformer architecture \citep{vaswani2017attention}. A transformer stacks $L$ identical layers, each consisting of a multi-head self-attention block followed by a position-wise feed-forward network. The input to the model is a sequence of tokens, each mapped to a $d$-dimensional vector by an embedding table (layer 0). At every subsequent layer $l$, the self-attention mechanism lets each token attend to other tokens in the sequence, and the resulting hidden states $h_t^{(l)}$ encode progressively more abstract representations of meaning. The MEXA pipeline (Chapter~\ref{ch:methodology}) extracts exactly these per-layer hidden states.
 
-What differs between model families is the \emph{attention mask}, which determines which tokens can attend to which. This distinction gives rise to three broad classes of multilingual models (Figure~\ref{fig:transformer-schematic}).
+Multilingual models differ in their architecture (encoder vs.\ decoder) and training objectives (generative vs.\ contrastive), falling into three broad categories in our evaluation (Figure~\ref{fig:transformer-schematic}):
 
 \paragraph{Masked language models (MLMs).}
 Bidirectional encoders such as XLM-RoBERTa \citep{conneau2020xlmr} and Glot500 \citep{imani2023glot500} use full (bidirectional) attention: every token can attend to every other token in the sequence. They are trained by masking a fraction of input tokens and predicting the masked ones from context. Because attention is bidirectional, each hidden state $h_t^{(l)}$ reflects the full sentence, regardless of position.
 
 \paragraph{Causal decoders.}
-Autoregressive models such as Llama 3.1 \citep{dubey2024llama3}, Qwen 3 \citep{yang2025qwen3}, and Apertus \citep{apertus2025} apply a causal attention mask: token $t$ can only attend to tokens at positions $\le t$. They are trained to predict the next token given all preceding tokens. This means early tokens in a sentence carry little context, while the final token has seen the entire sequence. The asymmetry matters for how we pool hidden states into sentence embeddings (Section~\ref{sec:mexa-pipeline}).
+Autoregressive models such as Llama~3.1 \citep{dubey2024llama3}, Qwen~3 \citep{yang2025qwen3}, and Apertus \citep{apertus2025} apply a causal attention mask, allowing each token $t$ to attend only to previous positions ($\le t$) to predict the next token. Consequently, early tokens in a sentence carry little context, while the final token has attended to the entire sequence. This asymmetry directly influences how hidden states are pooled into sentence embeddings (Section~\ref{sec:mexa-pipeline}).
 
 \paragraph{Contrastive sentence encoders.}
-Models such as LaBSE \citep{feng2022labse} and mE5-base \citep{wang2024multilingual} start from a pretrained encoder or decoder but are then fine-tuned with a contrastive loss: parallel sentences (translations) are pulled together in vector space, while non-parallel sentences are pushed apart. The result is an embedding space where cosine similarity between translations is high by design. These models set an upper bound on what alignment looks like when it is an explicit training objective.
+Sentence-level models such as LaBSE \citep{feng2022labse} and mE5-base \citep{wang2024multilingual} start from a pretrained encoder or decoder but are then fine-tuned with a contrastive loss: parallel sentences (translations) are pulled together in vector space, while non-parallel sentences are pushed apart. The result is an embedding space where cosine similarity between translations is high by design. These models set an upper bound on what alignment looks like when it is an explicit training objective.
 
 \begin{figure}[H]
 \centering
@@ -34,7 +34,7 @@ Models such as LaBSE \citep{feng2022labse} and mE5-base \citep{wang2024multiling
 \subsection{Sparse Mixture-of-Experts}
 \label{subsec:moe-background}
 
-A recent trend in scaling language models is sparse mixture-of-experts (MoE) \citep{jiang2024mixtral}. In a standard (dense) transformer, every token passes through the same feed-forward network at each layer. In an MoE transformer, the feed-forward block is replaced by $E$ parallel expert networks, and a learned router selects a small subset (typically 2 out of 8) for each token (Figure~\ref{fig:moe-architecture}). The total parameter count is much larger than in a dense model, but the per-token compute stays roughly constant.
+A recent trend in scaling language models is sparse mixture-of-experts (MoE) \citep{jiang2024mixtral}. In a standard (dense) transformer, every token passes through the same feed-forward network at each layer. In an MoE transformer, the feed-forward block is replaced by $E$ parallel expert networks, and a learned router selects a small subset (typically $k=2$ out of $E=8$ experts) for each token (Figure~\ref{fig:moe-architecture}). The total parameter count is much larger than in a dense model, but the per-token compute stays roughly constant.
 
 \begin{figure}[H]
 \centering
@@ -51,7 +51,7 @@ For multilingual alignment, MoE raises a specific question: does the router send
 
 Before any text reaches the transformer, it must be split into subword tokens. The standard approach is Byte-Pair Encoding (BPE) \citep{sennrich2016bpe}: starting from individual bytes or characters, the algorithm iteratively merges the most frequent adjacent pair into a new token until a fixed vocabulary size is reached. Because the merge statistics are computed over the training corpus, languages that are well-represented get longer, more meaningful tokens (e.g., ``scientist'' stays as one token in English), while under-represented languages are split into short, often meaningless fragments (e.g., an Amharic word may become 8+ byte-level tokens).
 
-The ratio of tokens to words is called \emph{fertility} ($F_L$). High fertility has two consequences for cross-lingual alignment \citep{petrov2023tokenizer}. First, the sequence gets longer, so each token's weight in a pooled sentence embedding is diluted. Second, the individual token representations carry less semantic information, because each fragment sees less meaningful context under causal attention. Section~\ref{sec:results-cross-experiment} quantifies this effect.
+The ratio of tokens to words is called \emph{fertility} ($F_L$). High fertility has two consequences for cross-lingual alignment \citep{petrov2023tokenizer}. First, the sequence gets longer, so each token's weight in a pooled sentence embedding is diluted. Second, the individual token representations carry less semantic information, because each fragment sees less meaningful context under causal attention. In practice, fertility varies widely across languages: English and German typically require only 1.0 to 1.5 tokens per word, whereas non-Latin scripts like Amharic (Ge'ez) or Burmese (Myanmar) often split words into 4 to 8 or more pieces. Section~\ref{sec:results-cross-experiment} examines how this fragmentation correlates with lower alignment across more than 200 languages and script families.
 
 \begin{figure}[H]
 \centering
@@ -66,9 +66,9 @@ The ratio of tokens to words is called \emph{fertility} ($F_L$). High fertility 
 
 Cross-lingual transfer is the ability of a model to perform a task in a target language $L_1$ after being trained primarily in a source language $L_2$ (typically English). For this to work, the model's internal representations must be similar for sentences with the same meaning, regardless of language.
 
-The \emph{pivot hypothesis} \citep{wendler2024llamas} offers an explanation: multilingual transformers develop a shared, language-agnostic representation space (an \emph{interlingua}) in their intermediate hidden layers. Sentences with the same meaning in different languages are mapped to nearby points in this space. The hypothesis predicts a specific pattern across layers: early layers encode surface features (script, word order), middle layers converge into a shared semantic space, and late layers diverge again as the model prepares language-specific predictions (next token or masked token). The t-SNE projections in Figure~\ref{fig:embedding-projections} (Chapter~\ref{ch:results}) confirm this pattern empirically.
+The pivot hypothesis \citep{wendler2024llamas} offers an explanation: multilingual transformers develop a shared \emph{concept space} in their intermediate layers, mapping semantically equivalent sentences to nearby points. This predicts a clear pattern across depth: early layers encode surface features like script and word order, middle layers converge into this shared space, and late layers diverge to generate language-specific tokens.
 
-Whether the interlingua is truly language-agnostic or merely English-centric is one of the questions this thesis investigates (RQ3, Section~\ref{sec:intro-research-questions}).
+In fact, \citet{wendler2024llamas} found that for models like Llama-2, this middle space is largely English-centric, with non-English inputs routed through English-like representations. Whether this bias holds across newer architectures and non-English pivot evaluations is a core focus of this thesis (RQ3, Section~\ref{sec:intro-research-questions}).
 
 % ..............................................
 \subsection{English as a Pivot Language}
@@ -76,7 +76,7 @@ Whether the interlingua is truly language-agnostic or merely English-centric is 
 
 English dominates both the pre-training data and the parallel data used for evaluation. Most multilingual benchmarks measure performance relative to English, and most alignment metrics (including MEXA in its default configuration) use English as the pivot language $L_2$.
 
-This raises a concern: if alignment is only measured against English, we cannot tell whether the model has a true interlingua or just a good English to everything mapping. Evaluating with alternative pivots (French, German, Arabic, Chinese, Basque) is one way to test this. If alignment scores remain stable across pivots, the space is genuinely multilingual. If they drop for non-English pivots, the model's representations may be organized around English. We run this test in Section~\ref{sec:results-non-english-pivots}.
+This raises a concern: if alignment is only measured against English, we cannot tell whether the model has a true interlingua specifically or just a good English to everything mapping. Evaluating with alternative pivots (French, German, Arabic, Chinese, Basque) is one way to test this. If alignment scores remain stable across pivots, the space is genuinely multilingual. If they drop for non-English pivots, the model's representations may be organized around English. We run this test in Section~\ref{sec:results-non-english-pivots}.
 
 % ------------------------------------------------------------
 \section{Multilingual Evaluation}
