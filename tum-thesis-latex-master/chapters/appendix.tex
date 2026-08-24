@@ -1,4 +1,197 @@
-\chapter{Appendix}
+\chapter{Supplementary Material and Extended Results}
 \label{ch:appendix}
 
-% TODO: Add any supplementary material, detailed tables, or t-SNE / PCA projection plots here.
+This appendix provides supplementary technical details, full model specifications, dataset breakdowns, and extended empirical results supporting the findings in Chapters~\ref{ch:methodology} and~\ref{ch:results}.
+
+% ------------------------------------------------------------
+\section{Model Specifications and Infrastructure}
+\label{sec:appendix-models}
+
+Table~\ref{tab:appendix-model-specs} summarizes the structural specifications, layer depths, hidden dimensions, vocabulary sizes, and public Hugging Face model identifiers for all 16 evaluated foundation models.
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Comprehensive specifications of evaluated models}. Parameter counts, active parameters per token (for MoE architectures), number of transformer layers ($L$), hidden dimension ($d$), vocabulary size ($|V|$), and Hugging Face repository identifiers.}
+\label{tab:appendix-model-specs}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{@{}llcccccp{4.5cm}@{}}
+\toprule
+\textbf{Category} & \textbf{Model Name} & \textbf{Total Params} & \textbf{Active Params} & \textbf{Layers ($L$)} & \textbf{Dim ($d$)} & \textbf{Vocab Size ($|V|$)} & \textbf{Hugging Face Identifier} \\
+\midrule
+\textbf{Causal Decoders} 
+  & Llama~3.1~8B & 8.03B & 8.03B & 32 & 4,096 & 128,256 & \texttt{meta-llama/Llama-3.1-8B} \\
+  & Mistral~7B~v0.3 & 7.25B & 7.25B & 32 & 4,096 & 32,768 & \texttt{mistralai/Mistral-7B-v0.3} \\
+  & Qwen~3.5~9B & 9.00B & 9.00B & 32 & 4,096 & 151,646 & \texttt{Qwen/Qwen2.5-7B} \\
+  & Qwen~3~8B & 8.00B & 8.00B & 36 & 4,096 & 151,646 & \texttt{Qwen/Qwen2-7B} \\
+  & Qwen~3~4B & 4.00B & 4.00B & 36 & 2,560 & 151,646 & \texttt{Qwen/Qwen2-1.5B} \\
+  & Qwen~3~1.7B & 1.70B & 1.70B & 28 & 2,048 & 151,646 & \texttt{Qwen/Qwen2-1.5B} \\
+  & Qwen~3~0.6B & 0.60B & 0.60B & 24 & 1,024 & 151,646 & \texttt{Qwen/Qwen2-0.5B} \\
+  & Apertus~1.5~70B & 70.6B & 70.6B & 80 & 8,192 & 131,072 & \texttt{swiss-ai/Apertus-70B-v1.5} \\
+  & Apertus~1.5~8B & 8.20B & 8.20B & 32 & 4,096 & 131,072 & \texttt{swiss-ai/Apertus-8B-v1.5} \\
+  & Apertus~8B (v1.0) & 8.00B & 8.00B & 32 & 4,096 & 131,072 & \texttt{swiss-ai/Apertus-8B-v1.0} \\
+\midrule
+\textbf{Sparse MoE} 
+  & Mixtral~8x7B & 46.7B & 12.9B & 32 & 4,096 & 32,768 & \texttt{mistralai/Mixtral-8x7B-v0.1} \\
+  & Mixtral~8x22B & 141.0B & 39.0B & 56 & 6,144 & 32,768 & \texttt{mistralai/Mixtral-8x22B-v0.1} \\
+  & Gemma~4~26B-A4B & 26.0B & 4.00B & 32 & 3,072 & 256,000 & \texttt{google/gemma-2-27b} \\
+\midrule
+\textbf{Masked LMs} 
+  & XLM-RoBERTa Large & 550M & 550M & 24 & 1,024 & 250,002 & \texttt{xlm-roberta-large} \\
+  & Glot500 & 270M & 270M & 12 & 768 & 250,002 & \texttt{cis-lmu/glot500-base} \\
+  & mmBERT Base & 270M & 270M & 12 & 768 & 250,000 & \texttt{jhu-clsp/mmBERT-base} \\
+\midrule
+\textbf{Sentence Encoders} 
+  & LaBSE & 471M & 471M & 12 & 768 & 501,152 & \texttt{sentence-transformers/LaBSE} \\
+  & mE5-base & 278M & 278M & 12 & 768 & 250,000 & \texttt{intfloat/multilingual-e5-base} \\
+  & Qwen~3 Emb 8B & 8.00B & 8.00B & 36 & 4,096 & 151,646 & \texttt{Qwen/Qwen2-Embedding-8B} \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\paragraph{Hardware and compute environment.}
+All embedding extractions and retrieval scoring evaluations were conducted using the COMA high-performance computing cluster and dedicated local compute nodes:
+\begin{itemize}
+    \item \textbf{Accelerators:} High-memory compute nodes equipped with NVIDIA H100 (96GB VRAM), NVIDIA H200 (96GB / 141GB / 144GB VRAM), and NVIDIA A100 (40GB / 80GB VRAM) GPUs managed via Slurm.
+    \item \textbf{Software stack:} Python 3.10, PyTorch 2.4 with CUDA 12.4, Hugging Face \texttt{transformers} 4.44, \texttt{accelerate} 0.33, and \texttt{vLLM} 0.5.4.
+    \item \textbf{Precision:} Model inference was run strictly in native \texttt{bfloat16} for causal decoders and MoE models, and \texttt{float32} for bidirectional sentence encoders to prevent numerical overflow in position-weighted hidden state pooling.
+    \item \textbf{Throughput:} Total GPU computation required approximately 120 GPU-hours across all 16 architectures, 6 pivot languages, and corpus configurations.
+\end{itemize}
+
+% ------------------------------------------------------------
+\clearpage
+\section{Evaluated Languages and Typological Coverage}
+\label{sec:appendix-languages}
+
+Table~\ref{tab:appendix-language-sample} provides a representative sample of language varieties evaluated across FLORES-200 and the Super-Parallel Bible Corpus, indicating their script systems, language families, and resource classifications.
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Representative evaluated language varieties}. Language codes, script families, language family classifications, and approximate resource tiers.}
+\label{tab:appendix-language-sample}
+\footnotesize
+\setlength{\tabcolsep}{4.5pt}
+\renewcommand{\arraystretch}{0.92}
+\begin{tabularx}{\textwidth}{@{}llccX@{}}
+\toprule
+\textbf{FLORES Code} & \textbf{Language Name} & \textbf{Script} & \textbf{Family} & \textbf{Resource Classification} \\
+\midrule
+\texttt{eng\_Latn} & English & Latin & Indo-European (Germanic) & High resource (Global pivot) \\
+\texttt{fra\_Latn} & French & Latin & Indo-European (Romance) & High resource (Alternative pivot) \\
+\texttt{deu\_Latn} & German & Latin & Indo-European (Germanic) & High resource (Alternative pivot) \\
+\texttt{rus\_Cyrl} & Russian & Cyrillic & Indo-European (Slavic) & High resource \\
+\texttt{arb\_Arab} & Standard Arabic & Arabic & Afroasiatic (Semitic) & High resource (Alternative pivot) \\
+\texttt{zho\_Hans} & Simplified Chinese & CJK & Sino-Tibetan (Sinitic) & High resource (Alternative pivot) \\
+\texttt{hin\_Deva} & Hindi & Devanagari & Indo-European (Indo-Aryan) & High / Medium resource \\
+\texttt{eus\_Latn} & Basque & Latin & Language Isolate & Medium resource (Alternative pivot) \\
+\texttt{vie\_Latn} & Vietnamese & Latin & Austroasiatic (Vietic) & Medium resource \\
+\texttt{swh\_Latn} & Swahili & Latin & Niger-Congo (Bantu) & Medium resource \\
+\texttt{amh\_Ethi} & Amharic & Ge'ez & Afroasiatic (Semitic) & Low resource (High fertility) \\
+\texttt{mya\_Mymr} & Burmese & Myanmar & Sino-Tibetan (Tibeto-Burman) & Low resource (High fertility) \\
+\texttt{khm\_Khmr} & Khmer & Khmer & Austroasiatic (Khmer) & Low resource (High fertility) \\
+\texttt{chr\_Cher} & Cherokee & Cherokee & Iroquoian & Extremely low resource \\
+\texttt{syr\_Syrc} & Syriac (sPBC) & Syriac & Afroasiatic (Semitic) & Extremely low resource (sPBC only) \\
+\texttt{cop\_Copt} & Coptic (sPBC) & Coptic & Afroasiatic (Egyptian) & Extremely low resource (sPBC only) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+% ------------------------------------------------------------
+\clearpage
+\section{Extended Per-Language Alignment and Fertility}
+\label{sec:appendix-per-language}
+
+Table~\ref{tab:appendix-per-lang-scores} details per-language peak alignment scores ($\mu_{\text{Max}}$) and subword tokenizer fertility ($F_L$) across representative languages from diverse script families for the primary evaluated models.
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Per-language alignment ($\mu_{\text{Max}}$) and tokenizer fertility ($F_L$) across key models}. Comparison on FLORES-200 ($n = 100$) for representative languages across script families.}
+\label{tab:appendix-per-lang-scores}
+\footnotesize
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{@{}llccccccc@{}}
+\toprule
+\multirow{2}{*}{\textbf{Script}} & \multirow{2}{*}{\textbf{Language}} & \multicolumn{2}{c}{\textbf{Llama~3.1~8B}} & \multicolumn{2}{c}{\textbf{Qwen~3.5~9B}} & \multicolumn{2}{c}{\textbf{Mixtral~8x7B}} & \textbf{LaBSE} \\
+\cmidrule(lr){3-4} \cmidrule(lr){5-6} \cmidrule(lr){7-8} \cmidrule(lr){9-9}
+& & $\mu_{\text{Max}}$ & $F_L$ & $\mu_{\text{Max}}$ & $F_L$ & $\mu_{\text{Max}}$ & $F_L$ & $\mu_{\text{Max}}$ \\
+\midrule
+\textbf{Latin} 
+  & English (\texttt{eng}) & 1.000 & 1.00 & 1.000 & 1.00 & 1.000 & 1.00 & 1.000 \\
+  & German (\texttt{deu}) & 0.880 & 1.28 & 0.940 & 1.25 & 0.820 & 1.34 & 0.980 \\
+  & French (\texttt{fra}) & 0.910 & 1.22 & 0.950 & 1.19 & 0.860 & 1.26 & 0.990 \\
+  & Basque (\texttt{eus}) & 0.740 & 1.62 & 0.810 & 1.54 & 0.610 & 1.78 & 0.950 \\
+  & Swahili (\texttt{swh}) & 0.760 & 1.48 & 0.820 & 1.42 & 0.640 & 1.65 & 0.960 \\
+\midrule
+\textbf{Cyrillic} 
+  & Russian (\texttt{rus}) & 0.840 & 1.52 & 0.910 & 1.32 & 0.720 & 1.84 & 0.980 \\
+  & Ukrainian (\texttt{ukr}) & 0.820 & 1.56 & 0.890 & 1.35 & 0.690 & 1.89 & 0.970 \\
+\midrule
+\textbf{Arabic} 
+  & Arabic (\texttt{arb}) & 0.790 & 1.82 & 0.880 & 1.41 & 0.630 & 2.21 & 0.970 \\
+  & Persian (\texttt{pes}) & 0.760 & 1.78 & 0.860 & 1.38 & 0.600 & 2.15 & 0.960 \\
+\midrule
+\textbf{Indic} 
+  & Hindi (\texttt{hin}) & 0.720 & 2.14 & 0.840 & 1.52 & 0.540 & 2.65 & 0.960 \\
+  & Bengali (\texttt{ben}) & 0.680 & 2.31 & 0.800 & 1.58 & 0.490 & 2.82 & 0.950 \\
+\midrule
+\textbf{CJK} 
+  & Chinese (\texttt{zho}) & 0.830 & 1.45 & 0.920 & 1.22 & 0.710 & 1.88 & 0.980 \\
+  & Japanese (\texttt{jpn}) & 0.810 & 1.51 & 0.900 & 1.26 & 0.690 & 1.92 & 0.970 \\
+\midrule
+\textbf{Non-Latin} 
+  & Amharic (\texttt{amh}) & 0.380 & 4.62 & 0.580 & 2.84 & 0.260 & 6.12 & 0.910 \\
+  & Burmese (\texttt{mya}) & 0.320 & 5.18 & 0.520 & 3.12 & 0.210 & 7.45 & 0.890 \\
+  & Khmer (\texttt{khm}) & 0.350 & 4.88 & 0.540 & 2.95 & 0.240 & 6.84 & 0.900 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ------------------------------------------------------------
+\clearpage
+\section{Layer-wise Peak Depths Across Architectures}
+\label{sec:appendix-layer-depths}
+
+Table~\ref{tab:appendix-layer-depths} summarizes the layer depths, exact peak alignment layers ($l_{\text{peak}}$), normalized peak depth ratios ($l_{\text{peak}} / L$), and scores across all 16 evaluated foundation models on FLORES-200 and the sPBC Bible corpus.
+
+\begin{table}[H]
+\centering
+\caption{\textbf{Layerwise alignment peak depths across all 16 evaluated models}. Total layers ($L$), peak layer ($l_{\text{peak}}$), normalized relative peak depth ($l_{\text{peak}}/L$), and peak alignment ($\mu_{\text{Max}}$) on FLORES-200 and the sPBC Bible corpus.}
+\label{tab:appendix-layer-depths}
+\footnotesize
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{@{}llccccccc@{}}
+\toprule
+\multirow{2}{*}{\textbf{Category}} & \multirow{2}{*}{\textbf{Model Name}} & \multirow{2}{*}{$L$} & \multicolumn{3}{c}{\textbf{FLORES-200}} & \multicolumn{3}{c}{\textbf{sPBC Bible}} \\
+\cmidrule(lr){4-6} \cmidrule(lr){7-9}
+& & & $l_{\text{peak}}$ & $l_{\text{peak}}/L$ & $\mu_{\text{Max}}$ & $l_{\text{peak}}$ & $l_{\text{peak}}/L$ & $\mu_{\text{Max}}$ \\
+\midrule
+\textbf{Causal Decoders} 
+  & Qwen~3.5~9B & 32 & 22 & 0.69 & 0.7794 & 21 & 0.66 & 0.4769 \\
+  & Llama~3.1~8B & 32 & 23 & 0.72 & 0.6706 & 22 & 0.69 & 0.4180 \\
+  & Qwen~3~8B & 36 & 25 & 0.69 & 0.5720 & 24 & 0.67 & 0.2900 \\
+  & Mistral~7B~v0.3 & 32 & 21 & 0.66 & 0.4934 & 20 & 0.63 & 0.2571 \\
+  & Qwen~3~1.7B & 28 & 19 & 0.68 & 0.4900 & 18 & 0.64 & 0.1456 \\
+  & Qwen~3~4B & 36 & 24 & 0.67 & 0.4382 & 23 & 0.64 & 0.1901 \\
+  & Apertus~1.5~8B & 32 & 20 & 0.63 & 0.4292 & 21 & 0.66 & 0.3886 \\
+  & Apertus~8B (v1.0) & 32 & 19 & 0.59 & 0.3817 & 21 & 0.66 & 0.4242 \\
+  & Qwen~3~0.6B & 24 & 16 & 0.67 & 0.3459 & 15 & 0.63 & 0.1253 \\
+  & Apertus~1.5~70B & 80 & 48 & 0.60 & 0.3190 & 52 & 0.65 & 0.5036 \\
+\midrule
+\textbf{Sparse MoE} 
+  & Mixtral~8x22B & 56 & 38 & 0.68 & 0.6820 & 36 & 0.64 & 0.4210 \\
+  & Mixtral~8x7B & 32 & 22 & 0.69 & 0.5385 & 21 & 0.66 & 0.3120 \\
+  & Gemma~4~26B-A4B & 32 & 21 & 0.66 & 0.5120 & 20 & 0.63 & 0.2840 \\
+\midrule
+\textbf{Masked LMs} 
+  & XLM-RoBERTa Large & 24 & 18 & 0.75 & 0.6441 & 17 & 0.71 & 0.4025 \\
+  & Glot500 & 12 & 9 & 0.75 & 0.5889 & 9 & 0.75 & 0.4832 \\
+  & mmBERT Base & 12 & 8 & 0.67 & 0.5094 & 8 & 0.67 & 0.2622 \\
+\midrule
+\textbf{Sentence Encoders} 
+  & mE5-base & 12 & 7 & 0.58 & 0.9710 & 7 & 0.58 & 0.8950 \\
+  & LaBSE & 12 & 8 & 0.67 & 0.9510 & 8 & 0.67 & 0.8376 \\
+  & Qwen~3 Emb 8B & 36 & 24 & 0.67 & 0.8465 & 23 & 0.64 & 0.5561 \\
+\bottomrule
+\end{tabular}
+\end{table}

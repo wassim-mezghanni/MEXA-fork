@@ -1,27 +1,27 @@
 \chapter{Conclusion}
 \label{ch:conclusion}
 
-This thesis investigated the internal cross-lingual representation space of modern autoregressive large language models, evaluating whether training-free representation alignment can reliably assess multilingual capabilities across hundreds of languages. Using the MEXA framework across diverse model families, architectures, and parallel corpora, this work provided empirical insights into parameter scaling, sparse routing dynamics, representation geometry, and tokenization effects.
+This thesis investigated the internal cross-lingual representation space of modern autoregressive large language models, evaluating whether training-free representation alignment reliably diagnoses multilingual capabilities across hundreds of languages. Using the MEXA framework across diverse model families, architectures, and parallel corpora, this work examined parameter scaling, sparse routing dynamics, representation geometry, and tokenization effects.
 
-\section{Summary}
+\section{Summary of Findings}
 \label{sec:conclusion-summary}
 
-The primary contributions and empirical findings of this thesis are summarized as follows:
+The main findings and empirical contributions of this thesis are:
 
 \paragraph{Parameter scaling and domain robustness.}
-Across new open-weight decoder families (including Qwen~3, Qwen~3.5, and Apertus), cross-lingual alignment scales consistently with model capacity. Scaling within the Qwen~3 family from 0.6B to 8B parameters yields steady gains in peak alignment on FLORES-200 ($\mu_{\text{Max}} = 0.35 \rightarrow 0.57$). Furthermore, language difficulty rankings remain stable across distinct parallel domains ($\rho = 0.94$ between FLORES-200 news translation and the 1,401-language sPBC Bible corpus), demonstrating that internal alignment reflects underlying linguistic competence rather than domain-specific memorization.
+Across new open-weight decoder families (including Qwen~3, Qwen~3.5, and Apertus), cross-lingual alignment scales consistently with model capacity. Within the Qwen~3 family, scaling from 0.6B to 8B parameters yields steady gains in peak alignment on FLORES-200 ($\mu_{\text{Max}} = 0.35 \rightarrow 0.57$). Furthermore, relative language difficulty rankings remain stable across distinct parallel domains ($\rho = 0.94$ between FLORES-200 Wikipedia prose and the 1,401-language sPBC Bible corpus), showing that internal alignment reflects underlying linguistic competence rather than domain-specific memorization.
 
 \paragraph{Architectural paradigms and layerwise trajectories.}
-Comparing causal decoders to dedicated sentence encoders and masked language models revealed distinct representational trajectories across depth. Dedicated sentence encoders (LaBSE, mE5) achieve high alignment early in the network ($\mu_{\text{Max}} > 0.85$ by Layer 6--8) due to explicit contrastive pair objectives. In contrast, causal decoders construct a language-agnostic semantic space progressively, reaching peak alignment in upper-middle layers ($l/L \approx 0.6$--$0.8$) before diverging at final output heads to accommodate language-specific vocabulary projection.
+Comparing causal decoders to dedicated sentence encoders and masked language models revealed distinct representational trajectories across depth. Dedicated sentence encoders (LaBSE, mE5) achieve high alignment early in the network ($\mu_{\text{Max}} > 0.85$ by Layer 6--8) due to explicit contrastive objectives. In contrast, causal decoders construct a shared concept space progressively, reaching peak alignment in upper-middle layers ($l/L \approx 0.6$--$0.8$) before diverging at final output heads to accommodate language-specific vocabulary projection.
 
 \paragraph{Mixture-of-Experts and routing dynamics.}
-Sparse Mixture-of-Experts models (Mixtral~8x7B, Mixtral~8x22B, and Gemma~4~26B-A4B) match or exceed dense baselines with comparable per-token active compute. Analysis of token-level gating showed that routing operates on syntactic and semantic roles rather than language identity. Gating distributions converge to near-uniform expert usage ($\approx 12.5\%$) across diverse language families in intermediate layers, confirming that sparse conditional execution preserves a shared multilingual representation manifold.
+Sparse Mixture-of-Experts models (Mixtral~8x7B, Mixtral~8x22B, and Gemma~4~26B-A4B) match or exceed dense baselines with comparable per-token active compute. Analysis of token-level gating showed that routing operates on syntactic and semantic roles rather than language identity. Gating distributions converge to near-uniform expert usage ($\approx 12.5\%$) across diverse language families in intermediate layers, confirming that sparse conditional execution preserves the shared concept space across languages.
 
 \paragraph{Pivot invariance and representation geometry.}
 Evaluating alignment across six typologically diverse pivot languages (English, French, German, Arabic, Chinese, and Basque) refuted the hypothesis that English acts as an obligatory structural bottleneck. High-resource non-English pivots achieve alignment scores matching or exceeding English under standard retrieval. When language-specific centroid offsets are removed via mean-centering, alignment across all six pivots converges to a near-identical ceiling ($\mu_{\text{Max}} \approx 0.94$--$0.96$ for Qwen~3.5~9B), showing that the internal representation space is inherently multilingual and multi-directional.
 
 \paragraph{The tokenizer fertility tax.}
-Subword tokenization heavily penalizes low-resource and non-Latin scripts. Analysis revealed a significant negative log-linear relationship between tokenizer fertility and alignment scores ($r = -0.56, \rho = -0.67$). Within individual script families, higher fertility strongly correlates with reduced alignment (e.g., $r = -0.93$ for Cyrillic, $r = -0.88$ for Arabic). Fragmented subword sequences dilute positional pooling weights and introduce noise into sentence embeddings, creating an artificial performance barrier independent of core model reasoning capacity.
+Subword tokenization heavily penalizes low-resource and non-Latin scripts. Analysis revealed a significant negative log-linear relationship between tokenizer fertility and alignment scores ($r = -0.56, \rho = -0.67$). Within individual script families, higher fertility strongly correlates with reduced alignment ($r = -0.93$ for Cyrillic, $r = -0.88$ for Arabic). Fragmented subword sequences dilute positional pooling weights and introduce noise into sentence embeddings, creating an artificial performance barrier independent of core model reasoning capacity.
 
 \paragraph{Downstream predictive validity.}
 Validating MEXA scores against established benchmarks confirmed that training-free alignment serves as a reliable proxy for downstream task performance. Model-level alignment correlates almost monotonically with zero-shot accuracy on Belebele reading comprehension and m-ARC scientific reasoning ($\rho = 1.000$). At the individual language level, per-language alignment on Llama~3.1~8B strongly predicts per-language comprehension accuracy across 110 languages ($r = 0.991, \rho = 0.986, p < 10^{-80}$).
@@ -32,13 +32,13 @@ Validating MEXA scores against established benchmarks confirmed that training-fr
 While the findings offer consistent insights into LLM representation geometry, several limitations should be noted:
 
 \begin{enumerate}
-    \item \textbf{Parallel corpus dependencies and domain shifts.} The evaluation relies on sentence-level translation quality. While FLORES-200 provides professionally translated text, the massively multilingual Bible corpus contains archaic phrasing, stylized syntax, and culturally specific references that may not fully reflect contemporary vernacular language usage.
+    \item \textbf{Parallel corpus dependencies and domain shifts.} Evaluation relies on sentence-level translation quality. While FLORES-200 provides professionally translated modern prose, the massively multilingual Bible corpus contains archaic phrasing, stylized syntax, and religious motifs that do not fully reflect contemporary vernacular language usage.
     
     \item \textbf{Tokenization bias in representation pooling.} MEXA computes sentence representations via token-level pooling over model hidden states. Consequently, high subword fertility in low-resource scripts mechanically dilutes token weights under positional pooling, conflating subword vocabulary fragmentation with intrinsic semantic representation quality.
     
-    \item \textbf{Computational demands of layerwise extraction.} Extracting and storing full hidden state tensors across dozens of layers for 70B+ parameter models over thousands of sentences requires significant GPU memory and disk I/O throughput, constraining continuous evaluation across arbitrary checkpoints during training.
+    \item \textbf{Computational demands of layerwise extraction.} Extracting and storing full hidden state tensors across dozens of layers for large models (e.g., 70B parameters) over thousands of sentences requires significant GPU memory and disk throughput, constraining continuous evaluation across arbitrary checkpoints during pre-training.
     
-    \item \textbf{Absence of generation-specific dynamics.} While MEXA correlates strongly with zero-shot classification and multiple-choice reasoning benchmarks, it does not directly evaluate autoregressive generative behavior, hallucination tendencies, or safety alignment during free-form text generation.
+    \item \textbf{Absence of open-ended generation dynamics.} While MEXA correlates strongly with zero-shot classification and multiple-choice reasoning benchmarks, it does not directly evaluate autoregressive generative behavior, hallucination tendencies, or safety alignment during free-form text generation.
 \end{enumerate}
 
 \section{Future Work}
