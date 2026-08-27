@@ -11,40 +11,40 @@ Table~\ref{tab:appendix-model-specs} summarizes the structural specifications, l
 
 \begin{table}[H]
 \centering
-\caption{\textbf{Comprehensive specifications of evaluated models}. Parameter counts, active parameters per token (for MoE architectures), number of transformer layers ($L$), hidden dimension ($d$), vocabulary size ($|V|$), and Hugging Face repository identifiers.}
+\caption{\textbf{Comprehensive specifications of evaluated models}. Parameter counts (with active parameters per token for MoE architectures indicated in parentheses), number of transformer layers ($L$), hidden dimension ($d$), vocabulary size ($|V|$), and Hugging Face repository identifiers.}
 \label{tab:appendix-model-specs}
 \small
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{@{}llcccccp{4.5cm}@{}}
+\begin{tabular}{@{}llccccp{5cm}@{}}
 \toprule
-\textbf{Category} & \textbf{Model Name} & \textbf{Total Params} & \textbf{Active Params} & \textbf{Layers ($L$)} & \textbf{Dim ($d$)} & \textbf{Vocab Size ($|V|$)} & \textbf{Hugging Face Identifier} \\
+\textbf{Category} & \textbf{Model Name} & \textbf{Parameters} & \textbf{Layers ($L$)} & \textbf{Dim ($d$)} & \textbf{Vocab Size ($|V|$)} & \textbf{Hugging Face Identifier} \\
 \midrule
 \textbf{Causal Decoders} 
-  & Llama~3.1~8B & 8.03B & 8.03B & 32 & 4,096 & 128,256 & \texttt{meta-llama/Llama-3.1-8B} \\
-  & Mistral~7B~v0.3 & 7.25B & 7.25B & 32 & 4,096 & 32,768 & \texttt{mistralai/Mistral-7B-v0.3} \\
-  & Qwen~3.5~9B & 9.00B & 9.00B & 32 & 4,096 & 151,646 & \texttt{Qwen/Qwen2.5-7B} \\
-  & Qwen~3~8B & 8.00B & 8.00B & 36 & 4,096 & 151,646 & \texttt{Qwen/Qwen2-7B} \\
-  & Qwen~3~4B & 4.00B & 4.00B & 36 & 2,560 & 151,646 & \texttt{Qwen/Qwen2-1.5B} \\
-  & Qwen~3~1.7B & 1.70B & 1.70B & 28 & 2,048 & 151,646 & \texttt{Qwen/Qwen2-1.5B} \\
-  & Qwen~3~0.6B & 0.60B & 0.60B & 24 & 1,024 & 151,646 & \texttt{Qwen/Qwen2-0.5B} \\
-  & Apertus~1.5~70B & 70.6B & 70.6B & 80 & 8,192 & 131,072 & \texttt{swiss-ai/Apertus-70B-v1.5} \\
-  & Apertus~1.5~8B & 8.20B & 8.20B & 32 & 4,096 & 131,072 & \texttt{swiss-ai/Apertus-8B-v1.5} \\
-  & Apertus~8B (v1.0) & 8.00B & 8.00B & 32 & 4,096 & 131,072 & \texttt{swiss-ai/Apertus-8B-v1.0} \\
+  & Llama~3.1~8B & 8.03B & 32 & 4,096 & 128,256 & \texttt{meta-llama/Llama-3.1-8B} \\
+  & Mistral~7B~v0.3 & 7.25B & 32 & 4,096 & 32,768 & \texttt{mistralai/Mistral-7B-v0.3} \\
+  & Qwen~3.5~9B & 9.00B & 32 & 4,096 & 151,646 & \texttt{Qwen/Qwen2.5-7B} \\
+  & Qwen~3~8B & 8.00B & 36 & 4,096 & 151,646 & \texttt{Qwen/Qwen2-7B} \\
+  & Qwen~3~4B & 4.00B & 36 & 2,560 & 151,646 & \texttt{Qwen/Qwen2-1.5B} \\
+  & Qwen~3~1.7B & 1.70B & 28 & 2,048 & 151,646 & \texttt{Qwen/Qwen2-1.5B} \\
+  & Qwen~3~0.6B & 0.60B & 24 & 1,024 & 151,646 & \texttt{Qwen/Qwen2-0.5B} \\
+  & Apertus~1.5~70B & 70.6B & 80 & 8,192 & 131,072 & \texttt{swiss-ai/Apertus-70B-v1.5} \\
+  & Apertus~1.5~8B & 8.20B & 32 & 4,096 & 131,072 & \texttt{swiss-ai/Apertus-8B-v1.5} \\
+  & Apertus~8B (v1.0) & 8.00B & 32 & 4,096 & 131,072 & \texttt{swiss-ai/Apertus-8B-v1.0} \\
 \midrule
 \textbf{Sparse MoE} 
-  & Mixtral~8x7B & 46.7B & 12.9B & 32 & 4,096 & 32,768 & \texttt{mistralai/Mixtral-8x7B-v0.1} \\
-  & Mixtral~8x22B & 141.0B & 39.0B & 56 & 6,144 & 32,768 & \texttt{mistralai/Mixtral-8x22B-v0.1} \\
-  & Gemma~4~26B-A4B & 26.0B & 4.00B & 32 & 3,072 & 256,000 & \texttt{google/gemma-2-27b} \\
+  & Mixtral~8x7B & 46.7B (12.9B active) & 32 & 4,096 & 32,768 & \texttt{mistralai/Mixtral-8x7B-v0.1} \\
+  & Mixtral~8x22B & 141.0B (39.0B active) & 56 & 6,144 & 32,768 & \texttt{mistralai/Mixtral-8x22B-v0.1} \\
+  & Gemma~4~26B-A4B & 26.0B (4.00B active) & 32 & 3,072 & 256,000 & \texttt{google/gemma-2-27b} \\
 \midrule
 \textbf{Masked LMs} 
-  & XLM-RoBERTa Large & 550M & 550M & 24 & 1,024 & 250,002 & \texttt{xlm-roberta-large} \\
-  & Glot500 & 270M & 270M & 12 & 768 & 250,002 & \texttt{cis-lmu/glot500-base} \\
-  & mmBERT Base & 270M & 270M & 12 & 768 & 250,000 & \texttt{jhu-clsp/mmBERT-base} \\
+  & XLM-RoBERTa Large & 550M & 24 & 1,024 & 250,002 & \texttt{xlm-roberta-large} \\
+  & Glot500 & 270M & 12 & 768 & 250,002 & \texttt{cis-lmu/glot500-base} \\
+  & mmBERT Base & 270M & 12 & 768 & 250,000 & \texttt{jhu-clsp/mmBERT-base} \\
 \midrule
 \textbf{Sentence Encoders} 
-  & LaBSE & 471M & 471M & 12 & 768 & 501,152 & \texttt{sentence-transformers/LaBSE} \\
-  & mE5-base & 278M & 278M & 12 & 768 & 250,000 & \texttt{intfloat/multilingual-e5-base} \\
-  & Qwen~3 Emb 8B & 8.00B & 8.00B & 36 & 4,096 & 151,646 & \texttt{Qwen/Qwen2-Embedding-8B} \\
+  & LaBSE & 471M & 12 & 768 & 501,152 & \texttt{sentence-transformers/LaBSE} \\
+  & mE5-base & 278M & 12 & 768 & 250,000 & \texttt{intfloat/multilingual-e5-base} \\
+  & Qwen~3 Emb 8B & 8.00B & 36 & 4,096 & 151,646 & \texttt{Qwen/Qwen2-Embedding-8B} \\
 \bottomrule
 \end{tabular}%
 }
@@ -64,7 +64,7 @@ All embedding extractions and retrieval scoring evaluations were conducted using
 \section{Evaluated Languages and Typological Coverage}
 \label{sec:appendix-languages}
 
-Table~\ref{tab:appendix-language-sample} provides a representative sample of language varieties evaluated across FLORES-200 and the Super-Parallel Bible Corpus, indicating their script systems, language families, and resource classifications.
+Table~\ref{tab:appendix-language-sample} provides a representative sample of language varieties evaluated across FLORES-200 and the Super-Parallel Bible Corpus, indicating their script systems, language families, and resource classifications. Language resource tiers (High, Medium, Low, and Extremely Low Resource) follow the digital resource taxonomy of \citet{joshi2020state}, supplemented by web crawl volume estimates from \citet{nllbteam2022}. Under this classification, high-resource languages possess abundant digital text and dedicated NLP benchmarks (Classes 4--5 in \citet{joshi2020state}), medium-resource languages have moderate digital presence with limited labeled data (Class 3), while low- and extremely low-resource languages lack substantial digital text and exhibit severe subword fragmentation (Classes 0--2).
 
 \begin{table}[H]
 \centering
