@@ -152,7 +152,7 @@ Table~\ref{tab:appendix-per-lang-scores} details per-language peak alignment sco
 \section{Layer-wise Peak Depths Across Architectures}
 \label{sec:appendix-layer-depths}
 
-Table~\ref{tab:appendix-layer-depths} summarizes the layer depths, exact peak alignment layers ($l_{\text{peak}}$), normalized peak depth ratios ($l_{\text{peak}} / L$), and scores across all 16 evaluated foundation models on FLORES-200 and the sPBC Bible corpus.
+Table~\ref{tab:appendix-layer-depths} summarizes the total number of transformer layers ($L$, obtained from model architecture specifications), the empirical peak alignment layer ($l_{\text{peak}} = \arg\max_{l} \mu(l)$, identified by evaluating retrieval accuracy across all layers), the normalized peak depth ratio ($l_{\text{peak}} / L$), and the corresponding peak scores ($\mu_{\text{Max}}$) across all 16 evaluated foundation models on FLORES-200 and the sPBC Bible corpus.
 
 \begin{table}[H]
 \centering
