@@ -7,9 +7,24 @@
 \usepackage{multirow}
 \usepackage{graphicx}
 \usepackage{amsmath,amssymb}
+\usepackage{tcolorbox}
+
+% Custom compact highlight box for takeaways
+\newtcolorbox{takeawaybox}[1][]{
+  colback=TUMBlue!8,
+  colframe=TUMBlue,
+  arc=1.5mm,
+  boxrule=0.8pt,
+  left=4pt,
+  right=4pt,
+  top=2pt,
+  bottom=2pt,
+  fontupper=\scriptsize,
+  #1
+}
 
 % Presentation Metadata
-\title{Evaluating Multilingual LLM Performance with Cross-Lingual Alignment}
+\title[Evaluating Multilingual LLM Performance]{Evaluating Multilingual LLM\\Performance with Cross-Lingual\\Alignment}
 \subtitle{Bachelor's Thesis Defense}
 \author{Wassim Mezghanni}
 \institute{Department of Computer Science\\Technical University of Munich}
@@ -23,7 +38,7 @@
   part page = TUM toc,
   section page = TUM toc,
   content page = TUM more space,
-  tower scale = 1.0,
+  tower scale = 0.85,
   headline = TUM threeliner,
   footline = TUM default,
   headline on = {title page},
@@ -38,268 +53,339 @@
 \maketitle
 
 % ------------------------------------------------------------
-% 2. Motivation & Problem
+% 2. Motivation: How do Multilingual LLMs Share Knowledge?
 % ------------------------------------------------------------
-\begin{frame}{Motivation: The Multilingual Evaluation Bottleneck}
+\begin{frame}{Motivation: Multilingual Knowledge in Foundation Models}
   \begin{columns}[T]
     \begin{column}{0.54\textwidth}
-      \textbf{English-Centric LLMs:}
-      \begin{itemize}
-        \item Pre-training data is $>80$--$90\%$ English.
-        \item Yet, models transfer strongly to unseen languages.
+      \textbf{Multilingual LLMs:}
+      \begin{itemize}\small
+        \item Pre-training data is over 80\% English.
+        \item Models still transfer knowledge to non-English and low-resource languages.
+      \end{itemize}
+      \vspace{0.2em}
+      \textbf{The Evaluation Problem:}
+      \begin{itemize}\small
+        \item Downstream benchmarks mix representation quality with generation capacity, decoding choice, and prompt sensitivity.
+        \item Most benchmarks cover fewer than 100 languages.
       \end{itemize}
       \vspace{0.3em}
-      \textbf{Evaluation Bottleneck:}
-      \begin{itemize}
-        \item Downstream benchmarks cover few languages ($\le 100$).
-        \item Require expensive prompt engineering and generation.
-      \end{itemize}
-      \vspace{0.4em}
-      \textbf{\color{TUMBlue}Core Question:} Can internal representations predict multilingual competence without generation?
+      \textbf{\color{TUMBlue}Core Question:} How do foundation models structure internal concept spaces across languages without relying on generation?
     \end{column}
     \begin{column}{0.44\textwidth}
-      \textbf{Key Research Dimensions:}
-      \begin{enumerate}
-        \item \textbf{Parameter Scaling:} Qwen~3/3.5, Apertus, Llama~3.1.
-        \item \textbf{Architectures \& MoE:} Dense vs.\ Sparse routing.
-        \item \textbf{Geometry \& Pivots:} Is English a structural hub?
-        \item \textbf{Tokenization Tax:} Subword penalty.
-        \item \textbf{Validity:} Belebele \& m-ARC correlation.
+      \textbf{Research Questions :}
+      \begin{enumerate}\small
+        \item \textbf{Scaling and Depth:} How alignment changes with parameter size and layer depth.
+        \item \textbf{Sparse MoE Routing:} Whether conditional routing preserves a shared space.
+        \item \textbf{Pivot Invariance:} Whether representations depend on an English hub.
+        \item \textbf{Fertility Penalty:} The effect of subword fragmentation in non-Latin scripts.
+        \item \textbf{Downstream Validity:} How well alignment predicts task reasoning.
       \end{enumerate}
     \end{column}
   \end{columns}
 \end{frame}
 
 % ------------------------------------------------------------
-% 3. Methodology: MEXA
+% 3. Methodology: MEXA Framework
 % ------------------------------------------------------------
 \begin{frame}{Methodology: The MEXA Framework}
   \begin{columns}[T]
-    \begin{column}{0.52\textwidth}
-      \textbf{Bidirectional Parallel Retrieval:}
-      \begin{itemize}
-        \item Tests if parallel pairs $(s_{1,i}, s_{2,i})$ are mutual nearest neighbors in embedding space:
-      \end{itemize}
-      \vspace{-0.4em}
-      \[
-        C(l) = \frac{1}{n} \sum_{i=1}^n \mathbb{I}\left( c_{ii}(l) > \max_{j \neq i} c_{ij}(l) \land c_{ii}(l) > \max_{j \neq i} c_{ji}(l) \right)
-      \]
-      \begin{itemize}
-        \item \textbf{Metrics:} Peak alignment $\mu_{\text{Max}} = \max_l C(l)$ and depth-averaged alignment $\mu_{\text{Mean}}$.
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.45\textwidth}
-      \textbf{Representation Extraction:}
-      \begin{itemize}
-        \item Position-weighted pooling across tokens $t \in [1, T]$:
-      \end{itemize}
-      \vspace{-0.5em}
-      \[
-        e^{(l)} = \sum_{t=1}^T \frac{t}{T} h_t^{(l)}
-      \]
-      \begin{itemize}
-        \item Traces semantic geometry across layers $l \in [0, L]$.
-      \end{itemize}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-% ------------------------------------------------------------
-% 4. Experimental Setup
-% ------------------------------------------------------------
-\begin{frame}{Experimental Setup: 16+ Models \& 1,400+ Languages}
-  \begin{columns}[T]
     \begin{column}{0.48\textwidth}
-      \textbf{Multilingual Benchmarks:}
-      \begin{itemize}
-        \item \textbf{FLORES-200:} 204 languages across diverse scripts ($n=100$, up to $n=2000$).
-        \item \textbf{sPBC Bible Corpus:} 1,401 languages ($n=103$), covering low-resource languages.
-      \end{itemize}
+      \begin{block}{1. Position-Weighted Pooling}
+        \centering
+        \vspace{0.2em}
+        $\displaystyle e^{(l)} = \sum_{t=1}^T \frac{t}{T} h_t^{(l)}$
+        \vspace{0.2em}
+      \end{block}
       \vspace{0.3em}
-      \textbf{Pivot Languages Evaluated:}
-      \begin{itemize}
-        \item English, French, German, Arabic, Chinese, and Basque (isolate).
+      \begin{itemize}\small
+        \item Aggregates token vectors at each layer $l \in [0, L]$.
+        \item Weights later tokens higher to reflect causal context.
+        \item Fully training-free and prompt-invariant.
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
-      \textbf{Evaluated Model Suite:}
-      \begin{itemize}
-        \item \textbf{Causal Decoders:} Llama~3.1 (8B, 70B), Qwen~3 (0.6B--8B), Qwen~3.5~9B, Apertus (8B, 70B), Mistral~7B~v0.3.
-        \item \textbf{Sparse MoE:} Mixtral~8x7B (13B active), Mixtral~8x22B (39B active), Gemma~4~26B-A4B.
-        \item \textbf{Sentence Encoders \& MLMs:} LaBSE, mE5-base, Qwen~3 Embeddings, XLM-R, mmBERT.
+      \begin{block}{2. Bidirectional Retrieval Metric}
+        \centering
+        \vspace{0.2em}
+        {\footnotesize $\displaystyle C(l) = \frac{1}{n} \sum_{i=1}^n \mathbb{I}_{\text{mutual NN}}\left(s_{1,i}, s_{2,i}\right)$}
+        \vspace{0.2em}
+      \end{block}
+      \vspace{0.3em}
+      \begin{itemize}\small
+        \item Checks if parallel sentences are mutual nearest neighbors against $n-1$ distractors.
+        \item \textbf{Peak Score:} $\mu_{\text{Max}} = \max_l C(l)$.
+        \item \textbf{Mean Score:} $\mu_{\text{Mean}} = \frac{1}{L} \sum_{l=1}^L C(l)$.
       \end{itemize}
     \end{column}
   \end{columns}
 \end{frame}
 
 % ------------------------------------------------------------
-% 5. Scaling & Stability
+% 4. Corpora: FLORES-200 vs. Super-Parallel Bible Corpus
 % ------------------------------------------------------------
-\begin{frame}{Findings: Parameter Scaling \& Cross-Domain Stability}
-  \begin{columns}[c]
-    \begin{column}{0.48\textwidth}
-      \centering
-      \includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/fig_parameter_scaling.pdf}
-    \end{column}
-    \begin{column}{0.50\textwidth}
-      \textbf{Key Observations:}
-      \begin{itemize}
-        \item \textbf{Monotonic Scaling:} Qwen~3 alignment grows steadily from 0.6B ($\mu_{\text{Max}} = 0.35$) to 8B ($0.57$).
-        \item \textbf{High Efficiency:} Qwen~3.5~9B reaches $\mu_{\text{Max}} = 0.7809$ on FLORES-200, exceeding Llama~3.1~8B ($0.6735$) and Mistral~7B ($0.4934$).
-        \item \textbf{Domain Robustness:} Language rankings are highly stable between FLORES news and Bible text ($\rho = 0.94$).
-        \item \textbf{Metric Agreement:} $\mu_{\text{Max}}$ and $\mu_{\text{Mean}}$ correlate at $\rho = 0.96$.
-      \end{itemize}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-% ------------------------------------------------------------
-% 6. MoE & Architectures
-% ------------------------------------------------------------
-\begin{frame}{Findings: Sparse Mixture-of-Experts (MoE) Scaling}
-  \begin{columns}[c]
-    \begin{column}{0.50\textwidth}
-      \centering
-      \includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/fig_moe_layer_trajectories.pdf}
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      \textbf{Sparse MoE Mechanics:}
-      \begin{itemize}
-        \item Mixtral~8x7B ($0.5385$) and 8x22B ($0.6120$) outperform dense Mistral~7B ($0.4934$).
-        \item Sparse MoE matches dense capacity at comparable active compute (13B active vs.\ 47B total).
-        \item \textbf{Language-Agnostic Gating:} Middle-layer routing converges to near-uniform expert allocation ($\approx 12.5\%$) across scripts, preserving a shared space.
-      \end{itemize}
-    \end{column}
-  \end{columns}
-\end{frame}
-
-% ------------------------------------------------------------
-% 7. Non-English Pivots
-% ------------------------------------------------------------
-\begin{frame}{Findings: Non-English Pivots \& Representation Geometry}
+\begin{frame}{Experimental Scope: Two Complementary Corpora}
   \begin{columns}[T]
-    \begin{column}{0.55\textwidth}
-      \textbf{Testing the English "Structural Hub" Hypothesis:}
-      \begin{itemize}
-        \item Evaluated 6 diverse pivots: English, French, German, Arabic, Chinese, and Basque (isolate).
-        \item \textbf{Standard Retrieval:} Non-English pivots equal or exceed English (e.g., French $\mu_{\text{Max}} = 0.8034$ on Qwen~3.5~9B).
-        \item \textbf{Mean-Centering ($e - \bar{e}_L$):} Removes language centroid offsets; all 6 pivots converge to a uniform ceiling ($\mu_{\text{Max}} \approx 0.95$).
-      \end{itemize}
-      \vspace{0.2em}
-      \textbf{\color{TUMBlue}Takeaway:} English is not an obligatory hub; internal geometry is inherently multilingual.
-    \end{column}
-    \begin{column}{0.43\textwidth}
-      \centering
-      \textbf{\small Qwen 3.5 9B Alignment across Pivots}
-      \vspace{0.2em}
-      \resizebox{\textwidth}{!}{%
-      \begin{tabular}{lcc}
-      \toprule
-      \textbf{Pivot Language} & \textbf{Standard} & \textbf{Centered} \\
-      \midrule
-      English (\texttt{eng\_Latn}) & 0.7809 & 0.9564 \\
-      French (\texttt{fra\_Latn})  & 0.8034 & 0.9462 \\
-      German (\texttt{deu\_Latn})  & 0.7949 & 0.9547 \\
-      Arabic (\texttt{arb\_Arab})  & 0.7986 & 0.9485 \\
-      Chinese (\texttt{zho\_Hans}) & 0.7286 & 0.9443 \\
-      Basque (\texttt{eus\_Latn})  & 0.7995 & 0.9444 \\
-      \bottomrule
-      \end{tabular}%
-      }
-    \end{column}
-  \end{columns}
-\end{frame}
-
-% ------------------------------------------------------------
-% 8. Tokenizer Fertility Tax
-% ------------------------------------------------------------
-\begin{frame}{Findings: The Tokenizer Fertility Tax}
-  \begin{columns}[c]
     \begin{column}{0.48\textwidth}
-      \centering
-      \includegraphics[width=\linewidth,height=0.62\textheight,keepaspectratio]{figures/fig_fertility_alignment.pdf}
-    \end{column}
-    \begin{column}{0.50\textwidth}
-      \textbf{Subword Fragmentation Penalty:}
-      \begin{itemize}
-        \item Strong negative log-linear relationship ($r = -0.56, \rho = -0.67, p < 10^{-17}$).
-        \item Holds within script families: Latin ($r = -0.76$), Arabic ($r = -0.88$), Cyrillic ($r = -0.93$).
-      \end{itemize}
-      \vspace{0.4em}
-      \textbf{Mechanism:}
-      \begin{itemize}
-        \item High fertility $\rightarrow$ increased sequence length $T$.
-        \item Dilutes positional pooling weights $t/T$ and introduces embedding noise.
+      \textbf{FLORES-200 (Modern Benchmark):}
+      \begin{itemize}\small
+        \item \textbf{Coverage:} 204 language varieties across multiple scripts.
+        \item \textbf{Quality:} Professional human translations from English Wikipedia articles.
+        \item \textbf{Domain:} Contemporary encyclopedic text.
+        \item \textbf{Evaluation Split:} $n = 100$ parallel sentences per language.
       \end{itemize}
     \end{column}
-  \end{columns}
-\end{frame}
-
-% ------------------------------------------------------------
-% 9. Downstream Validity
-% ------------------------------------------------------------
-\begin{frame}{Findings: Downstream Predictive Validity of MEXA}
-  \begin{columns}[c]
-    \begin{column}{0.50\textwidth}
-      \centering
-      \includegraphics[width=\linewidth,height=0.40\textheight,keepaspectratio]{figures/fig_validity_model_level.pdf}
-    \end{column}
-    \begin{column}{0.50\textwidth}
-      \centering
-      \includegraphics[width=\linewidth,height=0.40\textheight,keepaspectratio]{figures/fig_validity_language_level.pdf}
+    \begin{column}{0.48\textwidth}
+      \textbf{Super-Parallel Bible Corpus (sPBC):}
+      \begin{itemize}\small
+        \item \textbf{Coverage:} Over 1,400 languages, reaching rare and low-resource varieties.
+        \item \textbf{Domain:} Historical and religious text with distinct syntax.
+        \item \textbf{Role:} The only multi-way parallel resource for hundreds of low-resource languages.
+        \item \textbf{Evaluation Split:} $n = 103$ parallel verses.
+      \end{itemize}
     \end{column}
   \end{columns}
   \vspace{0.3em}
-  \small
-  \begin{itemize}
-    \item \textbf{Model-Level:} Monotonic ranking correlation ($\rho = 1.000, r = 0.988$) on Belebele and m-ARC across new model families.
-    \item \textbf{Language-Level:} Per-language alignment predicts Belebele accuracy ($r = 0.991, \rho = 0.986, p < 10^{-80}$).
-  \end{itemize}
+  \begin{takeawaybox}
+    \textbf{Design:} Combining modern prose with a 1,400-language corpus tests whether alignment holds across domain shifts and rare languages.
+  \end{takeawaybox}
 \end{frame}
 
 % ------------------------------------------------------------
-% 10. Summary of Contributions
+% 5. Model Suite: 16 Evaluated Foundation Models
+% ------------------------------------------------------------
+\begin{frame}{Evaluated Models: 16 Architectures Across 4 Paradigms}
+  \begin{columns}[T]
+    \begin{column}{0.50\textwidth}
+      \textbf{1. Dense Causal Decoders:}
+      \begin{itemize}\small
+        \item \textbf{Qwen 3 Family:} 0.6B, 1.7B, 4B, 8B (scaling sweep).
+        \item \textbf{Qwen 3.5 9B:} Recent multilingual open model.
+        \item \textbf{Llama 3.1:} 8B and 70B baselines.
+        \item \textbf{Apertus:} 8B (v1.0), 1.5-8B, 1.5-70B.
+        \item \textbf{Mistral 7B v0.3:} Dense baseline for MoE comparison.
+      \end{itemize}
+      \vspace{0.2em}
+      \textbf{2. Sparse Mixture-of-Experts (MoE):}
+      \begin{itemize}\small
+        \item \textbf{Mixtral 8x7B} (13B active) and \textbf{8x22B} (39B active).
+        \item \textbf{Gemma 4 26B-A4B} (4B active of 26B total).
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{3. Masked Language Models (MLMs):}
+      \begin{itemize}\small
+        \item \textbf{XLM-RoBERTa Large} (550M, 100 languages).
+        \item \textbf{Glot500} (270M, 500+ languages).
+        \item \textbf{mmBERT Base} (270M parameters).
+      \end{itemize}
+      \vspace{0.2em}
+      \textbf{4. Dedicated Sentence Encoders:}
+      \begin{itemize}\small
+        \item \textbf{LaBSE} (471M, dual-encoder contrastive).
+        \item \textbf{mE5-base} (278M, weakly supervised).
+        \item \textbf{Qwen 3 Embedding 8B} (8B contrastive).
+      \end{itemize}
+      \vspace{0.3em}
+      \textbf{Parameter Range:} 270M to 141B parameters.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ------------------------------------------------------------
+% 6. Finding 1: Parameter Scaling & Layer Trajectories
+% ------------------------------------------------------------
+\begin{frame}{Finding 1: Parameter Scaling and Layer Trajectories}
+  \begin{columns}[c]
+    \begin{column}{0.48\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=0.45\textheight,keepaspectratio]{figures/fig_parameter_scaling.pdf}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \textbf{Layerwise Representation Dynamics:}
+      \begin{itemize}\small
+        \item \textbf{Capacity Scaling:} In Qwen 3, peak alignment grows with parameter size: 0.6B ($0.35$) $\rightarrow$ 1.7B ($0.49$) $\rightarrow$ 4B ($0.44$) $\rightarrow$ 8B ($0.57$).
+        \item \textbf{Model Comparison:} Qwen 3.5 9B reaches $\mu_{\text{Max}} = 0.7809$, ahead of Llama 3.1 8B ($0.6735$) and Mistral 7B ($0.4934$).
+        \item \textbf{Upper-Middle Peak:} Causal decoders peak at \textbf{60\% to 80\% relative depth}, then diverge at the final layers for vocabulary projection.
+        \item \textbf{Sentence Encoders:} Peak early ($<30\%$ depth, $\mu > 0.95$) because of explicit contrastive loss.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \vspace{0.1em}
+  \begin{takeawaybox}
+    \textbf{Takeaway:} Causal decoders build a shared concept space in upper-middle layers, while dedicated sentence encoders align representations early through contrastive objectives.
+  \end{takeawaybox}
+\end{frame}
+
+% ------------------------------------------------------------
+% 7. Finding 2: Cross-Domain Robustness
+% ------------------------------------------------------------
+\begin{frame}{Finding 2: Cross-Domain Robustness (FLORES vs. Bible)}
+  \begin{columns}[c]
+    \begin{column}{0.48\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=0.45\textheight,keepaspectratio]{figures/fig_flores_vs_bible_all_labeled.pdf}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \textbf{Cross-Domain Stability Analysis:}
+      \begin{itemize}\small
+        \item \textbf{Stable Rankings:} Model rankings correlate strongly at $\boldsymbol{\rho = 0.98}$ ($p < 10^{-10}$) across 16 models on 116 FLORES and 101 Bible languages.
+        \item \textbf{Domain Score Shift:} Absolute alignment is lower on biblical text (e.g., Llama 3.1 8B drops from $0.67$ to $0.42$) due to archaic vocabulary and syntax.
+        \item \textbf{Apertus Performance:} Apertus models retain higher relative scores on biblical text ($\mu_{\text{Max}} \le 0.50$).
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \vspace{0.1em}
+  \begin{takeawaybox}
+    \textbf{Takeaway:} Relative model rankings remain consistent between modern and biblical text, showing that MEXA captures underlying multilingual capacity rather than domain familiarity.
+  \end{takeawaybox}
+\end{frame}
+
+% ------------------------------------------------------------
+% 8. Finding 3: Sparse Mixture-of-Experts Routing
+% ------------------------------------------------------------
+\begin{frame}{Finding 3: Sparse MoE Routing Dynamics}
+  \begin{columns}[c]
+    \begin{column}{0.48\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=0.45\textheight,keepaspectratio]{figures/fig_moe_layer_trajectories.pdf}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \textbf{Router Behavior and Language Allocation:}
+      \begin{itemize}\small
+        \item \textbf{Sparse Efficiency:} Mixtral 8x7B ($0.5385$) and 8x22B ($0.6120$) match or exceed dense Mistral 7B ($0.4934$) using sparse computation.
+        \item \textbf{Functional Gating:} Routers assign tokens based on syntactic and contextual function, not language identity.
+        \item \textbf{Balanced Routing:} Intermediate layers distribute tokens evenly across all 8 experts ($\boldsymbol{\approx 12.5\%}$ each) regardless of script.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \vspace{0.1em}
+  \begin{takeawaybox}
+    \textbf{Takeaway:} Sparse conditional execution preserves representation sharing just as effectively as dense models, without splitting languages across separate experts.
+  \end{takeawaybox}
+\end{frame}
+
+% ------------------------------------------------------------
+% 9. Finding 4: Pivot Invariance & Representation Geometry
+% ------------------------------------------------------------
+\begin{frame}{Finding 4: Pivot Invariance and Concept Space Geometry}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      \textbf{Testing the English Hub Hypothesis:}
+      \begin{itemize}\small
+        \item Evaluated six pivots: English, French, German, Arabic, Chinese, and Basque (isolate).
+        \item \textbf{Standard Retrieval:} Non-English pivots match or exceed English (e.g., French $\mu_{\text{Max}} = 0.8034$ vs.\ English $0.7809$ on Qwen 3.5 9B).
+        \item \textbf{Mean-Centering ($\mathbf{e} - \bar{\mathbf{e}}_L$):} Subtracting per-language centroid vectors removes language-specific cluster offsets.
+        \item \textbf{Convergence:} Alignment across all six pivots converges to a uniform ceiling of $\boldsymbol{\mu_{\text{Max}} \approx 0.94\text{ to }0.96}$.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.45\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=0.42\textheight,keepaspectratio]{figures/fig_embedding_projections.pdf}
+      \vspace{-0.2em}
+      {\scriptsize \textbf{Centering Effect:} Subtracting centroids $\bar{\mathbf{e}}_L$ aligns parallel sentence representations onto a single shared space.}
+    \end{column}
+  \end{columns}
+  \vspace{0.1em}
+  \begin{takeawaybox}
+    \textbf{Takeaway:} Internal representations are not English-centric. Intermediate layers form a shared concept space where semantic equivalence determines proximity.
+  \end{takeawaybox}
+\end{frame}
+
+% ------------------------------------------------------------
+% 10. Finding 5: The Tokenizer Fertility Tax
+% ------------------------------------------------------------
+\begin{frame}{Finding 5: The Tokenizer Fertility Tax}
+  \begin{columns}[c]
+    \begin{column}{0.48\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=0.45\textheight,keepaspectratio]{figures/fig_fertility_alignment.pdf}
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \textbf{Subword Fragmentation Penalty:}
+      \begin{itemize}\small
+        \item \textbf{Cross-Script Trend:} Subword fertility has a strong negative log-linear relationship with alignment across 204 FLORES languages.
+        \item \textbf{Within-Script Correlations:} Higher fertility correlates with lower alignment within scripts: Cyrillic ($r = -0.93$), Arabic ($r = -0.88$), and Latin ($r = -0.76$).
+        \item \textbf{Mechanism:} Splitting words into short character fragments reduces token weights in positional pooling ($t/T$) and adds noise.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \vspace{0.1em}
+  \begin{takeawaybox}
+    \textbf{Takeaway:} High subword fertility in non-Latin scripts artificially lowers sentence alignment, independent of the model's actual reasoning capacity.
+  \end{takeawaybox}
+\end{frame}
+
+% ------------------------------------------------------------
+% 11. Finding 6: Downstream Predictive Validity
+% ------------------------------------------------------------
+\begin{frame}{Finding 6: Predictive Validity for Downstream Tasks}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=0.42\textheight,keepaspectratio]{figures/fig_validity_model_level.pdf}
+      \vspace{0.2em}
+      
+      {\scriptsize \textbf{Model-Level Evaluation}\\Belebele reading and m-ARC reasoning}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=0.42\textheight,keepaspectratio]{figures/fig_validity_language_level.pdf}
+      \vspace{0.2em}
+      
+      {\scriptsize \textbf{Language-Level Evaluation}\\Llama 3.1 8B vs.\ Belebele ($r = 0.991$, 110 languages)}
+    \end{column}
+  \end{columns}
+  \vspace{0.3em}
+  \begin{takeawaybox}
+    \textbf{Takeaway:} Training-free representation alignment reliably predicts zero-shot task accuracy across reading comprehension and scientific reasoning.
+  \end{takeawaybox}
+\end{frame}
+
+% ------------------------------------------------------------
+% 12. Summary of Contributions
 % ------------------------------------------------------------
 \begin{frame}{Summary of Thesis Contributions}
-  \begin{enumerate}
-    \item \textbf{Comprehensive Evaluation:} Evaluated 16+ models across 204 (FLORES) and 1,401 (Bible) languages, establishing baselines for Qwen~3/3.5, Apertus, and Gemma~4.
+  \begin{enumerate}\small
+    \item \textbf{Architecture Hierarchy:} Evaluated 16 foundation models across 204 FLORES varieties and 1,400 Bible languages, measuring representation alignment for Qwen 3.5, Apertus, and Gemma 4.
     \vspace{0.2em}
-    \item \textbf{Sparse MoE Dynamics:} Proved that sparse MoEs match dense capacity through language-agnostic intermediate routing.
+    \item \textbf{MoE Routing Preservation:} Found that sparse MoE models match dense alignment without segregating languages across experts, routing tokens by syntactic function.
     \vspace{0.2em}
-    \item \textbf{Refutation of English Bottleneck:} Demonstrated pivot invariance across 6 pivots; mean-centering reveals a universal multilingual space.
+    \item \textbf{Language-Agnostic Concept Space:} Tested six pivot languages; mean-centering shows representations converge to a shared, multi-directional concept space ($\mu \approx 0.95$).
     \vspace{0.2em}
-    \item \textbf{Quantification of Fertility Tax:} Explained the subword fragmentation penalty ($r = -0.56, \rho = -0.67$) across and within scripts.
+    \item \textbf{Fertility Tax Analysis:} Quantified how subword fragmentation lowers alignment in non-Latin scripts independently of model reasoning capacity.
     \vspace{0.2em}
-    \item \textbf{Predictive Validity:} Validated that training-free internal alignment predicts downstream task reasoning at model and language levels ($\rho = 1.000$).
+    \item \textbf{Predictive Task Validity:} Confirmed that internal representation alignment directly predicts downstream zero-shot accuracy at both model and language levels.
   \end{enumerate}
 \end{frame}
 
 % ------------------------------------------------------------
-% 11. Limitations & Future Work
+% 13. Limitations & Future Directions
 % ------------------------------------------------------------
-\begin{frame}{Limitations \& Future Work}
+\begin{frame}{Limitations and Future Directions}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
       \textbf{Limitations:}
-      \begin{itemize}
-        \item \textbf{Corpus Bias:} Archaic syntax in massively multilingual Bible text.
-        \item \textbf{Tokenization Confounding:} High fertility conflates linguistic competence with vocabulary deficits.
-        \item \textbf{Memory Overhead:} Full layerwise tensor extraction on 70B+ models requires high VRAM.
+      \begin{itemize}\small
+        \item \textbf{Parallel Corpus Domain:} Biblical text contains archaic vocabulary and specialized syntax.
+        \item \textbf{Pooling Confounding:} High fertility dilutes individual token weights under linear pooling.
+        \item \textbf{Compute Overhead:} Extracting hidden states across all layers in 70B+ models requires substantial GPU memory.
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
       \textbf{Future Directions:}
-      \begin{itemize}
-        \item \textbf{Vocabulary Adaptation:} Dynamic tokenizer expansion to reduce fertility tax in low-resource scripts.
-        \item \textbf{Alignment-Guided Routing:} Using layerwise MEXA trajectories for MoE expert pruning and PEFT.
-        \item \textbf{Multimodal Alignment:} Extending geometric retrieval to vision-language and speech representations.
+      \begin{itemize}\small
+        \item \textbf{Fertility-Normalized Pooling:} Decouple subword fragmentation from semantic similarity metrics.
+        \item \textbf{MoE Router Regularization:} Use layerwise alignment trajectories to guide expert pruning.
+        \item \textbf{Causal Activation Steering:} Apply steering vectors to improve representations in low-resource scripts.
+        \item \textbf{Multimodal Probing:} Extend MEXA retrieval to vision-language and speech models.
       \end{itemize}
     \end{column}
   \end{columns}
 \end{frame}
 
 % ------------------------------------------------------------
-% 12. Conclusion & Q&A Slide
+% 14. Conclusion & Q&A Slide
 % ------------------------------------------------------------
 \begin{frame}[plain]
   \centering
@@ -325,15 +411,15 @@
   \begin{columns}[c]
     \begin{column}{0.55\textwidth}
       \centering
-      \includegraphics[width=\linewidth,height=0.65\textheight,keepaspectratio]{figures/fig_layer_trajectories.pdf}
+      \includegraphics[width=\linewidth,height=0.60\textheight,keepaspectratio]{figures/fig_layer_trajectories.pdf}
     \end{column}
     \begin{column}{0.42\textwidth}
       \small
-      \textbf{Key Contrasts:}
+      \textbf{Architectural Contrasts:}
       \begin{itemize}
-        \item \textbf{Sentence Encoders (LaBSE, mE5):} Contrastive loss drives early alignment ($\mu_{\text{Max}} > 0.85$ at Layer 6--8).
-        \item \textbf{Causal Decoders:} Build alignment progressively; peak in middle-to-deep layers ($l/L \approx 0.7$).
-        \item \textbf{Unaligned MLMs (XLM-R):} Plateau lower ($\approx 0.50$--$0.60$).
+        \item \textbf{Sentence Encoders (LaBSE, mE5):} Contrastive loss drives high alignment early ($\mu_{\text{Max}} > 0.85$ at Layer 6 to 8).
+        \item \textbf{Causal Decoders:} Build alignment progressively; peak in upper-middle layers (relative depth of 60\% to 80\%).
+        \item \textbf{Masked LMs (XLM-R, Glot500):} Plateau lower ($\approx 0.50$ to $0.60$) due to token-level masked pre-training.
       \end{itemize}
     \end{column}
   \end{columns}
@@ -350,8 +436,8 @@
    & & \textbf{English} & \textbf{French} & \textbf{German} & \textbf{Arabic} & \textbf{Chinese} & \textbf{Basque} \\
   \midrule
   \multirow{2}{*}{Llama 3.1 8B} 
-   & Standard & 0.6735 / 0.4196 & 0.7266 / 0.4822 & 0.7315 / 0.4852 & 0.7335 / 0.4638 & 0.5971 / 0.3541 & 0.7228 / 0.3802 \\
-   & Centered & 0.8902 / 0.7369 & 0.8984 / 0.7441 & 0.8990 / 0.7431 & 0.9033 / 0.7329 & 0.8872 / 0.7107 & 0.8998 / 0.7168 \\
+   & Standard & 0.6735 / 0.4196 & 0.7266 / 0.4822 & 0.7315 / 0.4852 & 0.7335 / 0.4638 & 0.6856 / 0.4397 & 0.6995 / 0.3500 \\
+   & Centered & 0.8902 / 0.7365 & 0.8984 / 0.7578 & 0.8990 / 0.7556 & 0.9033 / 0.7435 & 0.8788 / 0.7202 & 0.8797 / 0.6945 \\
   \midrule
   \multirow{2}{*}{Qwen 3.5 9B} 
    & Standard & 0.7809 / 0.5556 & 0.8034 / 0.5701 & 0.7949 / 0.5673 & 0.7986 / 0.5625 & 0.7286 / 0.4941 & 0.7995 / 0.4858 \\
@@ -359,27 +445,27 @@
   \midrule
   \multirow{2}{*}{Mistral 7B v0.3} 
    & Standard & 0.4980 / 0.2878 & 0.5275 / 0.3614 & 0.5322 / 0.3689 & 0.5068 / 0.2911 & 0.5000 / 0.3228 & 0.2158 / 0.1007 \\
-   & Centered & 0.7264 / 0.5578 & 0.7404 / 0.5941 & 0.7418 / 0.5962 & 0.7250 / 0.5401 & 0.7061 / 0.5492 & 0.5702 / 0.3812 \\
+   & Centered & 0.7264 / 0.5578 & 0.7404 / 0.5941 & 0.7418 / 0.5962 & 0.7250 / 0.5545 & 0.7100 / 0.5451 & 0.5085 / 0.3683 \\
   \bottomrule
   \end{tabular}%
   }
-  \vspace{1em}
-  \captionof{table}{\small Peak ($\mu_{\text{Max}}$) and depth-averaged ($\mu_{\text{Mean}}$) alignment across 6 pivots.}
+  \vspace{0.8em}
+  \captionof{table}{\small Peak ($\mu_{\text{Max}}$) and depth-averaged ($\mu_{\text{Mean}}$) alignment across six pivots on FLORES-200.}
 \end{frame}
 
-\begin{frame}{Backup: MoE Router Gate Activation Dynamics}
+\begin{frame}{Backup: MoE Router Gate Allocation Across Depth}
   \begin{columns}[c]
     \begin{column}{0.55\textwidth}
       \centering
-      \includegraphics[width=\linewidth,height=0.65\textheight,keepaspectratio]{figures/fig_moe_router_distributions.pdf}
+      \includegraphics[width=\linewidth,height=0.60\textheight,keepaspectratio]{figures/fig_moe_router_distributions.pdf}
     \end{column}
     \begin{column}{0.42\textwidth}
       \small
-      \textbf{Routing Across Depth:}
+      \textbf{Routing Dynamics Across Depth:}
       \begin{itemize}
-        \item \textbf{Layer 0:} Minor surface variations by script.
-        \item \textbf{Layer 15:} Convergence to uniform $\approx 12.5\%$ expert allocation.
-        \item \textbf{Layer 31:} Task- and vocabulary-specific allocation for output tokens.
+        \item \textbf{Layer 0:} Minor surface variations caused by initial script and tokenizer differences.
+        \item \textbf{Layer 15:} Convergence to uniform $\approx 12.5\%$ allocation across all 8 experts, reflecting a shared semantic space.
+        \item \textbf{Layer 31:} Task- and language-specific redistribution for output vocabulary generation.
       \end{itemize}
     \end{column}
   \end{columns}
