@@ -5,18 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[sc]{mathpazo}
 \usepackage[ngerman,american]{babel}
-\usepackage[autostyle]{csquotes}
-\usepackage[%
-  backend=biber,
-  url=false,
-  style=numeric,
-  natbib=true,
-  maxcitenames=2,
-  mincitenames=1,
-  maxbibnames=99,
-  giveninits=true,
-  uniquelist=false,
-  uniquename=init]{biblatex} % Numeric bibliography style with brackets [1]
+\usepackage{natbib}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{subcaption}
@@ -77,8 +66,6 @@
   \newcommand{\bg}{white} % background
   \newcommand{\fg}{black} % foreground
 }
-
-\bibliography{bibliography}
 
 \setkomafont{disposition}{\normalfont\bfseries} % use serif font for headings
 \linespread{1.05} % adjust line spread for mathpazo font

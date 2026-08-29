@@ -1,10 +1,10 @@
-% !BIB TS-program = biber
+% !BIB TS-program = bibtex
 
 \RequirePackage[l2tabu,orthodox]{nag}
 
 % TODO: decide if one-sided/two-sided
-%\documentclass[headsepline,footsepline,footinclude=false,fontsize=11pt,paper=a4,listof=totoc,bibliography=totoc,BCOR=12mm,DIV=12]{scrbook} % two-sided
-\documentclass[headsepline,footsepline,footinclude=false,oneside,fontsize=11pt,paper=a4,listof=totoc,bibliography=totoc]{scrbook} % one-sided
+%\documentclass[headsepline,footsepline,footinclude=false,fontsize=11pt,paper=a4,listof=totoc,bibliography=totocnumbered,BCOR=12mm,DIV=12]{scrbook} % two-sided
+\documentclass[headsepline,footsepline,footinclude=false,oneside,fontsize=11pt,paper=a4,listof=totoc,bibliography=totocnumbered]{scrbook} % one-sided
 
 % TODO: change thesis information
 \newcommand*{\getUniversity}{Technische Universität München}
@@ -14,7 +14,7 @@
 \newcommand*{\getTitle}{Evaluating Multilingual LLM Performance with Cross-Lingual Alignment}
 \newcommand*{\getDoctype}{Bachelor's Thesis}
 \newcommand*{\getSupervisor}{Prof.\ Dr.\ Alexander Fraser}
-\newcommand*{\getAdvisor}{Shu Okabe}
+\newcommand*{\getAdvisor}{Dr.\ Shu Okabe}
 \newcommand*{\getKeywords}{Multilingual LLMs; Cross-Lingual Alignment; Interlingua; MEXA}
 \newcommand*{\getSubmissionDate}{August 2026}
 \newcommand*{\getSubmissionLocation}{Munich}
@@ -51,6 +51,7 @@
 \listoffigures{}
 \listoftables{}
 \microtypesetup{protrusion=true}
-\printbibliography{}
+\bibliographystyle{acl_natbib}
+\bibliography{bibliography}
 
 \end{document}
