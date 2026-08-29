@@ -110,8 +110,6 @@ We evaluate over 25 publicly available checkpoints, grouped into four categories
 
 \begin{table}[!htbp]
 \centering
-\caption{\textbf{Evaluated language models}. Models are grouped by architectural category and family with parameter scale, vocabulary size, and training objective. Individual rows list each evaluated checkpoint, with \texttt{\textbackslash cmidrule} demarcating model sub-families.}
-\label{tab:evaluated-models-spec}
 \footnotesize
 \renewcommand{\arraystretch}{0.92}
 \setlength{\tabcolsep}{4pt}
@@ -162,6 +160,8 @@ We evaluate over 25 publicly available checkpoints, grouped into four categories
   & Qwen 3 Embedding 8B & 8.0B & 151,646 & Decoder-based Contrastive \\
 \bottomrule
 \end{tabularx}
+\caption{\textbf{Evaluated language models}. Models are grouped by architectural category and family with parameter scale, vocabulary size, and training objective. Individual rows list each evaluated checkpoint, with \texttt{\textbackslash cmidrule} demarcating model sub-families.}
+\label{tab:evaluated-models-spec}
 \end{table}
 
 % ..............................................
@@ -214,8 +214,6 @@ All experiments draw on the two parallel corpora introduced in Section~\ref{sec:
 
 \begin{table}[H]
 \centering
-\caption{\textbf{Parallel evaluation corpora and subsets}. Summary of language coverage, parallel sample size ($n$), domain, and thesis evaluation purpose. Subsets within each corpus share the same domain and translation origin.}
-\label{tab:evaluation-datasets-overview}
 \small
 \begin{tabularx}{\textwidth}{@{}p{3.2cm} c l p{2.4cm} X@{}}
 \toprule
@@ -231,6 +229,8 @@ All experiments draw on the two parallel corpora introduced in Section~\ref{sec:
 \quad Bible Full & $>1{,}400$ & Full corpus & & Extremely low-resource tail \\
 \bottomrule
 \end{tabularx}
+\caption{\textbf{Parallel evaluation corpora and subsets}. Summary of language coverage, parallel sample size ($n$), domain, and thesis evaluation purpose. Subsets within each corpus share the same domain and translation origin.}
+\label{tab:evaluation-datasets-overview}
 \end{table}
 
 \paragraph{FLORES-200.}

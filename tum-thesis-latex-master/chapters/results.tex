@@ -20,8 +20,6 @@ As a baseline for the extended evaluations, we reproduced the reference experime
 \begin{table}[t]
 \centering
 \small
-\caption{\textbf{Reproduction of reference MEXA alignment scores ($\mu_{\text{Max}} / \mu_{\text{Mean}}$)}. Comparison between published values from \citet{kargaran2025mexa} and our reproduced results on the FLORES ($n = 100$) and Bible ($n = 103$) benchmarks.}
-\label{tab:mexa-reproduction}
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{lcccc}
 \toprule
@@ -34,6 +32,8 @@ Mistral 7B v0.3 & 0.4716 / 0.2642 & 0.4934 / 0.2813 & 0.2606 / 0.1198 & 0.2571 /
 \bottomrule
 \end{tabular}%
 }
+\caption{\textbf{Reproduction of reference MEXA alignment scores ($\mu_{\text{Max}} / \mu_{\text{Mean}}$)}. Comparison between published values from \citet{kargaran2025mexa} and our reproduced results on the FLORES ($n = 100$) and Bible ($n = 103$) benchmarks.}
+\label{tab:mexa-reproduction}
 \end{table}
 
 On FLORES, Llama~3.1~8B yields $\mu_{\text{Max}} = 0.6706$ and $\mu_{\text{Mean}} = 0.4143$ across the 116 languages. Mistral~7B~v0.3 scores $\mu_{\text{Max}} = 0.4934$ and $\mu_{\text{Mean}} = 0.2813$. Among encoder models, XLM-RoBERTa Large obtains $\mu_{\text{Max}} = 0.6441$ ($\mu_{\text{Mean}} = 0.4256$) and Glot500 reaches $\mu_{\text{Max}} = 0.5889$ ($\mu_{\text{Mean}} = 0.3893$). LaBSE, as expected from its contrastive training, scores $\mu_{\text{Max}} = 0.9510$ and $\mu_{\text{Mean}} = 0.7230$.
@@ -87,8 +87,6 @@ Causal decoders vary widely depending on parameter count, vocabulary size, and p
 \begin{table}[t]
 \centering
 \small
-\caption{\textbf{MEXA alignment scores across model architectures on FLORES and Bible benchmarks}. Comparison of peak ($\mu_{\text{Max}}$) and depth-averaged ($\mu_{\text{Mean}}$) alignment across 116 languages in FLORES ($n = 100$) and 101 languages in the Bible corpus ($n = 103$). Models are grouped by architecture category and ordered by FLORES $\mu_{\text{Max}}$.}
-\label{tab:mexa-main-results}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{llcccc}
 \toprule
@@ -122,6 +120,8 @@ Causal decoders vary widely depending on parameter count, vocabulary size, and p
 \bottomrule
 \end{tabular}%
 }
+\caption{\textbf{MEXA alignment scores across model architectures on FLORES and Bible benchmarks}. Comparison of peak ($\mu_{\text{Max}}$) and depth-averaged ($\mu_{\text{Mean}}$) alignment across 116 languages in FLORES ($n = 100$) and 101 languages in the Bible corpus ($n = 103$). Models are grouped by architecture category and ordered by FLORES $\mu_{\text{Max}}$.}
+\label{tab:mexa-main-results}
 \end{table}
 
 % ------------------------------------------------------------
@@ -203,8 +203,6 @@ Standard MEXA evaluations use English as the reference pivot ($L_2 = \text{eng\_
 \begin{table}[t]
 \centering
 \small
-\caption{\textbf{Cross-lingual alignment across alternative pivot languages}. Peak ($\mu_{\text{Max}}$) and depth-averaged ($\mu_{\text{Mean}}$) alignment on FLORES ($n = 100$) across six pivot languages under standard and mean-centered scoring.}
-\label{tab:pivot-comparison}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{llcccccc}
 \toprule
@@ -226,6 +224,8 @@ Standard MEXA evaluations use English as the reference pivot ($L_2 = \text{eng\_
 \bottomrule
 \end{tabular}%
 }
+\caption{\textbf{Cross-lingual alignment across alternative pivot languages}. Peak ($\mu_{\text{Max}}$) and depth-averaged ($\mu_{\text{Mean}}$) alignment on FLORES ($n = 100$) across six pivot languages under standard and mean-centered scoring.}
+\label{tab:pivot-comparison}
 \end{table}
 
 \paragraph{Raw alignment across alternative pivots.}

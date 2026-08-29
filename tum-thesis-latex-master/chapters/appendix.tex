@@ -11,8 +11,6 @@ Table~\ref{tab:appendix-model-specs} summarizes the structural specifications, l
 
 \begin{table}[H]
 \centering
-\caption{\textbf{Comprehensive specifications of evaluated models}. Parameter counts (with active parameters per token for MoE architectures indicated in parentheses), number of transformer layers ($L$), hidden dimension ($d$), vocabulary size ($|V|$), and Hugging Face repository identifiers.}
-\label{tab:appendix-model-specs}
 \small
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{@{}llccccp{5cm}@{}}
@@ -48,6 +46,8 @@ Table~\ref{tab:appendix-model-specs} summarizes the structural specifications, l
 \bottomrule
 \end{tabular}%
 }
+\caption{\textbf{Comprehensive specifications of evaluated models}. Parameter counts (with active parameters per token for MoE architectures indicated in parentheses), number of transformer layers ($L$), hidden dimension ($d$), vocabulary size ($|V|$), and Hugging Face repository identifiers.}
+\label{tab:appendix-model-specs}
 \end{table}
 
 \paragraph{Hardware and compute environment.}
@@ -68,8 +68,6 @@ Table~\ref{tab:appendix-language-sample} outlines representative language variet
 
 \begin{table}[H]
 \centering
-\caption{\textbf{Representative evaluated language varieties}. Language codes, script families, language family classifications, and approximate resource tiers.}
-\label{tab:appendix-language-sample}
 \footnotesize
 \setlength{\tabcolsep}{4.5pt}
 \renewcommand{\arraystretch}{0.90}
@@ -95,6 +93,8 @@ Table~\ref{tab:appendix-language-sample} outlines representative language variet
 \texttt{cop\_Copt} & Coptic (sPBC) & Coptic & Afroasiatic (Egyptian) & Extremely low resource (sPBC only) \\
 \bottomrule
 \end{tabularx}
+\caption{\textbf{Representative evaluated language varieties}. Language codes, script families, language family classifications, and approximate resource tiers.}
+\label{tab:appendix-language-sample}
 \end{table}
 
 % ------------------------------------------------------------
@@ -106,8 +106,6 @@ Table~\ref{tab:appendix-per-lang-scores} details per-language peak alignment sco
 
 \begin{table}[H]
 \centering
-\caption{\textbf{Per-language alignment ($\mu_{\text{Max}}$) and tokenizer fertility ($F_L$) across key models}. Comparison on FLORES-200 ($n = 100$) for representative languages across script families.}
-\label{tab:appendix-per-lang-scores}
 \footnotesize
 \setlength{\tabcolsep}{4.5pt}
 \begin{tabular}{@{}llccccccc@{}}
@@ -145,6 +143,8 @@ Table~\ref{tab:appendix-per-lang-scores} details per-language peak alignment sco
   & Khmer (\texttt{khm}) & 0.350 & 4.88 & 0.540 & 2.95 & 0.240 & 6.84 & 0.900 \\
 \bottomrule
 \end{tabular}
+\caption{\textbf{Per-language alignment ($\mu_{\text{Max}}$) and tokenizer fertility ($F_L$) across key models}. Comparison on FLORES-200 ($n = 100$) for representative languages across script families.}
+\label{tab:appendix-per-lang-scores}
 \end{table}
 
 % ------------------------------------------------------------
@@ -156,8 +156,6 @@ Table~\ref{tab:appendix-layer-depths} summarizes the total number of transformer
 
 \begin{table}[H]
 \centering
-\caption{\textbf{Layerwise alignment peak depths across all 16 evaluated models}. Total layers ($L$), peak layer ($l_{\text{peak}}$), normalized relative peak depth ($l_{\text{peak}}/L$), and peak alignment ($\mu_{\text{Max}}$) on FLORES-200 and the sPBC Bible corpus.}
-\label{tab:appendix-layer-depths}
 \footnotesize
 \setlength{\tabcolsep}{4.5pt}
 \begin{tabular}{@{}llccccccc@{}}
@@ -194,4 +192,6 @@ Table~\ref{tab:appendix-layer-depths} summarizes the total number of transformer
   & Qwen~3 Emb 8B & 36 & 24 & 0.67 & 0.8465 & 23 & 0.64 & 0.5561 \\
 \bottomrule
 \end{tabular}
+\caption{\textbf{Layerwise alignment peak depths across all 16 evaluated models}. Total layers ($L$), peak layer ($l_{\text{peak}}$), normalized relative peak depth ($l_{\text{peak}}/L$), and peak alignment ($\mu_{\text{Max}}$) on FLORES-200 and the sPBC Bible corpus.}
+\label{tab:appendix-layer-depths}
 \end{table}
