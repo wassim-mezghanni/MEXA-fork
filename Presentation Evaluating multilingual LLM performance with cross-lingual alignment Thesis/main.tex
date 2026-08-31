@@ -94,13 +94,13 @@
       \begin{block}{1. Position-Weighted Pooling}
         \centering
         \vspace{0.2em}
-        $\displaystyle e^{(l)} = \sum_{t=1}^T \frac{t}{T} h_t^{(l)}$
+        {\small $\displaystyle e^l = \sum_{t=1}^T w_t h_t^l, \quad w_t = \frac{t}{\sum_{k=1}^T k}$}
         \vspace{0.2em}
       \end{block}
       \vspace{0.3em}
       \begin{itemize}\small
         \item Aggregates token vectors at each layer $l \in [0, L]$.
-        \item Weights later tokens higher to reflect causal context.
+        \item Linear weighting reflects causal attention context accumulation.
         \item Fully training-free and prompt-invariant.
       \end{itemize}
     \end{column}
@@ -108,14 +108,14 @@
       \begin{block}{2. Bidirectional Retrieval Metric}
         \centering
         \vspace{0.2em}
-        {\footnotesize $\displaystyle C(l) = \frac{1}{n} \sum_{i=1}^n \mathbb{I}_{\text{mutual NN}}\left(s_{1,i}, s_{2,i}\right)$}
+        {\footnotesize $\displaystyle \mu C(l) = \frac{1}{n} \sum_{i=1}^n \mathbf{1}\!\left(c_{ii}(l) > \max_{j \neq i} \{c_{ij}(l), c_{ji}(l)\}\right)$}
         \vspace{0.2em}
       \end{block}
       \vspace{0.3em}
       \begin{itemize}\small
-        \item Checks if parallel sentences are mutual nearest neighbors against $n-1$ distractors.
-        \item \textbf{Peak Score:} $\mu_{\text{Max}} = \max_l C(l)$.
-        \item \textbf{Mean Score:} $\mu_{\text{Mean}} = \frac{1}{L} \sum_{l=1}^L C(l)$.
+        \item Checks if parallel sentences are mutual nearest neighbors ($P@1$).
+        \item \textbf{Peak Score:} $\mu_{\text{Max}} = \max_l \mu C(l)$.
+        \item \textbf{Mean Score:} $\mu_{\text{Mean}} = \frac{1}{L} \sum_{l=1}^L \mu C(l)$.
       \end{itemize}
     \end{column}
   \end{columns}
