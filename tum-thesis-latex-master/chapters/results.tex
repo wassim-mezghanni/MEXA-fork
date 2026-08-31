@@ -104,6 +104,7 @@ Causal decoders vary widely depending on parameter count, vocabulary size, and p
 \textbf{Causal Decoder LLMs}
   & Qwen 3.5 9B & \textbf{0.7794} & \textbf{0.5517} & 0.4769 & \textbf{0.2550} \\
   & Llama 3.1 8B & 0.6706 & 0.4143 & 0.4180 & 0.2076 \\
+  & Apertus-Mini 4B (v1.1) & 0.5840 & 0.3191 & 0.3868 & 0.1728 \\
   & Qwen 3 8B & 0.5720 & 0.3149 & 0.2900 & 0.1263 \\
   & Mistral 7B v0.3 & 0.4934 & 0.2813 & 0.2571 & 0.1179 \\
   & Qwen 3 1.7B & 0.4900 & 0.2086 & 0.1456 & 0.0518 \\
@@ -136,7 +137,7 @@ Across the Qwen~3 family, alignment scores increase consistently with model capa
 The newer Qwen~3.5~9B model achieves the highest alignment among all tested causal decoders on FLORES ($\mu_{\text{Max}} = 0.7794$, $\mu_{\text{Mean}} = 0.5517$), outperforming Llama~3.1~8B by over $10$ percentage points in peak alignment and $13$ points in mean alignment. This advantage stems from Qwen's broader multilingual pre-training mixture and a larger, more script-diverse vocabulary.
 
 \paragraph{Swiss AI Apertus models.}
-The Apertus model family \citep{apertus2025} shows distinct domain-dependent behavior across datasets. On FLORES, Apertus models exhibit lower alignment overall ($\mu_{\text{Max}} \le 0.4292$), with the 8B and 70B variants scoring lower than comparable modern decoders. On the Bible corpus, however, Apertus models achieve higher relative alignment (Apertus~8B reaches $\mu_{\text{Max}} = 0.4242$ and Apertus~1.5~70B reaches $0.5036$). This contrast suggests that Apertus's pre-training data distribution and tokenization provide relatively stronger representation sharing on archaic and lower-resource text, whereas models like Qwen and Llama align more strongly on modern web prose.
+The Apertus model family \citep{apertus2025} shows distinct domain-dependent behavior across datasets. On FLORES, Apertus-Mini~4B (v1.1) achieves $\mu_{\text{Max}} = 0.5840$, while the larger 8B and 70B variants show lower alignment ($\mu_{\text{Max}} \le 0.4292$). On the Bible corpus, however, Apertus models achieve higher relative alignment (Apertus~8B reaches $\mu_{\text{Max}} = 0.4242$ and Apertus~1.5~70B reaches $0.5036$). This contrast suggests that Apertus's pre-training data distribution and tokenization provide relatively stronger representation sharing on archaic and lower-resource text, whereas models like Qwen and Llama align more strongly on modern web prose.
 
 \subsection{Encoder and Embedding Models}
 \label{subsec:results-encoder-embedding}
