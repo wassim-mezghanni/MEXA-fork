@@ -166,6 +166,42 @@ Although mE5-base has a slightly higher peak than LaBSE ($0.9710$ vs.\ $0.9510$)
 \end{minipage}
 \end{figure}
 
+\subsection{Sample Size and Language Coverage}
+\label{subsec:results-sample-size-coverage}
+
+Evaluating representation alignment requires making two choices: how many parallel sentences to evaluate per language ($n$), and how many languages to include. The standard benchmark subset uses $n = 100$ sentences across 116 languages on FLORES-200 and $n = 103$ verses across 101 languages on the Bible corpus. We evaluate two expansions to test how these choices influence retrieval scores, with results summarized in Table~\ref{tab:subset-vs-full}.
+
+First, increasing sample size from $n = 100$ to $n = 1{,}012$ on FLORES (holding the 116 languages fixed) expands the pool , raising distractor density during Precision@1 retrieval. Under this harder criterion, absolute scores decrease across all models. For example, peak alignment in Qwen~3.5~9B drops from $0.7794$ to $0.7167$, while Qwen~3~4B drops from $0.4382$ to $0.3446$. In contrast, encoders experience much smaller reductions (mE5-base drops from $0.9710$ to $0.9501$). Despite these lower absolute values, relative model rankings remain identical: the rank correlation between the 100-sentence and 1,012-sentence runs is Spearman $\rho = 0.9956$ for peak alignment ($\mu_{\text{Max}}$) and $\rho = 1.0000$ for mean alignment ($\mu_{\text{Mean}}$).
+
+Second, expanding evaluation to the full language inventory introduces the low-resource tail. Evaluating all 204 FLORES languages reduces scores further (Qwen~3.5~9B drops to $0.5881$, and Qwen~3~1.7B drops to $0.3008$). Expanding the Bible corpus from 101 languages to more than 1,400 language-script pairs causes a  decline across all generative decoders, where peak scores fall below $0.10$. These extreme tail languages feature non-Latin scripts and low web representation, causing heavy subword fragmentation during tokenization. However, across the overlapping language subsets, relative per-language difficulty rankings correlate strongly ($\rho = 1.0000$). These results confirm that while absolute MEXA values depend on distractor pool size and language resource tier, relative comparisons across architectures remain invariant.
+
+\begin{table}[t]
+\centering
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccc}
+\toprule
+\multirow{2}{*}{\textbf{Model}} & \multicolumn{3}{c}{\textbf{FLORES-200 ($\mu_{\text{Max}}$)}} & \multicolumn{2}{c}{\textbf{Bible Corpus ($\mu_{\text{Max}}$)}} \\
+\cmidrule(lr){2-4} \cmidrule(lr){5-6}
+ & \textbf{116L ($n{=}100$)} & \textbf{116L ($n{=}1{,}012$)} & \textbf{204L ($n{=}1{,}012$)} & \textbf{101L ($n{=}103$)} & \textbf{1{,}401L (Full)} \\
+\midrule
+mE5-base            & 0.9710 & 0.9501 & 0.8762 & 0.8950 & 0.2040 \\
+LaBSE               & 0.9510 & 0.9133 & 0.8001 & 0.8376 & 0.1992 \\
+Qwen 3 Embedding 8B & 0.8465 & 0.7796 & 0.6912 & 0.5561 & 0.1127 \\
+Qwen 3.5 9B         & 0.7794 & 0.7167 & 0.5881 & 0.4769 & 0.0838 \\
+Qwen 3 1.7B         & 0.4900 & 0.4083 & 0.3008 & 0.1456 & 0.0214 \\
+Qwen 3 4B           & 0.4382 & 0.3446 & 0.2597 & 0.1901 & 0.0308 \\
+Qwen 3 0.6B         & 0.3459 & 0.2533 & 0.1775 & 0.1253 & 0.0228 \\
+XLM-R Large         & 0.6441 & 0.5839 & 0.4269 & 0.4025 & 0.0514 \\
+Glot500             & 0.5889 & 0.4829 & 0.3761 & 0.4832 & 0.0989 \\
+mmBERT Base         & 0.5094 & 0.4132 & 0.3033 & 0.2622 & 0.0427 \\
+\bottomrule
+\end{tabular}%
+}
+\caption{\textbf{Effect of sample size and language coverage on peak alignment ($\mu_{\text{Max}}$)}. Comparing models with complete evaluations across the standard subsets ($n = 100 / 103$), full sentence depth ($n = 1{,}012$), and full language coverage (204 languages on FLORES, $>$1,400 on Bible).}
+\label{tab:subset-vs-full}
+\end{table}
+
 \section{Mixture-of-Experts Models}
 \label{sec:results-moe}
 
