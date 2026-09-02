@@ -9,18 +9,20 @@ plt.style.use('seaborn-v0_8-paper' if 'seaborn-v0_8-paper' in plt.style.availabl
 mpl.rcParams['font.family'] = 'sans-serif'
 mpl.rcParams['font.sans-serif'] = ['DejaVu Sans', 'Helvetica', 'Arial']
 mpl.rcParams['axes.edgecolor'] = '#333333'
-mpl.rcParams['axes.linewidth'] = 0.8
+mpl.rcParams['axes.linewidth'] = 1.0
 mpl.rcParams['grid.color'] = '#cccccc'
 mpl.rcParams['grid.linestyle'] = '--'
 mpl.rcParams['grid.alpha'] = 0.5
 
 base_dir = "/Users/wassim/MEXA-fork"
 public_dir = os.path.join(base_dir, "dashboard/public/data")
-figures_dir = os.path.join(base_dir, "tum-thesis-latex-master/figures")
-os.makedirs(figures_dir, exist_ok=True)
+output_dirs = [
+    os.path.join(base_dir, "Presentation Evaluating multilingual LLM performance with cross-lingual alignment Thesis/figures"),
+    os.path.join(base_dir, "tum-thesis-latex-master/figures")
+]
 
-output_pdf = os.path.join(figures_dir, "fig_embedding_projections.pdf")
-output_png = os.path.join(figures_dir, "fig_embedding_projections.png")
+for d in output_dirs:
+    os.makedirs(d, exist_ok=True)
 
 # Load Llama 3.1 8B projections
 proj_path = os.path.join(public_dir, "projections_flores_table1_llama3.1_8b.json")
@@ -64,12 +66,12 @@ markers = {
 
 layers_to_plot = ['0', '16', '32']
 titles = {
-    '0': "Layer 0 (Segregated by Language)",
+    '0': "Layer 0 (Language-Segregated)",
     '16': "Layer 16 (Aligned Shared Semantics)",
-    '32': "Layer 32 (Segregated by Vocabulary)"
+    '32': "Layer 32 (Vocabulary-Segregated)"
 }
 
-fig, axes = plt.subplots(1, 3, figsize=(12, 4.2), dpi=300, sharex=False, sharey=False)
+fig, axes = plt.subplots(1, 3, figsize=(13.2, 4.6), dpi=300, sharex=False, sharey=False)
 
 for i, l_key in enumerate(layers_to_plot):
     ax = axes[i]
@@ -92,34 +94,42 @@ for i, l_key in enumerate(layers_to_plot):
                 color=colors[script], 
                 marker=markers[script], 
                 label=script, 
-                s=25, 
-                alpha=0.85, 
+                s=38, 
+                alpha=0.88, 
                 edgecolors='white', 
-                linewidths=0.4
+                linewidths=0.5
             )
             
-    ax.set_title(titles[l_key], fontsize=10, fontweight='bold')
+    ax.set_title(titles[l_key], fontsize=13, fontweight='bold', pad=10)
     ax.set_xticks([])
     ax.set_yticks([])
     ax.grid(False)
 
-# Add single legend below subplots with larger marker scale for clear visibility
+# Add single legend below subplots with larger font size and marker scale
 handles, labels = axes[0].get_legend_handles_labels()
 fig.legend(
     handles, 
     labels, 
     loc='lower center', 
     ncol=6, 
-    bbox_to_anchor=(0.5, -0.05), 
-    fontsize=9, 
+    bbox_to_anchor=(0.5, -0.07), 
+    fontsize=11.5, 
     frameon=True,
-    markerscale=1.4,
+    facecolor='white',
+    framealpha=0.95,
+    markerscale=1.6,
     scatterpoints=1
 )
 
 plt.tight_layout()
-plt.savefig(output_pdf, format='pdf', bbox_inches='tight')
-plt.savefig(output_png, format='png', bbox_inches='tight')
+
+for d in output_dirs:
+    out_pdf = os.path.join(d, "fig_embedding_projections.pdf")
+    out_png = os.path.join(d, "fig_embedding_projections.png")
+    plt.savefig(out_pdf, format='pdf', bbox_inches='tight')
+    plt.savefig(out_png, format='png', bbox_inches='tight', dpi=300)
+    print("Saved:", out_pdf)
+
 plt.close()
 
-print("Embedding projections plot generated successfully!")
+print("Embedding projections plot with enlarged font size generated successfully!")
