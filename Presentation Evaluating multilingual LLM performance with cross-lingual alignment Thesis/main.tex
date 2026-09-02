@@ -30,6 +30,12 @@
 \institute{TUM School of Computation, Information and Technology\\Technical University of Munich}
 \date{\today}
 
+% TUM Header Metadata (for TUM threeliner header)
+\provideName{\theDepartmentName}{School of Computation, Information and Technology}{School of Computation, Information and Technology}
+\provideName{\theChairName}{Department of Computer Science}{Department of Computer Science}
+\renewcommand{\theDepartmentName}{School of Computation, Information and Technology}
+\renewcommand{\theChairName}{Department of Computer Science}
+
 \footline{\insertauthor~|~\insertshorttitle~|~\insertshortdate}
 
 % TUM Style Configuration
@@ -70,17 +76,19 @@
         \item Most benchmarks cover fewer than 100 languages.
       \end{itemize}
       \vspace{0.3em}
-      \textbf{\color{TUMBlue}Core question:} How do foundation models organize concept spaces across languages without relying on generation?
+      \textbf{\color{TUMBlue}Core question:} How do foundation models organize multilingual concept spaces at the internal representation level?
     \end{column}
     \begin{column}{0.44\textwidth}
-      \textbf{Research questions}
-      \begin{enumerate}\small
-        \item \textbf{Scale and depth:} How alignment evolves across model size and layer depth.
-        \item \textbf{Sparse MoE routing:} Whether conditional routing preserves or splits a shared space.
-        \item \textbf{Pivot invariance:} Whether internal geometry depends on an English hub.
-        \item \textbf{Fertility penalty:} How subword fragmentation affects non-Latin scripts.
-        \item \textbf{Downstream validity:} How well internal alignment predicts task reasoning.
-      \end{enumerate}
+      \uncover<2->{
+        \textbf{Research questions}
+        \begin{enumerate}\small
+          \item \textbf{Scale and depth:} How alignment evolves across model size and layer depth.
+          \item \textbf{Sparse Mixture of Experts (MoE) routing:} Whether conditional routing preserves or splits a shared space.
+          \item \textbf{Pivot invariance:} Whether internal geometry depends on an English hub.
+          \item \textbf{Fertility penalty:} How subword fragmentation affects non-Latin scripts.
+          \item \textbf{Downstream validity:} How well internal alignment predicts task reasoning.
+        \end{enumerate}
+      }
     \end{column}
   \end{columns}
 \end{frame}
@@ -98,25 +106,30 @@
         \vspace{0.1em}
       \end{block}
       \vspace{0.1em}
-      \begin{itemize}\footnotesize \setlength{\itemsep}{1pt}
-        \item Pools token representations at each layer $l \in [0, L]$.
-        \item Linear weights reflect causal context accumulation.
+      \begin{itemize}\scriptsize \setlength{\itemsep}{1.5pt}
+        \item $h_t^l \in \mathbb{R}^d$: Hidden state of token $t$ at layer $l \in [0, L]$.
+        \item $w_t$: Linear position weight (weights later tokens higher due to causal attention).
+        \item $e^l$: Pooled sentence representation at layer $l$.
         \item Fully training-free and prompt-invariant.
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
-      \begin{block}{2. Bidirectional Retrieval Metric}
-        \centering
+      \uncover<2->{
+        \begin{block}{2. Bidirectional Retrieval Metric}
+          \centering
+          \vspace{0.1em}
+          {\footnotesize $\displaystyle \mu C(l) = \frac{1}{n} \sum_{i=1}^n \mathbf{1}\!\left(c_{ii}(l) > \max_{j \neq i} \{c_{ij}(l), c_{ji}(l)\}\right)$}
+          \vspace{0.1em}
+        \end{block}
         \vspace{0.1em}
-        {\footnotesize $\displaystyle \mu C(l) = \frac{1}{n} \sum_{i=1}^n \mathbf{1}\!\left(c_{ii}(l) > \max_{j \neq i} \{c_{ij}(l), c_{ji}(l)\}\right)$}
-        \vspace{0.1em}
-      \end{block}
-      \vspace{0.1em}
-      \begin{itemize}\footnotesize \setlength{\itemsep}{1pt}
-        \item Evaluates mutual nearest-neighbor accuracy ($P@1$).
-        \item \textbf{Peak alignment:} $\mu_{\text{Max}} = \max_l \mu C(l)$.
-        \item \textbf{Mean alignment:} $\mu_{\text{Mean}} = \frac{1}{L} \sum_{l=1}^L \mu C(l)$.
-      \end{itemize}
+        \begin{itemize}\scriptsize \setlength{\itemsep}{1pt}
+          \item $n$: Number of parallel test sentences.
+          \item $c_{ij}(l) = \cos(e_i^l, e_j^{\prime\,l})$: Cross-lingual cosine similarity.
+          \item $\mathbf{1}(\cdot)$: Mutual nearest-neighbor match ($i \leftrightarrow i$).
+          \item \textbf{Peak alignment:} $\mu_{\text{Max}} = \max_l \mu C(l)$.
+          \item \textbf{Mean alignment:} $\mu_{\text{Mean}} = \frac{1}{L} \sum_{l=1}^L \mu C(l)$.
+        \end{itemize}
+      }
     \end{column}
   \end{columns}
   \vspace{0.2em}
@@ -131,69 +144,92 @@
 \begin{frame}{Experimental Scope: Two Complementary Corpora}
   \begin{columns}[T]
     \begin{column}{0.48\textwidth}
-      \textbf{FLORES-200 (Modern Benchmark):}
-      \begin{itemize}\small \setlength{\itemsep}{1pt}
-        \item \textbf{Coverage:} 204 language varieties across multiple scripts.
-        \item \textbf{Quality:} Professional human translations from Wikipedia.
-        \item \textbf{Domain:} Contemporary encyclopedic prose.
-        \item \textbf{Evaluation split:} $n = 100$ parallel sentences per language.
+      \begin{tcolorbox}[
+        colback=TUMBlue!6,
+        colframe=TUMBlue,
+        coltitle=white,
+        fonttitle=\bfseries\small,
+        title=FLORES-200 (Modern Benchmark),
+        arc=1.5mm,
+        boxrule=0.8pt,
+        left=6pt, right=6pt, top=4pt, bottom=4pt
+      ]
+        \begin{itemize}\small \setlength{\itemsep}{1.5pt}
+          \item \textbf{Domain:} Modern encyclopedic prose (Wikipedia; contemporary vocabulary).
+          \item \textbf{Languages:} 204 varieties (high- to mid-resource coverage).
+          \item \textbf{Scripts:} 25 scripts (Latin, Cyrillic, Arabic, Devanagari, Han, etc ).
+          \item \textbf{Split:} $n = 100$ parallel sentences/language.
+        \end{itemize}
+      \end{tcolorbox}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \uncover<2->{
+        \begin{tcolorbox}[
+          colback=TUMExtTeal!6,
+          colframe=TUMExtTeal,
+          coltitle=white,
+          fonttitle=\bfseries\small,
+          title=Super-Parallel Bible Corpus (sPBC),
+          arc=1.5mm,
+          boxrule=0.8pt,
+          left=6pt, right=6pt, top=4pt, bottom=4pt
+        ]
+          \begin{itemize}\small \setlength{\itemsep}{1.5pt}
+            \item \textbf{Domain:} Historical religious text (archaic register).
+            \item \textbf{Languages:} 1,400+ varieties (massive long tail of rare/unseen languages).
+            \item \textbf{Scripts:} $50+$ writing systems (Ge'ez, Syriac, Coptic, Cherokee, indigenous).
+            \item \textbf{Split:} $n = 103$ parallel verses.
+          \end{itemize}
+        \end{tcolorbox}
+      }
+    \end{column}
+  \end{columns}
+  \vspace{0.1em}
+  \begin{takeawaybox}
+    \textbf{Takeaway:} Comparing these corpora evaluates whether representation alignment generalizes across \textbf{domain shifts}, \textbf{unseen scripts}, and \textbf{extreme low-resource languages}.
+  \end{takeawaybox}
+\end{frame}
+
+% ------------------------------------------------------------
+% 5. Model Suite: 27 Evaluated Foundation Models
+% ------------------------------------------------------------
+\begin{frame}{Evaluated Models: 27 Architectures Across 4 Paradigms}
+  \begin{columns}[T]
+    \begin{column}{0.50\textwidth}
+      \textbf{Dense causal decoders (15 models)}
+      \begin{itemize}\scriptsize \setlength{\itemsep}{1.2pt}
+        \item \textbf{Qwen 3 \& 3.5 (5):} 0.6B, 1.7B, 4B, 8B, 3.5 9B .
+        \item \textbf{Apertus Swiss AI (4):} Mini 4B, 8B, 1.5-8B, 1.5-70B.
+        \item \textbf{Gemma 4 (4):} E2B, E4B, 12B, 31B .
+        \item \textbf{Baselines (2):} LLaMA 3.1 8B, Mistral 7B v0.3.
+      \end{itemize}
+      \vspace{0.2em}
+      \textbf{Sparse Mixture of Experts (3 models)}
+      \begin{itemize}\scriptsize \setlength{\itemsep}{1.2pt}
+        \item \textbf{Mixtral 8x7B} (13B active) \& \textbf{8x22B} (39B active).
+        \item \textbf{Gemma 4 26B-A4B} (4B active out of 26B).
       \end{itemize}
     \end{column}
     \begin{column}{0.48\textwidth}
-      \textbf{Super-Parallel Bible Corpus (sPBC):}
-      \begin{itemize}\small \setlength{\itemsep}{1pt}
-        \item \textbf{Coverage:} Over 1,400 languages, including rare varieties.
-        \item \textbf{Role:} Only multi-way parallel resource for hundreds of languages.
-        \item \textbf{Domain:} Historical register with distinct sentence structure.
-        \item \textbf{Evaluation split:} $n = 103$ parallel verses.
+      \textbf{Masked language models (4 models)}
+      \begin{itemize}\scriptsize \setlength{\itemsep}{1.2pt}
+        \item \textbf{XLM-RoBERTa Large :}  Large (550M).
+        \item \textbf{Glot500 :} 270M, tailored for 500+ languages.
+        \item \textbf{mmBERT Base :} 270M multilingual baseline.
+      \end{itemize}
+      \vspace{0.2em}
+      \textbf{Dedicated sentence encoders (6 models)}
+      \begin{itemize}\scriptsize \setlength{\itemsep}{1.2pt}
+        \item \textbf{LaBSE (1):} 471M, 501k vocab dual-encoder.
+        \item \textbf{mE5-base (1):} 278M contrastive embedding.
+        \item \textbf{Qwen 3 Embedding (3):} 0.6B, 4B and 8B.
       \end{itemize}
     \end{column}
   \end{columns}
   \vspace{0.1em}
   \begin{takeawaybox}
-    \textbf{Takeaway:} Combining modern prose with a 1,400-language corpus tests whether alignment holds across domain shifts and rare languages.
+    \textbf{Scale range:} Models span \textbf{270M to 141B parameters} (27 architectures) across dense, sparse MoE, and encoder paradigms.
   \end{takeawaybox}
-\end{frame}
-
-% ------------------------------------------------------------
-% 5. Model Suite: 16 Evaluated Foundation Models
-% ------------------------------------------------------------
-\begin{frame}{Evaluated Models: 16 Architectures Across 4 Paradigms}
-  \begin{columns}[T]
-    \begin{column}{0.50\textwidth}
-      \textbf{Dense causal decoders}
-      \begin{itemize}\small
-        \item \textbf{Qwen 3 family:} 0.6B, 1.7B, 4B, 8B (scaling sweep).
-        \item \textbf{Qwen 3.5 9B:} Recent multilingual model.
-        \item \textbf{Llama 3.1:} 8B and 70B baselines.
-        \item \textbf{Apertus:} mini-4B (v1.1), 8B (v1.0), 1.5-8B, 1.5-70B.
-        \item \textbf{Mistral 7B v0.3:} Dense baseline for MoE comparison.
-      \end{itemize}
-      \vspace{0.2em}
-      \textbf{Sparse mixture of experts (MoE)}
-      \begin{itemize}\small
-        \item \textbf{Mixtral 8x7B} (13B active) and \textbf{8x22B} (39B active).
-        \item \textbf{Gemma 4 26B-A4B} (4B active out of 26B).
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      \textbf{Masked language models (MLMs)}
-      \begin{itemize}\small
-        \item \textbf{XLM-RoBERTa Large} (550M, 100 languages).
-        \item \textbf{Glot500} (270M, 500+ languages).
-        \item \textbf{mmBERT Base} (270M parameters).
-      \end{itemize}
-      \vspace{0.2em}
-      \textbf{Dedicated sentence encoders}
-      \begin{itemize}\small
-        \item \textbf{LaBSE} (471M, dual-encoder contrastive).
-        \item \textbf{mE5-base} (278M, weakly supervised).
-        \item \textbf{Qwen 3 Embedding 8B} (8B contrastive).
-      \end{itemize}
-      \vspace{0.3em}
-      \textbf{Scale range:} 270M to 141B total parameters.
-    \end{column}
-  \end{columns}
 \end{frame}
 
 % ------------------------------------------------------------

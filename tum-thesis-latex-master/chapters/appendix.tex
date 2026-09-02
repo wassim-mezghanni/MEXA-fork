@@ -7,7 +7,7 @@ This appendix provides supplementary technical details, full model specification
 \section{Model Specifications and Infrastructure}
 \label{sec:appendix-models}
 
-Table~\ref{tab:appendix-model-specs} summarizes the structural specifications, layer depths, hidden dimensions, vocabulary sizes, and public Hugging Face model identifiers for all 16 evaluated foundation models.
+Table~\ref{tab:appendix-model-specs} summarizes the structural specifications, layer depths, hidden dimensions, vocabulary sizes, and public Hugging Face model identifiers across representative evaluated model architectures.
 
 \begin{table}[H]
 \centering
@@ -57,7 +57,7 @@ All embedding extractions and retrieval scoring evaluations were conducted using
     \item \textbf{Accelerators:} High-memory compute nodes equipped with NVIDIA H100 (96GB VRAM), NVIDIA H200 (96GB / 141GB / 144GB VRAM), and NVIDIA A100 (40GB / 80GB VRAM) GPUs managed via Slurm.
     \item \textbf{Software stack:} Python 3.10, PyTorch 2.4 with CUDA 12.4, Hugging Face \texttt{transformers} 4.44, \texttt{accelerate} 0.33, and \texttt{vLLM} 0.5.4.
     \item \textbf{Precision:} Model inference was run strictly in native \texttt{bfloat16} for causal decoders and MoE models, and \texttt{float32} for bidirectional sentence encoders to prevent numerical overflow in position-weighted hidden state pooling.
-    \item \textbf{Throughput:} Total GPU computation required approximately 120 GPU-hours across all 16 architectures, 6 pivot languages, and corpus configurations.
+    \item \textbf{Throughput:} Total GPU computation required approximately 120 GPU-hours across all 27 model checkpoints, 6 pivot languages, and corpus configurations.
 \end{itemize}
 
 % ------------------------------------------------------------
@@ -153,7 +153,7 @@ Table~\ref{tab:appendix-per-lang-scores} details per-language peak alignment sco
 \section{Layer-wise Peak Depths Across Architectures}
 \label{sec:appendix-layer-depths}
 
-Table~\ref{tab:appendix-layer-depths} summarizes the total number of transformer layers ($L$, obtained from model architecture specifications), the empirical peak alignment layer ($l_{\text{peak}} = \arg\max_{l} \mu(l)$, identified by evaluating retrieval accuracy across all layers), the normalized peak depth ratio ($l_{\text{peak}} / L$), and the corresponding peak scores ($\mu_{\text{Max}}$) across all 16 evaluated foundation models on FLORES-200 and the sPBC Bible corpus.
+Table~\ref{tab:appendix-layer-depths} summarizes the total number of transformer layers ($L$), empirical peak alignment layer ($l_{\text{peak}} = \arg\max_{l} \mu(l)$), normalized peak depth ratio ($l_{\text{peak}} / L$), and corresponding peak scores ($\mu_{\text{Max}}$) across representative evaluated model architectures on FLORES-200 and the sPBC Bible corpus.
 
 \begin{table}[H]
 \centering
@@ -194,6 +194,6 @@ Table~\ref{tab:appendix-layer-depths} summarizes the total number of transformer
   & Qwen~3 Emb 8B & 36 & 24 & 0.67 & 0.8465 & 23 & 0.64 & 0.5561 \\
 \bottomrule
 \end{tabular}
-\caption{\textbf{Layerwise alignment peak depths across all 16 evaluated models}. Total layers ($L$), peak layer ($l_{\text{peak}}$), normalized relative peak depth ($l_{\text{peak}}/L$), and peak alignment ($\mu_{\text{Max}}$) on FLORES-200 and the sPBC Bible corpus.}
+\caption{\textbf{Layerwise alignment peak depths across evaluated model architectures}. Total layers ($L$), peak layer ($l_{\text{peak}}$), normalized relative peak depth ($l_{\text{peak}}/L$), and peak alignment ($\mu_{\text{Max}}$) on FLORES-200 and the sPBC Bible corpus.}
 \label{tab:appendix-layer-depths}
 \end{table}
