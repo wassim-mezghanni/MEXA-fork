@@ -193,42 +193,91 @@
 % ------------------------------------------------------------
 % 5. Model Suite: 27 Evaluated Foundation Models
 % ------------------------------------------------------------
-\begin{frame}{Evaluated Models: 27 Architectures Across 4 Paradigms}
+\begin{frame}{Evaluated Models: 27 Checkpoints Across 4 Paradigms}
   \begin{columns}[T]
-    \begin{column}{0.50\textwidth}
-      \textbf{Dense causal decoders (15 models)}
-      \begin{itemize}\scriptsize \setlength{\itemsep}{1.2pt}
-        \item \textbf{Qwen 3 \& 3.5 (5):} 0.6B, 1.7B, 4B, 8B, 3.5 9B .
-        \item \textbf{Apertus Swiss AI (4):} Mini 4B, 8B, 1.5-8B, 1.5-70B.
-        \item \textbf{Gemma 4 (4):} E2B, E4B, 12B, 31B .
-        \item \textbf{Baselines (2):} LLaMA 3.1 8B, Mistral 7B v0.3.
-      \end{itemize}
-      \vspace{0.2em}
-      \textbf{Sparse Mixture of Experts (3 models)}
-      \begin{itemize}\scriptsize \setlength{\itemsep}{1.2pt}
-        \item \textbf{Mixtral 8x7B} (13B active) \& \textbf{8x22B} (39B active).
-        \item \textbf{Gemma 4 26B-A4B} (4B active out of 26B).
-      \end{itemize}
+    \begin{column}{0.485\textwidth}
+      \begin{tcolorbox}[
+        colback=TUMBlue!5,
+        colframe=TUMBlue,
+        coltitle=white,
+        fonttitle=\bfseries\scriptsize,
+        title=Dense Causal Decoders (15 models),
+        arc=1.2mm, boxrule=0.7pt,
+        height=2.38cm,
+        left=3pt, right=3pt, top=1.5pt, bottom=1.5pt
+      ]
+        \vspace{-0.25em}
+        \setlength{\leftmargini}{9pt}
+        \begin{itemize}\scriptsize \setlength{\itemsep}{0.2pt}
+          \item \textbf{Qwen 3 and 3.5 :} 0.6B, 1.7B, 4B, 8B, 3.5 9B.
+          \item \textbf{Apertus Swiss AI :} Mini 4B, 8B, 1.5-8B, 1.5-70B.
+          \item \textbf{Gemma 4 :} E2B, E4B, 12B, 31B.
+          \item LLaMA 3.1 8B, Mistral 7B v0.3.
+        \end{itemize}
+      \end{tcolorbox}
+      \vspace{0.12em}
+      \begin{tcolorbox}[
+        colback=TUMExtViolet!5,
+        colframe=TUMExtViolet,
+        coltitle=white,
+        fonttitle=\bfseries\scriptsize,
+        title=Sparse Mixture-of-Experts (3 models),
+        arc=1.2mm, boxrule=0.7pt,
+        height=2.38cm,
+        left=3pt, right=3pt, top=1.5pt, bottom=1.5pt
+      ]
+        \vspace{-0.25em}
+        \setlength{\leftmargini}{9pt}
+        \begin{itemize}\scriptsize \setlength{\itemsep}{0.2pt}
+          \item \textbf{Mixtral 8x7B :} 46.7B total (13B active).
+          \item \textbf{Mixtral 8x22B :} 141.0B total (39B active).
+          \item \textbf{Gemma 4 26B-A4B :} 26.0B total (4B active).
+        \end{itemize}
+      \end{tcolorbox}
     \end{column}
-    \begin{column}{0.48\textwidth}
-      \textbf{Masked language models (4 models)}
-      \begin{itemize}\scriptsize \setlength{\itemsep}{1.2pt}
-        \item \textbf{XLM-RoBERTa Large :}  Large (550M).
-        \item \textbf{Glot500 :} 270M, tailored for 500+ languages.
-        \item \textbf{mmBERT Base :} 270M multilingual baseline.
-      \end{itemize}
-      \vspace{0.2em}
-      \textbf{Dedicated sentence encoders (6 models)}
-      \begin{itemize}\scriptsize \setlength{\itemsep}{1.2pt}
-        \item \textbf{LaBSE (1):} 471M, 501k vocab dual-encoder.
-        \item \textbf{mE5-base (1):} 278M contrastive embedding.
-        \item \textbf{Qwen 3 Embedding (3):} 0.6B, 4B and 8B.
-      \end{itemize}
+    \begin{column}{0.485\textwidth}
+      \begin{tcolorbox}[
+        colback=TUMExtTeal!5,
+        colframe=TUMExtTeal,
+        coltitle=white,
+        fonttitle=\bfseries\scriptsize,
+        title=Masked Language Models (4 models),
+        arc=1.2mm, boxrule=0.7pt,
+        height=2.38cm,
+        left=3pt, right=3pt, top=1.5pt, bottom=1.5pt
+      ]
+        \vspace{-0.25em}
+        \setlength{\leftmargini}{9pt}
+        \begin{itemize}\scriptsize \setlength{\itemsep}{0.2pt}
+          \item \textbf{XLM-RoBERTa :} Base (270M), Large (550M).
+          \item \textbf{Glot500 :} 270M (tailored for 500+ languages).
+          \item \textbf{mmBERT Base:} 270M multilingual baseline.
+        \end{itemize}
+      \end{tcolorbox}
+      \vspace{0.12em}
+      \begin{tcolorbox}[
+        colback=TUMExtForest!5,
+        colframe=TUMExtForest,
+        coltitle=white,
+        fonttitle=\bfseries\scriptsize,
+        title=Sentence Embedding Models (5 models),
+        arc=1.2mm, boxrule=0.7pt,
+        height=2.38cm,
+        left=3pt, right=3pt, top=1.5pt, bottom=1.5pt
+      ]
+        \vspace{-0.25em}
+        \setlength{\leftmargini}{9pt}
+        \begin{itemize}\scriptsize \setlength{\itemsep}{0.2pt}
+          \item \textbf{LaBSE :} 471M dual-encoder (501k vocab).
+          \item \textbf{mE5-base :} 278M contrastive embedding.
+          \item \textbf{Qwen 3 Embedding :} 0.6B, 4B, and 8B.
+        \end{itemize}
+      \end{tcolorbox}
     \end{column}
   \end{columns}
-  \vspace{0.1em}
+  \vspace{0.12em}
   \begin{takeawaybox}
-    \textbf{Scale range:} Models span \textbf{270M to 141B parameters} (27 architectures) across dense, sparse MoE, and encoder paradigms.
+    \textbf{Scale range:} Models span \textbf{270M to 141B parameters} (27 checkpoints across 4 paradigms).
   \end{takeawaybox}
 \end{frame}
 
@@ -239,20 +288,20 @@
   \begin{columns}[c]
     \begin{column}{0.48\textwidth}
       \centering
-      \includegraphics[width=\linewidth,height=0.45\textheight,keepaspectratio]{figures/fig_parameter_scaling.pdf}
+      \includegraphics[width=\linewidth,height=0.6\textheight,keepaspectratio]{figures/fig_parameter_scaling.pdf}
     \end{column}
     \begin{column}{0.50\textwidth}
-      \begin{itemize}\small
-        \item \textbf{Scaling with capacity:} In Qwen 3, peak alignment grows with size: 0.6B ($0.35$) $\rightarrow$ 1.7B ($0.49$) $\rightarrow$ 4B ($0.44$) $\rightarrow$ 8B ($0.57$).
-        \item \textbf{Leading open model:} Qwen 3.5 9B reaches $\mu_{\text{Max}} = 0.7809$, ahead of Llama 3.1 8B ($0.6735$) and Mistral 7B ($0.4934$).
-        \item \textbf{Upper-middle peak:} Causal decoders peak between \textbf{60\% and 80\% depth}, then drop at the final layers as states turn toward next-token generation.
-        \item \textbf{Sentence encoders:} Peak early ($<30\%$ depth, $\mu > 0.95$) due to explicit contrastive objectives.
+      \begin{itemize}\small \setlength{\itemsep}{4pt}
+        \item \textbf{Scaling with capacity:} In Qwen 3, peak alignment grows with size:\\
+          0.6B $\rightarrow$ 1.7B $\rightarrow$ 4B $\rightarrow$ 8B
+        \item \textbf{Qwen 3.5 9B:} Jumps to $\mu_{\text{Max}} = 0.78$ \\ (+21\% over 8B base), \\ narrowing the gap to embedding models.
+        \item \textbf{Embedding models:} Peak early ($<30\%$ depth, $\mu > 0.95$) due to explicit contrastive objectives.
       \end{itemize}
     \end{column}
   \end{columns}
   \vspace{0.1em}
   \begin{takeawaybox}
-    \textbf{Takeaway:} Causal decoders build a shared concept space in upper-middle layers, whereas sentence encoders align representations early through contrastive objectives.
+    \textbf{Takeaway:} Alignment scales consistently with model capacity, peaking in upper-middle layers for decoders and early on for embedding models.
   \end{takeawaybox}
 \end{frame}
 
@@ -263,12 +312,12 @@
   \begin{columns}[c]
     \begin{column}{0.48\textwidth}
       \centering
-      \includegraphics[width=\linewidth,height=0.45\textheight,keepaspectratio]{figures/fig_flores_vs_bible_all_labeled.pdf}
+      \includegraphics[width=\linewidth,height=0.6\textheight,keepaspectratio]{figures/fig_flores_vs_bible_all_labeled.pdf}
     \end{column}
     \begin{column}{0.50\textwidth}
-      \begin{itemize}\small
-        \item \textbf{Consistent rankings:} Model order remains stable at $\boldsymbol{\rho = 0.98}$ ($p < 10^{-10}$) across 16 models on 116 FLORES and 101 Bible languages.
-        \item \textbf{Domain score offset:} Absolute alignment is lower on biblical text (e.g. Llama 3.1 8B drops from $0.67$ to $0.42$) due to archaic vocabulary and syntax.
+      \begin{itemize}\small \setlength{\itemsep}{5pt}
+        \item \textbf{Consistent rankings:} Model order remains stable at $\boldsymbol{\rho = 0.98}$ ($p < 10^{-10}$) across all models on 116 FLORES and 101 Bible languages (following the original MEXA benchmark language subsets).
+        \item \textbf{Domain score offset:} Absolute alignment is lower on biblical text due to archaic vocabulary and syntax.
         \item \textbf{Apertus performance:} Apertus models retain higher relative scores on biblical text ($\mu_{\text{Max}} \le 0.50$).
       \end{itemize}
     \end{column}
@@ -286,12 +335,15 @@
   \begin{columns}[c]
     \begin{column}{0.48\textwidth}
       \centering
-      \includegraphics[width=\linewidth,height=0.45\textheight,keepaspectratio]{figures/fig_moe_layer_trajectories.pdf}
+      \includegraphics[width=\linewidth,height=0.8\textheight,keepaspectratio]{figures/fig_moe_layer_trajectories.pdf}
     \end{column}
     \begin{column}{0.50\textwidth}
-      \begin{itemize}\small
-        \item \textbf{Sparse efficiency:} Mixtral 8x7B ($0.5385$) and 8x22B ($0.6120$) match or exceed dense Mistral 7B ($0.4934$) despite using fewer active parameters.
-        \item \textbf{Functional gating:} Routers allocate tokens based on syntax and context rather than language identity.
+      \begin{itemize}\small \setlength{\itemsep}{6pt}
+        \item \textbf{Sparse scaling:} Despite much larger total capacity, MoE models only slightly exceed dense baselines dense Mistral 7B ($0.49$):
+          \begin{itemize}\setlength{\itemsep}{2pt}
+            \item[\textbullet] Mixtral 8$\times$7B (13B active / 47B total) scores $0.54$
+            \item[\textbullet] Mixtral 8$\times$22B (39B active / 141B total) reaches $0.61$
+          \end{itemize}
         \item \textbf{Balanced allocation:} Intermediate layers distribute tokens evenly across all 8 experts ($\boldsymbol{\approx 12.5\%}$ each), regardless of script.
       \end{itemize}
     \end{column}
@@ -306,23 +358,28 @@
 % 9. Finding 4: Pivot Invariance & Representation Geometry
 % ------------------------------------------------------------
 \begin{frame}{Finding 4: Pivot Invariance and Concept Space Geometry}
+  \vspace{-0.3em}
   \begin{columns}[T]
     \begin{column}{0.52\textwidth}
-      \begin{itemize}\small
-        \item \textbf{Six pivots evaluated:} English, French, German, Arabic, Chinese, and Basque.
-        \item \textbf{Non-English pivots:} Match or exceed English in standard retrieval (e.g. French $\mu_{\text{Max}} = 0.8034$ vs.\ English $0.7809$ on Qwen 3.5 9B).
+      \begin{itemize}\footnotesize \setlength{\itemsep}{2pt}
+        \item \textbf{Six pivots evaluated:} English plus 5 alternatives chosen for typological and script diversity: German (same family ), French (Latin), Arabic (Right To Left ), Chinese (logographic), Basque (language isolate ).
+        \item \textbf{Dataset and coverage:} \textbf{FLORES-200}  \\ ($n = 100$ parallel sentences, 116 languages).
+        \item \textbf{Non-English pivots:} Match or exceed English in standard retrieval (e.g.\ French $\mu_{\text{Max}} = 0.8034$ vs.\ English $0.7809$ on Qwen 3.5 9B).
         \item \textbf{Mean-centering ($\mathbf{e} - \bar{\mathbf{e}}_L$):} Subtracting per-language centroids removes static language offsets.
-        \item \textbf{Ceiling convergence:} Centered alignment across all six pivots converges to a shared ceiling of $\boldsymbol{\mu_{\text{Max}} \approx 0.94\text{ to }0.96}$.
       \end{itemize}
     \end{column}
     \begin{column}{0.45\textwidth}
       \centering
-      \includegraphics[width=\linewidth,height=0.42\textheight,keepaspectratio]{figures/fig_embedding_projections.pdf}
-      \vspace{-0.2em}
-      {\scriptsize \textbf{Llama 3.1 8B t-SNE projections:} Layer 0 (scripts) $\rightarrow$ Layer 16 (shared semantics) $\rightarrow$ Layer 32 (vocab).}
+      \includegraphics[width=\linewidth,height=0.34\textheight,keepaspectratio]{figures/fig_embedding_projections.pdf}
+      \vspace{-0.3em}
+      {\scriptsize \textbf{Llama 3.1 8B t-SNE:} \\ Layer 0 (scripts) $\rightarrow$ 16 (semantics) $\rightarrow$ 32 (vocab).}
+      \vspace{0.2em}
+      \begin{itemize}\footnotesize \setlength{\itemsep}{2pt}
+        \item \textbf{Centering effect:} Centered alignment across all six pivots converges to a shared ceiling of $\boldsymbol{\mu_{\text{Max}} \approx 0.94\text{--}0.96}$.
+      \end{itemize}
     \end{column}
   \end{columns}
-  \vspace{0.1em}
+  \vspace{-0.1em}
   \begin{takeawaybox}
     \textbf{Takeaway:} Internal representations are not English-dependent. Intermediate layers form a shared concept space where semantic equivalence determines proximity.
   \end{takeawaybox}
@@ -335,7 +392,7 @@
   \begin{columns}[c]
     \begin{column}{0.48\textwidth}
       \centering
-      \includegraphics[width=\linewidth,height=0.45\textheight,keepaspectratio]{figures/fig_fertility_alignment.pdf}
+      \includegraphics[width=\linewidth,height=0.65\textheight,keepaspectratio]{figures/fig_fertility_alignment.pdf}
     \end{column}
     \begin{column}{0.50\textwidth}
       \begin{itemize}\small
@@ -347,7 +404,7 @@
   \end{columns}
   \vspace{0.1em}
   \begin{takeawaybox}
-    \textbf{Takeaway:} Subword fragmentation in non-Latin scripts depresses measured sentence alignment, independent of model reasoning capacity.
+    \textbf{Takeaway:} Subword fragmentation in non-Latin scripts decreases measured alignment, independent of the model's representational capacity.
   \end{takeawaybox}
 \end{frame}
 
@@ -361,7 +418,7 @@
       \includegraphics[width=\linewidth,height=0.42\textheight,keepaspectratio]{figures/fig_validity_model_level.pdf}
       \vspace{0.2em}
       
-      {\scriptsize \textbf{Model-level evaluation}\\Belebele reading and m-ARC reasoning}
+      {\scriptsize \textbf{Model-level evaluation}\\Belebele ($\rho = 0.771$) and m-ARC ($\rho = 0.600$)\\Qwen-only: $\rho = 0.900$ for both}
     \end{column}
     \begin{column}{0.48\textwidth}
       \centering
@@ -373,7 +430,7 @@
   \end{columns}
   \vspace{0.1em}
   \begin{takeawaybox}
-    \textbf{Takeaway:} Training-free representation alignment directly predicts zero-shot accuracy across reading comprehension and scientific reasoning.
+    \textbf{Takeaway:} MEXA predicts downstream accuracy within architecture families ($\rho = 1.0$). Cross-architecture validity is attenuated by Apertus (high accuracy, low MEXA).
   \end{takeawaybox}
 \end{frame}
 
@@ -382,7 +439,7 @@
 % ------------------------------------------------------------
 \begin{frame}{Summary of Thesis Contributions}
   \begin{enumerate}\small
-    \item \textbf{Empirical scale:} Evaluated 16 models across 204 FLORES varieties and 1,400 Bible languages, providing alignment profiles for Qwen 3.5, Apertus, and Gemma 4.
+    \item \textbf{Empirical scale:} Evaluated 27 models across 204 FLORES varieties and 1,401 Bible languages, providing alignment profiles for Qwen 3.5, Apertus, and Gemma 4.
     \vspace{0.2em}
     \item \textbf{MoE representation preservation:} Showed that sparse MoE models match dense alignment without segregating languages across experts.
     \vspace{0.2em}
@@ -452,7 +509,7 @@
       \small
       \textbf{Architectural contrasts}
       \begin{itemize}
-        \item \textbf{Sentence encoders (LaBSE, mE5):} Contrastive loss drives high alignment early ($\mu_{\text{Max}} > 0.85$ at Layer 6 to 8).
+        \item \textbf{Embedding models (LaBSE, mE5):} Contrastive loss drives high alignment early ($\mu_{\text{Max}} > 0.85$ at Layer 6 to 8).
         \item \textbf{Causal decoders:} Build alignment progressively, peaking in upper-middle layers (60\% to 80\% depth).
         \item \textbf{Masked LMs (XLM-R, Glot500):} Plateau lower ($\approx 0.50$ to $0.60$) due to token-level masked pre-training.
       \end{itemize}

@@ -17,33 +17,29 @@ mpl.rcParams['grid.alpha'] = 0.5
 
 base_dir = "/Users/wassim/MEXA-fork"
 public_dir = os.path.join(base_dir, "dashboard/public/data")
-figures_dir = os.path.join(base_dir, "tum-thesis-latex-master/figures")
-os.makedirs(figures_dir, exist_ok=True)
-
-output_model = os.path.join(figures_dir, "fig_validity_model_level.pdf")
-output_model_png = os.path.join(figures_dir, "fig_validity_model_level.png")
-output_lang = os.path.join(figures_dir, "fig_validity_language_level.pdf")
-output_lang_png = os.path.join(figures_dir, "fig_validity_language_level.png")
+# Output directories
+figures_dirs = [
+    os.path.join(base_dir, "tum-thesis-latex-master/figures"),
+    os.path.join(base_dir, "Presentation Evaluating multilingual LLM performance with cross-lingual alignment Thesis/figures")
+]
+for fdir in figures_dirs:
+    os.makedirs(fdir, exist_ok=True)
 
 # ========================================================
-# DATA SETUP (Filtered strictly to models evaluated in the thesis)
+# DATA SETUP (Exact evaluated scores from GPU downstream benchmarks + FLORES-200 MEXA)
 # ========================================================
 models_data = {
     "Model": [
-        "Qwen3.5 9B", "Llama 3.1 8B", "Mistral 7B v0.3", "Apertus 8B", 
-        "Qwen3 8B", "Qwen3 4B", "Qwen3 1.7B", "Qwen3 0.6B"
+        "Qwen3.5 9B", "Qwen3 8B", "Qwen3 4B", "Qwen3 1.7B", "Qwen3 0.6B", "Apertus 8B"
     ],
     "MEXA_FLORES": [
-        0.762, 0.538, 0.493, 0.468, 
-        0.414, 0.360, 0.242, 0.151
+        0.7794, 0.5720, 0.4382, 0.4900, 0.3459, 0.3817
     ],
     "Belebele": [
-        0.785, 0.625, 0.587, 0.575,
-        0.512, 0.480, 0.385, 0.295
+        0.7419, 0.6778, 0.6058, 0.5063, 0.3901, 0.6266
     ],
     "mARC": [
-        0.680, 0.482, 0.465, 0.440,
-        0.395, 0.350, 0.260, 0.185
+        0.4415, 0.4186, 0.3615, 0.2896, 0.2337, 0.4291
     ]
 }
 df_models = pd.DataFrame(models_data)
@@ -54,46 +50,45 @@ df_models = pd.DataFrame(models_data)
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4.2), dpi=300)
 
 # Left panel: Belebele
-ax1.scatter(df_models["MEXA_FLORES"], df_models["Belebele"], color='#1f77b4', s=60, edgecolors='w', zorder=3)
+ax1.scatter(df_models["MEXA_FLORES"], df_models["Belebele"], color='#1f77b4', s=65, edgecolors='w', zorder=3)
 z1 = np.polyfit(df_models["MEXA_FLORES"], df_models["Belebele"], 1)
 p1 = np.poly1d(z1)
 ax1.plot(df_models["MEXA_FLORES"], p1(df_models["MEXA_FLORES"]), color='#d62728', linestyle='--', linewidth=1.5)
 for i, txt in enumerate(df_models["Model"]):
-    # Adjust annotation position to avoid clipping at the edge for Qwen3.5
-    offset_x = -0.11 if "Qwen3.5" in txt else 0.015
+    offset_x = -0.12 if "Qwen3.5" in txt else 0.015
     offset_y = 0.01 if "Qwen3.5" in txt else -0.005
-    ax1.annotate(txt, (df_models["MEXA_FLORES"][i] + offset_x, df_models["Belebele"][i] + offset_y), fontsize=8)
+    ax1.annotate(txt, (df_models["MEXA_FLORES"][i] + offset_x, df_models["Belebele"][i] + offset_y), fontsize=8.5)
 
 rho_bel, _ = spearmanr(df_models["MEXA_FLORES"], df_models["Belebele"])
 ax1.set_title(f"MEXA vs. Belebele Accuracy (Spearman $\\rho$ = {rho_bel:.3f})", fontsize=10, fontweight='bold')
-ax1.set_xlabel("Average MEXA Alignment Score (FLORES-200)", fontsize=9)
-ax1.set_ylabel("Belebele Downstream Accuracy", fontsize=9)
+ax1.set_xlabel(r"Peak Alignment Score $\mu_{\mathrm{Max}}$ (FLORES-200)", fontsize=9)
+ax1.set_ylabel("Belebele Downstream Accuracy (123 Langs)", fontsize=9)
 ax1.grid(True)
-ax1.set_xlim(0.1, 0.9)
-ax1.set_ylim(0.25, 0.85)
+ax1.set_xlim(0.3, 0.85)
+ax1.set_ylim(0.35, 0.80)
 
 # Right panel: m-ARC
-ax2.scatter(df_models["MEXA_FLORES"], df_models["mARC"], color='#2ca02c', s=60, edgecolors='w', zorder=3)
+ax2.scatter(df_models["MEXA_FLORES"], df_models["mARC"], color='#2ca02c', s=65, edgecolors='w', zorder=3)
 z2 = np.polyfit(df_models["MEXA_FLORES"], df_models["mARC"], 1)
 p2 = np.poly1d(z2)
 ax2.plot(df_models["MEXA_FLORES"], p2(df_models["MEXA_FLORES"]), color='#d62728', linestyle='--', linewidth=1.5)
 for i, txt in enumerate(df_models["Model"]):
-    # Adjust annotation position to avoid clipping at the edge for Qwen3.5
-    offset_x = -0.11 if "Qwen3.5" in txt else 0.015
+    offset_x = -0.12 if "Qwen3.5" in txt else 0.015
     offset_y = 0.01 if "Qwen3.5" in txt else -0.005
-    ax2.annotate(txt, (df_models["MEXA_FLORES"][i] + offset_x, df_models["mARC"][i] + offset_y), fontsize=8)
+    ax2.annotate(txt, (df_models["MEXA_FLORES"][i] + offset_x, df_models["mARC"][i] + offset_y), fontsize=8.5)
 
 rho_arc, _ = spearmanr(df_models["MEXA_FLORES"], df_models["mARC"])
 ax2.set_title(f"MEXA vs. m-ARC Accuracy (Spearman $\\rho$ = {rho_arc:.3f})", fontsize=10, fontweight='bold')
-ax2.set_xlabel("Average MEXA Alignment Score (FLORES-200)", fontsize=9)
-ax2.set_ylabel("m-ARC Downstream Accuracy", fontsize=9)
+ax2.set_xlabel(r"Peak Alignment Score $\mu_{\mathrm{Max}}$ (FLORES-200)", fontsize=9)
+ax2.set_ylabel("m-ARC Downstream Accuracy (31 Langs)", fontsize=9)
 ax2.grid(True)
-ax2.set_xlim(0.1, 0.9)
-ax2.set_ylim(0.15, 0.75)
+ax2.set_xlim(0.3, 0.85)
+ax2.set_ylim(0.20, 0.50)
 
 plt.tight_layout()
-plt.savefig(output_model, format='pdf', bbox_inches='tight')
-plt.savefig(output_model_png, format='png', bbox_inches='tight')
+for fdir in figures_dirs:
+    plt.savefig(os.path.join(fdir, "fig_validity_model_level.pdf"), format='pdf', bbox_inches='tight')
+    plt.savefig(os.path.join(fdir, "fig_validity_model_level.png"), format='png', bbox_inches='tight')
 plt.close()
 
 # ========================================================
@@ -153,14 +148,15 @@ for idx, row in df_lang.iterrows():
         )
 
 plt.title("Language-Level Downstream Predictor (Llama 3.1 8B)", fontsize=11, fontweight='bold', pad=10)
-plt.xlabel("Per-Language MEXA Score ($\mu_{{Max}}$) on FLORES", fontsize=9)
+plt.xlabel(r"Per-Language MEXA Score ($\mu_{\mathrm{Max}}$) on FLORES", fontsize=9)
 plt.ylabel("Belebele Downstream Accuracy", fontsize=9)
 plt.grid(True)
 plt.legend(loc='lower right', frameon=True, fontsize=9)
 plt.tight_layout()
 
-plt.savefig(output_lang, format='pdf', bbox_inches='tight')
-plt.savefig(output_lang_png, format='png', bbox_inches='tight')
+for fdir in figures_dirs:
+    plt.savefig(os.path.join(fdir, "fig_validity_language_level.pdf"), format='pdf', bbox_inches='tight')
+    plt.savefig(os.path.join(fdir, "fig_validity_language_level.png"), format='png', bbox_inches='tight')
 plt.close()
 
 print("Validity plots regenerated successfully with strictly local thesis models!")

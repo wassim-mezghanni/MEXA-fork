@@ -1,0 +1,2334 @@
+{
+  "results": {
+    "arc_ar": {
+      "name": "arc_ar",
+      "alias": "arc_ar",
+      "sample_len": 1169,
+      "acc,none": 0.2857142857142857,
+      "acc_stderr,none": 0.013218450182100158,
+      "acc_norm,none": 0.32164242942686055,
+      "acc_norm_stderr,none": 0.01366767312105018
+    },
+    "arc_bn": {
+      "name": "arc_bn",
+      "alias": "arc_bn",
+      "sample_len": 1169,
+      "acc,none": 0.21385799828913601,
+      "acc_stderr,none": 0.011997529527979583,
+      "acc_norm,none": 0.25919589392643283,
+      "acc_norm_stderr,none": 0.012821662109963668
+    },
+    "arc_ca": {
+      "name": "arc_ca",
+      "alias": "arc_ca",
+      "sample_len": 1166,
+      "acc,none": 0.32504288164665524,
+      "acc_stderr,none": 0.013722886079458079,
+      "acc_norm,none": 0.3747855917667238,
+      "acc_norm_stderr,none": 0.014182179229591233
+    },
+    "arc_da": {
+      "name": "arc_da",
+      "alias": "arc_da",
+      "sample_len": 1167,
+      "acc,none": 0.2982005141388175,
+      "acc_stderr,none": 0.013397119820079038,
+      "acc_norm,none": 0.337617823479006,
+      "acc_norm_stderr,none": 0.013848978039969023
+    },
+    "arc_de": {
+      "name": "arc_de",
+      "alias": "arc_de",
+      "sample_len": 1169,
+      "acc,none": 0.33105218135158254,
+      "acc_stderr,none": 0.013769650795341096,
+      "acc_norm,none": 0.38922155688622756,
+      "acc_norm_stderr,none": 0.014266547006095377
+    },
+    "arc_es": {
+      "name": "arc_es",
+      "alias": "arc_es",
+      "sample_len": 1170,
+      "acc,none": 0.3854700854700855,
+      "acc_stderr,none": 0.014235069727986159,
+      "acc_norm,none": 0.42136752136752137,
+      "acc_norm_stderr,none": 0.01444191141163982
+    },
+    "arc_eu": {
+      "name": "arc_eu",
+      "alias": "arc_eu",
+      "sample_len": 1138,
+      "acc,none": 0.23022847100175747,
+      "acc_stderr,none": 0.012484760178407743,
+      "acc_norm,none": 0.2530755711775044,
+      "acc_norm_stderr,none": 0.012893867777121868
+    },
+    "arc_fr": {
+      "name": "arc_fr",
+      "alias": "arc_fr",
+      "sample_len": 1169,
+      "acc,none": 0.38152266894781867,
+      "acc_stderr,none": 0.014213487288956096,
+      "acc_norm,none": 0.42771599657827203,
+      "acc_norm_stderr,none": 0.014476451794175206
+    },
+    "arc_gu": {
+      "name": "arc_gu",
+      "alias": "arc_gu",
+      "sample_len": 1160,
+      "acc,none": 0.21724137931034482,
+      "acc_stderr,none": 0.012112770463653702,
+      "acc_norm,none": 0.24051724137931035,
+      "acc_norm_stderr,none": 0.012554237739800677
+    },
+    "arc_hi": {
+      "name": "arc_hi",
+      "alias": "arc_hi",
+      "sample_len": 1168,
+      "acc,none": 0.2405821917808219,
+      "acc_stderr,none": 0.012512287046957551,
+      "acc_norm,none": 0.2825342465753425,
+      "acc_norm_stderr,none": 0.01317955383618369
+    },
+    "arc_hr": {
+      "name": "arc_hr",
+      "alias": "arc_hr",
+      "sample_len": 1169,
+      "acc,none": 0.2754491017964072,
+      "acc_stderr,none": 0.013071749252641648,
+      "acc_norm,none": 0.31993156544054746,
+      "acc_norm_stderr,none": 0.013648453136149982
+    },
+    "arc_hu": {
+      "name": "arc_hu",
+      "alias": "arc_hu",
+      "sample_len": 1168,
+      "acc,none": 0.2679794520547945,
+      "acc_stderr,none": 0.01296513237589954,
+      "acc_norm,none": 0.3065068493150685,
+      "acc_norm_stderr,none": 0.013496021205480062
+    },
+    "arc_hy": {
+      "name": "arc_hy",
+      "alias": "arc_hy",
+      "sample_len": 1100,
+      "acc,none": 0.22,
+      "acc_stderr,none": 0.012495677141505655,
+      "acc_norm,none": 0.25272727272727274,
+      "acc_norm_stderr,none": 0.01310891584247737
+    },
+    "arc_id": {
+      "name": "arc_id",
+      "alias": "arc_id",
+      "sample_len": 1170,
+      "acc,none": 0.3504273504273504,
+      "acc_stderr,none": 0.013954221332102446,
+      "acc_norm,none": 0.40683760683760684,
+      "acc_norm_stderr,none": 0.014367794054350902
+    },
+    "arc_it": {
+      "name": "arc_it",
+      "alias": "arc_it",
+      "sample_len": 1169,
+      "acc,none": 0.3721129170230967,
+      "acc_stderr,none": 0.014143494499252765,
+      "acc_norm,none": 0.42087254063301965,
+      "acc_norm_stderr,none": 0.01444577855736883
+    },
+    "arc_kn": {
+      "name": "arc_kn",
+      "alias": "arc_kn",
+      "sample_len": 1148,
+      "acc,none": 0.20644599303135888,
+      "acc_stderr,none": 0.011951151848586805,
+      "acc_norm,none": 0.2604529616724739,
+      "acc_norm_stderr,none": 0.012958831481426316
+    },
+    "arc_ml": {
+      "name": "arc_ml",
+      "alias": "arc_ml",
+      "sample_len": 1142,
+      "acc,none": 0.22154115586690018,
+      "acc_stderr,none": 0.012294254949112397,
+      "acc_norm,none": 0.26882661996497376,
+      "acc_norm_stderr,none": 0.013125126546301377
+    },
+    "arc_mr": {
+      "name": "arc_mr",
+      "alias": "arc_mr",
+      "sample_len": 1155,
+      "acc,none": 0.24329004329004328,
+      "acc_stderr,none": 0.01263060017448649,
+      "acc_norm,none": 0.27705627705627706,
+      "acc_norm_stderr,none": 0.013174475624185836
+    },
+    "arc_ne": {
+      "name": "arc_ne",
+      "alias": "arc_ne",
+      "sample_len": 1169,
+      "acc,none": 0.22583404619332764,
+      "acc_stderr,none": 0.012234615366330689,
+      "acc_norm,none": 0.2352437981180496,
+      "acc_norm_stderr,none": 0.012410782760857499
+    },
+    "arc_nl": {
+      "name": "arc_nl",
+      "alias": "arc_nl",
+      "sample_len": 1169,
+      "acc,none": 0.32078699743370404,
+      "acc_stderr,none": 0.013658089444975752,
+      "acc_norm,none": 0.3378956372968349,
+      "acc_norm_stderr,none": 0.013839904571755936
+    },
+    "arc_pt": {
+      "name": "arc_pt",
+      "alias": "arc_pt",
+      "sample_len": 1170,
+      "acc,none": 0.37606837606837606,
+      "acc_stderr,none": 0.014167546638353882,
+      "acc_norm,none": 0.4076923076923077,
+      "acc_norm_stderr,none": 0.014372512316923233
+    },
+    "arc_ro": {
+      "name": "arc_ro",
+      "alias": "arc_ro",
+      "sample_len": 1167,
+      "acc,none": 0.3221936589545844,
+      "acc_stderr,none": 0.013685542981299613,
+      "acc_norm,none": 0.3658954584404456,
+      "acc_norm_stderr,none": 0.014106187951962976
+    },
+    "arc_ru": {
+      "name": "arc_ru",
+      "alias": "arc_ru",
+      "sample_len": 1169,
+      "acc,none": 0.32249786142001713,
+      "acc_stderr,none": 0.013677204275012568,
+      "acc_norm,none": 0.3575705731394354,
+      "acc_norm_stderr,none": 0.014024008839912
+    },
+    "arc_sk": {
+      "name": "arc_sk",
+      "alias": "arc_sk",
+      "sample_len": 1169,
+      "acc,none": 0.2763045337895637,
+      "acc_stderr,none": 0.013084300510931237,
+      "acc_norm,none": 0.31394354148845166,
+      "acc_norm_stderr,none": 0.013579515768185798
+    },
+    "arc_sr": {
+      "name": "arc_sr",
+      "alias": "arc_sr",
+      "sample_len": 1169,
+      "acc,none": 0.2788708297690334,
+      "acc_stderr,none": 0.013121595777472971,
+      "acc_norm,none": 0.32249786142001713,
+      "acc_norm_stderr,none": 0.013677204275012567
+    },
+    "arc_sv": {
+      "name": "arc_sv",
+      "alias": "arc_sv",
+      "sample_len": 1165,
+      "acc,none": 0.2978540772532189,
+      "acc_stderr,none": 0.013404140571653678,
+      "acc_norm,none": 0.35107296137339056,
+      "acc_norm_stderr,none": 0.013990078012240613
+    },
+    "arc_ta": {
+      "name": "arc_ta",
+      "alias": "arc_ta",
+      "sample_len": 1142,
+      "acc,none": 0.2373029772329247,
+      "acc_stderr,none": 0.01259461211645649,
+      "acc_norm,none": 0.266199649737303,
+      "acc_norm_stderr,none": 0.013084281375795174
+    },
+    "arc_te": {
+      "name": "arc_te",
+      "alias": "arc_te",
+      "sample_len": 1140,
+      "acc,none": 0.19824561403508772,
+      "acc_stderr,none": 0.011813010882930281,
+      "acc_norm,none": 0.24736842105263157,
+      "acc_norm_stderr,none": 0.012785022147984852
+    },
+    "arc_uk": {
+      "name": "arc_uk",
+      "alias": "arc_uk",
+      "sample_len": 1169,
+      "acc,none": 0.30025662959794697,
+      "acc_stderr,none": 0.013412022629366667,
+      "acc_norm,none": 0.3473053892215569,
+      "acc_norm_stderr,none": 0.013931226499492352
+    },
+    "arc_vi": {
+      "name": "arc_vi",
+      "alias": "arc_vi",
+      "sample_len": 1170,
+      "acc,none": 0.35384615384615387,
+      "acc_stderr,none": 0.013985176475070653,
+      "acc_norm,none": 0.3803418803418803,
+      "acc_norm_stderr,none": 0.014198938935522053
+    },
+    "arc_zh": {
+      "name": "arc_zh",
+      "alias": "arc_zh",
+      "sample_len": 1170,
+      "acc,none": 0.4017094017094017,
+      "acc_stderr,none": 0.014338536679912429,
+      "acc_norm,none": 0.44188034188034186,
+      "acc_norm_stderr,none": 0.014524752635673524
+    }
+  },
+  "group_subtasks": {},
+  "configs": {
+    "arc_ar": {
+      "task": "arc_ar",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "ar",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_ar.yaml"
+      }
+    },
+    "arc_bn": {
+      "task": "arc_bn",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "bn",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_bn.yaml"
+      }
+    },
+    "arc_ca": {
+      "task": "arc_ca",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "ca",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_ca.yaml"
+      }
+    },
+    "arc_da": {
+      "task": "arc_da",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "da",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_da.yaml"
+      }
+    },
+    "arc_de": {
+      "task": "arc_de",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "de",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_de.yaml"
+      }
+    },
+    "arc_es": {
+      "task": "arc_es",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "es",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_es.yaml"
+      }
+    },
+    "arc_eu": {
+      "task": "arc_eu",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "eu",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_eu.yaml"
+      }
+    },
+    "arc_fr": {
+      "task": "arc_fr",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "fr",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_fr.yaml"
+      }
+    },
+    "arc_gu": {
+      "task": "arc_gu",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "gu",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_gu.yaml"
+      }
+    },
+    "arc_hi": {
+      "task": "arc_hi",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "hi",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_hi.yaml"
+      }
+    },
+    "arc_hr": {
+      "task": "arc_hr",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "hr",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_hr.yaml"
+      }
+    },
+    "arc_hu": {
+      "task": "arc_hu",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "hu",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_hu.yaml"
+      }
+    },
+    "arc_hy": {
+      "task": "arc_hy",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "hy",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_hy.yaml"
+      }
+    },
+    "arc_id": {
+      "task": "arc_id",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "id",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_id.yaml"
+      }
+    },
+    "arc_it": {
+      "task": "arc_it",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "it",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_it.yaml"
+      }
+    },
+    "arc_kn": {
+      "task": "arc_kn",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "kn",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_kn.yaml"
+      }
+    },
+    "arc_ml": {
+      "task": "arc_ml",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "ml",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_ml.yaml"
+      }
+    },
+    "arc_mr": {
+      "task": "arc_mr",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "mr",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_mr.yaml"
+      }
+    },
+    "arc_ne": {
+      "task": "arc_ne",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "ne",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_ne.yaml"
+      }
+    },
+    "arc_nl": {
+      "task": "arc_nl",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "nl",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_nl.yaml"
+      }
+    },
+    "arc_pt": {
+      "task": "arc_pt",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "pt",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_pt.yaml"
+      }
+    },
+    "arc_ro": {
+      "task": "arc_ro",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "ro",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_ro.yaml"
+      }
+    },
+    "arc_ru": {
+      "task": "arc_ru",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "ru",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_ru.yaml"
+      }
+    },
+    "arc_sk": {
+      "task": "arc_sk",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "sk",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_sk.yaml"
+      }
+    },
+    "arc_sr": {
+      "task": "arc_sr",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "sr",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_sr.yaml"
+      }
+    },
+    "arc_sv": {
+      "task": "arc_sv",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "sv",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_sv.yaml"
+      }
+    },
+    "arc_ta": {
+      "task": "arc_ta",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "ta",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_ta.yaml"
+      }
+    },
+    "arc_te": {
+      "task": "arc_te",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "te",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_te.yaml"
+      }
+    },
+    "arc_uk": {
+      "task": "arc_uk",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "uk",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_uk.yaml"
+      }
+    },
+    "arc_vi": {
+      "task": "arc_vi",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "vi",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_vi.yaml"
+      }
+    },
+    "arc_zh": {
+      "task": "arc_zh",
+      "dataset_path": "alexandrainst/m_arc",
+      "dataset_name": "zh",
+      "training_split": "train",
+      "validation_split": "validation",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    def _process_doc(doc):\n        # breakpoint()\n        out_doc = {\n            \"id\": doc[\"id\"],\n            \"query\": \"Question: \" + preprocess(doc[\"instruction\"]) + \"\\nAnswer:\",\n            \"choices\": [\n                preprocess(option)\n                for option in [\n                    doc[\"option_a\"],\n                    doc[\"option_b\"],\n                    doc[\"option_c\"],\n                    doc[\"option_d\"],\n                    doc[\"option_e\"],\n                ]\n                if option\n            ],\n            \"gold\": [\"A\", \"B\", \"C\", \"D\", \"E\"].index(doc[\"answer\"]),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "query",
+      "doc_to_target": "gold",
+      "unsafe_code": false,
+      "doc_to_choice": "choices",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x7fa73366f420>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "query",
+        "doc_to_choice": "choices",
+        "doc_to_target": "gold",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 5,
+      "metric_list": [
+        {
+          "metric": "acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "acc_norm",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "multiple_choice",
+      "repeats": 1,
+      "should_decontaminate": true,
+      "doc_to_decontamination_query": "query",
+      "metadata": {
+        "version": 2.0,
+        "pretrained": "Qwen/Qwen3-1.7B",
+        "dtype": "bfloat16",
+        "trust_remote_code": true,
+        "config_source": "/storage/home/wassim/miniforge3/envs/mexa_conda/lib/python3.11/site-packages/lm_eval/tasks/okapi/arc_multilingual/arc_zh.yaml"
+      }
+    }
+  },
+  "versions": {
+    "arc_ar": 2.0,
+    "arc_bn": 2.0,
+    "arc_ca": 2.0,
+    "arc_da": 2.0,
+    "arc_de": 2.0,
+    "arc_es": 2.0,
+    "arc_eu": 2.0,
+    "arc_fr": 2.0,
+    "arc_gu": 2.0,
+    "arc_hi": 2.0,
+    "arc_hr": 2.0,
+    "arc_hu": 2.0,
+    "arc_hy": 2.0,
+    "arc_id": 2.0,
+    "arc_it": 2.0,
+    "arc_kn": 2.0,
+    "arc_ml": 2.0,
+    "arc_mr": 2.0,
+    "arc_ne": 2.0,
+    "arc_nl": 2.0,
+    "arc_pt": 2.0,
+    "arc_ro": 2.0,
+    "arc_ru": 2.0,
+    "arc_sk": 2.0,
+    "arc_sr": 2.0,
+    "arc_sv": 2.0,
+    "arc_ta": 2.0,
+    "arc_te": 2.0,
+    "arc_uk": 2.0,
+    "arc_vi": 2.0,
+    "arc_zh": 2.0
+  },
+  "n-shot": {
+    "arc_ar": 5,
+    "arc_bn": 5,
+    "arc_ca": 5,
+    "arc_da": 5,
+    "arc_de": 5,
+    "arc_es": 5,
+    "arc_eu": 5,
+    "arc_fr": 5,
+    "arc_gu": 5,
+    "arc_hi": 5,
+    "arc_hr": 5,
+    "arc_hu": 5,
+    "arc_hy": 5,
+    "arc_id": 5,
+    "arc_it": 5,
+    "arc_kn": 5,
+    "arc_ml": 5,
+    "arc_mr": 5,
+    "arc_ne": 5,
+    "arc_nl": 5,
+    "arc_pt": 5,
+    "arc_ro": 5,
+    "arc_ru": 5,
+    "arc_sk": 5,
+    "arc_sr": 5,
+    "arc_sv": 5,
+    "arc_ta": 5,
+    "arc_te": 5,
+    "arc_uk": 5,
+    "arc_vi": 5,
+    "arc_zh": 5
+  },
+  "higher_is_better": {
+    "arc_ar": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_bn": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_ca": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_da": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_de": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_es": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_eu": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_fr": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_gu": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_hi": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_hr": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_hu": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_hy": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_id": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_it": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_kn": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_ml": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_mr": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_ne": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_nl": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_pt": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_ro": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_ru": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_sk": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_sr": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_sv": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_ta": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_te": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_uk": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_vi": {
+      "acc": true,
+      "acc_norm": true
+    },
+    "arc_zh": {
+      "acc": true,
+      "acc_norm": true
+    }
+  },
+  "n-samples": {
+    "arc_ar": {
+      "original": 1169,
+      "effective": 1169
+    },
+    "arc_bn": {
+      "original": 1169,
+      "effective": 1169
+    },
+    "arc_ca": {
+      "original": 1166,
+      "effective": 1166
+    },
+    "arc_da": {
+      "original": 1167,
+      "effective": 1167
+    },
+    "arc_de": {
+      "original": 1169,
+      "effective": 1169
+    },
+    "arc_es": {
+      "original": 1170,
+      "effective": 1170
+    },
+    "arc_eu": {
+      "original": 1138,
+      "effective": 1138
+    },
+    "arc_fr": {
+      "original": 1169,
+      "effective": 1169
+    },
+    "arc_gu": {
+      "original": 1160,
+      "effective": 1160
+    },
+    "arc_hi": {
+      "original": 1168,
+      "effective": 1168
+    },
+    "arc_hr": {
+      "original": 1169,
+      "effective": 1169
+    },
+    "arc_hu": {
+      "original": 1168,
+      "effective": 1168
+    },
+    "arc_hy": {
+      "original": 1100,
+      "effective": 1100
+    },
+    "arc_id": {
+      "original": 1170,
+      "effective": 1170
+    },
+    "arc_it": {
+      "original": 1169,
+      "effective": 1169
+    },
+    "arc_kn": {
+      "original": 1148,
+      "effective": 1148
+    },
+    "arc_ml": {
+      "original": 1142,
+      "effective": 1142
+    },
+    "arc_mr": {
+      "original": 1155,
+      "effective": 1155
+    },
+    "arc_ne": {
+      "original": 1169,
+      "effective": 1169
+    },
+    "arc_nl": {
+      "original": 1169,
+      "effective": 1169
+    },
+    "arc_pt": {
+      "original": 1170,
+      "effective": 1170
+    },
+    "arc_ro": {
+      "original": 1167,
+      "effective": 1167
+    },
+    "arc_ru": {
+      "original": 1169,
+      "effective": 1169
+    },
+    "arc_sk": {
+      "original": 1169,
+      "effective": 1169
+    },
+    "arc_sr": {
+      "original": 1169,
+      "effective": 1169
+    },
+    "arc_sv": {
+      "original": 1165,
+      "effective": 1165
+    },
+    "arc_ta": {
+      "original": 1142,
+      "effective": 1142
+    },
+    "arc_te": {
+      "original": 1140,
+      "effective": 1140
+    },
+    "arc_uk": {
+      "original": 1169,
+      "effective": 1169
+    },
+    "arc_vi": {
+      "original": 1170,
+      "effective": 1170
+    },
+    "arc_zh": {
+      "original": 1170,
+      "effective": 1170
+    }
+  },
+  "config": {
+    "model": "hf",
+    "model_args": {
+      "pretrained": "Qwen/Qwen3-1.7B",
+      "dtype": "bfloat16",
+      "trust_remote_code": true
+    },
+    "model_num_parameters": 1720574976,
+    "model_dtype": "torch.bfloat16",
+    "model_revision": "main",
+    "model_sha": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "batch_size": "auto",
+    "batch_sizes": [
+      32
+    ],
+    "device": "cuda:0",
+    "use_cache": null,
+    "limit": null,
+    "bootstrap_iters": 100000,
+    "gen_kwargs": {},
+    "random_seed": 0,
+    "numpy_seed": 1234,
+    "torch_seed": 1234,
+    "fewshot_seed": 1234
+  },
+  "git_hash": "034e929",
+  "date": 1788295565.090468,
+  "pretty_env_info": "PyTorch version: 2.6.0+cu124\nIs debug build: False\nCUDA used to build PyTorch: 12.4\nROCM used to build PyTorch: N/A\n\nOS: Rocky Linux from CIQ - LTS 9.6 (Blue Onyx) (x86_64)\nGCC version: (GCC) 11.5.0 20240719 (Red Hat 11.5.0-5)\nClang version: Could not collect\nCMake version: version 3.26.5\nLibc version: glibc-2.34\n\nPython version: 3.11.15 | packaged by conda-forge | (main, Mar  5 2026, 16:45:40) [GCC 14.3.0] (64-bit runtime)\nPython platform: Linux-5.14.0-570.60.1+21.1.el9_6_ciq.x86_64-x86_64-with-glibc2.34\nIs CUDA available: True\nCUDA runtime version: Could not collect\nCUDA_MODULE_LOADING set to: LAZY\nGPU models and configuration: GPU 0: NVIDIA H200 NVL\nNvidia driver version: Could not collect\ncuDNN version: Could not collect\nHIP runtime version: N/A\nMIOpen runtime version: N/A\nIs XNNPACK available: True\n\nCPU:\nArchitecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           52 bits physical, 57 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  256\nOn-line CPU(s) list:                     0-255\nVendor ID:                               AuthenticAMD\nModel name:                              AMD EPYC 9555 64-Core Processor\nCPU family:                              26\nModel:                                   2\nThread(s) per core:                      2\nCore(s) per socket:                      64\nSocket(s):                               2\nStepping:                                1\nBogoMIPS:                                6391.45\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good amd_lbr_v2 nopl xtopology nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpb cat_l3 cdp_l3 hw_pstate ssbd mba perfmon_v2 ibrs ibpb stibp ibrs_enhanced vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local avx_vnni avx512_bf16 clzero irperf xsaveerptr rdpru wbnoinvd amd_ppin cppc arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif x2avic v_spec_ctrl vnmi avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57 rdpid bus_lock_detect movdiri movdir64b overflow_recov succor smca avx512_vp2intersect flush_l1d debug_swap amd_lbr_pmc_freeze\nVirtualization:                          AMD-V\nL1d cache:                               6 MiB (128 instances)\nL1i cache:                               4 MiB (128 instances)\nL2 cache:                                128 MiB (128 instances)\nL3 cache:                                512 MiB (16 instances)\nNUMA node(s):                            2\nNUMA node0 CPU(s):                       0-63,128-191\nNUMA node1 CPU(s):                       64-127,192-255\nVulnerability Gather data sampling:      Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; STIBP always-on; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsx async abort:           Not affected\n\nVersions of relevant libraries:\n[pip3] numpy==2.4.4\n[pip3] nvidia-cublas==13.1.1.3\n[pip3] nvidia-cublas-cu12==12.4.5.8\n[pip3] nvidia-cuda-cupti==13.0.85\n[pip3] nvidia-cuda-cupti-cu12==12.4.127\n[pip3] nvidia-cuda-nvrtc==13.0.88\n[pip3] nvidia-cuda-nvrtc-cu12==12.4.127\n[pip3] nvidia-cuda-runtime==13.0.96\n[pip3] nvidia-cuda-runtime-cu12==12.4.127\n[pip3] nvidia-cudnn-cu12==9.1.0.70\n[pip3] nvidia-cudnn-cu13==9.20.0.48\n[pip3] nvidia-cufft==12.0.0.61\n[pip3] nvidia-cufft-cu12==11.2.1.3\n[pip3] nvidia-curand==10.4.0.35\n[pip3] nvidia-curand-cu12==10.3.5.147\n[pip3] nvidia-cusolver==12.0.4.66\n[pip3] nvidia-cusolver-cu12==11.6.1.9\n[pip3] nvidia-cusparse==12.6.3.3\n[pip3] nvidia-cusparse-cu12==12.3.1.170\n[pip3] nvidia-cusparselt-cu12==0.6.2\n[pip3] nvidia-cusparselt-cu13==0.8.1\n[pip3] nvidia-nccl-cu12==2.21.5\n[pip3] nvidia-nccl-cu13==2.29.7\n[pip3] nvidia-nvjitlink==13.0.88\n[pip3] nvidia-nvjitlink-cu12==12.4.127\n[pip3] nvidia-nvtx==13.0.85\n[pip3] nvidia-nvtx-cu12==12.4.127\n[pip3] optree==0.19.1\n[pip3] torch==2.6.0+cu124\n[pip3] torchaudio==2.6.0+cu124\n[pip3] torchvision==0.21.0+cu124\n[pip3] torchvision-extra-decoders==0.0.2\n[pip3] triton==3.2.0\n[conda] cuda-cudart                   12.1.105         0                       nvidia\n[conda] cuda-cupti                    12.1.105         0                       nvidia\n[conda] cuda-libraries                12.1.0           0                       nvidia\n[conda] cuda-nvrtc                    12.1.105         0                       nvidia\n[conda] cuda-nvtx                     12.1.105         0                       nvidia\n[conda] cuda-opencl                   13.2.75          h4f1e1d6_0              nvidia\n[conda] cuda-runtime                  12.1.0           0                       nvidia\n[conda] libcublas                     12.1.0.26        0                       nvidia\n[conda] libcufft                      11.0.2.4         0                       nvidia\n[conda] libcurand                     10.4.2.55        h91de7bb_0              nvidia\n[conda] libcusolver                   11.4.4.55        0                       nvidia\n[conda] libcusparse                   12.0.2.55        0                       nvidia\n[conda] libnvjitlink                  12.1.105         0                       nvidia\n[conda] libtorch                      2.6.0            cpu_generic_haed06de_0  conda-forge\n[conda] nomkl                         1.0              h5ca1d4c_0              conda-forge\n[conda] numpy                         2.4.4            pypi_0                  pypi\n[conda] nvidia-cublas                 13.1.1.3         pypi_0                  pypi\n[conda] nvidia-cublas-cu12            12.4.5.8         pypi_0                  pypi\n[conda] nvidia-cuda-cupti             13.0.85          pypi_0                  pypi\n[conda] nvidia-cuda-cupti-cu12        12.4.127         pypi_0                  pypi\n[conda] nvidia-cuda-nvrtc             13.0.88          pypi_0                  pypi\n[conda] nvidia-cuda-nvrtc-cu12        12.4.127         pypi_0                  pypi\n[conda] nvidia-cuda-runtime           13.0.96          pypi_0                  pypi\n[conda] nvidia-cuda-runtime-cu12      12.4.127         pypi_0                  pypi\n[conda] nvidia-cudnn-cu12             9.1.0.70         pypi_0                  pypi\n[conda] nvidia-cudnn-cu13             9.20.0.48        pypi_0                  pypi\n[conda] nvidia-cufft                  12.0.0.61        pypi_0                  pypi\n[conda] nvidia-cufft-cu12             11.2.1.3         pypi_0                  pypi\n[conda] nvidia-curand                 10.4.0.35        pypi_0                  pypi\n[conda] nvidia-curand-cu12            10.3.5.147       pypi_0                  pypi\n[conda] nvidia-cusolver               12.0.4.66        pypi_0                  pypi\n[conda] nvidia-cusolver-cu12          11.6.1.9         pypi_0                  pypi\n[conda] nvidia-cusparse               12.6.3.3         pypi_0                  pypi\n[conda] nvidia-cusparse-cu12          12.3.1.170       pypi_0                  pypi\n[conda] nvidia-cusparselt-cu12        0.6.2            pypi_0                  pypi\n[conda] nvidia-cusparselt-cu13        0.8.1            pypi_0                  pypi\n[conda] nvidia-nccl-cu12              2.21.5           pypi_0                  pypi\n[conda] nvidia-nccl-cu13              2.29.7           pypi_0                  pypi\n[conda] nvidia-nvjitlink              13.0.88          pypi_0                  pypi\n[conda] nvidia-nvjitlink-cu12         12.4.127         pypi_0                  pypi\n[conda] nvidia-nvtx                   13.0.85          pypi_0                  pypi\n[conda] nvidia-nvtx-cu12              12.4.127         pypi_0                  pypi\n[conda] optree                        0.19.1           py311hdf67eae_0         conda-forge\n[conda] pytorch-cuda                  12.1             ha16c6d3_6              pytorch\n[conda] torch                         2.6.0+cu124      pypi_0                  pypi\n[conda] torchaudio                    2.6.0+cu124      pypi_0                  pypi\n[conda] torchvision                   0.21.0+cu124     pypi_0                  pypi\n[conda] torchvision-extra-decoders    0.0.2            py311h896098c_2         conda-forge\n[conda] triton                        3.2.0            pypi_0                  pypi",
+  "transformers_version": "5.13.0.dev0",
+  "lm_eval_version": "0.4.13",
+  "upper_git_hash": null,
+  "tokenizer_pad_token": [
+    "<|endoftext|>",
+    "151643"
+  ],
+  "tokenizer_eos_token": [
+    "<|im_end|>",
+    "151645"
+  ],
+  "tokenizer_bos_token": [
+    null,
+    "None"
+  ],
+  "eot_token_id": 151645,
+  "max_length": 40960,
+  "task_hashes": {
+    "arc_ar": "51ef10259bb46e93c0d74f4dadc0879354a94994f0a5622a6af8613d4c218f7b",
+    "arc_bn": "4bc159186ccc12734eb8306eb028156a5176e9e87ad413caacb4e4d3ea8b4d1e",
+    "arc_ca": "62b21aaa71ec338c7a0137d851af153a10d4a748c93f822e979c6b288717bef8",
+    "arc_da": "5b8b9b9816067049298b588877dc87e5a59251db88dfc21764c7216cb41e3df8",
+    "arc_de": "65f83db81fbfe42ad4184c4e38ba699e466daf15c214a88f2579922063d774aa",
+    "arc_es": "169c03ea8f08b2a98f8ef56b8703a82b972d7c72b85dcc027346d9c9c33de66e",
+    "arc_eu": "df84420bd5222bf9d7992b168bcfda174c66593b4171e5242275568d5f1da72d",
+    "arc_fr": "09f86298e439598c8e625f895283d82bc7870d3b052ee6c42425dd5ba5ad7d69",
+    "arc_gu": "0e258ccfe2e2f5d3d0a84dbc9e1784daea3d0a9bd4f2da624141125519676251",
+    "arc_hi": "fa06831f6badb6f9c29c7dea9f6042cb35fbda6fb7a88c0ee269565fb090b985",
+    "arc_hr": "aeb361419169637d1940c0bb7c2df5f1782d237909a0f0d99f1010b69964297a",
+    "arc_hu": "62876d3fcd834eaac137f0c8612034035865bea6aa7a2ec7aae042820e90622a",
+    "arc_hy": "91e9704c4a48171b25b1831ef4dd341d59718d609a036c1577f301852db36721",
+    "arc_id": "bedb40ce7eae7453fc8b58d57e5194da658d7e824376481a72218682b91a67e5",
+    "arc_it": "6bc82116236305060fe309bfefa8a32642d61f999155563a43fe56de033e437c",
+    "arc_kn": "f5043403981ada743dd4bebae655ecd6ed7c97c4cce7ec6f3b53baa5db9eb5dc",
+    "arc_ml": "e16748c1f3cec3532295e0f04b00ca7b04133f6efb001d50107f061bee8534d7",
+    "arc_mr": "e52f67695b2ca2a0215d1573fd75a17376a5fb20c09fd2642038439e8c397a9b",
+    "arc_ne": "cb1bfcb0df3d706e52987123621c1eb957c1cf56072bbc55397e665870e84fae",
+    "arc_nl": "3e7ba558fd9a06241adafd3ed6693e87268353cfdbc0a27e7a30edc8a5a29bfe",
+    "arc_pt": "dcbc38450657f1ba0d585cafd8aa6a3e90a724c122f4f5cba2bf2510f98a37a3",
+    "arc_ro": "00883a4f1d2c80feb4fc297512901fa58ee571145fdd8387a9d19f3356a10e87",
+    "arc_ru": "06e5391d5784cb3fe39d77282903d28b58322592e5b67c77c9e680b051647fc0",
+    "arc_sk": "4aa876aa14374042d779bfdd1228bc6467f900f791ce9c4fb6d3df74f39539ab",
+    "arc_sr": "d09282062cbbf90ef519ebfdff8dc07260f7d9c6c8fffa788f536bf8c0acd044",
+    "arc_sv": "57ff60f17cb5ba4ebe1cccc14afd42656c72bbca9ca184a0391ce0ab38ebfc8b",
+    "arc_ta": "00534047771f7a4d209afb7eab429d003a178e56d065e89617cd70203f033a13",
+    "arc_te": "8864d5f49b018edcd9641777c16559dcdfa6b02f4205d15afbc8d68d998afd74",
+    "arc_uk": "09d1a7b7064447ab477f6d418f26f57c041ceaf292aea6269b389f1307d87c48",
+    "arc_vi": "025e604bf9528851b28560da0b37f27ecd3f8a685cf82eb44cfe4e0f5ddbdc6c",
+    "arc_zh": "95123e4216a26b9d3b3eded8ffdf6677a5effb68a61528028f03f5cd9b3c1431"
+  },
+  "model_source": "hf",
+  "model_name": "Qwen/Qwen3-1.7B",
+  "model_name_sanitized": "Qwen__Qwen3-1.7B",
+  "system_instruction": null,
+  "system_instruction_sha": null,
+  "fewshot_as_multiturn": null,
+  "chat_template": null,
+  "chat_template_sha": null,
+  "total_evaluation_time_seconds": "1239.2735571439844"
+}

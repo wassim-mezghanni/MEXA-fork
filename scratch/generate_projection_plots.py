@@ -64,6 +64,21 @@ markers = {
     'Other Scripts': 'X' # Filled X
 }
 
+# Count languages per script
+script_counts = {}
+for code in data['layers']['0']['points'].keys():
+    s = get_script_category(code)
+    script_counts[s] = script_counts.get(s, 0) + 1
+
+script_display_names = {
+    'Latin': f"Latin ({script_counts.get('Latin', 0)} langs)",
+    'Arabic': f"Arabic ({script_counts.get('Arabic', 0)} langs)",
+    'Cyrillic': f"Cyrillic ({script_counts.get('Cyrillic', 0)} langs)",
+    'Devanagari': f"Devanagari ({script_counts.get('Devanagari', 0)} langs)",
+    'Ethiopic': f"Ethiopic ({script_counts.get('Ethiopic', 0)} langs)",
+    'Other Scripts': f"Other Scripts ({script_counts.get('Other Scripts', 0)} langs)"
+}
+
 layers_to_plot = ['0', '16', '32']
 titles = {
     '0': "Layer 0 (Language-Segregated)",
@@ -71,13 +86,13 @@ titles = {
     '32': "Layer 32 (Vocabulary-Segregated)"
 }
 
-fig, axes = plt.subplots(1, 3, figsize=(13.2, 4.6), dpi=300, sharex=False, sharey=False)
+fig, axes = plt.subplots(1, 3, figsize=(13.6, 4.8), dpi=300, sharex=False, sharey=False)
 
 for i, l_key in enumerate(layers_to_plot):
     ax = axes[i]
     layer_points = data['layers'][l_key]['points']
     
-    # Store points grouped by script for legend plotting
+    # Store points grouped by script
     points_by_script = {s: [] for s in colors.keys()}
     
     for code, pt in layer_points.items():
@@ -93,35 +108,39 @@ for i, l_key in enumerate(layers_to_plot):
                 arr[:, 1], 
                 color=colors[script], 
                 marker=markers[script], 
-                label=script, 
-                s=38, 
-                alpha=0.88, 
+                label=script_display_names[script], 
+                s=42, 
+                alpha=0.90, 
                 edgecolors='white', 
-                linewidths=0.5
+                linewidths=0.6
             )
             
-    ax.set_title(titles[l_key], fontsize=13, fontweight='bold', pad=10)
+    ax.set_title(titles[l_key], fontsize=13.5, fontweight='bold', pad=10)
     ax.set_xticks([])
     ax.set_yticks([])
     ax.grid(False)
 
-# Add single legend below subplots with larger font size and marker scale
+# Add single 3-column legend below the 3 subplot boxes for optimal visibility
 handles, labels = axes[0].get_legend_handles_labels()
 fig.legend(
     handles, 
     labels, 
     loc='lower center', 
-    ncol=6, 
-    bbox_to_anchor=(0.5, -0.07), 
-    fontsize=11.5, 
+    ncol=3, 
+    bbox_to_anchor=(0.5, -0.06), 
+    fontsize=13, 
     frameon=True,
     facecolor='white',
-    framealpha=0.95,
-    markerscale=1.6,
-    scatterpoints=1
+    framealpha=0.96,
+    edgecolor='#cbd5e1',
+    markerscale=1.8,
+    scatterpoints=1,
+    columnspacing=2.8,
+    handletextpad=0.6
 )
 
 plt.tight_layout()
+plt.subplots_adjust(bottom=0.12)
 
 for d in output_dirs:
     out_pdf = os.path.join(d, "fig_embedding_projections.pdf")
