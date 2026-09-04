@@ -113,59 +113,113 @@ def draw_transformer_schematic():
 # ============================================================
 # FIGURE 2: BPE Tokenization Example
 # ============================================================
+# FIGURE 2: BPE Tokenization Example
+# ============================================================
 def draw_bpe_example():
-    fig, ax = plt.subplots(figsize=(10, 4.2))
+    import matplotlib.font_manager as fm
+    kefa_path = '/System/Library/Fonts/Supplemental/KefaIII.ttf'
+    if os.path.exists(kefa_path):
+        fm.fontManager.addfont(kefa_path)
+        ethiopic_font = fm.FontProperties(fname=kefa_path)
+    else:
+        ethiopic_font = None
+
+    fig, ax = plt.subplots(figsize=(10.5, 4.8), dpi=300)
     ax.axis('off')
-    ax.set_xlim(-0.6, 13.2)
-    ax.set_ylim(-0.5, 5.6)
-    
-    # Data: language, tokens, fertility
-    examples = [
-        ("English", ["The", " scientist", " discovered", " a", " new", " species"], 6, '#2b6cb0'),
-        ("German",  ["Der", " Wissen", "schaft", "ler", " ent", "deck", "te", " eine", " neue", " Art"], 10, '#c05621'),
-        ("Amharic", ["<0xE1>", "<0x88>", "<0xB0>", "<0xE1>", "<0x8B>", "<0xAD>", "<0xE1>", "<0x8A>", "<0x95>", "<0xE1>", "<0x89>", "<0xB5>", "<0xE1>"], 13, '#c53030'),
+    ax.set_xlim(-0.8, 14.0)
+    ax.set_ylim(-0.6, 5.8)
+    fig.patch.set_facecolor('white')
+
+    rows = [
+        {
+            "lang": "English",
+            "script": "Latin",
+            "sentence": '"The scientist discovered a new species"',
+            "tokens": ["The", " scientist", " discovered", " a", " new", " species"],
+            "fert": 6,
+            "color": "#1f77b4",
+            "y": 4.2
+        },
+        {
+            "lang": "German",
+            "script": "Latin",
+            "sentence": '"Der Wissenschaftler entdeckte eine neue Art"',
+            "tokens": ["Der", " Wissen", "schaft", "ler", " ent", "deck", "te", " eine", " neue", " Art"],
+            "fert": 10,
+            "color": "#c05621",
+            "y": 2.5
+        },
+        {
+            "lang": "Amharic",
+            "script": "Ge'ez",
+            "sentence": '"ሳይንቲስቱ አዲስ ዝርያ አገኘ"',
+            "tokens": ["<0xE1>", "<0x88>", "<0xB3>", "<0xE1>", "<0x8B>", "<0xAD>", "<0xE1>", "<0x8A>", "<0x95>", "<0xE1>", "<0x89>", "<0xB2>", "<0xE1>", "..."],
+            "fert": 48,
+            "color": "#c53030",
+            "y": 0.8
+        }
     ]
-    
-    y_positions = [4.1, 2.4, 0.7]
-    
-    for (lang, tokens, fert, color), y in zip(examples, y_positions):
-        # Language label
-        ax.text(-0.3, y, f'{lang}', ha='right', va='center', fontsize=10.5, fontweight='bold', color='#333')
+
+    for row in rows:
+        y = row["y"]
+        color = row["color"]
         
-        # Fertility annotation badge
-        ax.text(10.8, y, f'F = {fert}', ha='center', va='center', fontsize=9, 
-            color=color, fontweight='bold',
-            bbox=dict(boxstyle='round,pad=0.35', facecolor=color, alpha=0.12, edgecolor=color, linewidth=0.9))
+        # Language header & original sentence
+        ax.text(-0.6, y + 0.38, f'{row["lang"]} ({row["script"]})', ha='left', va='center', 
+                fontsize=10.5, fontweight='bold', color='#222')
         
+        if row["lang"] == "Amharic":
+            if ethiopic_font:
+                ax.text(2.6, y + 0.38, row["sentence"], fontproperties=ethiopic_font, 
+                        fontsize=10.5, color='#444', va='center')
+            else:
+                ax.text(2.6, y + 0.38, row["sentence"], ha='left', va='center', 
+                        fontsize=9.0, color='#444')
+            ax.text(6.4, y + 0.38, '(LLaMA-3 Byte-Level BPE Fallback)', fontsize=8.5, 
+                    fontstyle='italic', color='#c53030', va='center', fontweight='bold')
+        else:
+            ax.text(2.6, y + 0.38, row["sentence"], ha='left', va='center', 
+                    fontsize=9.0, fontstyle='italic', color='#555')
+
+        # Fertility badge
+        ax.text(11.8, y - 0.05, f'F = {row["fert"]}', ha='center', va='center', fontsize=9, 
+                color=color, fontweight='bold',
+                bbox=dict(boxstyle='round,pad=0.35', facecolor=color, alpha=0.12, edgecolor=color, linewidth=0.9))
+
         # Token boxes
-        x = 0.0
-        box_scale = min(0.85, 9.2 / len(tokens))
-        for tok in tokens:
-            width = max(0.42, len(tok) * 0.17) * box_scale
-            ax.add_patch(FancyBboxPatch((x, y - 0.3), width, 0.6,
+        x = -0.6
+        box_scale = min(0.88, 11.2 / len(row["tokens"]))
+        for tok in row["tokens"]:
+            width = max(0.48, len(tok) * 0.165) * box_scale
+            ax.add_patch(FancyBboxPatch((x, y - 0.32), width, 0.52,
                 boxstyle="round,pad=0.04", facecolor=color, alpha=0.12, 
                 edgecolor=color, linewidth=0.75))
-            ax.text(x + width/2, y, tok.strip() if tok.strip() else '·', 
-                ha='center', va='center', fontsize=7.2, fontfamily='monospace', color='#222')
+            ax.text(x + width/2, y - 0.06, tok.strip() if tok.strip() else '·', 
+                    ha='center', va='center', fontsize=7.2, fontfamily='monospace', color='#111')
             x += width + 0.06
-    
+
+    # Explanatory note at the bottom
+    ax.text(-0.6, -0.42, 
+            "* Note: LLaMA-3's BPE vocabulary contains no merges for Ge'ez script; each 3-byte character decomposes into 3 raw UTF-8 byte tokens (<0x..>), yielding F = 48 tokens.",
+            fontsize=8.0, color='#666', fontstyle='italic')
+
     # Title
-    ax.text(5.6, 5.25, 'BPE tokenization of the same sentence across languages', 
-        ha='center', va='center', fontsize=11, fontweight='bold', color='#222')
-    ax.text(5.6, 4.88, '(Fertility F = number of subword tokens produced per sentence)', 
-        ha='center', va='center', fontsize=8.5, color='#666')
-    
-    # Arrow annotation cleanly on the far right
-    ax.annotate('', xy=(12.2, 0.5), xytext=(12.2, 4.3),
-        arrowprops=dict(arrowstyle='->', color='#c53030', lw=1.5, linestyle='--'))
-    ax.text(12.7, 2.4, 'Higher\nfertility', ha='center', va='center', fontsize=8.5, 
-        color='#c53030', fontweight='bold', fontstyle='italic', rotation=0)
-    
+    ax.text(5.6, 5.45, 'BPE Tokenization of the Same Sentence Across Languages (LLaMA-3 Tokenizer)', 
+            ha='center', va='center', fontsize=11, fontweight='bold', color='#111')
+    ax.text(5.6, 5.12, '(Fertility F = number of subword tokens produced per sentence)', 
+            ha='center', va='center', fontsize=8.5, color='#666')
+
+    # Arrow annotation on far right
+    ax.annotate('', xy=(13.1, 0.6), xytext=(13.1, 4.4),
+                arrowprops=dict(arrowstyle='->', color='#c53030', lw=1.5, linestyle='--'))
+    ax.text(13.5, 2.5, 'Higher\nfertility\n(Fragmentation)', ha='center', va='center', fontsize=8.5, 
+            color='#c53030', fontweight='bold', fontstyle='italic')
+
     fig.tight_layout()
     fig.savefig(os.path.join(OUT, 'fig_bpe_example.pdf'), bbox_inches='tight')
     fig.savefig(os.path.join(OUT, 'fig_bpe_example.png'), bbox_inches='tight', dpi=200)
     plt.close(fig)
-    print("✓ BPE example")
+    print("✓ BPE example updated")
 
 
 # ============================================================

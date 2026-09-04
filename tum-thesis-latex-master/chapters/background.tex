@@ -56,7 +56,7 @@ The ratio of tokens to words is called \emph{fertility} ($F_L$). High fertility 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.88\textwidth]{figures/fig_bpe_example.pdf}
-\caption{\textbf{BPE tokenization across languages}. The same sentence tokenized in English (6 tokens), German (10 tokens), and Amharic (13 tokens). Under-represented languages are fragmented into more subword pieces, increasing fertility $F$ and diluting semantic content per token.}
+\caption{\textbf{BPE tokenization across languages}. The same sentence tokenized by the LLaMA-3 tokenizer in English (6 tokens), German (10 tokens), and Amharic (48 byte-fallback tokens). Under-represented languages without script merges are fragmented into raw byte pieces, increasing fertility $F$ and diluting semantic content per token.}
 \label{fig:bpe-example}
 \end{figure}
 
@@ -66,9 +66,9 @@ The ratio of tokens to words is called \emph{fertility} ($F_L$). High fertility 
 
 Cross-lingual transfer is the ability of a model to perform a task in a target language $L_1$ after being trained primarily in a source language $L_2$ (typically English). For this to work, the model's internal representations must be similar for sentences with the same meaning, regardless of language.
 
-The pivot hypothesis \citep{wendler2024llamas} offers an explanation: multilingual transformers develop a shared \emph{concept space} in their intermediate layers, mapping semantically equivalent sentences to nearby points. This predicts a clear pattern across depth: early layers encode surface features like script and word order, middle layers converge into this shared space, and late layers diverge to generate language-specific tokens.
+The pivot hypothesis \citep{wendler2024llamas} offers an explanation: multilingual transformers route processing in their intermediate layers through an abstract ``concept space,'' rather than remaining within language-specific representations throughout. This predicts a clear pattern across depth: early layers encode surface features like script and word order, middle layers converge into this shared conceptual space, and late layers diverge again to generate language-specific tokens.
 
-In fact, \citet{wendler2024llamas} found that for models like Llama-2, this middle space is largely English-centric, with non-English inputs routed through English-like representations. Whether this bias holds across newer architectures and non-English pivot evaluations is a core focus of this thesis (RQ3, Section~\ref{sec:intro-research-questions}).
+Critically, \citet{wendler2024llamas} found that for models like Llama-2, this middle ``concept space'' is not neutral but largely English-centric: non-English inputs are routed through representations that sit closer to English than to the input language itself, effectively using English as an implicit internal pivot. Whether this English-centric bias holds across newer architectures, and whether non-English languages can serve as effective alternative pivots, is a core focus of this thesis (RQ3, Section~\ref{sec:intro-research-questions}).
 
 % ..............................................
 \subsection{English as a Pivot Language}
@@ -102,7 +102,7 @@ Measuring alignment from hidden states is not straightforward. The main obstacle
 \label{fig:anisotropy-illustration}
 \end{figure}
 
-In an isotropic space, cosine similarity between unrelated sentence pairs is close to zero, so a high similarity between two sentences is a meaningful signal. In an anisotropic space, \emph{all} pairs have high cosine similarity simply because all vectors point in roughly the same direction. The similarity between a true translation pair may be 0.95, but the similarity between two unrelated sentences may also be 0.92. Raw cosine similarity cannot distinguish the two.
+In an isotropic space, cosine similarity between unrelated sentence pairs is close to zero, so a high similarity between two sentences is a meaningful signal. In an anisotropic space, all pairs have high cosine similarity simply because all vectors point in roughly the same direction. The similarity between a true translation pair may be 0.95, but the similarity between two unrelated sentences may also be 0.92. Raw cosine similarity cannot distinguish the two.
 
 In general language models, pooled hidden states also develop language-specific centroid shifts (a ``language-identity vector'') \citep{hammerl2023anisotropy}. Sentences in the same language tend to cluster together regardless of their meaning. Dedicated sentence encoders avoid this by training on parallel sentence pairs, but in causal decoders and standard MLMs, these shifts artificially boost within-language similarity and weaken cross-lingual alignment.
 
@@ -119,7 +119,7 @@ All experiments in this thesis use two multi-parallel sentence datasets.
 
 \paragraph{FLORES-200} \citep{nllbteam2022} is a high-quality benchmark derived from English Wikipedia articles. Although titled FLORES-200, the dataset specifically covers \textbf{204 language-script pairs} (or language varieties) spanning approximately 200 distinct languages across diverse language families and writing systems. The distinction between languages and language-script pairs is essential: certain languages are represented in multiple orthographies (e.g., Serbian in Cyrillic \texttt{srp\_Cyrl} and Latin \texttt{srp\_Latn}; Chinese in Simplified \texttt{zho\_Hans} and Traditional \texttt{zho\_Hant}). All sentences are professionally human-translated, ensuring natural phrasing and syntactic complexity across topics in geography, history, and science.
 
-\paragraph{Super-Parallel Bible Corpus (sPBC)} \citep{mayer2014bible} contains verse-aligned Bible translations spanning over 1,400 language-script pairs (1,401 in our full extraction). The text is historical and religious, with archaic vocabulary, repetitive semantic motifs, and distinctive syntax. Despite its narrow domain, the Bible corpus is often the only parallel resource available for hundreds of extremely low-resource languages, including rare regional scripts and indigenous writing systems absent from modern benchmarks (such as Syriac, Coptic, and diverse local orthographies).
+\paragraph{Super-Parallel Bible Corpus (sPBC)} \citep{kargaran2025mexa}, derived from the parallel Bible corpus of \citet{mayer2014bible}, contains verse-aligned Bible translations spanning over 1,400 language-script pairs (1,401 in our full extraction). The text is historical and religious, with archaic vocabulary, repetitive semantic motifs, and distinctive syntax. Despite its narrow domain, the Bible corpus is often the only parallel resource available for hundreds of extremely low-resource languages, including rare regional scripts and indigenous writing systems absent from modern benchmarks (such as Syriac, Coptic, and diverse local orthographies).
 
 The two corpora are complementary: FLORES tests alignment on modern, diverse prose across 204 language-script varieties, while the Bible corpus covers a much wider pool of 1,401 language-script varieties, albeit on archaic, domain-restricted text. If a model's alignment rankings are consistent across both, the metric reflects an intrinsic property of the representations rather than an artifact of a particular domain.
 

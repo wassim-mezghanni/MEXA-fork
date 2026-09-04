@@ -160,7 +160,7 @@ We evaluate 27 publicly available checkpoints representing 16 model architecture
   & Qwen 3 Embedding 8B & 8.0B & 151,646 & Decoder-based Contrastive \\
 \bottomrule
 \end{tabularx}
-\caption{\textbf{Evaluated language models}. Models are grouped by architectural category and family with parameter scale, vocabulary size, and training objective. Individual rows list each evaluated checkpoint, with \texttt{\textbackslash cmidrule} demarcating model sub-families.}
+\caption{\textbf{Evaluated language models}. Models are grouped by architectural category and family with parameter scale, vocabulary size, and training objective. Individual rows list each evaluated checkpoint, with horizontal sub-rules demarcating model sub-families.}
 \label{tab:evaluated-models-spec}
 \end{table}
 
@@ -176,7 +176,7 @@ To validate our implementation against \citet{kargaran2025mexa}, we re-evaluate 
 
 The first extension applies MEXA to decoder families released after the original study.
 
-Qwen~3 \citep{yang2025qwen3}, evaluated on four parameter sizes (0.6B, 1.7B, 4B, and 8B), was trained on a more multilingual data mixture than Llama. The size sweep isolates the effect of scale on alignment. Qwen~3.5~9B represents the successor generation and allows measuring recipe-level progress at a roughly constant parameter count. Apertus \citep{apertus2025}, evaluated across four checkpoints (\textbf{Apertus-Mini~4B}, \textbf{Apertus~8B}, \textbf{Apertus~1.5~8B}, and \textbf{Apertus~1.5~70B}), comprises fully-open multilingual models trained under an explicitly compliance-focused data policy, serving as a counterpoint to English-centric pre-training. Gemma~4 \citep{gemma2024gemma} spans four dense variants (\textbf{E2B}, \textbf{E4B}, \textbf{12B}, and \textbf{31B}); here, the \textit{E} designation denotes Edge-optimized architectures (\textbf{E2B} and \textbf{E4B}) engineered for lightweight deployment on mobile and edge devices, while \textbf{12B} and \textbf{31B} represent high-capacity dense decoders for desktop and server workloads.
+Qwen~3 \citep{yang2025qwen3}, evaluated on four parameter sizes (0.6B, 1.7B, 4B, and 8B), was trained on a more multilingual data mixture than Llama. The size sweep isolates the effect of scale on alignment. Qwen~3.5~9B represents the successor generation and allows measuring recipe-level progress at a roughly constant parameter count. Apertus \citep{apertus2025}, evaluated across four checkpoints (\textbf{Apertus-Mini~4B}, \textbf{Apertus~8B}, \textbf{Apertus~1.5~8B}, and \textbf{Apertus~1.5~70B}), comprises fully-open multilingual models trained under an explicitly compliance-focused data policy, serving as a counterpoint to English-centric pre-training. Gemma~4 \citep{gemmateam2026gemma4technicalreport} spans four dense variants (\textbf{E2B}, \textbf{E4B}, \textbf{12B}, and \textbf{31B}); here, the \textit{E} designation denotes Edge-optimized architectures (\textbf{E2B} and \textbf{E4B}) engineered for lightweight deployment on mobile and edge devices, while \textbf{12B} and \textbf{31B} represent high-capacity dense decoders for desktop and server workloads.
 
 \noindent
 Together with the reproduction models, these give us size ladders within dense families (Qwen3 0.6B$\to$8B, Gemma~4 E2B$\to$31B) and recipe contrasts across families at matched scale (Llama~3.1~8B vs.\ Qwen3~8B vs.\ Apertus~8B). Sparse Mixture-of-Experts (MoE) models within these families (such as \textbf{Gemma~4~26B-A4B} and the \textbf{Mixtral} series) are presented separately in Section~\ref{subsec:moe-models} below.
@@ -187,7 +187,7 @@ Together with the reproduction models, these give us size ladders within dense f
 
 Sparse mixture-of-experts (MoE) architectures route each token through a small subset of expert feed-forward networks, so total parameter capacity and per-token compute are decoupled \citep{jiang2024mixtral}. To isolate the specific impact of expert routing compared to dense decoders (Section~\ref{subsec:new-decoders}), we evaluate sparse MoE models as a distinct category. Whether expert routing helps or hurts cross-lingual alignment is an open question: experts could specialize by language, which would fragment the shared space, or by function, which would leave alignment intact.
 
-We evaluate \textbf{Mixtral~8x7B} and \textbf{Mixtral~8x22B} \citep{jiang2024mixtral} (top-2 routing across 8 experts) against the dense Mistral~7B~v0.3, as well as \textbf{Gemma~4~26B-A4B} \citep{gemma2024gemma} against dense Gemma~4 variants. In \textbf{Gemma~4~26B-A4B}, the \textit{A4B} notation specifies that out of 26 billion total parameters, only 4 billion parameters are active per token during inference, directly isolating the effect of sparse conditional routing on representation geometry. The MEXA pipeline applies unchanged in all cases, since it only consumes post-layer hidden states.
+We evaluate \textbf{Mixtral~8x7B} and \textbf{Mixtral~8x22B} \citep{jiang2024mixtral} (top-2 routing across 8 experts) against the dense Mistral~7B~v0.3, as well as \textbf{Gemma~4~26B-A4B} \citep{gemmateam2026gemma4technicalreport} against dense Gemma~4 variants. In \textbf{Gemma~4~26B-A4B}, the \textit{A4B} notation specifies that out of 26 billion total parameters, only 4 billion parameters are active per token during inference, directly isolating the effect of sparse conditional routing on representation geometry. The MEXA pipeline applies unchanged in all cases, since it only consumes post-layer hidden states.
 
 % ..............................................
 \subsection{Encoder and Embedding Models}
@@ -204,7 +204,7 @@ To test whether bidirectional self-attention yields stronger alignment than caus
 To measure the alignment ceiling under explicit metric learning, we evaluate dual-encoders optimized with translation ranking losses: \textbf{LaBSE} (471M parameters) \citep{feng2022labse} and \textbf{multilingual-E5-base} (278M parameters) \citep{wang2024multilingual}.
 
 \paragraph{Decoder-based Embedding Models.}
-To isolate the effect of contrastive fine-tuning on the exact same architecture, we evaluate the \textbf{Qwen3-Embedding} series \citep{yang2025qwen3} (0.6B, 4B, and 8B parameters), which fine-tunes the Qwen3 causal backbone (Section~\ref{subsec:new-decoders}) for retrieval.
+To isolate the effect of contrastive fine-tuning on the exact same architecture, we evaluate the \textbf{Qwen3-Embedding} series \citep{zhang2025qwen3embeddingadvancingtext} (0.6B, 4B, and 8B parameters), which fine-tunes the Qwen3 causal backbone (Section~\ref{subsec:new-decoders}) for retrieval.
 
 % ------------------------------------------------------------
 \section{Datasets}
@@ -241,7 +241,7 @@ From the FLORES-200 devtest split we evaluate three configurations. The FLORES b
 FLORES-200 tags language-script pairs systematically (e.g., simplified Chinese \texttt{zho\_Hans}, traditional Chinese \texttt{zho\_Hant}, Cyrillic Russian \texttt{rus\_Cyrl}, Devanagari Hindi \texttt{hin\_Deva}), which lets us isolate script effects from language identity (for instance, Serbian in Cyrillic \texttt{srp\_Cyrl} vs.\ Latin \texttt{srp\_Latn}). The domain is contemporary Wikipedia prose covering geography, history, and science, with modern terminology and complex syntax.
 
 \paragraph{Super-Parallel Bible Corpus (sPBC).}
-From the Super-Parallel Bible Corpus (sPBC) \citep{mayer2014bible}, we evaluate two configurations. The Bible benchmark subset contains 101 languages with $n = 103$ parallel sentences, matching the original paper's setup. The Bible Full dataset covers the complete corpus of more than 1{,}400 language-script pairs, extending evaluation deep into the low-resource tail.
+From the Super-Parallel Bible Corpus (sPBC) \citep{mayer2014bible, kargaran2025mexa}, we evaluate two configurations. The Bible benchmark subset contains 101 languages with $n = 103$ parallel sentences, matching the original paper's setup. The Bible Full dataset covers the complete corpus of more than 1{,}400 language-script pairs, extending evaluation deep into the low-resource tail.
 
 Unlike the modern encyclopedic prose of FLORES, the sPBC is entirely historical and religious, characterized by archaic vocabulary, repetitive semantic motifs, and distinctive grammatical structures. However, as a massively multi-way parallel corpus covering over 1{,}400 language-script pairs, it provides unparalleled linguistic coverage. This includes historical scripts and orthographies absent from modern web-crawled benchmarks such as Syriac, Coptic, and Ge'ez (Ethiopic) as well as indigenous writing systems. For hundreds of extremely low-resource languages that lack digital web footprints or Wikipedia entries, the Bible corpus represents the sole available multi-way parallel resource for cross-lingual NLP evaluation.
 
