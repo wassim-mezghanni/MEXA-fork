@@ -18,8 +18,10 @@ mpl.rcParams['grid.alpha'] = 0.5
 
 base_dir = "/Users/wassim/MEXA-fork"
 public_dir = os.path.join(base_dir, "dashboard/public/data")
-output_dir = os.path.join(base_dir, "Evaluating multilingual LLM performance with cross-lingual alignment Thesis/figures")
+output_dir = os.path.join(base_dir, "tum-thesis-latex-master/figures")
 os.makedirs(output_dir, exist_ok=True)
+pres_dir = os.path.join(base_dir, "Presentation Evaluating multilingual LLM performance with cross-lingual alignment Thesis/figures")
+os.makedirs(pres_dir, exist_ok=True)
 
 # Display Name Map for ALL models
 full_name_map = {
@@ -286,7 +288,7 @@ y3 = df_bible_valid["bible_max"]
 z3 = np.polyfit(x3, y3, 1)
 p3 = np.poly1d(z3)
 x3_line = np.linspace(x3.min()-0.05, x3.max()+0.05, 100)
-plt.plot(x3_line, p3(x3_line), "--", color="#555555", linewidth=1.5, label=r"Linear Fit ($\rho = 0.9765$)")
+plt.plot(x3_line, p3(x3_line), "--", color="#555555", linewidth=1.5, label=r"Linear Fit ($\rho = 0.8294$)")
 plt.plot([0, 1], [0, 1], ":", color="#999999", label="Equality Line ($y=x$)")
 
 offsets_b = {
@@ -328,6 +330,9 @@ plt.tight_layout()
 fig4_path = os.path.join(output_dir, "fig_flores_vs_bible_all_labeled.pdf")
 plt.savefig(fig4_path)
 plt.savefig(fig4_path.replace('.pdf', '.png'))
+if os.path.exists(pres_dir):
+    plt.savefig(os.path.join(pres_dir, "fig_flores_vs_bible_all_labeled.pdf"))
+    plt.savefig(os.path.join(pres_dir, "fig_flores_vs_bible_all_labeled.png"))
 plt.close()
 print("Saved:", fig4_path)
 

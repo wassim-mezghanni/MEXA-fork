@@ -49,7 +49,7 @@ To examine these representation dynamics, Figure~\ref{fig:embedding-projections}
 
 Figure~\ref{fig:max-vs-mean} compares peak alignment ($\mu_{\text{Max}}$) with layer-averaged alignment ($\mu_{\text{Mean}}$) on FLORES. Across all models, the two metrics correlate strongly ($\rho = 0.9500$, $p < 10^{-7}$), and the correlation is tighter among causal decoders ($\rho = 0.9762$, $p < 10^{-4}$). A model's peak score is therefore a reliable predictor of its average layer alignment.
 
-Figure~\ref{fig:flores-vs-bible} compares FLORES alignment scores with Bible scores. On the Bible corpus, scores drop across all models: Llama~3.1~8B falls to $\mu_{\text{Max}} = 0.4180$, down $25.26$ percentage points from FLORES. Biblical text is archaic and differs substantially from the web text used during pre-training. However, relative rankings remain stable across both corpora ($\rho = 0.9765$, $p < 10^{-10}$), showing that MEXA produces consistent model comparisons across domains.
+Figure~\ref{fig:flores-vs-bible} compares FLORES alignment scores with Bible scores. On the Bible corpus, scores drop across all models: Llama~3.1~8B falls to $\mu_{\text{Max}} = 0.4180$, down $25.26$ percentage points from FLORES. Biblical text is archaic and differs substantially from the web text used during pre-training. However, relative rankings remain stable across both corpora ($\rho = 0.8294$, $p < 10^{-4}$), showing that MEXA produces consistent model comparisons across domains.
 
 \begin{figure}[H]
 \centering
@@ -62,7 +62,7 @@ Figure~\ref{fig:flores-vs-bible} compares FLORES alignment scores with Bible sco
 \begin{minipage}[b]{0.48\textwidth}
   \centering
   \includegraphics[width=\textwidth]{figures/fig_flores_vs_bible_all_labeled.pdf}
-  \caption{\textbf{Cross-domain stability}: FLORES vs.\ Bible scores across all models ($\rho = 0.9765$, $p < 10^{-10}$).}
+  \caption{\textbf{Cross-domain stability}: FLORES vs.\ Bible scores across all models ($\rho = 0.8294$, $p < 10^{-4}$).}
   \label{fig:flores-vs-bible}
 \end{minipage}
 \end{figure}
@@ -75,7 +75,7 @@ Table~\ref{tab:mexa-main-results} reports the alignment scores across the primar
 
 Across model families, the results show a consistent ranking. Sentence embedding models (mE5-base and LaBSE) score highest, with peak values above $0.95$ driven by contrastive objectives that explicitly map parallel sentences together. Untuned bidirectional encoders (XLM-RoBERTa Large and Glot500) form a middle tier ($\mu_{\text{Max}} = 0.58$--$0.64$), performing on par with mid-sized causal decoders despite lacking contrastive training.
 
-Causal decoders vary widely depending on parameter count, vocabulary size, and pre-training data. Recent large decoders align well on FLORES: Qwen~3.5~9B reaches $\mu_{\text{Max}} = 0.7794$ and Llama~3.1~8B reaches $0.6706$. Smaller models in the Qwen~3 family (0.6B to 4B) and older baselines like Mistral~7B~v0.3 remain below $0.50$. Parameter scale alone does not guarantee alignment: Apertus models score low on FLORES ($\mu_{\text{Max}} \le 0.4292$), where the 70B variant reaches only $0.3190$, reflecting differences in multilingual pre-training coverage and tokenization efficiency.
+Causal decoders vary widely depending on parameter count, vocabulary size, and pre-training data. Recent large decoders align well on FLORES: Qwen~3.5~9B reaches $\mu_{\text{Max}} = 0.7794$ and Llama~3.1~8B reaches $0.6706$. Smaller models in the Qwen~3 family (0.6B to 4B) and older baselines like Mistral~7B~v0.3 remain below $0.50$. Parameter scale alone does not guarantee alignment: the larger Apertus models score low on FLORES ($\mu_{\text{Max}} \le 0.4292$), where the 70B variant reaches only $0.3190$ (despite the compact Apertus-Mini~4B reaching $0.5840$), reflecting differences in multilingual pre-training coverage and tokenization efficiency.
 
 \begin{figure}[H]
 \centering
@@ -158,7 +158,7 @@ Although mE5-base has a slightly higher peak than LaBSE ($0.9710$ vs.\ $0.9510$)
   \caption{\textbf{Qwen parameter scaling} (0.6B to 9B parameters) on FLORES.}
   \label{fig:parameter-scaling}
 \end{minipage}\hfill
-\begin{minipage}[b]{0.48\textwidth}
+\begin{minipage}[b]{0.5\textwidth}
   \centering
   \includegraphics[width=\textwidth]{figures/fig_layer_trajectories.pdf}
   \caption{\textbf{Layer-wise trajectories} ($\mu C(l)$ vs.\ normalized depth $l/L$).}
@@ -208,14 +208,14 @@ mmBERT Base         & 0.5094 & 0.4132 & 0.3033 & 0.2622 & 0.0427 \\
 Sparse Mixture-of-Experts (MoE) architectures decouple total model capacity from inference cost by routing each token to a subset of feed-forward experts. A key question is whether this routing isolates languages into separate experts and fragments the representation space, or whether experts specialize by function across languages.
 
 \paragraph{Dense vs.\ sparse alignment.}
-Figure~\ref{fig:moe-layer-trajectories} compares layer-wise alignment trajectories for dense and sparse models on FLORES-200 across the Mistral/Mixtral (left) and Gemma (right) families.
+Figure~\ref{fig:moe-layer-trajectories} compares layer-wise alignment trajectories for dense and sparse models on the sPBC Bible benchmark ($n = 103$ verses across 100 languages) across the Mistral/Mixtral (left) and Gemma (right) families.
 
-In the Mistral family, the dense baseline Mistral~7B~v0.3 scores $\mu_{\text{Max}} = 0.4934$ and $\mu_{\text{Mean}} = 0.2813$. The sparse Mixtral~8x7B reaches $\mu_{\text{Max}} = 0.5385$ ($\mu_{\text{Mean}} = 0.3214$), while Mixtral~8x22B reaches $\mu_{\text{Max}} = 0.6120$ ($\mu_{\text{Mean}} = 0.3950$). These improvements stem from larger total parameter capacity rather than per-token compute: although Mixtral models activate 13B and 39B parameters per token, their total capacities are 47B and 141B parameters. In the Gemma family, Gemma~4~26B-A4B (4B active parameters) maintains high alignment through deep layers, matching dense baselines with similar active parameter counts. Its shared expert pathway helps sustain this alignment in late layers.
+In the Mistral family, the dense baseline Mistral~7B~v0.3 scores peak trajectory alignment of $\mu C(l) = 0.2501$ (with per-language peak average $\mu_{\text{Max}} = 0.2571$, $\mu_{\text{Mean}} = 0.1179$). The sparse Mixtral~8x7B reaches peak trajectory alignment of $\mu C(l) = 0.2616$ ($\mu_{\text{Max}} = 0.3120$, $\mu_{\text{Mean}} = 0.1442$), while the 141B parameter Mixtral~8x22B reaches $\mu C(l) = 0.3731$ ($\mu_{\text{Max}} = 0.4064$, $\mu_{\text{Mean}} = 0.1866$). These improvements stem from larger total parameter capacity rather than per-token compute: although Mixtral models activate 13B and 39B parameters per token, their total capacities are 47B and 141B parameters. In the Gemma family, Gemma~4~26B-A4B (4B active parameters) maintains high alignment through deep layers, matching dense baselines with similar active parameter counts. Its shared expert pathway helps sustain this alignment in late layers.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures/fig_moe_layer_trajectories.pdf}
-\caption{\textbf{Dense vs.\ sparse layer-wise trajectories}. Layer-wise alignment scores ($\mu C(l)$) on FLORES-200 for the Mistral/Mixtral (left) and Gemma (right) model families.}
+\caption{\textbf{Dense vs.\ sparse layer-wise trajectories}. Layer-wise alignment scores ($\mu C(l)$) on the Bible benchmark ($n = 103$ verses across 100 languages) for the Mistral/Mixtral (left) and Gemma (right) model families. All models exhibit smooth, inverted-U trajectories peaking in the middle-to-late transformer layers, with Mixtral~8x22B peaking at Layer~27 ($l/L = 0.48$).}
 \label{fig:moe-layer-trajectories}
 \end{figure}
 

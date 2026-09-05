@@ -185,9 +185,11 @@
     \end{column}
   \end{columns}
   \vspace{0.1em}
-  \begin{takeawaybox}
-    \textbf{Takeaway:} Comparing these corpora evaluates whether representation alignment generalizes across \textbf{domain shifts}, \textbf{unseen scripts}, and \textbf{extreme low-resource languages}.
-  \end{takeawaybox}
+  \uncover<3->{
+    \begin{takeawaybox}
+      \textbf{Takeaway:} Comparing these corpora evaluates whether representation alignment generalizes across \textbf{domain shifts}, \textbf{unseen scripts}, and \textbf{extreme low-resource languages}.
+    \end{takeawaybox}
+  }
 \end{frame}
 
 % ------------------------------------------------------------
@@ -316,7 +318,7 @@
     \end{column}
     \begin{column}{0.50\textwidth}
       \begin{itemize}\small \setlength{\itemsep}{5pt}
-        \item \textbf{Consistent rankings:} Model order remains stable at $\boldsymbol{\rho = 0.98}$ ($p < 10^{-10}$) across all models on 116 FLORES and 101 Bible languages (following the original MEXA benchmark language subsets).
+        \item \textbf{Consistent rankings:} Model order remains stable at $\boldsymbol{\rho = 0.83}$ ($p < 10^{-4}$) across all models on 116 FLORES and 101 Bible languages (following the original MEXA benchmark language subsets).
         \item \textbf{Domain score offset:} Absolute alignment is lower on biblical text due to archaic vocabulary and syntax.
         \item \textbf{Apertus performance:} Apertus models retain higher relative scores on biblical text ($\mu_{\text{Max}} \le 0.50$).
       \end{itemize}
@@ -339,10 +341,10 @@
     \end{column}
     \begin{column}{0.50\textwidth}
       \begin{itemize}\small \setlength{\itemsep}{6pt}
-        \item \textbf{Sparse scaling:} Despite much larger total capacity, MoE models only slightly exceed dense baselines dense Mistral 7B ($0.49$):
+        \item \textbf{Sparse scaling:} Despite larger total capacity, MoE models scale smoothly over the dense baseline (Mistral 7B peak $\approx 0.25$):
           \begin{itemize}\setlength{\itemsep}{2pt}
-            \item[\textbullet] Mixtral 8$\times$7B (13B active / 47B total) scores $0.54$
-            \item[\textbullet] Mixtral 8$\times$22B (39B active / 141B total) reaches $0.61$
+            \item[\textbullet] Mixtral 8$\times$7B (13B act. / 47B total) reaches $0.26$
+            \item[\textbullet] Mixtral 8$\times$22B (39B act. / 141B total) reaches $\mathbf{0.37}$
           \end{itemize}
         \item \textbf{Balanced allocation:} Intermediate layers distribute tokens evenly across all 8 experts ($\boldsymbol{\approx 12.5\%}$ each), regardless of script.
       \end{itemize}
@@ -498,6 +500,25 @@
 % APPENDIX / BACKUP SLIDES (For Q&A Session)
 % ============================================================
 \appendix
+
+\begin{frame}{Backup: Overall Model Ranking on FLORES Benchmark}
+  \begin{columns}[c]
+    \begin{column}{0.62\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=0.82\textheight,keepaspectratio]{figures/fig_flores_all_models_barchart.pdf}
+    \end{column}
+    \begin{column}{0.36\textwidth}
+      \small
+      \textbf{Architectural Hierarchy}
+      \begin{itemize}\scriptsize\setlength{\itemsep}{4pt}
+        \item \textbf{Sentence Encoders:} Contrastive tuning creates an upper ceiling ($\mu_{\text{Max}} > 0.95$, e.g.\ mE5-base, LaBSE).
+        \item \textbf{Causal Decoders:} Wide spectrum ($0.34\text{--}0.78$); Qwen 3.5 9B ($0.78$) and Llama 3.1 8B ($0.67$) lead decoders.
+        \item \textbf{Masked LMs:} Mid-tier cluster ($0.58\text{--}0.64$; XLM-R, Glot500).
+        \item \textbf{Scores:} Solid bars show peak ($\mu_{\text{Max}}$); hatched bars show depth-average ($\mu_{\text{Mean}}$).
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
 
 \begin{frame}{Backup: Layerwise Trajectories Across Architectures}
   \begin{columns}[c]

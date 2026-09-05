@@ -1,21 +1,19 @@
 #!/bin/bash
-#SBATCH --job-name=mexa-mixtral-8x7b-flores-table1-100
-#SBATCH --output=mixtral_8x7b_flores_table1_100_output.log
-#SBATCH --error=mixtral_8x7b_flores_table1_100_error.log
-#SBATCH --gres=gpu:nvidia:2
-#SBATCH --cpus-per-task=16
-#SBATCH --mem=150G
-#SBATCH --time=12:00:00
+#SBATCH --job-name=mexa-mixtral-8x22b-flores-table1-100
+#SBATCH --output=mixtral_8x22b_flores_table1_100_output.log
+#SBATCH --error=mixtral_8x22b_flores_table1_100_error.log
 #SBATCH --partition=compute
+#SBATCH --gres=gpu:nvidia:4
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=300G
+#SBATCH --time=12:00:00
 
 # ──────────────────────────────────────────────────────────────
-# MEXA — Mixtral-8x7B (Sparse MoE) on FLORES Table 1 (116 langs, 100 sents)
-#
-#   Model:     mistralai/Mixtral-8x7B-v0.1
-#   Arch:      Sparse Mixture-of-Experts decoder (~47B total, ~13B active/token)
-#   Embedding: token-weighted (embd_weighted) · Max + Mean pooling
-#   Pivot:     eng_Latn · Sentences: 100
-#
+# MEXA — Mixtral 8x22B (Sparse MoE) on FLORES Table 1 (116 langs, 100 sents)
+# COMA Cluster (4x NVIDIA H200 144GB = 576GB VRAM, bfloat16 full precision)
+# ──────────────────────────────────────────────────────────────
+
+cd "$SLURM_SUBMIT_DIR"
 REPO_ROOT="$(cd ../../../.. && pwd)"
 
 # Activate conda
@@ -24,33 +22,37 @@ conda activate mexa_conda
 
 export HF_TOKEN="${HF_TOKEN:-$(cat ~/.hf_token 2>/dev/null)}"
 export HUGGING_FACE_HUB_TOKEN="$HF_TOKEN"
+export HF_HUB_ENABLE_HF_TRANSFER=0
 
-MODEL_NAME="mistralai/Mixtral-8x7B-v0.1"
+mkdir -p /scratch/wassim/tmp
+export TMPDIR="/scratch/wassim/tmp"
+
+MODEL_NAME="mistralai/Mixtral-8x22B-v0.1"
 DATA_DIR="$REPO_ROOT/data/flores200_dataset/devtest"
 SAVE_EMBD_DIR="./embeddings"
 SAVE_SCORE_DIR="./scores"
 LANG_LIST="$REPO_ROOT/shared/flores_table1_116.json"
-CSV_OUTPUT_PATH="$REPO_ROOT/dashboard/public/data/flores_table1_100_mixtral_8x7b_results.csv"
-PROJ_OUTPUT_PATH="$REPO_ROOT/dashboard/public/data/projections_flores_table1_100_mixtral_8x7b.json"
+CSV_OUTPUT_PATH="$REPO_ROOT/dashboard/public/data/flores_table1_100_mixtral_8x22b_results.csv"
+PROJ_OUTPUT_PATH="$REPO_ROOT/dashboard/public/data/projections_flores_table1_100_mixtral_8x22b.json"
 
-cd "$SLURM_SUBMIT_DIR"
+# Cache models on fast 13TB /storage/nobackup
+MODEL_CACHE="/storage/nobackup/wassim/hf_cache"
+export HF_HOME="$MODEL_CACHE"
+mkdir -p "$MODEL_CACHE" "$SAVE_EMBD_DIR" "$SAVE_SCORE_DIR"
 
-if [ ! -d "$DATA_DIR" ]; then echo "ERROR: Data directory $DATA_DIR not found."; exit 1; fi
+echo "============================================"
+echo "  MEXA FLORES Table 1 (116 langs, 100 sents) — Mixtral 8x22B (SMoE)"
+echo "  Model:   $MODEL_NAME"
+echo "  Nodes:   $SLURMD_NODENAME"
+echo "  GPUs:    4x NVIDIA H200 (576GB VRAM total)"
+echo "============================================"
 
-mkdir -p "$SAVE_EMBD_DIR" "$SAVE_SCORE_DIR"
-
-python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available!'; print(f'CUDA OK: {torch.cuda.device_count()}x {torch.cuda.get_device_name(0)}')"
+python3 -c "import torch; assert torch.cuda.is_available(), 'CUDA not available!'; n=torch.cuda.device_count(); print(f'CUDA OK: {n}x {torch.cuda.get_device_name(0)}')"
 
 rm -rf "$SAVE_EMBD_DIR"/*.pkl
 rm -rf "$SAVE_SCORE_DIR"/*.json
 
-echo "============================================"
-echo "  MEXA FLORES Table 1 (116 langs, 100 sents) — Mixtral-8x7B (SMoE)"
-echo "  Model:   $MODEL_NAME"
-echo "  Nodes:   $SLURMD_NODENAME"
-echo "============================================"
-
-echo "1. Extracting Embeddings..."
+echo "1. Extracting Embeddings across 4x H200s (bfloat16)..."
 python3 "$REPO_ROOT/embed_extractor.py" \
     --model_name "$MODEL_NAME" \
     --model_type causal \
@@ -60,6 +62,7 @@ python3 "$REPO_ROOT/embed_extractor.py" \
     --save_path "$SAVE_EMBD_DIR" \
     --file_ext ".devtest" \
     --lang_list "$LANG_LIST" \
+    --cache_dir "$MODEL_CACHE" \
     --token "$HF_TOKEN"
 
 echo "2. Computing MEXA alignments..."
@@ -72,8 +75,7 @@ python3 "$REPO_ROOT/compute_mexa.py" \
     --file_ext .pkl
 
 echo "3. Formatting Results for the Dashboard..."
-python3 "$REPO_ROOT/shared/format_results.py" \
-    --model_name "$MODEL_NAME" \
+python3 "$REPO_ROOT/shared/format_results.py" --model_name "$MODEL_NAME" \
     --scores_dir "$SAVE_SCORE_DIR" \
     --output_csv "$CSV_OUTPUT_PATH"
 

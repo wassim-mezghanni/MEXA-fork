@@ -32,7 +32,7 @@ Validating MEXA alignment against downstream task benchmarks confirmed that inte
 While the findings offer consistent insights into LLM representation geometry, several limitations should be noted:
 
 \begin{enumerate}
-    \item \textbf{Parallel corpus dependencies and domain shifts.} Evaluation relies on sentence-level translation quality. While FLORES-200 provides professionally translated modern prose, the massively multilingual Bible corpus contains archaic phrasing, stylized syntax, and religious motifs that do not fully reflect contemporary vernacular language usage.
+    \item \textbf{Parallel corpus dependencies and domain shifts.} Evaluation relies on sentence-level translation quality. While FLORES-200 provides professionally translated modern prose, the massively multilingual Bible corpus contains archaic phrasing, stylized syntax, and religious motifs that do not fully reflect everyday modern language.
     
     \item \textbf{Tokenization bias in representation pooling.} MEXA computes sentence representations via token-level pooling over model hidden states. Consequently, high subword fertility in low-resource scripts mechanically dilutes token weights under positional pooling, conflating subword vocabulary fragmentation with intrinsic semantic representation quality.
     

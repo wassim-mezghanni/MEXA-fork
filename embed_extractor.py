@@ -31,8 +31,10 @@ from tqdm import tqdm
 
 # Function to handle weighted embeddings
 def weighted_embeddings(layer, attention_mask, device='cuda'):
-    # Compute weights for non-padding tokens
-    weights_for_non_padding = attention_mask * torch.arange(start=1, end=layer.shape[1] + 1, device=device).unsqueeze(0)
+    # Match device of layer tensor for multi-GPU sharding
+    dev = layer.device if hasattr(layer, 'device') else device
+    mask = attention_mask.to(dev)
+    weights_for_non_padding = mask * torch.arange(start=1, end=layer.shape[1] + 1, device=dev).unsqueeze(0)
     sum_embeddings = torch.sum(layer * weights_for_non_padding.unsqueeze(-1), dim=1)
     num_of_non_padding_tokens = torch.sum(weights_for_non_padding, dim=-1).unsqueeze(-1)
     sentence_embeddings = sum_embeddings / num_of_non_padding_tokens
@@ -51,8 +53,9 @@ def lasttoken_embeddings(layer, attention_mask, device='cuda'):
 
 # Function to extract embeddings
 def get_embedding_layers(text, model, tokenizer, device='cuda'):
-    tokens = tokenizer(text, return_tensors='pt', padding=True, truncation=True).to(device)
-    attention_mask = tokens.attention_mask.to(device)
+    first_device = next(model.parameters()).device if hasattr(model, 'parameters') else device
+    tokens = tokenizer(text, return_tensors='pt', padding=True, truncation=True).to(first_device)
+    attention_mask = tokens.attention_mask
 
     sentence_embeddings_weighted = []
     sentence_embeddings_last_token = []

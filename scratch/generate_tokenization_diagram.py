@@ -15,12 +15,13 @@ output_png = os.path.join(base_dir, "tum-thesis-latex-master/figures/fig_tokeniz
 # Data from json
 tokens_eng = ["We", "now", "have", "4", "-month", "-old", "mice", "that", "are", "non", "-di", "abetic", "..."]
 tokens_min_lat = ["K", "ami", "kin", "iko", "pun", "yo", "man", "c", "ik", "ba", "um", "ua", "..."]
-tokens_min_ara = ["ك", "امي", "ك", "ين", "يك", "و", "ڤ", "و", "ڽ", "و", "من", "چ", "..."]
+# Arabic tokens with proper cursive shaping in RTL display
+tokens_min_ara = ["ك", "\uFEF2\uFEE4\uFE8D", "ك", "\uFEE6\uFEF3", "\uFEDA\uFEF3", "و", "ڤ", "و", "ڽ", "و", "\uFEE6\uFEE3", "چ", "..."]
 
 rows = [
-    {"label": "English (Latin)", "tokens": tokens_eng, "count": 22, "mult": "x1.0x", "color": "#e3f2fd", "text_color": "#0d47a1"},
-    {"label": "Minangkabau (Latin)", "tokens": tokens_min_lat, "count": 35, "mult": "x1.6x", "color": "#fff3e0", "text_color": "#e65100"},
-    {"label": "Minangkabau (Arabic)", "tokens": tokens_min_ara, "count": 55, "mult": "x2.5x", "color": "#f3e5f5", "text_color": "#4a148c"},
+    {"label": "English (Latin)", "tokens": tokens_eng, "count": 22, "mult": "1.0×", "color": "#e3f2fd", "text_color": "#0d47a1"},
+    {"label": "Minangkabau (Latin)", "tokens": tokens_min_lat, "count": 35, "mult": "1.6×", "color": "#fff3e0", "text_color": "#e65100"},
+    {"label": "Minangkabau (Arabic)", "tokens": tokens_min_ara, "count": 55, "mult": "2.5×", "color": "#f3e5f5", "text_color": "#4a148c"},
 ]
 
 # Increased vertical figure size & row spacing so labels don't collide with boxes
@@ -83,4 +84,7 @@ plt.tight_layout()
 # Save
 plt.savefig(output_pdf, format='pdf', bbox_inches='tight')
 plt.savefig(output_png, format='png', bbox_inches='tight')
+pres_pdf = os.path.join(base_dir, "Presentation Evaluating multilingual LLM performance with cross-lingual alignment Thesis/figures/fig_tokenization_comparison.pdf")
+if os.path.exists(os.path.dirname(pres_pdf)):
+    plt.savefig(pres_pdf, format='pdf', bbox_inches='tight')
 print("Tokenization diagram generated successfully!")
