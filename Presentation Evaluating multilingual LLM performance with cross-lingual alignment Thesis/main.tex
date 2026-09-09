@@ -26,7 +26,7 @@
 % Presentation Metadata
 \title[Evaluating Multilingual LLM Performance]{Evaluating Multilingual LLM\\Performance with Cross-Lingual\\Alignment}
 \subtitle{Bachelor's Thesis Defense}
-\author{Wassim Mezghanni}
+\author[Wassim Mezghanni]{Wassim Mezghanni\\[0.3em]\footnotesize \textbf{Supervisor:} Prof.\ Dr.\ Alexander Fraser\\[0.15em]\textbf{Advisor:} Dr.\ Shu Okabe}
 \institute{TUM School of Computation, Information and Technology\\Technical University of Munich}
 \date{\today}
 
@@ -36,7 +36,7 @@
 \renewcommand{\theDepartmentName}{School of Computation, Information and Technology}
 \renewcommand{\theChairName}{Department of Computer Science}
 
-\footline{\insertauthor~|~\insertshorttitle~|~\insertshortdate}
+\footline{\insertshortauthor~|~\insertshorttitle~|~\insertshortdate}
 
 % TUM Style Configuration
 \TUMbeamersetup{
@@ -158,7 +158,7 @@
           \item \textbf{Domain:} Modern encyclopedic prose (Wikipedia; contemporary vocabulary).
           \item \textbf{Languages:} 204 varieties (high- to mid-resource coverage).
           \item \textbf{Scripts:} 25 scripts (Latin, Cyrillic, Arabic, Devanagari, Han, etc ).
-          \item \textbf{Split:} $n = 100$ parallel sentences/language.
+          \item \textbf{Split:} 116 languages  $n = 100$ parallel sentences/language (Belebele overlap)  , 204 ($n = 1{,}012$ sentences)/language.
         \end{itemize}
       \end{tcolorbox}
     \end{column}
@@ -178,7 +178,8 @@
             \item \textbf{Domain:} Historical religious text (archaic register).
             \item \textbf{Languages:} 1,400+ varieties (massive long tail of rare/unseen languages).
             \item \textbf{Scripts:} $50+$ writing systems (Ge'ez, Syriac, Coptic, Cherokee, indigenous).
-            \item \textbf{Split:} $n = 103$ parallel verses.
+            \item \textbf{Split:} $n = 103$ parallel verses.,Full coverage: 1,400+ varieties
+           
           \end{itemize}
         \end{tcolorbox}
       }
@@ -211,10 +212,10 @@
         \vspace{-0.25em}
         \setlength{\leftmargini}{9pt}
         \begin{itemize}\scriptsize \setlength{\itemsep}{0.2pt}
-          \item \textbf{Qwen 3 and 3.5 :} 0.6B, 1.7B, 4B, 8B, 3.5 9B.
-          \item \textbf{Apertus Swiss AI :} Mini 4B, 8B, 1.5-8B, 1.5-70B.
-          \item \textbf{Gemma 4 :} E2B, E4B, 12B, 31B.
-          \item LLaMA 3.1 8B, Mistral 7B v0.3.
+          \item \textbf{Qwen 3 and 3.5:} 0.6B, 1.7B, 4B, 8B, 3.5 9B.
+          \item \textbf{Apertus Swiss AI:} Mini 4B, 8B, 1.5-8B, 1.5-70B.
+          \item \textbf{Gemma 4:} E2B, E4B, 12B, 31B.
+          \item Llama 3.1 8B, Mistral 7B v0.3.
         \end{itemize}
       \end{tcolorbox}
       \vspace{0.12em}
@@ -231,9 +232,9 @@
         \vspace{-0.25em}
         \setlength{\leftmargini}{9pt}
         \begin{itemize}\scriptsize \setlength{\itemsep}{0.2pt}
-          \item \textbf{Mixtral 8x7B :} 46.7B total (13B active).
-          \item \textbf{Mixtral 8x22B :} 141.0B total (39B active).
-          \item \textbf{Gemma 4 26B-A4B :} 26.0B total (4B active).
+          \item \textbf{Mixtral 8x7B:} 46.7B total (13B active).
+          \item \textbf{Mixtral 8x22B:} 141.0B total (39B active).
+          \item \textbf{Gemma 4 26B-A4B:} 26.0B total (4B active).
         \end{itemize}
       \end{tcolorbox}
     \end{column}
@@ -296,7 +297,7 @@
       \begin{itemize}\small \setlength{\itemsep}{4pt}
         \item \textbf{Scaling with capacity:} In Qwen 3, peak alignment grows with size:\\
           0.6B $\rightarrow$ 1.7B $\rightarrow$ 4B $\rightarrow$ 8B
-        \item \textbf{Qwen 3.5 9B:} Jumps to $\mu_{\text{Max}} = 0.78$ \\ (+21\% over 8B base), \\ narrowing the gap to embedding models.
+        \item \textbf{Qwen 3.5 9B:} Jumps to $\mu_{\text{Max}} = 0.78$ \\ (+21\,pp over 8B base), \\ narrowing the gap to embedding models.
         \item \textbf{Embedding models:} Peak early ($<30\%$ depth, $\mu > 0.95$) due to explicit contrastive objectives.
       \end{itemize}
     \end{column}
@@ -364,7 +365,7 @@
   \begin{columns}[T]
     \begin{column}{0.52\textwidth}
       \begin{itemize}\footnotesize \setlength{\itemsep}{2pt}
-        \item \textbf{Six pivots evaluated:} English plus 5 alternatives chosen for typological and script diversity: German (same family ), French (Latin), Arabic (Right To Left ), Chinese (logographic), Basque (language isolate ).
+        \item \textbf{Six pivots evaluated:} English plus 5 alternatives chosen for typological and script diversity: German (same family), French (Latin), Arabic (Right-to-Left), Chinese (logographic), Basque (language isolate).
         \item \textbf{Dataset and coverage:} \textbf{FLORES-200}  \\ ($n = 100$ parallel sentences, 116 languages).
         \item \textbf{Non-English pivots:} Match or exceed English in standard retrieval (e.g.\ French $\mu_{\text{Max}} = 0.8034$ vs.\ English $0.7809$ on Qwen 3.5 9B).
         \item \textbf{Mean-centering ($\mathbf{e} - \bar{\mathbf{e}}_L$):} Subtracting per-language centroids removes static language offsets.
@@ -398,7 +399,7 @@
     \end{column}
     \begin{column}{0.50\textwidth}
       \begin{itemize}\small
-        \item \textbf{Log-linear trend:} Subword fertility correlates negatively with alignment across 204 FLORES languages.
+        \item \textbf{Log-linear trend:} Strong negative correlation across all 204 FLORES languages ($r = -0.56$, $\rho = -0.67$, $p < 10^{-17}$).
         \item \textbf{Within-script penalties:} Higher fertility tracks lower alignment within scripts: Cyrillic ($r = -0.93$), Arabic ($r = -0.88$), and Latin ($r = -0.76$).
         \item \textbf{Mechanism:} Splitting words into short fragments dilutes positional weights ($t/T$) and adds attention noise.
       \end{itemize}
@@ -432,7 +433,7 @@
   \end{columns}
   \vspace{0.1em}
   \begin{takeawaybox}
-    \textbf{Takeaway:} MEXA predicts downstream accuracy within architecture families ($\rho = 1.0$). Cross-architecture validity is attenuated by Apertus (high accuracy, low MEXA).
+    \textbf{Takeaway:} MEXA predicts downstream accuracy within architecture families ($\rho = 0.90$). Cross-architecture validity is attenuated by Apertus (high accuracy, low MEXA).
   \end{takeawaybox}
 \end{frame}
 
@@ -440,16 +441,13 @@
 % 12. Summary of Contributions
 % ------------------------------------------------------------
 \begin{frame}{Summary of Thesis Contributions}
-  \begin{enumerate}\small
+  \begin{enumerate}\small \setlength{\itemsep}{1.5pt}
     \item \textbf{Empirical scale:} Evaluated 27 models across 204 FLORES varieties and 1,401 Bible languages, providing alignment profiles for Qwen 3.5, Apertus, and Gemma 4.
-    \vspace{0.2em}
     \item \textbf{MoE representation preservation:} Showed that sparse MoE models match dense alignment without segregating languages across experts.
-    \vspace{0.2em}
     \item \textbf{Language-agnostic concept space:} Showed that mean-centering aligns representations across six diverse pivots to a shared ceiling ($\mu \approx 0.95$).
-    \vspace{0.2em}
     \item \textbf{Fertility penalty:} Quantified how subword fragmentation lowers measured alignment in non-Latin scripts.
-    \vspace{0.2em}
     \item \textbf{Downstream predictive validity:} Verified that internal representation alignment predicts zero-shot task performance at both model and language levels.
+    \item \textbf{Interactive React Dashboard \& Open Tooling:} Developed an interactive exploration dashboard and open-source codebase for layer trajectories, fertility correlations, and projections.
   \end{enumerate}
 \end{frame}
 
@@ -579,6 +577,28 @@
         \item \textbf{Layer 0:} Minor surface variations caused by initial script and tokenizer differences.
         \item \textbf{Layer 15:} Convergence to uniform $\approx 12.5\%$ allocation across all 8 experts, reflecting a shared semantic space.
         \item \textbf{Layer 31:} Language- and task-specific redistribution for output token generation.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Backup: Vector Space Geometry of Mean-Centering}
+  \begin{columns}[c]
+    \begin{column}{0.55\textwidth}
+      \centering
+      \includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{figures/fig_meancentering_geometry.pdf}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \small
+      \textbf{Geometric Intuition}
+      \begin{itemize}\scriptsize\setlength{\itemsep}{4pt}
+        \item \textbf{Centered embedding:}
+          \[
+            \tilde{e}_i^{(l)} = e_i^{(l)} - \frac{1}{n}\sum_{k=1}^n e_k^{(l)}
+          \]
+        \item \textbf{(a) Uncentered space:} 2D PCA shows representations are offset by a dominant language-identity vector $\bar{e}_L$.
+        \item \textbf{(b) Centered space:} Subtracting language centroids aligns manifolds at the origin, eliminating language-identity bias.
+        \item \textbf{Result:} Isolates semantic alignment, raising all 6 pivots to $\mu_{\text{Max}} \approx 0.94\text{--}0.96$ on Qwen 3.5 9B.
       \end{itemize}
     \end{column}
   \end{columns}
